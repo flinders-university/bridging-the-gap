@@ -1,0 +1,77 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700';
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#navbar {
+  border-top: 10px solid #E36960;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-nav li {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Full width heros */
+.jellies {
+  background: image-url("jellies.jpeg") 50% 35% no-repeat;
+  background-size: cover;
+  min-height: 380px;
+}
+  .jellies>.row>.inwrap {
+    color: #fff;
+    margin-top: 100px;
+    font-size: 25px;
+    font-weight: 100;
+  }
+
+  @media (max-width: 766px) {
+    .jellies {
+      min-height: 300px;
+    }
+      .jellies>.row>.inwrap {
+        margin-top: 50px;
+        font-size: 16px;
+      }
+  }
+
+.brain {
+  background: image-url("brain.jpeg") 80% 50% no-repeat;
+  background-size: cover;
+  min-height: 100%;
+}
+
+// Used primarily for footer...
+.container-dark {
+  background: #021C2B;
+  color: #fff;
+  padding: 20px 0;
+  border-bottom: 10px solid #E36960;
+  margin-top: 10px;
+}
+  .container-dark a {
+    color: #fff;
+  }
+  .container-dark a:hover {
+    color: #FCC132;
+    text-decoration: none;
+  }
+
+.col-dark {
+  background: #021C2B;
+  color: #fff;
+  padding: 20px;
+  padding-left: 90px;
+}
+
+  @media (max-width: 991px) {
+    .col-dark {
+      padding-right: 90px;
+    }
+  }
+blockquote {
+  border-left: 0;
+}

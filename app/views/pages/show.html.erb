@@ -1,0 +1,10 @@
+<% title @page.title %>
+
+<h1><%= @page.title %> <small>by <%= @page.author %></small></h1>
+
+<%= mdrender(@page.body).html_safe %>
+
+<% if current_user_administrator? %>
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
+<% end %>

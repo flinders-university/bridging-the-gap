@@ -27,12 +27,30 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Authentication
+gem 'devise'
+
+# Boostrap Helper
+gem 'bh'
+
+# Slack
+gem 'slack-notifier'
+
+# Editing (Mdown)
+gem "github-markup"
+gem "github-markdown"
+gem "sanitize"
+gem 'html-pipeline-vimeo'
+gem 'html-pipeline'
+gem "redcarpet"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'better_errors'
 end
 
 group :development do
