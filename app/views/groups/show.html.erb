@@ -1,0 +1,33 @@
+<div class="pull-right">
+  <br>
+  <%= link_to "Groups", groups_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @group.name %> Group</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Users in group</div>
+  <div class="list-group">
+    <% @group.users.each do |user| %>
+    <div class="list-group-item"><%= user.addressable %></div>
+    <% end %>
+  </div>
+</div>
+
+
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#newGroup" aria-expanded="false" aria-controls="newGroup">
+  Add a user
+</a>
+<a href="#" class="btn btn-info">
+  Mailmerge this group
+</a>
+
+<div class="collapse" id="newGroup">
+  <br>
+  <div class="well">
+    <%= form_tag(group_add_user_path(@group.level), method: :post) do %>
+    <p>Member to add (email address):
+      <%= text_field_tag("contact", "", class: "form-control", placeholder: "email@flinders.edu.au") %></p>
+    <%= submit_tag("Add to group", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>

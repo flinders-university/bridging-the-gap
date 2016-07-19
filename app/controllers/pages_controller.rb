@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_administrator!, except: [:show]
+
   # GET /pages
   # GET /pages.json
   def index
@@ -11,7 +13,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     if @page.public == true
-      
+
     else
       #Evaluate users group...
     end

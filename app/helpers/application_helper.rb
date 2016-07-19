@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+  # Generates menu items for @pages...
+  def generate_menu_pages
+    @pages ||= Page.where(public:true)
+    @pmenu = ""
+    @pages.each do |page|
+       @pmenu = @pmenu + "\n <li><a href=\"/pages/#{page.slug}\">#{page.title}</a></li>"
+    end
+    return @pmenu
+  end
+
   # metadata, titles, etc
   def title(text)
     content_for :title, text

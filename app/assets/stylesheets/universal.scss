@@ -6,6 +6,7 @@ html, body {
 
 #navbar {
   border-top: 10px solid #E36960;
+  border-bottom: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
 }
@@ -37,6 +38,11 @@ html, body {
         font-size: 16px;
       }
   }
+
+.fading-container {
+  background: linear-gradient(360deg, #021C2B, #0E0F11 );
+  min-height: 40px;
+}
 
 .brain {
   background: image-url("brain.jpeg") 80% 50% no-repeat;
@@ -74,4 +80,25 @@ html, body {
   }
 blockquote {
   border-left: 0;
+}
+
+.pages-controller-header {
+  background: #030A0E;
+  color: #E36960;
+  padding-bottom: 15px;
+  padding-top: 2px;
+}
+  .pages-controller-header>.container>.row>.ttl>h1 {
+    font-weight: 600;
+    margin-top: 22px;
+  }
+
+  .pages-controller-header>.container>.row>.int {
+    margin-top: 16px;
+    text-align: right;
+  }
+
+.pages-controller-body {
+  line-height: 2.0;
+  margin-bottom: 20px;
 }

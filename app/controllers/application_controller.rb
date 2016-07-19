@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
+
   def mdrender(content)
     content = content
     # Setup a nice pipeline, with some pretty filters...
@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
       true
     else
       false
+    end
+  end
+
+  def require_administrator!
+    if !current_user_administrator?
+      redirect_to root_url, notice: "Sorry, your account does not have administrative privileges."
     end
   end
 
