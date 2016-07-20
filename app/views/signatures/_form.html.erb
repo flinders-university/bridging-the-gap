@@ -1,0 +1,150 @@
+<h1>Sign Documents</h1>
+
+<%= form_for(signature) do |f| %>
+  <% if signature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(signature.errors.count, "error") %> prohibited this signature from being saved:</h2>
+
+      <ul>
+      <% signature.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">My Pending Documents and Forms</div>
+    <div class="panel-body">
+      <%= f.select :form_id, options_from_collection_for_select(@forms, 'id', 'title_and_date_required') %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="response">
+    <p><strong>Signing Form: <span id="form-name"></span></strong></p>
+    <p><span id="form-description"></span></p>
+    <p><span id="form-body"></span></p>
+  </div>
+
+  <div class="stage-2">
+
+    <div class="data-debug">
+      <%= f.text_field :data, id: "sigdata" %>
+    </div>
+
+    <p><strong>Signature <%= icon :ok, id: "ok" %></strong></p>
+    <div class="sigbox">
+      <div class="wrapper">
+        <%= image_tag("signature-field.png", class: "sig-image") %>
+        <canvas id="signature-pad" class="signature-pad"></canvas>
+      </div>
+      <div>
+        <button id="save" type="button" class="btn btn-xs btn-info">Done</button>
+        <button id="clear" type="button" class="btn btn-xs btn-info">Clear</button>
+      </div>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= f.submit("Sign Document", class: "btn btn-primary", id: "submit-signature") %>
+    </div>
+
+  </div>
+<% end %>
+
+<script src="/js/signature_pad.min.js"></script>
+
+<script>
+$('.data-debug').hide()
+
+$('.stage-2').hide()
+
+$("#ok").hide();
+
+$("#submit-signature").hide();
+
+var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+  backgroundColor: 'rgba(255, 255, 255, 0)',
+  penColor: 'rgb(0, 0, 0)'
+});
+
+$('#save').click( function () {
+  var data = signaturePad.toDataURL('image/png');
+  $("#sigdata").val(data);
+  $("#ok").show();
+  $("#submit-signature").show();
+});
+
+$('#clear').click( function () {
+  signaturePad.clear();
+  $("#sigdata").val("");
+  $("#ok").hide();
+  $("#submit-signature").hide();
+});
+
+$('#signature_form_id').on('change', function() {
+  var url = "<%= root_url %>forms/" + $(this).val() + ".json"
+
+  var json = $.getJSON(url);
+
+  json.done(function(data){
+    console.log(data);
+    $("#form-name").text(data.title);
+    $("#form-description").text(data.description);
+    $("#form-body").text(data.body);
+    $('.stage-2').show();
+  });
+});
+
+$(document).ready(function () {
+  $('#signature_form_id').addClass("form-control")
+  var url = "<%= root_url %>forms/" + $('#signature_form_id').val() + ".json"
+
+  var json = $.getJSON(url);
+
+  json.done(function(data){
+    console.log(data);
+    $("#form-name").text(data.title);
+    $("#form-description").text(data.description);
+    $("#form-body").text(data.body);
+    $('.stage-2').show();
+  });
+});
+
+</script>
+
+<style>
+
+.wrapper {
+  position: relative;
+  width: 300px;
+  height: 160px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 8px;
+}
+
+#signature-pad {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 160px;
+  z-index: 100;
+}
+
+.sig-image {
+  position: absolute;
+  width: 300px;
+  height: 160px;
+  z-index: 1;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+</style>

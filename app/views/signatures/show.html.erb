@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @signature.user_id %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @signature.form_id %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @signature.data %>
+</p>
+
+<%= link_to 'Edit', edit_signature_path(@signature) %> |
+<%= link_to 'Back', signatures_path %>

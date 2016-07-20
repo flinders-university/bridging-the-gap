@@ -1,0 +1,10 @@
+<% title @blog.title; @title =  @blog.title; @author = @blog.author; @date = @blog.updated_at; %>
+<%= render("partials/colour_header") %>
+<br>
+
+<%= mdrender(@blog.body).html_safe %>
+
+<% if current_user_administrator? %>
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
+<% end %>

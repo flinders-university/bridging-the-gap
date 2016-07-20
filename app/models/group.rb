@@ -4,4 +4,7 @@ class Group < ApplicationRecord
 
   has_many :users #, join_table: :users_and_groups
 
+  def name_and_level
+    "[" + self.level.to_s + "] " + self.name
+  end
 end

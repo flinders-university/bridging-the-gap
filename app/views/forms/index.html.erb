@@ -1,0 +1,30 @@
+<% title "Forms" %>
+<h1>Forms</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Group</th>
+      <th>Description</th>
+      <th>Date required</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forms.each do |form| %>
+      <tr>
+        <td><%= form.title %></td>
+        <td><%= form.group.name_and_level %></td>
+        <td><%= form.description %></td>
+        <td><%= form.date_required %></td>
+        <td><%= link_to 'Show', form, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_form_path(form), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Form', new_form_path, class: "btn btn-primary" %>

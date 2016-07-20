@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_url %></li>
             <%= generate_menu_pages.html_safe %>
+            <li><%= link_to "Blog", blogs_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="<%= if current_user.present?; current_user.addressable; else "Actions"; end %>"><%= if current_user.present?; current_user.firstname; else "Actions"; end; %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -57,7 +58,11 @@
                 <li class="dropdown-header">Adminstrator Tools</li>
                 <li><a href="/pages/">Pages</a></li>
                 <li><a href="/groups/">Groups</a></li>
+                <li><a href="/forms/">Forms</a></li>
                 <li role="separator" class="divider"></li>
+                <% end %>
+                <% if current_user.group.level >= 1 %>
+                <li><%= link_to "Sign Documents", new_signature_path %></li>
                 <% end %>
                 <li><%= link_to "My Account", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
@@ -88,6 +93,7 @@
             <div class="col-md-4">
               <ul class="list-unstyled">
                 <%= generate_menu_pages.html_safe %>
+                <li><%= link_to "Blog", blogs_path %></li>
               </ul>
             </div>
             <div class="col-md-4">
@@ -101,6 +107,7 @@
                 <% if current_user_administrator? %>
                 <li><a href="/pages/">Pages</a></li>
                 <li><a href="/groups/">Groups</a></li>
+                <li><a href="/forms/">Forms</a></li>
                 <% end %>
               </ul>
             </div>
