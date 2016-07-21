@@ -3,7 +3,7 @@
 
 <p>
   <strong>Group:</strong>
-  <%= @form.group_id %>
+  <%= @form.group.name_and_level %>
 </p>
 
 <p>
@@ -12,14 +12,15 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @form.body %>
-</p>
-
-<p>
   <strong>Date required:</strong>
   <%= @form.date_required %>
 </p>
 
+<hr>
+
+<%= mdrender(@form.body).html_safe %>
+
+
+<br>
 <%= link_to 'Edit', edit_form_path(@form) %> |
 <%= link_to 'Back', forms_path %>

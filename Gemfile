@@ -36,6 +36,9 @@ gem 'bh'
 # Slack
 gem 'slack-notifier'
 
+# Humanize
+gem 'humanize'
+
 # Editing (Mdown)
 gem "github-markup"
 gem "github-markdown"

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  post 'mailmerge/postmaster'
+  get 'mailmerge/preview'
 
   resources :signatures
-  
+
   resources :forms
 
   resources :blogs

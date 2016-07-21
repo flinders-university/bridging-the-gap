@@ -80,6 +80,7 @@ GEM
       nokogiri (>= 1.4)
     html-pipeline-vimeo (0.1.1)
       html-pipeline (~> 2.0)
+    humanize (1.1.1)
     i18n (0.7.0)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -203,6 +204,7 @@ DEPENDENCIES
   github-markup
   html-pipeline
   html-pipeline-vimeo
+  humanize
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

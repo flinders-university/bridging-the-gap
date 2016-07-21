@@ -17,7 +17,7 @@
 <a class="btn btn-primary" role="button" data-toggle="collapse" href="#newGroup" aria-expanded="false" aria-controls="newGroup">
   Add a user
 </a>
-<a href="#" class="btn btn-info">
+<a class="btn btn-info" role="button" data-toggle="collapse" href="#mailMerge" aria-expanded="false" aria-controls="mailMerge">
   Mailmerge this group
 </a>
 
@@ -31,3 +31,21 @@
     <% end %>
   </div>
 </div>
+
+<div class="collapse" id="mailMerge">
+  <br>
+  <div class="well">
+    <%= form_tag(mailmerge_postmaster_path, method: :post) do %>
+      <%= text_area_tag :message, "", id: "mde" %>
+
+      <%= submit_tag("Send message to " + @group.users.count.humanize + " group member", class: "btn btn-primary") %>
+      <button type="button" id="preview" class="btn btn-info">Preview Message</button>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $("#preview").click( function() {
+    window.open("<%= mailmerge_preview_url %>?message=" + encodeURIComponent(simplemde.value()));
+  });
+</script>
