@@ -1,4 +1,11 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Group Requests (" + GroupChangeRequest.all.count.to_s + " pending)", group_change_requests_path, class: "btn btn-primary" %>
+</div>
+
 <h1>Groups</h1>
+<hr>
 
 <% @groups.each do |group| %>
 <div class="panel panel-primary">
