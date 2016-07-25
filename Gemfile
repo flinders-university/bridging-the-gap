@@ -53,7 +53,8 @@ gem "redcarpet"
 
 # File Hosting
 # Amazon S3
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '>= 2.0.34'
+#gem 'aws-sdk-v1'
 gem 'paperclip'
 
 # Use Capistrano for deployment

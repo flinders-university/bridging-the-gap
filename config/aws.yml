@@ -2,13 +2,16 @@ test:
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['AWS_SECRET_KEY_ID'] %>
   simple_db_consistent_reads: false
+  region: <%= ENV['AWS_REGION'] %>
 
 development:
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['AWS_SECRET_KEY_ID'] %>
   simple_db_consistent_reads: false
+  region: <%= ENV['AWS_REGION'] %>
 
 production:
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['AWS_SECRET_KEY_ID'] %>
   simple_db_consistent_reads: false
+  region: <%= ENV['AWS_REGION'] %>

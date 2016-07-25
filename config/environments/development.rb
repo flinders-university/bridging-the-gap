@@ -54,3 +54,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+ENV['AWS_ACCESS_KEY_ID'] = "AKIAIVRAT3WLQORQFTSQ"
+ENV["AWS_SECRET_KEY_ID"] = "qN97JASgh/7sZPtQBZ2Hg+KC2EndYrbazqCOZJCV"
+ENV['AWS_REGION'] = "us-east-1"
+ENV['S3_BUCKET_NAME'] = "flinders-university"

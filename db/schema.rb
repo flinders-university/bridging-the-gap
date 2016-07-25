@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722002544) do
+ActiveRecord::Schema.define(version: 20160725053621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20160722002544) do
     t.text     "body"
     t.boolean  "public"
     t.text     "summary"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "public"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "forms", force: :cascade do |t|
