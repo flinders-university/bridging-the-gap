@@ -51,6 +51,11 @@ gem 'html-pipeline-vimeo'
 gem 'html-pipeline'
 gem "redcarpet"
 
+# File Hosting
+# Amazon S3
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
