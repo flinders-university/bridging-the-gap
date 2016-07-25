@@ -32,9 +32,28 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <p><a href="mailto:<%= @signature.user.email %>" title="Send user an email"><%= @signature.user.name %></a> signed <a href="<%= url_for @signature.form %>"><%= @signature.form.title %></a> at <%= @signature.created_at.strftime("%I:%M %p on %-d %B %Y") %>.</p>
+  <body class="container">
+    <h1>User Search</h1>
+    <% if !@users.present? %>
+      <%= form_tag() do %>
+        <p>Last Name
+          <%= text_field_tag(:lastname, "", class: "form-control") %></p>
+        <p>Email address
+          <%= email_field_tag(:email, "", class: "form-control") %></p>
 
-    <img src="<%= @signature.data %>" class="img-responsive">
+        <%= hidden_field_tag(:submit, "user") %>
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+      <% end %>
+    <% else %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Users Found <span class="badge pull-right"><%= @users.count.humanize.capitalize %></span></div>
+        <div class="list-group">
+          <% @users.each do |usr| %>
+          <a class="list-group-item" data-value="<%= usr.id %>"><%= usr.addressable %></a>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "Search Again?", usertools_search_url %>
+    <% end %>
   </body>
 </html>

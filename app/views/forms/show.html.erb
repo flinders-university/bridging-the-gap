@@ -20,7 +20,43 @@
 
 <%= mdrender(@form.body).html_safe %>
 
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Signatures on this form</div>
+  <div class="list-group">
+    <% @form.signatures.each do |signature| %>
+      <div class="list-group-item"><a href="#<%= url_for signature %>" id="<%= signature.id %>" class="trigger" data-toggle="modal" data-target="#signatureDetails"><%= signature.user.addressable %></a></div>
+    <% end %>
+  </div>
+</div>
 
 <br>
 <%= link_to 'Edit', edit_form_path(@form) %> |
 <%= link_to 'Back', forms_path %>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="signatureDetails">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Signature Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe id="load" src="" class="embed-responsive-item"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(".trigger").click( function( event ) {
+  console.log(event.target.id);
+
+  $('.modal').on('shown.bs.modal',function(){
+    $(this).find('iframe').attr('src','/signatures/' + event.target.id)
+  })
+});
+</script>

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :group_change_requests
+  
+  get 'usertools', to: 'usertools#manage'
+  get 'usertools/search'
+  post 'usertools/search'
+  get 'usertools/new'
+  get 'usertools/create'
+  get 'usertools/update'
+  get 'usertools/manage'
+
   post 'mailmerge/postmaster'
   get 'mailmerge/preview'
 

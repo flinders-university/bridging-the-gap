@@ -34,6 +34,9 @@ gem 'devise'
 # Boostrap Helper
 gem 'bh'
 
+# Acadaemia Detection
+gem 'swot'
+
 # Slack
 gem 'slack-notifier'
 

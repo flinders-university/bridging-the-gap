@@ -102,3 +102,43 @@ blockquote {
   line-height: 2.0;
   margin-bottom: 20px;
 }
+
+/* Additional Panels */
+
+.panel-secondary {
+  border-color: #A3AE4D;
+}
+.panel-secondary > .panel-heading {
+  color: #ffffff;
+  background-color: #A3AE4D;
+  border-color: #A3AE4D;
+}
+.panel-secondary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #A3AE4D;
+}
+.panel-secondary > .panel-heading .badge {
+  color: #A3AE4D;
+  background-color: #ffffff;
+}
+.panel-secondary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #A3AE4D;
+}
+
+.panel-tertiary {
+  border-color: #1B354E;
+}
+.panel-tertiary > .panel-heading {
+  color: #ffffff;
+  background-color: #1B354E;
+  border-color: #1B354E;
+}
+.panel-tertiary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #1B354E;
+}
+.panel-tertiary > .panel-heading .badge {
+  color: #1B354E;
+  background-color: #ffffff;
+}
+.panel-tertiary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #1B354E;
+}

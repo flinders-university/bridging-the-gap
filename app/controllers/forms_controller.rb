@@ -7,6 +7,7 @@ class FormsController < ApplicationController
   # GET /forms.json
   def index
     @forms = Form.all
+    @groups = Group.all
   end
 
   # GET /forms/1

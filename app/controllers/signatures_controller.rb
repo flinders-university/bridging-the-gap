@@ -12,6 +12,7 @@ class SignaturesController < ApplicationController
   # GET /signatures/1
   # GET /signatures/1.json
   def show
+    render :layout => false
   end
 
   # GET /signatures/new

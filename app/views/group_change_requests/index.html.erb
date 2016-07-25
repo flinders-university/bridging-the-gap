@@ -1,0 +1,22 @@
+<h1>Group Change Requests</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_change_requests.each do |group_change_request| %>
+      <tr>
+        <td><%= User.find_by_id(group_change_request.user_id).addressable %></td>
+        <td><%= Group.find_by_id(group_change_request.group_id).name_and_level %></td>
+        <td><%= link_to 'Approve', group_change_request %></td>
+        <td><%= link_to 'Destroy', group_change_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

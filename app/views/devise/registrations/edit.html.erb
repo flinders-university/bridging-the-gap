@@ -1,50 +1,96 @@
 <% title "Edit Registration" %>
 <br>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    Edit Registration
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
-
-      <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control" %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<div id="expose">
+  <div class="panel panel-tertiary">
+    <div class='panel-heading'>
+      Group Information
+    </div>
+    <div class="panel-body">
+      You are a member of the <%= current_user.group.name %> group. To request a change your group <a href="#_atmos_group" id="group-request">please click here</a>.
+      <% if Swot::is_academic? current_user.email %>
+      <br>You have been automatically identified as a staff member or student of <%= Swot::school_name current_user.email %>.
       <% end %>
-
-      <div class="field">
-        <br>
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-        <% if @minimum_password_length %>
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <br>
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="field">
-        <br>
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="actions">
-        <br>
-        <%= f.submit "Update registration", class: "btn btn-success" %>
-      </div>
-    <% end %>
+    </div>
   </div>
-  <div class="panel-footer">
-    <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Edit Registration
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <br>
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <br>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <br>
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <br>
+          <%= f.submit "Update registration", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+    </div>
   </div>
 </div>
+
+<div class="modal-dialog" id="group-change-form">
+  <div class="modal-content">
+      <div class="modal-header">
+        Request a group change
+      </div>
+      <div class="modal-body">
+        <%= form_tag(group_change_requests_path, method: :post) do %>
+          <%= select_tag :group_id, options_from_collection_for_select(Group.all, 'id', 'name'), class: "form-control" %>
+          <%= hidden_field_tag :user_id, current_user.id %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="close-atmos-modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <% end %>
+      </div>
+    </div>
+</div>
+<br>
+
+<script>
+$("#group-change-form").hide();
+
+$("#group-request").click( function () {
+  $("#expose").fadeOut();
+  $("#group-change-form").fadeIn();
+});
+
+$("#close-atmos-modal").click( function () {
+  $("#group-change-form").fadeOut();
+  $("#expose").fadeIn();
+});
+</script>
