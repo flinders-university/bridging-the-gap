@@ -15,6 +15,16 @@ class FormsController < ApplicationController
   def show
   end
 
+  # GET /forms/signature_tree/1
+  def signature_tree
+    @form = Form.find_by_id(params[:form_id])
+
+    if !@form.present?
+      redirect_to forms_path, alert: "Please select a form first"
+    end
+    render :layout => false
+  end
+
   # GET /forms/new
   def new
     @form = Form.new

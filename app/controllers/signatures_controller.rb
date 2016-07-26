@@ -36,7 +36,7 @@ class SignaturesController < ApplicationController
 
     respond_to do |format|
       if @signature.save
-        format.html { redirect_to root_url, notice: 'Signature was successfully created.' }
+        format.html { redirect_to illuminet_polymer_path, notice: 'Consent form was successfully signed.' }
         format.json { render :show, status: :created, location: @signature }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class SignaturesController < ApplicationController
   def destroy
     @signature.destroy
     respond_to do |format|
-      format.html { redirect_to signatures_url, notice: 'Signature was successfully destroyed.' }
+      format.html { redirect_to forms_path, notice: 'Signature was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

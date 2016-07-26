@@ -1,0 +1,53 @@
+<%= title @i_survey.title %>
+<h1><%= @i_survey.title %></h1>
+
+<p>
+  <strong>Group:</strong>
+  <%= @i_survey.group.name %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @i_survey.form.group_title_and_date_required %>
+</p>
+
+<p>
+  <strong>Group Match:</strong>
+  <% if @i_survey.form.group == @i_survey.group %>
+  <span class="text-success"><%= icon :ok %> this survey will be displayed to members who have signed the appropriate authority form.</span>
+  <% else %>
+  <span class="text-danger"><%= icon :remove %> this survey can not be displayed because the users in this group can not sign the relevant form. Please match the group and form group correctly.</span>
+  <% end %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <% if @i_survey.enabled %>
+  <span class="text-success"><%= icon :ok %></span>
+  <% else %>
+  <%= icon :remove %> survey disabled.
+  <% end %>
+</p>
+
+<p>
+  <strong>Questions:</strong>
+  <%= @i_survey.i_questions.where(enabled: true).count.humanize.capitalize %> / <em><%= @i_survey.i_questions.count.humanize.capitalize %></em>
+</p>
+
+<hr>
+
+<p>
+  <strong>Description:</strong>
+  <%= mdrender(@i_survey.description).html_safe %>
+</p>
+
+<p>
+  <strong>Coding explanation:</strong>
+  <%= mdrender(@i_survey.coding_explanation).html_safe %>
+</p>
+
+<hr>
+
+<%= link_to 'Define / View Questions', i_questions_path, class: "btn btn-primary" %>
+
+<%= link_to 'Edit', edit_i_survey_path(@i_survey), class: "btn btn-info" %> <%= link_to 'Back', i_surveys_path, class: "btn btn-warning" %>

@@ -1,0 +1,77 @@
+<%= form_for(i_question, layout: :basic) do |f| %>
+  <% if i_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(i_question.errors.count, "error") %> prohibited this i_question from being saved:</h2>
+
+      <ul>
+      <% i_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.select :i_survey_id, options_from_collection_for_select(ISurvey.all, 'id', 'name_and_group', i_question.i_survey_id), label: "Survey" %>
+  </div>
+
+  <div class="field">
+    <%= f.select :input_type, options_for_select([["Text Area", 1], ["Text Field (smaller input)", 2], ["Scale (1-5)", 3], ["Check Box", 4], ["Agree Box ('required')", 5]], i_question.input_type) %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.number_field :grouping_value %>
+  </div>
+
+  <pre id="coding-explanation" class="well" data-toggle="tooltip" data-placement="bottom" title="Coding for this form">
+
+  </pre>
+  <a href="#" target="_BLANK" id="form-edit-link" class="btn btn-xs btn-default pull-right" style="margin-top: -18px;">Edit this coding</a>
+
+  <div class="field">
+    <%= f.label :enabled %>
+    <%= f.check_box :enabled %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :comment, id: "mde" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+$('#i_question_i_survey_id').on('change', function() {
+  var url = "<%= root_url %>i_surveys/" + $(this).val() + ".json"
+
+  var json = $.getJSON(url);
+
+  json.done(function(data){
+    console.log(data);
+    $("#coding-explanation").text(data.coding_explanation);
+    $("#form-edit-link").attr("href", "/i_surveys/" + data.id + "/edit#mdetwo")
+  });
+});
+
+$(document).ready(function () {
+  var url = "<%= root_url %>i_surveys/" + $('#i_question_i_survey_id').val() + ".json"
+
+  var json = $.getJSON(url);
+
+  json.done(function(data){
+    console.log(data);
+    $("#coding-explanation").text(data.coding_explanation);
+    $("#form-edit-link").attr("href", "/i_surveys/" + data.id + "/edit#mdetwo")
+  });
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

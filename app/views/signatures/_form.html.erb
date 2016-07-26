@@ -1,4 +1,5 @@
-<h1>Sign Documents</h1>
+<h1>Research Participation <small>Consent Forms</small></h1>
+<%= render("partials/research_navigation") %>
 
 <%= form_for(signature) do |f| %>
   <% if signature.errors.any? %>
@@ -23,7 +24,7 @@
   <hr>
 
   <div class="response">
-    <p><strong>Signing Form: <span id="form-name"></span></strong></p>
+    <p id="ova-name"><strong>Signing Form: <span id="form-name"></span></strong></p>
     <p><span id="form-description"></span></p>
     <p><span id="form-body"></span></p>
   </div>
@@ -84,34 +85,43 @@ $('#clear').click( function () {
   $("#submit-signature").hide();
 });
 
-$('#signature_form_id').on('change', function() {
-  var url = "<%= root_url %>forms/" + $(this).val() + ".json"
-
+function getDataFromForm() {
+  var url = "<%= root_url %>forms/" + $('#signature_form_id').val() + ".json"
   var json = $.getJSON(url);
 
   json.done(function(data){
-    console.log(data);
+
+    $.getJSON("<%= root_url %>toolbox/markdown.json?mdown=" + encodeURIComponent( data.body ) ).always( function (mdowndata) {
+      $("#form-body").html(mdowndata.responseText);
+    });
+
     $("#form-name").text(data.title);
     $("#form-description").text(data.description);
-    $("#form-body").text(data.body);
     $('.stage-2').show();
   });
+}
+
+$('#signature_form_id').on('change', function() {
+  getDataFromForm();
 });
 
 $(document).ready(function () {
   $('#signature_form_id').addClass("form-control")
-  var url = "<%= root_url %>forms/" + $('#signature_form_id').val() + ".json"
-
-  var json = $.getJSON(url);
-
-  json.done(function(data){
-    console.log(data);
-    $("#form-name").text(data.title);
-    $("#form-description").text(data.description);
-    $("#form-body").text(data.body);
-    $('.stage-2').show();
-  });
+  if ($('#signature_form_id').val() == null) {
+    $("#ova-name").text("You have signed all available consent forms at this time. Thank you.")
+  }
+  else {
+    getDataFromForm();
+  }
 });
+
+<% @forms.each do |form| %>
+  <% form.signatures.each do |signature| %>
+    <% if signature.user == current_user %>
+$('form option[value="<%= form.id %>"]').attr('disabled', 'disabled');
+    <% end %>
+  <% end %>
+<% end %>
 
 </script>
 
@@ -147,4 +157,5 @@ $(document).ready(function () {
   -ms-user-select: none;
   user-select: none;
 }
+
 </style>

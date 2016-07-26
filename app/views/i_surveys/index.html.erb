@@ -1,0 +1,17 @@
+<%= title "Surveys" %>
+<h1>Surveys</h1>
+
+<% @groups.each do |group| %>
+<div class="panel panel-primary">
+ <div class="panel-heading">Surveys for <%= group.name %></div>
+ <div class="list-group">
+   <% group.i_surveys.each do |i_survey| %>
+   <div class="list-group-item"><a href="<%= url_for i_survey %>"><%= i_survey.title %></a> <span class="pull-right"><%= link_to 'Edit', edit_i_survey_path(i_survey), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', i_survey, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span></div>
+   <% end %>
+ </div>
+</div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Survey', new_i_survey_path, class: "btn btn-primary" %>

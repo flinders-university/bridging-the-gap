@@ -23,17 +23,17 @@
 <hr>
 
 <div class="panel panel-primary">
-  <div class="panel-heading">Signatures on this form</div>
+  <div class="panel-heading">Signatures on this form (click to show)</div>
   <div class="list-group">
     <% @form.signatures.each do |signature| %>
-      <div class="list-group-item"><a href="#<%= url_for signature %>" id="<%= signature.id %>" class="trigger" data-toggle="modal" data-target="#signatureDetails"><%= signature.user.addressable %></a></div>
+      <div class="list-group-item"><a href="#<%= url_for signature %>" id="<%= signature.id %>" class="trigger" data-toggle="modal" data-target="#signatureDetails"><%= signature.user.addressable %></a> <%= link_to 'Destroy', signature, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger pull-right" %></div>
     <% end %>
   </div>
 </div>
 
-<br>
-<%= link_to 'Edit', edit_form_path(@form) %> |
-<%= link_to 'Back', forms_path %>
+<%= link_to "Report All Signatures (Print)", form_signature_tree_path(@form), target: "_BLANK", class: "btn btn-primary" %>
+<%= link_to 'Edit Form', edit_form_path(@form), class: "btn btn-info" %>
+<%= link_to 'Other Forms', forms_path, class: "btn btn-warning" %>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="signatureDetails">
   <div class="modal-dialog">

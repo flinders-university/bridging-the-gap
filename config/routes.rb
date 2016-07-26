@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'toolbox/markdown'
+
+  get 'illuminet/polymer'
+
+  get 'illuminet/take'
+
+  get 'illuminet/save'
+
+  resources :i_surveys
+  resources :i_questions
   resources :documents
   resources :group_change_requests
 
@@ -16,7 +26,9 @@ Rails.application.routes.draw do
 
   resources :signatures
 
-  resources :forms
+  resources :forms do
+    get "signature_tree"
+  end
 
   resources :blogs
 

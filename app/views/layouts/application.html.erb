@@ -72,12 +72,15 @@
                 <li><a href="/pages/">Pages</a></li>
                 <li><a href="/groups/">Groups</a></li>
                 <li><a href="/forms/">Forms</a></li>
+                <li><a href="/documents/">Documents</a></li>
+                <li><a href="/i_surveys/">Surveys</a></li>
                 <li role="separator" class="divider"></li>
                 <% end %>
                 <% if current_user.group.level >= 2 %>
-                <li><%= link_to "Sign Documents", new_signature_path %></li>
+                <li><%= link_to "Research Participation", illuminet_polymer_path %></li>
+                <li><%= link_to "Sign Consent Forms", new_signature_path %></li>
                 <% end %>
-                <li><%= link_to "My Account", edit_user_registration_path %></li>
+                <li><%= link_to "My Profile", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
                 <% end %>
@@ -121,6 +124,8 @@
                 <li><a href="/pages/">Pages</a></li>
                 <li><a href="/groups/">Groups</a></li>
                 <li><a href="/forms/">Forms</a></li>
+                <li><a href="/documents/">Documents</a></li>
+                <li><a href="/i_surveys/">Surveys</a></li>
                 <% end %>
               </ul>
             </div>
@@ -140,6 +145,7 @@
     <script type="text/javascript" src="/js/simplemde.min.js"></script>
     <script>
       var simplemde = new SimpleMDE({ element: document.getElementById("mde") });
+      var simplemde = new SimpleMDE({ element: document.getElementById("mdetwo") });
     </script>
   </body>
 </html>

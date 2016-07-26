@@ -1,0 +1,27 @@
+<h1>Research Participation <small>Surveys</small></h1>
+
+<%= render("partials/research_navigation") %>
+<br>
+<div class="panel panel-primary">
+  <div class="panel-heading">Readiness Check</div>
+  <div class="list-group">
+    <div class="list-group-item"><span class="text-success"><%= icon :ok %> you are a member of the <%= current_user.group.name %> group.</span></div>
+    <div class="list-group-item"><% if @at_least_one_signature >= 1 %><span class="text-success"><%= icon :ok %> you have signed <%= @at_least_one_signature.humanize %> consent form(s).<% else %><span class="text-danger"><%= icon :remove %> you have not signed any consent forms.</span><% end %></div>
+    <div class="list-group-item"><% if @isurveys.count >= 1 %><span class="text-success"><%= icon :ok %> surveys are available.</span><% else %><span class="text-warning"><%= icon :link %> there are no new surveys at this time.</span><% end %></div>
+  </div>
+</div>
+
+<% if @at_least_one_signature >= 1 %>
+
+  <% i = 1; @isurveys.each do |survey| %>
+  <div class="panel panel-tertiary">
+    <div class="panel-heading"><%= i %>. <%= survey.title %></div>
+    <div class="panel-body">
+      <%= mdrender(survey.description).html_safe %>
+      <%= link_to "Commence Survey", illuminet_take_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% i = i + 1 %>
+  <% end %>
+
+<% end %>

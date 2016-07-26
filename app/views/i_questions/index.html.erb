@@ -1,0 +1,31 @@
+<%= title "Questions" %>
+<h1>Questions</h1>
+
+<% @i_surveys.each do |survey| %>
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= survey.name_and_group %></div>
+  <div class="list-group">
+    <div class="list-group-item">
+      [Enabled] Question &rarr; Actions
+    </div>
+    <% survey.i_questions.each do |i_question| %>
+    <div class="list-group-item">
+      <% if i_question.enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %>
+      <%= i_question.description %>
+      <span class="pull-right">
+        <%= link_to 'Details', i_question, class: "btn btn-xs btn-primary" %>
+        <%= link_to 'Edit', edit_i_question_path(i_question), class: "btn btn-xs btn-info" %>
+        <%= link_to 'Destroy', i_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "View details for this survey", i_survey_path(survey) %>
+  </div>
+</div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Question', new_i_question_path, class: "btn btn-primary" %> <%= link_to 'Surveys', i_surveys_path, class: "btn btn-info" %>
