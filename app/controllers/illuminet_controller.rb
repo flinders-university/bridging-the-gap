@@ -17,6 +17,12 @@ class IlluminetController < ApplicationController
   end
 
   def take
+    @isurvey = ISurvey.where(group_id: current_user.group.id).where(id: params[:id])
+    if @isurvey.count >= 1
+      @isurvey = @isurvey.first
+    else
+      redirect_to illuminet_polymer_path, alert: "Sorry, that survey isn't available yet."
+    end
   end
 
   def save

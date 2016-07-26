@@ -1,2 +1,51 @@
-<h1>Illuminet#take</h1>
-<p>Find me in app/views/illuminet/take.html.erb</p>
+<% title @isurvey.title %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Exit Survey", illuminet_polymer_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @isurvey.title %></h1>
+<%= mdrender(@isurvey.description).html_safe %>
+<hr>
+<%= form_tag(illuminet_path, method: :post) do %>
+
+  <% @isurvey.i_questions.each do |question|; if question.enabled %>
+  <p><%= question.description %></p>
+  <% case question.input_type %>
+  <% when 1 %>
+  <%= text_area_tag question.id, "", id: "mde" %>
+  <% when 2 %>
+  <%= text_field_tag question.id, "", class: "form-control" %>
+  <% when 3 %>
+  <div class="row text-center">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-2">
+      <label>Strongly Disagree<br>
+        <%= radio_button_tag(question.id, 1) %></label>
+    </div>
+    <div class="col-xs-2">
+      <label>Disagree<br>
+        <%= radio_button_tag(question.id, 2) %></label>
+    </div>
+    <div class="col-xs-2">
+      <label>Uncertain<br>
+        <%= radio_button_tag(question.id, 3, "selected") %></label>
+    </div>
+    <div class="col-xs-2">
+      <label>Agree<br>
+        <%= radio_button_tag(question.id, 4) %></label>
+    </div>
+    <div class="col-xs-2">
+      <label>Strongly Agree<br>
+        <%= radio_button_tag(question.id, 5) %></label>
+    </div>
+  </div>
+  <% when 4 %>
+  <label><%= check_box_tag question.id %> Yes</label>
+  <% when 5 %>
+  <label><%= check_box_tag question.id, required: "required" %> I Agree</label> <span class="text-danger">You must accept this question to continue.</span>
+  <% end %>
+  <hr>
+  <% end; end %>
+
+<% end %>

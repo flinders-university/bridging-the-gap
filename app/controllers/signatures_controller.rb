@@ -34,6 +34,8 @@ class SignaturesController < ApplicationController
     @signature.user = current_user
     @forms = Form.where(group: current_user.group)
 
+    notify_slack("A new consent is available...", "technology", current_user.addressable, "fed130")
+
     respond_to do |format|
       if @signature.save
         format.html { redirect_to illuminet_polymer_path, notice: 'Consent form was successfully signed.' }

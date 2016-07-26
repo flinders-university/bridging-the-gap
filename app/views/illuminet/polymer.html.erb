@@ -18,7 +18,7 @@
     <div class="panel-heading"><%= i %>. <%= survey.title %></div>
     <div class="panel-body">
       <%= mdrender(survey.description).html_safe %>
-      <%= link_to "Commence Survey", illuminet_take_path, class: "btn btn-primary" %>
+      <%= link_to "Commence Survey", "/illuminet/" + survey.id.to_s, class: "btn btn-primary" %>
     </div>
   </div>
   <% i = i + 1 %>

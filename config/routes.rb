@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   get 'toolbox/markdown'
 
   get 'illuminet/polymer'
-
-  get 'illuminet/take'
-
-  get 'illuminet/save'
+  post 'illuminet', to: "illuminet#save"
+  get 'illuminet/:id', to: "illuminet#take"
+  get 'illuminet', to: "illuminet#polymer"
 
   resources :i_surveys
   resources :i_questions

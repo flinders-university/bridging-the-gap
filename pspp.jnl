@@ -1,0 +1,15 @@
+q
+
+.1: error: Q: Syntax error at `\': Bad character `\' in input.
+\q
+
+.1: error: Q: Syntax error at `\': Bad character `\' in input.
+\quit
+
+.1: error: Q: Syntax error at `\': Bad character `\' in input.
+\exit
+
+exit
+
+quit
+
