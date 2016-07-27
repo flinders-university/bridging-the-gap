@@ -29,7 +29,7 @@ class IQuestionsController < ApplicationController
 
     respond_to do |format|
       if @i_question.save
-        format.html { redirect_to @i_question, notice: 'I question was successfully created.' }
+        format.html { redirect_to @i_question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @i_question }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class IQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @i_question.update(i_question_params)
-        format.html { redirect_to @i_question, notice: 'I question was successfully updated.' }
+        format.html { redirect_to @i_question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @i_question }
       else
         format.html { render :edit }
@@ -57,9 +57,18 @@ class IQuestionsController < ApplicationController
   def destroy
     @i_question.destroy
     respond_to do |format|
-      format.html { redirect_to i_questions_url, notice: 'I question was successfully destroyed.' }
+      format.html { redirect_to i_questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # DELETE /i_questions/survey_id
+  def destroy_for
+    @i_questions = IQuestion.where(i_survey_id: params[:i_question_id])
+    @i_questions.each do |q|
+      q.destroy
+    end
+    redirect_to i_questions_url, notice: "Questions for that survey were destroyed."
   end
 
   private

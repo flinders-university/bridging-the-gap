@@ -2,6 +2,15 @@ class AnswersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update]
   before_action :authenticate_user!
 
+  before_action :require_administrator!, except: [:update, :check]
+
+  def index
+    @answers = Answer.all
+    @surveys = ISurvey.all
+    #Empty dict to fill with precache (to prevent mass queries)
+    @users = {}
+  end
+
   # POST /answers/update.json
   # First or creates answer.
   def update

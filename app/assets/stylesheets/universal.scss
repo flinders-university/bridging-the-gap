@@ -148,3 +148,12 @@ blockquote {
   transition: background 0.5s linear;
   border-radius: 5px;
 }
+
+.list-group>.subitem::before {
+  content: "→ ";
+}
+
+.list-group>.subitem {
+  background: #FAFAFA;
+  padding-left: 40px;
+}

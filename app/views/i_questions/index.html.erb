@@ -15,13 +15,13 @@
       <span class="pull-right">
         <%= link_to 'Details', i_question, class: "btn btn-xs btn-primary" %>
         <%= link_to 'Edit', edit_i_question_path(i_question), class: "btn btn-xs btn-info" %>
-        <%= link_to 'Destroy', i_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        <%= link_to 'Destroy', i_question, method: :delete, data: { confirm: 'Warning: Destroying a question will orphan any answers. It is recommended to simply disable inactive questions or surveys. Are you sure you want to delete?' }, class: "btn btn-xs btn-danger" %>
       </span>
     </div>
     <% end %>
   </div>
   <div class="panel-footer">
-    <%= link_to "View details for this survey", i_survey_path(survey) %>
+    <%= link_to "View details for this survey", i_survey_path(survey) %> <%= link_to "Destroy all of these questions", i_question_destroy_for_path(survey), class: "text-danger", method: :delete, data: { confirm: 'Warning: Destroying questions will orphan any answers. It is recommended to simply disable inactive questions or surveys. Are you sure you want to delete?' } %>
   </div>
 </div>
 <% end %>

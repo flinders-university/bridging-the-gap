@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'realtime/answers'
 
+  get 'answers', to: "answers#index"
+  get 'answers/index'
   post 'answers/update'
   get 'answers/check'
 
@@ -13,7 +15,9 @@ Rails.application.routes.draw do
   get 'illuminet', to: "illuminet#polymer"
 
   resources :i_surveys
-  resources :i_questions
+  resources :i_questions do
+    delete "destroy_for"
+  end
   resources :documents
   resources :group_change_requests
 

@@ -29,7 +29,7 @@ class ISurveysController < ApplicationController
 
     respond_to do |format|
       if @i_survey.save
-        format.html { redirect_to @i_survey, notice: 'I survey was successfully created.' }
+        format.html { redirect_to @i_survey, notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @i_survey }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ISurveysController < ApplicationController
   def update
     respond_to do |format|
       if @i_survey.update(i_survey_params)
-        format.html { redirect_to @i_survey, notice: 'I survey was successfully updated.' }
+        format.html { redirect_to @i_survey, notice: 'Survey was successfully updated.' }
         format.json { render :show, status: :ok, location: @i_survey }
       else
         format.html { render :edit }
@@ -53,12 +53,12 @@ class ISurveysController < ApplicationController
   end
 
   # DELETE /i_surveys/1
-  # DELETE /i_surveys/1.json
   def destroy
-    @i_survey.destroy
-    respond_to do |format|
-      format.html { redirect_to i_surveys_url, notice: 'I survey was successfully destroyed.' }
-      format.json { head :no_content }
+    if @i_survey.i_questions.count <= 0
+      @i_survey.destroy
+      redirect_to i_surveys_url, notice: 'Survey was successfully destroyed.'
+    else
+      redirect_to i_surveys_url, notice: 'Please delete all questions first.'
     end
   end
 

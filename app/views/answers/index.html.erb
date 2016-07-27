@@ -1,0 +1,26 @@
+<% title "Answers" %>
+<div clas="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Surveys", i_surveys_path, class: "btn btn-primary" %>
+  <%= link_to "Realtime Answers", realtime_answers_path, class: "btn btn-info" %>
+</div>
+<h1>Answers</h1>
+<hr>
+
+<% @surveys.each do |survey| %>
+<div class="panel panel-tertiary">
+  <div class="panel-heading">
+    <%= survey.title %>
+  </div>
+  <div class="list-group">
+    <% survey.i_questions.each do |question| %>
+    <div class="list-group-item"><%= question.description %></div>
+      <% @answers.where(:survey_id => survey.id, :question_id => question.id).each do |answer| %>
+        <% @users[answer.user_id] ||= User.find_by_id(answer.user_id) %>
+      <div class="list-group-item subitem"><%= @users[answer.user_id].name %>: <%= answer.answer %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>
