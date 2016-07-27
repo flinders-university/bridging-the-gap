@@ -1,6 +1,6 @@
 development:
-  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['AWS_SECRET_KEY_ID'] %>
+  access_key_id: <%= ENV['FU_AWS_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['FU_AWS_SECRET_KEY'] %>
   region: <%= ENV['AWS_REGION'] %>
   simple_db_consistent_reads: false
 

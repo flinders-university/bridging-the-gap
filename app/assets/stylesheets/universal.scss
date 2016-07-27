@@ -142,3 +142,9 @@ blockquote {
 .panel-tertiary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #1B354E;
 }
+
+.postback-has-success {
+  background: rgba(0, 255, 0, 0.15);
+  transition: background 0.5s linear;
+  border-radius: 5px;
+}

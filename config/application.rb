@@ -15,22 +15,22 @@ module Btg
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address:              'outlook.office365.com',
+      address:              ENV['FU_E_OUTLOOK_SMTP'],
       port:                 587,
-      domain:               'uni.flinders.edu.au',
+      domain:               ENV['FU_E_DOMAIN'],
       authentication:       :login,
-      user_name:            'corn0102@uni.flinders.edu.au',
-      password:             'F76w5vvyv',
+      user_name:            ENV['FU_E_USER'],
+      password:             ENV['FU_E_PASS'],
       enable_starttls_auto: true  }
 
       config.paperclip_defaults = {
         :storage => :s3,
-        :s3_region => "us-east-1",
-        :bucket => "flinders-university",
+        :s3_region => ENV['AWS_REGION'],
+        :bucket => ENV['FU_BUCKET_ID'],
         :s3_protocol => 'https',
         s3_credentials: {
-          access_key_id: "AKIAIVRAT3WLQORQFTSQ",
-          secret_access_key: "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"
+          access_key_id: ENV['FU_AWS_ACCESS_KEY'],
+          secret_access_key: ENV['FU_AWS_SECRET_KEY']
         }
       }
   end

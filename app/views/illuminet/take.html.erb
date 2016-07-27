@@ -8,7 +8,7 @@
 <%= mdrender(@isurvey.description).html_safe %>
 <hr>
 <%= form_tag(illuminet_path, method: :post) do %>
-
+  <%= hidden_field_tag(:name, @isurvey.title) %>
   <% @isurvey.i_questions.each do |question|; if question.enabled %>
   <p><%= question.description %></p>
   <% case question.input_type %>
@@ -17,7 +17,7 @@
   <% when 2 %>
   <%= text_field_tag question.id, "", class: "form-control" %>
   <% when 3 %>
-  <div class="row text-center">
+  <div class="row text-center" id="<%= question.id %>">
     <div class="col-xs-1"></div>
     <div class="col-xs-2">
       <label>Strongly Disagree<br>
@@ -45,7 +45,63 @@
   <% when 5 %>
   <label><%= check_box_tag question.id, required: "required" %> I Agree</label> <span class="text-danger">You must accept this question to continue.</span>
   <% end %>
+  <script>
+  // For each q.id run a script to eval click or change by user (and save it)
+  $("#<%= question.id %>").click(function(){
+      $(this).find('input:checked').each(function(){
+        // Only for the likert scales
+        console.log("Q#" + $(this).attr('name') + " A: " + $(this).val());
+        save_input($(this).attr('name'), $(this).val());
+      });
+  });
+
+  $("#<%= question.id %>").change(function() {
+    // For other types, eval the q & a values...
+    if ($(this).attr('type') == "checkbox") {
+      console.log("Q#" + $(this).attr('name') + " A: " + $(this).is(':checked'));
+      save_input($(this).attr('name'), $(this).is(':checked'), true);
+    } else if ($(this).attr('type') == "text") {
+      console.log("Q#" + $(this).attr('name') + " A: " + $(this).val());
+      save_input($(this).attr('name'), $(this).val());
+    } else {
+      // Don't do anything, not handled yet.
+    }
+  });
+
+  </script>
   <hr>
   <% end; end %>
-
+  <p class='text-center'><%= submit_tag("Finish Survey", class: "btn btn-lg btn-primary") %></p>
 <% end %>
+
+<script>
+// Save the user input to the database!
+var save_input = function(question, answer, cbx) {
+  // alert(question + " " + answer);
+  var data_str = "survey_id=<%= @isurvey.id%>&question_id=" + question +"&answer=" + answer;
+
+  var post = $.ajax({
+    type: "POST",
+    url: "<%= root_url %>answers/update.json",
+    data: data_str,
+  });
+
+  post.fail(function (data) {
+    console.log(data);
+  });
+
+  post.success(function (data) {
+    if (data.continue == true) {
+      console.log(data);
+      if (cbx == true) {
+        $("#"+question).parent().addClass("postback-has-success");
+      } else {
+        $("#"+question).addClass("postback-has-success");
+      }
+    } else {
+      alert("We couldn't save the answer to that question. Please exit the survey and refresh, your progress is not lost.")
+    }
+  });
+
+}
+</script>

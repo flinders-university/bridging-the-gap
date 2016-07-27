@@ -13,12 +13,21 @@
 
 <% if @at_least_one_signature >= 1 %>
 
-  <% i = 1; @isurveys.each do |survey| %>
+  <% i = 1; @show_link = false; @isurveys.each do |survey| %>
   <div class="panel panel-tertiary">
     <div class="panel-heading"><%= i %>. <%= survey.title %></div>
     <div class="panel-body">
       <%= mdrender(survey.description).html_safe %>
-      <%= link_to "Commence Survey", "/illuminet/" + survey.id.to_s, class: "btn btn-primary" %>
+      <% # If the user has answered all the questions, don't give them the button, else, do! %>
+      <% if @answers.where(survey_id: survey.id).count < survey.i_questions.count %>
+        <% @show_link = true %>
+      <% end %>
+
+      <% if @show_link %>
+        <%= link_to "Commence Survey", "/illuminet/" + survey.id.to_s, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "You have completed this survey", "#", class: "btn btn-primary disabled" %>
+      <% end %>
     </div>
   </div>
   <% i = i + 1 %>

@@ -14,6 +14,7 @@ class IlluminetController < ApplicationController
         end
       end
     end
+    @answers = Answer.where(:user_id => current_user.id)
   end
 
   def take
@@ -26,6 +27,7 @@ class IlluminetController < ApplicationController
   end
 
   def save
+    redirect_to illuminet_polymer_path, notice: "Thank you for completing #{params[:name]}"
   end
 
   private

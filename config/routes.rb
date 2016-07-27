@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'realtime/answers'
+
+  post 'answers/update'
+  get 'answers/check'
+
   get 'toolbox/markdown'
 
   get 'illuminet/polymer'
@@ -40,6 +45,9 @@ Rails.application.routes.draw do
   get 'getting_started/information'
 
   resources :pages
+
+  # Cable Server
+  mount ActionCable.server => "/cable"
 
   root "getting_started#information"
 end
