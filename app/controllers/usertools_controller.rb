@@ -37,6 +37,8 @@ class UsertoolsController < ApplicationController
           if imported_user["degree"].present?
             u.group = Group.find_by_level(2)
             u.password = imported_user["student_id"]
+            u.degree = imported_user["degree"]
+            u.major = imported_user["major"]
           elsif imported_user["job_title"].present?
             u.group = Group.find_by_level(3)
             u.password = "industrycontact123"

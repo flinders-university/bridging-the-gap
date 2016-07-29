@@ -44,6 +44,36 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
+        <% if current_user.group.level = 3 %>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :degree %>
+            <%= f.text_field :degree, autocomplete: "off", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :major %>
+            <%= f.text_field :major, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :age %>
+            <%= f.number_field :age, autocomplete: "off", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :gender %>
+            <%= f.select :gender, options_for_select([["Female", "female"], ["Male", "male"], ["Other", "other"]], current_user.gender), class: "form-control" %>
+          </div>
+        </div>
+        <div class="field">
+          <br>
+          <label for="university">University</label>
+            <input id="university" type="text" class="form-control" value="<%= Swot::school_name current_user.email %>" title="Detected from your email address." disabled>
+        <% end %>
+        </div>
+
         <div class="field">
           <br>
           <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
@@ -110,4 +140,6 @@ $("#close-atmos-modal").click( function () {
   $("#group-change-form").fadeOut();
   $("#expose").fadeIn();
 });
+
+$("#user_gender").addClass("form-control");
 </script>

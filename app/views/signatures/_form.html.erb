@@ -26,10 +26,18 @@
   <div class="response">
     <p id="ova-name"><strong>Signing Form: <span id="form-name"></span></strong></p>
     <p><span id="form-description"></span></p>
-    <p><span id="form-body"></span></p>
+    <div style="max-width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; line-height: 2.0;" class="center-block"><span id="form-body"></span></div>
   </div>
 
+  <br>
+
   <div class="stage-2">
+    <div class="hidden-xs">
+      Prefer to sign on your touch-screen device? Send this link to your phone or tablet...
+      <div class="well">
+        <a href="<%= root_url %>/signatures/new"><%= root_url %>signatures/new</a>
+      </div>
+    </div>
 
     <div class="data-debug">
       <%= f.text_field :data, id: "sigdata" %>
@@ -93,6 +101,7 @@ function getDataFromForm() {
 
     $.getJSON("<%= root_url %>toolbox/markdown.json?mdown=" + encodeURIComponent( data.body ) ).always( function (mdowndata) {
       $("#form-body").html(mdowndata.responseText);
+      $(".user_name").html("<em><%= current_user.name %></em>");
     });
 
     $("#form-name").text(data.title);
@@ -122,7 +131,6 @@ $('form option[value="<%= form.id %>"]').attr('disabled', 'disabled');
     <% end %>
   <% end %>
 <% end %>
-
 </script>
 
 <style>
