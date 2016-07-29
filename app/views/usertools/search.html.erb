@@ -49,7 +49,7 @@
         <div class="panel-heading">Users Found <span class="badge pull-right"><%= @users.count.humanize.capitalize %></span></div>
         <div class="list-group">
           <% @users.each do |usr| %>
-          <a class="list-group-item" data-value="<%= usr.id %>"><%= usr.addressable %></a>
+          <a class="list-group-item" data-value="<%= usr.id %>" href="/usertools/<%= usr.id %>"><%= usr.addressable %></a>
           <% end %>
         </div>
       </div>

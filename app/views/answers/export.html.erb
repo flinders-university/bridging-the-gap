@@ -1,0 +1,72 @@
+<% title "Export Answers" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Answers", answers_path, class: "btn btn-primary" %>
+</div>
+<h1>Export Data <small>for <%= @survey.title %></small></h1>
+<hr>
+<div id="step-1">
+  <p>How would you like to export your data? Options will be provided when you choose a format....</p>
+  <div class="list-group">
+    <a id="json" class="list-group-item">JSON</a>
+    <a id="csv" class="list-group-item">CSV</a>
+    <a id="spss" class="list-group-item">IBM SPSS</a>
+  </div>
+</div>
+
+<div id="json_dialogue" class="hide-as">
+<a class="start-over btn btn-primary pull-right">Start Over</a>
+<p class="lead">JSON Export</p>
+<p>JSON is a standards-compliant language for the web. It is designed to handle large and complex data sets. It can be imported into many types of backend database software, however its use is less common for use in research analysis.</p>
+<p><strong>Options:</strong></p>
+<%= form_tag(method: :post, format: :json) do %>
+  <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
+  <p><%= submit_tag("Export as JSON", class: "btn btn-primary") %></p>
+<% end %>
+</div>
+
+<div id="csv_dialogue" class="hide-as">
+<a class="start-over btn btn-primary pull-right">Start Over</a>
+<p class="lead">CSV Export</p>
+<p>CSV is a standards-compliant data format for exporting. It can be imported into many types of research tool (SPSS, NViVo, Excel, etc). It is not as robust as a SPSS sav, or as JSON and may 'strip' data that is incompatible with the format - like quotes and commas.</p>
+<p><strong>Options:</strong></p>
+<%= form_tag(method: :post, format: :csv) do %>
+  <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
+  <p><%= submit_tag("Export as CSV", class: "btn btn-primary") %></p>
+<% end %>
+</div>
+
+<script>
+var FormSub = false
+
+$("#json").click( function() {
+  $("#step-1").hide();
+  $("#json_dialogue").fadeIn();
+});
+
+$("#csv").click( function() {
+  $("#step-1").hide();
+  $("#csv_dialogue").fadeIn();
+});
+
+$("#spss").click( function() {
+  alert("Sorry, SPSS exporting guildelines have not yet been established to enable export.");
+});
+
+$(".start-over").click( function() {
+  $("#csv_dialogue").hide();
+  $("#json_dialogue").hide();
+  $("#step-1").fadeIn();
+  if (FormSub == true) {
+    location.reload()
+  }
+});
+
+$(".hide-as").hide();
+
+$("form").submit(function (e) {
+  FormSub = true
+});
+
+</script>

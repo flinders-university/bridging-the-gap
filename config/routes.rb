@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'contact_database/interface'
+
   get 'realtime/answers'
 
+  get 'answers/export/:id', to: "answers#export"
+  post 'answers/export/:id', to: "answers#export"
   get 'answers', to: "answers#index"
   get 'answers/index'
   post 'answers/update'
@@ -24,10 +28,11 @@ Rails.application.routes.draw do
   get 'usertools', to: 'usertools#manage'
   get 'usertools/search'
   post 'usertools/search'
-  get 'usertools/new'
-  get 'usertools/create'
-  get 'usertools/update'
+  get 'usertools/import'
+  post 'usertools/importer'
+  post 'usertools/update'
   get 'usertools/manage'
+  get 'usertools/:id', to: "usertools#edit"
 
   post 'mailmerge/postmaster'
   get 'mailmerge/preview'

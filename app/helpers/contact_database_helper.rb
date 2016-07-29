@@ -1,0 +1,2 @@
+module ContactDatabaseHelper
+end

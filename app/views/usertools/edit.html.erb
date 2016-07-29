@@ -1,0 +1,32 @@
+<% title "Editing User" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "User Tools", usertools_path, class: "btn btn-primary" %>
+</div>
+<h1>Editing <%= @User.name %></h1>
+<hr>
+
+<%= form_tag(usertools_update_path, method: :post) do %>
+<%= hidden_field_tag(:id, @User.id) %>
+
+<div class="row">
+  <div class="col-md-6">
+  <p>First Name <br>
+    <%= text_field_tag(:firstname, @User.firstname, class: "form-control") %></p>
+  </div>
+  <div class="col-md-6">
+  <p>Last Name <br>
+    <%= text_field_tag(:lastname, @User.lastname, class: "form-control") %></p>
+  </div>
+</div>
+
+<p>Email <br>
+  <%= email_field_tag(:email, @User.email, class: "form-control") %></p>
+
+<p>Group (User must request a change)
+  <input type="text" class="form-control" disabled value="<%= @User.group.name %>"></p>
+
+<%= submit_tag("Save Changes", class: "btn btn-primary") %>
+
+<% end %>

@@ -1,2 +1,30 @@
+<% title "Managing Users" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Groups", groups_path, class: "btn btn-primary" %>
+  <%= link_to "Import", usertools_import_path, class: "btn btn-info" %>
+</div>
 <h1>User Management Tools</h1>
-<p>Find me in app/views/usertools/manage.html.erb</p>
+<hr>
+
+<%= form_tag(usertools_search_path, method: :post) do %>
+  <p>Last Name
+    <%= text_field_tag(:lastname, "", class: "form-control") %></p>
+  <p>Email address
+    <%= email_field_tag(:email, "", class: "form-control") %></p>
+
+  <%= hidden_field_tag(:submit, "user") %>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>
+
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Users</div>
+  <div class="list-group">
+  <% @Users.each do |user| %>
+    <a class="list-group-item" href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %> <span class="badge"><%= user.group.name %></span></a>
+  <% end %>
+  </div>
+</div>
