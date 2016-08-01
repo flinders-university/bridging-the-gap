@@ -11,6 +11,14 @@ class AnswersController < ApplicationController
     @users = {}
   end
 
+  # GET /answers/1 (where 1 is survey id)
+  def show
+    @answers = Answer.where(survey_id: params[:id])
+    @survey = ISurvey.find_by_id(params[:id])
+    #Empty dict to fill with precache (to prevent mass queries)
+    @users = {}
+  end
+
   # GET /answers/export/1.csv
   # where [id] is Survey's ID
   def export

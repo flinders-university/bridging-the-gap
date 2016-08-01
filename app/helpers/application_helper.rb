@@ -22,4 +22,13 @@ module ApplicationHelper
   def yield_meta_tag(tag, default_text='')
       content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
   end
+
+  def admin_pages
+    if current_user_administrator?
+      admin_pages = ["group_change_requests", "groups", "i_surveys", "i_questions", "answers", "usertools", "realtime", "contact_database", "forms", "documents"]
+    else
+      admin_pages = []
+    end
+  end
+
 end

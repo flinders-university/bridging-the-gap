@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'answers/index'
   post 'answers/update'
   get 'answers/check'
+  get 'answers/:id', to: "answers#show"
 
   get 'toolbox/markdown'
 

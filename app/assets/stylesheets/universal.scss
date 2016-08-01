@@ -11,6 +11,27 @@ html, body {
   margin-bottom: 0px;
 }
 
+.admin-bar {
+  border-top: 10px solid #E36960;
+  padding-right: 0px;
+  padding-top: 10px;
+  line-height: 2.5;
+}
+
+.admin-bar a {
+  color: black;
+}
+
+.admin-bar a:hover {
+  color: white;
+  background: black;
+  text-decoration: none;
+}
+
+.col-pad {
+  padding-left: 0px;
+}
+
 .navbar-nav li {
   text-transform: uppercase;
   font-weight: 500;

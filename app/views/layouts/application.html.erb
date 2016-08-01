@@ -34,6 +34,32 @@
   </head>
 
   <body>
+    <% if admin_pages.include?"#{controller_name}" %>
+    <div class="col-md-2 admin-bar" id="adminbar">
+      <p><strong><%= controller_name.gsub('i_', "").gsub('_',  ' ').capitalize %> &rarr; <%= action_name.capitalize %></strong></p>
+
+      <p style="text-decoration: underline;">Jump to:</p>
+      <ul style="list-style-type: georgian;">
+        <li><a href="<%= groups_path %>">Groups</a></li>
+        <li><a href="<%= group_change_requests_path %>">Group Requests</a></li>
+        <li><a href="<%= forms_path %>">Forms</a></li>
+        <li><a href="<%= documents_path %>">Documents</a></li>
+        <li><a href="<%= i_surveys_path %>">Surveys</a></li>
+        <li><a href="<%= i_questions_path %>">Questions</a></li>
+        <li><a href="<%= answers_path %>">Answers</a></li>
+        <li><a href="<%= usertools_path %>">Users</a></li>
+        <li><a id="hide-sidebar">Hide the admin bar</a></li>
+      </ul>
+      <br>
+      <script>
+        $("#hide-sidebar").click( function() {
+          $("#adminbar").hide();
+          $("#mbody").removeClass("col-md-10 col-pad")
+        });
+      </script>
+    </div>
+    <div class="col-md-10 col-pad" id="mbody">
+    <% end %>
     <nav class="navbar navbar-default" id="navbar">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->

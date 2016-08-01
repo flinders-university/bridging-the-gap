@@ -81,4 +81,4 @@
 
 <%= link_to 'New Question', new_i_question_path, class: "btn btn-primary" %>
 
-<%= link_to "View Answers", answers_path, class: "btn btn-info" %> <%= link_to "View Realtime Answers", realtime_answers_path, class: "btn btn-info" %> <%= link_to 'Edit', edit_i_survey_path(@i_survey), class: "btn btn-info" %> <%= link_to 'Back', i_surveys_path, class: "btn btn-warning" %>
+<%= link_to "View Answers", "/answers/" + @i_survey.id.to_s, class: "btn btn-info" %> <%= link_to "View Realtime Answers", realtime_answers_path, class: "btn btn-info" %> <%= link_to 'Edit', edit_i_survey_path(@i_survey), class: "btn btn-info" %> <%= link_to 'Back', i_surveys_path, class: "btn btn-warning" %>
