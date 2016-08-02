@@ -1,5 +1,6 @@
 class ISurveysController < ApplicationController
   before_action :set_i_survey, only: [:show, :edit, :update, :destroy]
+  before_action :require_administrator!
 
   # GET /i_surveys
   # GET /i_surveys.json

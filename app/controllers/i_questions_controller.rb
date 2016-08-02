@@ -1,5 +1,6 @@
 class IQuestionsController < ApplicationController
   before_action :set_i_question, only: [:show, :edit, :update, :destroy]
+  before_action :require_administrator!
 
   # GET /i_questions
   # GET /i_questions.json

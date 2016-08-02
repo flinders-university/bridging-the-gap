@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'getting_started/welcome'
+
   get 'contact_database/interface'
 
   get 'realtime/answers'

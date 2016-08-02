@@ -9,9 +9,6 @@
     </div>
     <div class="panel-body">
       You are a member of the <strong><%= current_user.group.name %></strong> group. To request a change your group <a href="#_atmos_group" id="group-request">please click here</a>.
-      <% if Swot::is_academic? current_user.email %>
-      <br>You have been automatically identified as a staff member or student of <%= Swot::school_name current_user.email %>.
-      <% end %>
     </div>
   </div>
   <div class="panel panel-primary">
@@ -44,7 +41,7 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <% if current_user.group.level = 3 %>
+        <% if current_user.group.level == 3 %>
         <br>
         <div class="row">
           <div class="col-md-6">
@@ -67,12 +64,14 @@
             <%= f.select :gender, options_for_select([["Female", "female"], ["Male", "male"], ["Other", "other"]], current_user.gender), class: "form-control" %>
           </div>
         </div>
+        <% end %>
+        <% if Swot::is_academic? current_user.email %>
         <div class="field">
           <br>
           <label for="university">University</label>
-            <input id="university" type="text" class="form-control" value="<%= Swot::school_name current_user.email %>" title="Detected from your email address." disabled>
-        <% end %>
+            <input id="university" type="text" class="form-control" value="<%= Swot::school_name current_user.email %> <% if current_user.email.split("@").first.include?(".") %>- Staff<% else %>- Student<% end %>" title="Detected from your email address." disabled>
         </div>
+        <% end %>
 
         <div class="field">
           <br>
