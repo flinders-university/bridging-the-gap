@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'placement_dashboard/preservice_teacher'
+
+  get 'placement_dashboard/industry'
+
   get 'getting_started/welcome'
 
   get 'contact_database/interface'

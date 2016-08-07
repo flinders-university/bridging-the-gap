@@ -37,5 +37,7 @@ module Btg
           secret_access_key: ENV['FU_AWS_SECRET_KEY']
         }
       }
+
+      Paperclip.options[:content_type_mappings] = {:svg => "text/html"}
   end
 end
