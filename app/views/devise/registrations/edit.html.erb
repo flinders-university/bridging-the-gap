@@ -2,6 +2,12 @@
 <h1>Research Participation <small>My Profile</small></h1>
 <%= render("partials/research_navigation") %>
 <br>
+<% if current_user.created_at.to_i == current_user.updated_at.to_i %>
+  <div class="alert alert-danger">
+    It appears that you are still using your default password, please update your password below.
+  </div>
+<% end %>
+<br>
 <div id="expose">
   <div class="panel panel-tertiary">
     <div class='panel-heading'>
@@ -41,7 +47,7 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <% if current_user.group.level == 3 %>
+        <% if current_user.group.level == 2 %>
         <br>
         <div class="row">
           <div class="col-md-6">
@@ -99,6 +105,10 @@
           <%= f.submit "Update registration", class: "btn btn-success" %>
         </div>
       <% end %>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item">Your last sign in was on <%= current_user.last_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") %> from <%= current_user.last_sign_in_ip %></div>
+      <div class="list-group-item">Your current sign in was on <%= current_user.current_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") %> from <%= current_user.current_sign_in_ip %></div>
     </div>
     <% if current_user.group.level <= 1 %>
     <div class="panel-footer">

@@ -24,7 +24,7 @@
   <div class="panel-heading">Users</div>
   <div class="list-group">
   <% @Users.each do |user| %>
-    <a class="list-group-item" href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %> <span class="badge"><%= user.group.name %></span></a>
+    <a class="list-group-item" href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %> <% if user.industry.present? %>- Placed <%= user.industry.name %> <% end %> <span class="badge"><%= user.group.name %></span></a>
   <% end %>
   </div>
 </div>

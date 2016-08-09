@@ -15,6 +15,10 @@ module ApplicationHelper
     content_for :title, text
   end
 
+  def yield_controller
+    controller_name.gsub("_", " ").capitalize + " | "
+  end
+
   def meta_tag(tag, text)
       content_for :"meta_#{tag}", text
   end
@@ -25,7 +29,7 @@ module ApplicationHelper
 
   def admin_pages
     if current_user_administrator?
-      admin_pages = ["group_change_requests", "groups", "i_surveys", "i_questions", "answers", "usertools", "realtime", "contact_database", "forms", "documents"]
+      admin_pages = ["group_change_requests", "groups", "i_surveys", "i_questions", "answers", "usertools", "realtime", "contact_database", "forms", "documents", "industries"]
     else
       admin_pages = []
     end

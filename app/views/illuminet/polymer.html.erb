@@ -1,4 +1,14 @@
 <% title "Research Participation" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <% if current_user.group.level == 2 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_preservice_teacher_path, class: "btn btn-info" %>
+  <% elsif current_user.group.level == 3 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_industry_path, class: "btn btn-info" %>
+  <% end %>
+  <%= link_to "Research Participation", illuminet_polymer_path, class: "btn btn-primary" %>
+</div>
 <h1>Research Participation <small>Surveys</small></h1>
 
 <%= render("partials/research_navigation") %>

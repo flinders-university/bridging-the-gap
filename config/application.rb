@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 module Btg
   class Application < Rails::Application
-    ENV['version'] = "1357"
+    ENV['version'] = "186.22"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

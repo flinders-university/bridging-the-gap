@@ -27,6 +27,35 @@
 <p>Group (User must request a change)
   <input type="text" class="form-control" disabled value="<%= @User.group.name %>"></p>
 
+<p>Placement (<%= link_to "Allocate", industries_path %>)
+  <input type="text" class="form-control" disabled value="<%= @User.industry ? @User.industry.name : "Not placed" %>"></p>
+
+<p>Acting as industry contact person for
+  <input type="text" class="form-control" disabled value="<%= Industry.where(user_id: @User.id).first ? Industry.where(user_id: @User.id).first.name : "Not specified" %>"></p>
+
+<p>Gender
+  <input type="text" class="form-control" disabled value="<%= @User.gender ? @User.gender : "Not specified" %>"></p>
+
+<p>Degree
+  <input type="text" class="form-control" disabled value="<%= @User.degree ? @User.degree : "Not specified" %>"></p>
+
+<p>Major
+  <input type="text" class="form-control" disabled value="<%= @User.major ? @User.major : "Not specified" %>"></p>
+
+<p>Age
+  <input type="text" class="form-control" disabled value="<%= @User.age ? @User.age : "Not specified" %>"></p>
+
+
+
 <%= submit_tag("Save Changes", class: "btn btn-primary") %>
 
-<% end %>
+<% end %><br>
+
+<%= link_to "Delete This User", "/usertools/#{@User.id}", method: :delete, class: "btn btn-danger", data: { confirm: 'DANGER: Deleting a user will DESTROY all of their associated SURVEY PARTICIPATION, SURVEY ANSWERS, INDUSTRIES AND ASSOCIATED PLACEMENTS, GROUP DETAILS, and all reference to them in our system.               Are you REALLY sure you want to proceed? Push [esc] now to cancel any action.' }, id: "userdump" %>
+
+<script>
+$("#userdump").click( function() {
+  console.log('%c User triggered for deletion... ', 'background: #222; color: #bada55; font-size: 16pt;');
+  console.log('<%= @User.to_json.html_safe %>');
+});
+</script>

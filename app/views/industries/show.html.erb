@@ -1,0 +1,73 @@
+<% title @industry.name %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Industries", industries_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @industry.name %></h1>
+<hr>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to @industry.user.name, "mailto:" + @industry.user.addressable %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @industry.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= link_to @industry.phone, "tel:" + @industry.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= link_to @industry.email, "mailto:" + @industry.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= link_to @industry.website, @industry.website %>
+</p>
+
+<p>
+  <strong>Stem foci:</strong>
+  <%= @industry.stem_foci %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <pre><%= @industry.description %></pre>
+</p>
+
+<p>
+  <strong>Blurb:</strong>
+</p>
+
+<%= mdrender(@industry.blurb).html_safe %>
+<div class="clearfix"></div>
+<p>
+  <strong>Active:</strong>
+  <% if @industry.active %><%= icon :ok %> Students placed here can see their placement details.<% else %><%= icon :remove %> Students placed here can see that they are placed, but they can not see the industry details.<% end %>
+</p>
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Students Placed Here</div>
+  <div class="list-group">
+    <% @industry.users.each do |user| %>
+    <a class="list-group-item" href="/usertools/<%= user.id %>"><%= user.name %></a>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <%= form_tag "/usertools/place/#{@industry.id}", method: :post, class: "form-inline" do %>
+    <%= text_field_tag(:email, "", {class: "form-control", placeholder: "Student to place - email address", style: "min-width: 300px;"}) %> <%= submit_tag("Add Student", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<%= link_to 'Edit', edit_industry_path(@industry) %> |
+<%= link_to 'Back', industries_path %>

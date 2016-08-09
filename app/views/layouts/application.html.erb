@@ -12,7 +12,7 @@
                 (c) 2016 Flinders University School of Education.
     Created by Dr. Carol Aldous, David Jefferies, Aidan Cornelius-Bell, and Narmon Tulsi.
     -->
-    <title><%= if content_for?(:title) then yield(:title) + ' | ' end %>Bridging The Gap</title>
+    <title><%= if content_for?(:title) then yield(:title) + ' | ' else yield_controller end %>Bridging The Gap</title>
 
     <%= csrf_meta_tags %>
 
@@ -51,7 +51,7 @@
       <p><strong><%= controller_name.gsub('i_', "").gsub('_',  ' ').capitalize %> &rarr; <%= action_name.capitalize %></strong></p>
 
       <p style="text-decoration: underline;">Jump to:</p>
-      <ul style="list-style-type: georgian;">
+      <ul>
         <li><a href="<%= groups_path %>">Groups</a></li>
         <li><a href="<%= group_change_requests_path %>">Group Requests</a></li>
         <li><a href="<%= forms_path %>">Forms</a></li>
@@ -60,6 +60,7 @@
         <li><a href="<%= i_questions_path %>">Questions</a></li>
         <li><a href="<%= answers_path %>">Answers</a></li>
         <li><a href="<%= usertools_path %>">Users</a></li>
+        <li><a href="<%= industries_path %>">Industries</a></li>
         <li><a id="hide-sidebar">Hide the admin bar</a></li>
       </ul>
       <br>

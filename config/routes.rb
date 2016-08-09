@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'placement_dashboard/preservice_teacher'
+  resources :industries
 
+  get 'placement_dashboard/preservice_teacher'
   get 'placement_dashboard/industry'
 
   get 'getting_started/welcome'
-
   get 'contact_database/interface'
 
   get 'realtime/answers'
@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   post 'usertools/importer'
   post 'usertools/update'
   get 'usertools/manage'
+  post 'usertools/place/:industry_id', to: "usertools#addplacement"
+  delete 'usertools/:id', to: "usertools#destroy"
   get 'usertools/:id', to: "usertools#edit"
 
   post 'mailmerge/postmaster'

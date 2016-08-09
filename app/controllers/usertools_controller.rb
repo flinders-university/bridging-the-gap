@@ -13,6 +13,33 @@ class UsertoolsController < ApplicationController
     render :layout => false
   end
 
+  def addplacement
+    u = User.find_by_email(params[:email])
+    if u.setplacement(params[:industry_id])
+      redirect_to industries_path, notice: "Added placement data"
+    else
+      redirect_to industries_path, notice: "Could not add placement data..."
+    end
+  end
+
+  def disassociate_placement
+    u = User.find_by_email(params[:email])
+    if u.setplacement(nil)
+      redirect_to usertools_path, notice: "Disassociated placement details."
+    else
+      redirect_to usertools_path, notice: "Could not disassociate placement details."
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      redirect_to usertools_path, notice: "User deleted."
+    else
+      redirect_to usertools_path, notice: "Could not delete that user."
+    end
+  end
+
   def import
 
   end

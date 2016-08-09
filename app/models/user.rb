@@ -6,8 +6,23 @@ class User < ApplicationRecord
 
   belongs_to :group #, join_table: :users_and_groups
 
+  belongs_to :industry, optional: true #sometimes...
+
   after_create :new_user_job_runner
-  before_destroy :delete_user_job_runner
+
+  before_destroy :delete_associated
+
+  def setplacement(industry_id)
+    self.industry_id = industry_id
+    industry = Industry.find_by_id(industry_id)
+    SendPlacementDetailsJob.perform_later(self, industry)
+    self.save
+  end
+
+  def setgroup(group_id)
+    self.group_id = group_id
+    self.save
+  end
 
   def is_administrator
     self.administrator
@@ -25,7 +40,17 @@ class User < ApplicationRecord
 	  NewUserPostTasksJob.perform_later(self)
   end
 
-  def delete_user_job_runner
+  private
+  def delete_associated
+    a = Answer.where(user_id: self.id)
+    a.each do |ans|; ans.destroy; end
+    i = Industry.where(user_id: self.id)
+    i.each do |ind|; ind.destroy; end
+    s = Signature.where(user_id: self.id)
+    s.each do |sig|; sig.destroy; end
+    g = GroupChangeRequest.where(user_id: self.id)
+    g.each do |gcr|; gcr.destroy; end
+
     DeleteUserPostTasksJob.perform_later(self)
   end
 end
