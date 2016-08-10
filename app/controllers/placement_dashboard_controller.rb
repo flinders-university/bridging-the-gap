@@ -9,7 +9,7 @@ class PlacementDashboardController < ApplicationController
 
   def industry
     if current_user.group.level != 3
-      raise "Expected #{Group.where(level: 2).last.name}, got #{current_user.group.name}."
+      raise "Expected #{Group.where(level: 3).last.name}, got #{current_user.group.name}."
     end
     @industry = Industry.where(user_id: current_user.id).last
   end

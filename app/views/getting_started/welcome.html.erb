@@ -11,10 +11,14 @@
 <br>
 <div class="row">
   <div class="col-xs-6">
-    <a href="<%= url_for illuminet_polymer_path %>" class="btn btn-primary btn-lg btn-block">Research Participation Dashboard</a>
+    <a href="<%= url_for illuminet_polymer_path %>" class="btn btn-primary btn-lg btn-block">Research Participation</a>
   </div>
   <div class="col-xs-6">
-    <a href="#" class="btn btn-info btn-lg btn-block">Placements Dashboard<a>
+    <% if current_user.group.level == 2 %>
+    <%= link_to "Placement Information", placement_dashboard_preservice_teacher_path, class: "btn btn-info btn-lg btn-block" %>
+    <% elsif current_user.group.level == 3 %>
+    <%= link_to "Placement Information", placement_dashboard_industry_path, class: "btn btn-info btn-lg btn-block" %>
+    <% end %>
   </div>
 </div>
 <br>

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
   resources :industries
 
   get 'placement_dashboard/preservice_teacher'
   get 'placement_dashboard/industry'
+  get 'placement_dashboard', to: "getting_started#welcome"
 
   get 'getting_started/welcome'
   get 'contact_database/interface'
@@ -68,4 +71,9 @@ Rails.application.routes.draw do
   mount ActionCable.server => "/cable"
 
   root "getting_started#information"
+
+  unless Rails.application.config.consider_all_requests_local
+    # having created corresponding controller and action
+    get '*not_found', to: 'errors#not_found'
+  end
 end
