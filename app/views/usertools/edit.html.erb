@@ -24,8 +24,12 @@
 <p>Email <br>
   <%= email_field_tag(:email, @User.email, class: "form-control") %></p>
 
-<p>Group (User must request a change)
-  <input type="text" class="form-control" disabled value="<%= @User.group.name %>"></p>
+<p>Users' Group <br>
+  <%= select_tag(:group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level', @User.group_id), { class: "form-control" }) %></p>
+
+<p>Administrative User <br>
+  <% if @User.administrator %>
+  <%= check_box_tag :administrator, true, checked: true %> <% else %> <%= check_box_tag :administrator, false %> <% end %></p>
 
 <p>Placement (<%= link_to "Allocate", industries_path %>)
   <input type="text" class="form-control" disabled value="<%= @User.industry ? @User.industry.name : "Not placed" %>"></p>

@@ -1,0 +1,18 @@
+<% title @meeting.name %>
+<h1><%= @meeting.name %></h1>
+<p>
+  <strong>Date:</strong> <%= @meeting.date %>
+</p>
+
+<%= mdrender(@meeting.description).html_safe %>
+
+<hr>
+
+<% if @meeting.minutes_file_name.present? %>
+<p>Download attached files:</p>
+<a href="<%= @meeting.minutes.expiring_url(500) %>" target="_BLANK"><%= icon :paperclip %> <%= @meeting.minutes_file_name %> (<%= to_meg(@meeting.minutes_file_size) %> mb)</a>
+<hr>
+<% end %>
+
+<% if current_user_administrator? %><%= link_to 'Edit', edit_meeting_path(@meeting), class: "btn btn-warning" %> <% end %>
+<%= link_to 'Back', meetings_path, class: "btn btn-primary" %>

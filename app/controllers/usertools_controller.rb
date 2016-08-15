@@ -40,6 +40,30 @@ class UsertoolsController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
+  def create
+    if params[:firstname].length >= 1 && params[:lastname].length >= 1 && params[:email].length >= 1 && params[:password].length >= 6
+      u = User.new
+      u.firstname = params[:firstname]
+      u.lastname = params[:lastname]
+      u.email = params[:email]
+      u.password = params[:password]
+      u.group_id = params[:group_id]
+      u.administrator = params[:administrator]
+      if params[:industry_id]
+        u.industry_id = params[:industry_id]
+      end
+      if u.save
+        redirect_to "/usertools/" + u.id.to_s, notice: "User created successfully"
+      end
+    else
+      redirect_to usertools_new_path, notice: "Could not save that user, required details were missing."
+    end
+  end
+
   def import
 
   end
@@ -93,6 +117,8 @@ class UsertoolsController < ApplicationController
     @User.firstname = params[:firstname]
     @User.lastname = params[:lastname]
     @User.email = params[:email]
+    @User.group_id = params[:group_id]
+    @User.administrator = params[:administrator]
     if @User.save
       redirect_to usertools_path, notice: "User updated successfully."
     else

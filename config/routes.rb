@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :meetings
   get 'errors/not_found'
 
   resources :industries
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   post 'usertools/search'
   get 'usertools/import'
   post 'usertools/importer'
+  get 'usertools/new'
+  post 'usertools/create'
   post 'usertools/update'
   get 'usertools/manage'
   post 'usertools/place/:industry_id', to: "usertools#addplacement"

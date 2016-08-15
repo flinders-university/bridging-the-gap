@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808002451) do
+ActiveRecord::Schema.define(version: 20160814234101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,19 @@ ActiveRecord::Schema.define(version: 20160808002451) do
     t.boolean  "active"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.text     "description"
+    t.boolean  "final"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "minutes_file_name"
+    t.string   "minutes_content_type"
+    t.integer  "minutes_file_size"
+    t.datetime "minutes_updated_at"
   end
 
   create_table "pages", force: :cascade do |t|
