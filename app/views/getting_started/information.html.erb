@@ -1,32 +1,53 @@
 </div>
-<div class="container-fluid" style="padding: 30px;">
-  <%= image_tag("dsd-flin.png", class: "center-block", style: "width: 100%; max-width: 500px;", title: "Project Supported By...") %>
-</div>
-
-<div class="container-fluid jellies">
+<!--<div class="container-fluid jellies">
   <div class="row">
     <div class="col-xs-1"></div>
     <div class="col-xs-4 inwrap">
       Increasing secondary school student interest in STEM starts with university teacher education.
     </div>
   </div>
-</div>
+</div>-->
+<div class="hp-adl"></div>
 
-<div class="container-fluid fading-container"></div>
+<br>
+<div class="container text-center">
+  <h3>The Bridging the Gap research project aims are:</h3>
+  <p class="lead" style="font-size: 16px;">To develop in pre-service science teachers a deep and solid understanding of the connections between theoretical science knowledge and its application in society through immersion in authentic experiential learning in an industry placement.</p>
+  <p class="lead" style="font-size: 16px;">To increase pre-service science teachers’ capacity to innovate new approaches to learning and teaching in secondary schools, associated with creative problem solving, a spirit of enterprise and contemporary science in meaningful contexts.</p>
+  <p class="lead" style="font-size: 16px;">To positively impact secondary school students’ perceptions of STEM as a creative enterprise thus increasing the likelihood that they will pursue STEM careers.</p>
 
-<div class="container-fluid">
+  <h3>A research collaboration between...</h3>
+  <br><br>
   <div class="row">
-    <div class="col-md-6 col-dark">
-      <p>The purpose of this project is to investigate the potential to increase secondary school student interest in STEM (Science Technology Engineering and Mathematics) topics by forging connections between university teacher education, schools and business and industry by engaging pre-service teachers of secondary science in short to medium term STEM industry placements. By so doing pre-service teacher knowledge about the application of science in society and about different career paths in STEM will be increased through direct personal experience. In a flow on effect, the teaching of students in secondary schools will be enriched by increased teacher awareness about real world applications in science in the longer term and the teaching of science as a human endeavour. The project will also pave the way for extended dialogue and knowledge exchange to take place between teachers, students, teacher educators, business and industry.</p>
-      <p>This project is significant because it sets out not only to increase pre-service teachers knowledge about the applications of science to society, but also the movement of students from the secondary sector into the world of STEM. The movement of secondary school students in STEM tertiary education and in STEM careers is expected to be achieved because the project will strengthen connections between different communities of practice, notably university pre-service teacher education, centres for innovation and research, secondary schools, and business and industry, facilitating a shift in mind set concerning the purposes and relevance of STEM. When students understand better the multiple uses of STEM and possibilities of utilizing their STEM knowledge in business and industry they may be more likely to choose a career in STEM.</p>
-    </div>
-    <div class="col-md-6 hidden-xs brain">
-    </div>
+    <a href="/pages/for-psts"><div class="col-xs-3" data-toggle="tooltip" data-placement="top" title="Click here to learn more...">
+      <%= image_tag("university.svg") %>
+      <h3 class="hidden-xs">Student Teachers</h3>
+      <p class="visible-xs">PSTs</p>
+    </div></a>
+    <a href="#/pages/for-schools"><div class="col-xs-3" data-toggle="tooltip" data-placement="top" title="Click here to learn more...">
+      <%= image_tag("school.svg") %>
+      <h3 class="hidden-xs">High Schools</h3>
+      <p class="visible-xs">Schools</p>
+    </div></a>
+    <a href="/pages/for-industry"><div class="col-xs-3" data-toggle="tooltip" data-placement="top" title="Click here to learn more...">
+      <%= image_tag("business.svg") %>
+      <h3 class="hidden-xs">Industry</h3>
+      <p class="visible-xs">Industry</p>
+    </div></a>
+    <a href="#/pages/for-government"><div class="col-xs-3" data-toggle="tooltip" data-placement="top" title="Click here to learn more...">
+      <%= image_tag("government.svg") %>
+      <h3 class="hidden-xs">Government</h3>
+      <p class="visible-xs">Govt.</p>
+    </div></a>
   </div>
+  <div style="margin-top:20px;"></div>
+  <a href="/pages/about" class="btn btn-lg btn-primary btn-hp-lm">Learn More</a>
 </div>
+
+<br>
 
 <div class="container">
-  <br>
+  <hr>
   <div class="text-center">
     <blockquote>
       <p>Entrepreneurship is an economic activity requiring attention to the framework conditions for business creation and growth. But more importantly it is a human endeavour, requiring attention to the way that our attitudes are shaped, our skills developed, our networks formed. And so it is inseparable from education – not independent of it.</p>
@@ -34,6 +55,14 @@
     </blockquote>
   </div>
 
+  <hr>
+
+<!--  <div class="container-fluid" style="padding: 30px;">
+    <%= image_tag("dsd-flin.png", class: "center-block", style: "width: 100%; max-width: 500px;", title: "Project Supported By...") %>
+  </div> -->
+
 <script>
-$(".brain").height($(".col-dark").height() + 40 + "px");
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>

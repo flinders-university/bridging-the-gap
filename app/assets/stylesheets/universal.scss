@@ -37,7 +37,7 @@ html, body {
   font-weight: 500;
 }
 
-/* Full width heros */
+/* Full width heroes */
 .jellies {
   background: image-url("jellies.jpeg") 50% 35% no-repeat;
   background-size: cover;
@@ -45,7 +45,7 @@ html, body {
 }
   .jellies>.row>.inwrap {
     color: #fff;
-    margin-top: 100px;
+    margin-top: 120px;
     font-size: 25px;
     font-weight: 100;
   }
@@ -69,6 +69,12 @@ html, body {
   background: image-url("brain.jpeg") 80% 50% no-repeat;
   background-size: cover;
   min-height: 100%;
+}
+
+.hp-adl {
+  background: image-url("adl55325163.jpg") 50% 99.5% no-repeat;
+  background-size: cover;
+  min-height: 120px;
 }
 
 // Used primarily for footer...
@@ -178,3 +184,18 @@ blockquote {
   background: #FAFAFA;
   padding-left: 40px;
 }
+
+.btn-hp-lm {
+  border-radius: 0px;
+  padding: 15px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.hphref {
+  text-decoration: underline;
+}
+
+  .hphref:hover {
+    text-decoration: none;
+  }

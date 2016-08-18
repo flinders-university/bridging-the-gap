@@ -170,11 +170,4 @@ ActiveRecord::Schema.define(version: 20160814234101) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users_and_groups", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.index ["group_id"], name: "index_users_and_groups_on_group_id", using: :btree
-    t.index ["user_id"], name: "index_users_and_groups_on_user_id", using: :btree
-  end
-
 end
