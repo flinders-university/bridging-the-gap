@@ -11,6 +11,16 @@ html, body {
   margin-bottom: 0px;
 }
 
+.browser-warning {
+  background: #E36960;
+  color: #fff;
+  padding-top: 24px;
+}
+
+  .browser-warning a {
+    color: #fff;
+  }
+
 .admin-bar {
   border-top: 10px solid #E36960;
   padding-right: 0px;
@@ -199,3 +209,12 @@ blockquote {
   .hphref:hover {
     text-decoration: none;
   }
+
+.clr-margin {
+  border-top: #fed130 solid 10px;
+}
+
+.help-description {
+  font-size: 16px;
+  font-weight: lighter;
+}

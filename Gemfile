@@ -37,6 +37,9 @@ gem 'bh'
 # Acadaemia Detection
 gem 'swot'
 
+# Browser Problems
+gem 'browser'
+
 # Slack
 gem 'slack-notifier'
 

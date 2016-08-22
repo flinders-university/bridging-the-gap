@@ -1,0 +1,33 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
+</div>
+<h1>Tasks</h1>
+<hr>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>When</th>
+      <th>Visible</th>
+      <th>Completed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.user.addressable %></td>
+        <td><%= task.title %></td>
+        <td><%= task.when %></td>
+        <td><%= task.visible %></td>
+        <td><%= task.completed %></td>
+        <td><%= link_to 'Show', task, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_task_path(task), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

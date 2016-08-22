@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :tasks
+
   resources :meetings
+
   get 'errors/not_found'
 
   resources :industries
@@ -10,6 +13,8 @@ Rails.application.routes.draw do
   get 'placement_dashboard', to: "getting_started#welcome"
 
   get 'getting_started/welcome'
+  get 'getting_started/mark_task_complete'
+
   get 'contact_database/interface'
 
   get 'realtime/answers'

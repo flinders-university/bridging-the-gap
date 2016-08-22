@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   before_destroy :delete_associated
 
+  has_many :tasks
+
   def setplacement(industry_id)
     self.industry_id = industry_id
     industry = Industry.find_by_id(industry_id)

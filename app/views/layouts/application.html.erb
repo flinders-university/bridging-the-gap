@@ -46,32 +46,10 @@
   </head>
 
   <body>
-    <% if admin_pages.include?"#{controller_name}" %>
-    <div class="col-md-2 admin-bar" id="adminbar">
-      <p><strong><%= controller_name.gsub('i_', "").gsub('_',  ' ').capitalize %> &rarr; <%= action_name.capitalize %></strong></p>
-
-      <p style="text-decoration: underline;">Jump to:</p>
-      <ul>
-        <li><a href="<%= groups_path %>">Groups</a></li>
-        <li><a href="<%= group_change_requests_path %>">Group Requests</a></li>
-        <li><a href="<%= forms_path %>">Forms</a></li>
-        <li><a href="<%= documents_path %>">Documents</a></li>
-        <li><a href="<%= i_surveys_path %>">Surveys</a></li>
-        <li><a href="<%= i_questions_path %>">Questions</a></li>
-        <li><a href="<%= answers_path %>">Answers</a></li>
-        <li><a href="<%= usertools_path %>">Users</a></li>
-        <li><a href="<%= industries_path %>">Industries</a></li>
-        <li><a id="hide-sidebar">Hide the admin bar</a></li>
-      </ul>
-      <br>
-      <script>
-        $("#hide-sidebar").click( function() {
-          $("#adminbar").hide();
-          $("#mbody").removeClass("col-md-10 col-pad")
-        });
-      </script>
+    <% if !browser.modern? || browser.ie? %>
+    <div class="container-fluid browser-warning">
+      <p class="text-center lead"><a href="http://outdatedbrowser.com/en" target="_BLANK">Warning: Your web browser is not compatible with some important technologies used on this site.</a></p>
     </div>
-    <div class="col-md-10 col-pad" id="mbody">
     <% end %>
     <nav class="navbar navbar-default" id="navbar">
       <div class="container">
@@ -120,6 +98,8 @@
                 <li><a href="/documents/">Documents</a></li>
                 <li><a href="/i_surveys/">Surveys</a></li>
                 <li><a href="/usertools/">Users</a></li>
+                <li><a href="/tasks/">Tasks</a></li>
+                <li><a href="/meetings/">Meeting Notes</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="/contact_database/interface">Contact Database</a></li>
                 <li role="separator" class="divider"></li>
@@ -188,6 +168,7 @@
         </div>
       </div>
       <br>
+      <p class="text-center help-description">Stuck? Get help via email: <a href="mailto:aidan.cornelius-bell@flinders.edu.au?subject=Bridging%20The%20Gap%20Help&body=%0A--%0APlease%20write%20your%20message%20above%20this%20line.%0AAction%20controller:%20<%= URI.escape(controller_name) %>%23<%= URI.escape(action_name) %>.%20Directory%20and%20user:%20<%= if current_user.present?; URI.escape(current_user.group.name + "/" + current_user.email); end; %>.">aidan.cornelius-bell@flinders.edu.au</a>.</p>
       <div class="container text-center">
         <%= image_tag("flinders.png", style: "max-height: 50px;") %> <%= image_tag("dsd.png", style: "max-height: 60px;") %>
         <p class="small text-muted">&copy; 2016 Flinders University.</p>

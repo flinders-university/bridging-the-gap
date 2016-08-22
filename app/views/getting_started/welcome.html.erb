@@ -1,4 +1,4 @@
-<h1>Welcome</h1>
+<h1>Welcome <%= current_user.firstname %>.</h1>
 <% if current_user.group.level == 3 %>
 <p>Welcome to your <%= t(:project) %> participation dashboard. Here you will find details about pre-service teacher(s), research scientist(s) placed in your industry and the contact details for the university. You will also find details about participating in pre-service teacher engagement research.</p>
 <p>There are two key areas that will be useful to you, these are the Placements and Research Participation panels. Clicking on either of these will display more information about what you can find there.</p>
@@ -10,8 +10,29 @@
 <p>Welcome to your <%= t(:project) %> participation dashboard. Thank you for registering.</p>
 <% end %>
 <p>You can return to this page at any time by clicking the 'home' button in the main menu. You can also directly access many relevant tools by clicking your name in the main menu.</p>
-
+<% if @Tasks.present? %>
+<hr>
+<p><strong>Your management committee memebership actions:</strong></p>
+<div class="list-group">
+  <% @Tasks.each do |task| %>
+  <div class="list-group-item<% if task.completed %> disabled" style="max-height: 41px;"<% else %>"<% end %>>
+    <div class="col-md-6"><%= task.title %></div>
+    <div class="col-md-3"><% if !task.completed %>Please complete by: <% end %><%= task.when.strftime("%B %-d, %Y") %></div>
+    <% if task.completed %>
+    <div class="col-md-3"><p class="text-success">Task Completed (<%= task.updated_at.strftime("%B %-d, %Y") %>)</p></div>
+    <div class="clearfix"></div>
+    <% else %>
+    <div class="col-md-3"><%= link_to "Mark As Complete", "/getting_started/mark_task_complete?task_id=" + task.id.to_s, class: "text-success"%> | <%= link_to "See More Details", "#", id: task.id, class: "text-info"%></div>
+    <div class="clearfix"></div>
+    <div class="hide" id="detail-<%= task.id %>"><hr><%= mdrender(task.description).html_safe %></div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<hr>
+<% else %>
 <br>
+<% end %>
 <div class="row">
   <div class="col-xs-6">
     <% if current_user.group.level == 4 %>
@@ -31,3 +52,15 @@
   </div>
 </div>
 <br>
+
+<script>
+$(".text-info").click( function() {
+  if ( $("#detail-" + $(this).attr('id')).hasClass("hide") ) {
+    $("#detail-" + $(this).attr('id')).removeClass("hide");
+    $(this).text("See Less Detail");
+  } else {
+    $("#detail-" + $(this).attr('id')).addClass("hide");
+    $(this).text("See More Detail");
+  }
+});
+</script>
