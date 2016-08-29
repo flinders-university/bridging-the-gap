@@ -19,5 +19,4 @@ test:
 
 production:
   <<: *default
-  host: localhost
   database: bridging-app
