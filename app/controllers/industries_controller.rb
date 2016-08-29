@@ -64,8 +64,10 @@ class IndustriesController < ApplicationController
 
   private
     def admin_or_authorised
-      if current_user.group.level != 4 || !current_user.administrator?
-        redirect_to root_url, notice: "Sorry, your account doesn't have access to that feature."
+      if current_user.group.level != 4
+        if !current_user_administrator?
+          redirect_to root_url, notice: "Sorry, your account doesn't have access to that feature."
+        end
       end
     end
 
