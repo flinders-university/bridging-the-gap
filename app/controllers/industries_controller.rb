@@ -1,6 +1,6 @@
 class IndustriesController < ApplicationController
   before_action :set_industry, only: [:show, :edit, :update, :destroy]
-  before_action :require_administrator!
+  before_action :admin_or_authorised
 
   # GET /industries
   # GET /industries.json
@@ -63,6 +63,12 @@ class IndustriesController < ApplicationController
   end
 
   private
+    def admin_or_authorised
+      if !current_user.administrator? || !current_user.group.level == 4
+        redirect_to root_url, notice: "Sorry, your account doesn't have access to that feature."
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_industry
       @industry = Industry.find(params[:id])

@@ -17,16 +17,24 @@ module Btg
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Adelaide'
 
-      config.paperclip_defaults = {
-        :storage => :s3,
-        :s3_region => ENV['AWS_REGION'],
-        :bucket => ENV['FU_BUCKET_ID'],
-        :s3_protocol => 'https',
-        s3_credentials: {
-          access_key_id: ENV['FU_AWS_ACCESS_KEY'],
-          secret_access_key: ENV['FU_AWS_SECRET_KEY']
-        }
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.smtp_settings = {
+      :address => "localhost",
+      :port => 25,
+      :domain => "bridgingthegap.edu.au",
+    }
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_region => ENV['AWS_REGION'],
+      :bucket => ENV['FU_BUCKET_ID'],
+      :s3_protocol => 'https',
+      s3_credentials: {
+        access_key_id: ENV['FU_AWS_ACCESS_KEY'],
+        secret_access_key: ENV['FU_AWS_SECRET_KEY']
       }
+    }
 
       Paperclip.options[:content_type_mappings] = {:svg => "text/html"}
   end

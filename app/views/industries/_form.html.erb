@@ -12,7 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', params[:user_id]) %>
+    <% if @industry.user_id.present? %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', @industry.user_id) %>
+    <% else %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', current_user.id) %>
+    <% end %>
   </div>
 
   <div class="field">

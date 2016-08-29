@@ -118,6 +118,7 @@
                 <% end %>
                 <% if current_user.group.level == 4 %>
                 <li><%= link_to "Management Group", meetings_path %></li>
+                <li><a href="/industries/">Industries</a></li>
                 <% end %>
                 <li><%= link_to "My Profile", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
