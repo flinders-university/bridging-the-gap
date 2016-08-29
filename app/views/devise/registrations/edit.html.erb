@@ -39,6 +39,7 @@
         <br>
 
         <div class="field">
+          <div class="pull-right"><%= if resource.confirmed? then icon :ok end %></div>
           <%= f.label :email %>
           <%= f.email_field :email, class: "form-control" %>
         </div>
