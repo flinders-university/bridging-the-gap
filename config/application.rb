@@ -36,6 +36,8 @@ module Btg
       }
     }
 
-      Paperclip.options[:content_type_mappings] = {:svg => "text/html"}
+    Paperclip.options[:content_type_mappings] = {:svg => "text/html"}
+
+    Rails.logger = Logger.new(STDOUT)     
   end
 end
