@@ -10,22 +10,12 @@ Bundler.require(*Rails.groups)
 
 module Btg
   class Application < Rails::Application
-    ENV['version'] = "186.22"
+    ENV['version'] = "212.55"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Adelaide'
-
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address:              ENV['FU_E_OUTLOOK_SMTP'],
-      port:                 587,
-      domain:               ENV['FU_E_DOMAIN'],
-      authentication:       :login,
-      user_name:            ENV['FU_E_USER'],
-      password:             ENV['FU_E_PASS'],
-      enable_starttls_auto: true  }
 
       config.paperclip_defaults = {
         :storage => :s3,

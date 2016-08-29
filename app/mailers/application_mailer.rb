@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'donotreply@flinders.edu.au'
+  default from: 'no-reply@bridgingthegap.edu.au'
   layout 'mailer'
 end

@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'aidan.cornelius-bell@flinders.edu.au'
+  default from: 'no-reply@bridgingthegap.edu.au'
 
   # Send this with UserMailer.welcome_email(@user).deliver_later
   def welcome_email(user)
