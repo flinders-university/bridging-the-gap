@@ -17,14 +17,6 @@ module Btg
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Adelaide'
 
-    config.action_mailer.delivery_method = :smtp
-
-    config.action_mailer.smtp_settings = {
-      :address => "localhost",
-      :port => 25,
-      :domain => "bridgingthegap.edu.au",
-    }
-
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_region => ENV['AWS_REGION'],
@@ -38,6 +30,6 @@ module Btg
 
     Paperclip.options[:content_type_mappings] = {:svg => "text/html"}
 
-    Rails.logger = Logger.new(STDOUT)     
+    Rails.logger = Logger.new(STDOUT)
   end
 end
