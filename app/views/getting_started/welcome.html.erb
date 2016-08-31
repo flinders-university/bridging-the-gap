@@ -32,7 +32,7 @@
       <td><% if current_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
     </tr>
   </tbody>
 </table>
@@ -95,7 +95,7 @@
 <br>
 <div class="row">
   <div class="col-xs-6">
-    <% if current_user.student_group.research_scientists.count >= 1 %>
+    <% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %>
     <%= link_to "My Groups Research Scientist", research_scientist_path(current_user.student_group.research_scientists.last.id), class: "btn btn-primary btn-block btn-lg" %>
     <% else %>
     <%= link_to "No Research Scientist Allocated", "#", class: "btn btn-primary btn-block btn-lg disabled" %>
