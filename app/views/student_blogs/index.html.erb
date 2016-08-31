@@ -4,7 +4,7 @@
   <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
   <%= link_to 'New Blog / Reflection', new_student_blog_path, class: "btn btn-primary" %>
 </div>
-<h1><% if current_user.group.level != 3 %>Pre-Service Teacher<% else %>My<% end %> Blogs</h1>
+<h1><% if current_user.group.level != 2 %>Pre-Service Teacher<% else %>My<% end %> Blogs</h1>
 <hr>
 
 <table class="table table-striped">
