@@ -34,7 +34,7 @@ class SignaturesController < ApplicationController
     @signature.user = current_user
     @forms = Form.where(group: current_user.group)
 
-    notify_slack("A new consent is available...", "technology", current_user.addressable, "fed130")
+    notify_slack("A new consent is available...", nil, current_user.addressable, "fed130")
 
     respond_to do |format|
       if @signature.save
