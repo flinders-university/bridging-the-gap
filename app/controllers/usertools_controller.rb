@@ -118,6 +118,7 @@ class UsertoolsController < ApplicationController
     @User.lastname = params[:lastname]
     @User.email = params[:email]
     @User.group_id = params[:group_id]
+    @User.student_group_id = params[:student_group_id]
     @User.administrator = params[:administrator]
     if @User.save
       redirect_to usertools_path, notice: "User updated successfully."

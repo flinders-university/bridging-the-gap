@@ -10,9 +10,36 @@
 <p>Welcome to your <%= t(:project) %> participation dashboard. Thank you for registering.</p>
 <% end %>
 <p>You can return to this page at any time by clicking the 'home' button in the main menu. You can also directly access many relevant tools by clicking your name in the main menu.</p>
+<% if current_user.group.level == 2 %>
+<hr>
+<table class="table table-striped table-rotated">
+  <thead>
+    <tr>
+      <th width="80%">Person</th>
+      <th width="20"><span>Research Consent</span></th>
+      <th width="20"><span>Surveys Complete</span></th>
+      <th width="20"><span>Placement Allocated</span></th>
+      <th width="20"><span>Placement Available</span></th>
+      <th width="20"><span>Placement Group Allocated</span></th>
+      <th width="20"><span>Research Scientist Allocated</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_user.name %></td>
+      <td><% if Signature.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if Answer.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 <% if @Tasks.present? %>
 <hr>
-<p><strong>Your management committee memebership actions:</strong></p>
+<p><strong>Your pending actions:</strong></p>
 <div class="list-group">
   <% @Tasks.each do |task| %>
   <div class="list-group-item<% if task.completed %> disabled" style="max-height: 41px;"<% else %>"<% end %>>
@@ -36,7 +63,7 @@
 <div class="row">
   <div class="col-xs-6">
     <% if current_user.group.level == 4 %>
-    <%= link_to "Research Tools", illuminet_polymer_path, class: "btn btn-primary btn-lg btn-block" %>
+    <%= link_to "Industries", industries_path, class: "btn btn-primary btn-lg btn-block" %>
     <% else %>
     <a href="<%= url_for illuminet_polymer_path %>" class="btn btn-primary btn-lg btn-block">Research Participation</a>
     <% end %>
@@ -51,6 +78,45 @@
     <% end %>
   </div>
 </div>
+<% if current_user.group.level == 2 %>
+<br>
+<div class="row">
+  <div class="col-xs-6">
+    <%= link_to "Reflective Blog", student_blogs_path, class: "btn btn-info btn-block btn-lg" %>
+  </div>
+  <div class="col-xs-6">
+    <% if current_user.student_group_id.present? %>
+    <%= link_to "My Placement Group", student_group_path(current_user.student_group_id), class: "btn btn-primary btn-block btn-lg" %>
+    <% else %>
+    <%= link_to "No Placement Group Allocated", "#", class: "btn btn-primary btn-block btn-lg disabled" %>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-6">
+    <% if current_user.student_group.research_scientists.count >= 1 %>
+    <%= link_to "My Groups Research Scientist", research_scientist_path(current_user.student_group.research_scientists.last.id), class: "btn btn-primary btn-block btn-lg" %>
+    <% else %>
+    <%= link_to "No Research Scientist Allocated", "#", class: "btn btn-primary btn-block btn-lg disabled" %>
+    <% end %>
+  </div>
+  <div class="col-xs-6">
+    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-info btn-block btn-lg" %>
+  </div>
+</div>
+<% end %>
+<% if current_user.group.level == 4 %>
+<br>
+<div class="row">
+  <div class="col-xs-6">
+    <%= link_to "PSTs Blogs", student_blogs_path, class: "btn btn-info btn-block btn-lg" %>
+  </div>
+  <div class="col-xs-6">
+    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-primary btn-block btn-lg" %>
+  </div>
+</div>
+<% end %>
 <br>
 
 <script>
@@ -62,5 +128,20 @@ $(".text-info").click( function() {
     $("#detail-" + $(this).attr('id')).addClass("hide");
     $(this).text("See More Detail");
   }
+});
+</script>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+$(function() {
+    var header_height = 190;
+    $('table th span').each(function() {
+        if ($(this).outerWidth() > header_height) header_height = $(this).outerWidth();
+    });
+
+    $('table th').height(header_height);
 });
 </script>

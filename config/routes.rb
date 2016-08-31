@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :research_scientists
+  resources :student_groups
+  resources :student_blogs
   resources :tasks
 
   resources :meetings

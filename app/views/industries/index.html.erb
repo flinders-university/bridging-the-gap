@@ -2,6 +2,7 @@
 <div class="clearfix"></div>
 <div class="pull-right">
   <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
   <%= link_to 'New Industry', new_industry_path, class: "btn btn-primary" %>
 </div>
 <h1>Industries</h1>
@@ -11,11 +12,17 @@
   <div class="panel-heading">Industries</div>
   <div class="list-group">
   <% @industries.each do |industry| %>
-    <div class="list-group-item">[<% if industry.active %><%= icon :ok %><% end %> <%= industry.user.name %> ] <%= industry.name %> <span class="pull-right"><%= link_to 'Show', industry, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span></div>
+    <div class="list-group-item" data-toggle="tooltip" data-placement="top" title="Initiated by: <%= industry.user.name %>. <% if industry.blurb.length >= 3 %>Last Contacted: <%= industry.updated_at.strftime("%B %-d, %Y - %I:%M %p") %>.<% end %>"><%= industry.name %> <% if industry.users.count >= 1%>(Placed: <%= industry.users %>)<% end %>  <span class="pull-right"><% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %>  &nbsp; <%= link_to 'Show', industry, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span></div>
   <% end %>
 </div>
 </div>
 
-<br>
+<p>Key:</p>
+<%= icon :bullhorn, title: "Contacted" %> Industry Contacted &nbsp;
+<%= icon :heart, title: "Engaged" %> Industry Engaged
 
-<%= link_to 'New Industry', new_industry_path %>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

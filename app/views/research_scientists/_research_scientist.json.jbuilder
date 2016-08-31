@@ -1,0 +1,2 @@
+json.extract! research_scientist, :id, :student_group_id, :user_id, :public_email, :public_phone, :public_bio, :enabled, :created_at, :updated_at
+json.url research_scientist_url(research_scientist, format: :json)

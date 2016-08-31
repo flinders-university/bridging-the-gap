@@ -1,0 +1,13 @@
+<% title @student_blog.title %>
+<h1><%= @student_blog.title %> <% if @student_blog.user_id != current_user.id %><small> post by <%= @student_blog.user.addressable %></small><% end %></h1>
+
+<div class="clearfix"></div>
+
+<%= mdrender(@student_blog.body).html_safe %>
+
+<hr>
+
+<p><strong>Ready to submit?</strong> Copy this URL into a Word document and <a href="//flo.flinders.edu.au/" target="_BLANK">post it on FLO</a>...<br>
+  <input type="text" class="form-control" value="https://bridgingthegap.edu.au/student_blogs/<%= @student_blog.slug %>"></p>
+
+<%= link_to 'Edit This Blog', edit_student_blog_path(@student_blog) %>  |  <%= link_to 'My Blogs', student_blogs_path %>

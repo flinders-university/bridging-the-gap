@@ -1,4 +1,10 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+</div>
 <h1>Management Group Meetings</h1>
+<hr>
 
 <% @meetings.each_slice(3) do |meetings| %>
 <div class="row">

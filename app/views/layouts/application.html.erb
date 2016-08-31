@@ -96,6 +96,7 @@
                 <li><a href="/blog/">Blogs</a></li>
                 <li><a href="/groups/">Groups</a></li>
                 <li><a href="/group_change_requests/">Group Changes</a></li>
+                <li><%= link_to "Student Groups", student_groups_path %></li>
                 <li><a href="/forms/">Forms</a></li>
                 <li><a href="/documents/">Documents</a></li>
                 <li><a href="/i_surveys/">Surveys</a></li>
@@ -103,6 +104,8 @@
                 <li><a href="/tasks/">Tasks</a></li>
                 <li><a href="/meetings/">Meeting Notes</a></li>
                 <li><a href="/industries/">Industries</a></li>
+                <li><a href="/research_scientists/">Research Scientists</a></li>
+                <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Databases</li>
                 <li><a href="/contact_database/interface">Contact Database</a></li>
@@ -113,12 +116,13 @@
                 <% elsif current_user.group.level == 3 %>
                 <li><%= link_to "Placement Information", placement_dashboard_industry_path %></li>
                 <% end %>
-                <% if current_user.group.level >= 2 %>
+                <% if current_user.group.level >= 2 && current_user.group.level <= 3  %>
                 <li><%= link_to "Research Participation", illuminet_polymer_path %></li>
                 <% end %>
                 <% if current_user.group.level == 4 %>
                 <li><%= link_to "Management Group", meetings_path %></li>
                 <li><a href="/industries/">Industries</a></li>
+                <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
                 <% end %>
                 <li><%= link_to "My Profile", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>

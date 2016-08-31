@@ -1,0 +1,30 @@
+<%= form_for(student_blog, layout: :basic) do |f| %>
+  <% if student_blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_blog.errors.count, "error") %> prohibited this student_blog from being saved:</h2>
+
+      <ul>
+      <% student_blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :body, id: "mde" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :finished %>
+    <%= f.check_box :finished, label: "Finished? (You can't edit after you finalise)" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

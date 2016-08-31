@@ -1,0 +1,27 @@
+<%= form_for(student_group, layout: :basic) do |f| %>
+  <% if student_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_group.errors.count, "error") %> prohibited this student_group from being saved:</h2>
+
+      <ul>
+      <% student_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :confirmed %>
+    <%= f.check_box :confirmed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :finalised %>
+    <%= f.check_box :finalised %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

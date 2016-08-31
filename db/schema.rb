@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829012345) do
+ActiveRecord::Schema.define(version: 20160831042715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,10 +136,38 @@ ActiveRecord::Schema.define(version: 20160829012345) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "research_scientists", force: :cascade do |t|
+    t.integer  "student_group_id"
+    t.integer  "user_id"
+    t.string   "public_email"
+    t.string   "public_phone"
+    t.text     "public_bio"
+    t.boolean  "enabled"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "signatures", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "form_id"
     t.binary   "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_blogs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "slug"
+    t.text     "body"
+    t.boolean  "finished"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_groups", force: :cascade do |t|
+    t.boolean  "confirmed"
+    t.boolean  "finalised"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -180,6 +208,7 @@ ActiveRecord::Schema.define(version: 20160829012345) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "student_group_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

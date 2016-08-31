@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
+  <%= link_to 'New Blog / Reflection', new_student_blog_path, class: "btn btn-primary" %>
+</div>
+<h1><% if current_user.group.level != 3 %>Pre-Service Teacher<% else %>My<% end %> Blogs</h1>
+<hr>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Finished</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_blogs.each do |student_blog| %>
+      <tr>
+        <td><%= student_blog.title %></td>
+        <td><%= humanise_boolean(student_blog.finished) %></td>
+        <td><%= link_to 'Show', student_blog, class: "btn btn-xs btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_student_blog_path(student_blog), class: "btn btn-xs btn-info" %></td>
+        <td><%= link_to 'Delete', student_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

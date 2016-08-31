@@ -35,4 +35,12 @@ module ApplicationHelper
     end
   end
 
+  def humanise_boolean(boolean)
+    if boolean == true
+      "Yes"
+    else
+      "No"
+    end
+  end
+
 end

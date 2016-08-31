@@ -27,6 +27,9 @@
 <p>Users' Group <br>
   <%= select_tag(:group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level', @User.group_id), { class: "form-control" }) %></p>
 
+<p>Student Group (PSTs Only - <%= link_to "New Student Grouping", student_groups_path %>) <br>
+  <%= select_tag(:student_group_id, options_from_collection_for_select(StudentGroup.all, 'id', 'id_and_count', @User.student_group_id), { class: "form-control", include_blank: "No Group" }) %></p>
+
 <p>Administrative User <br>
   <% if @User.administrator %>
   <%= check_box_tag :administrator, true, checked: true %> <% else %> <%= check_box_tag :administrator, false %> <% end %></p>

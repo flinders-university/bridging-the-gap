@@ -1,0 +1,1 @@
+json.array! @research_scientists, partial: 'research_scientists/research_scientist', as: :research_scientist

@@ -8,11 +8,15 @@ class User < ApplicationRecord
 
   belongs_to :industry, optional: true #sometimes...
 
+  belongs_to :student_group, optional: true #sometimes (if student, if accepted)
+
   after_create :new_user_job_runner
 
   before_destroy :delete_associated
 
   has_many :tasks
+
+  has_many :research_scientists
 
   def setplacement(industry_id)
     self.industry_id = industry_id
