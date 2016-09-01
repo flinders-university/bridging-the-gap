@@ -22,7 +22,7 @@
   <tbody>
     <% @Users.each do |this_user| %>
     <tr class="tr-is-<%= this_user.student_group_id %>
-               tr-is-<%= this_user.major.downcase %>
+               tr-is-<%= this_user.major.downcase.gsub(" ", "-") %>
                tr-is-signed-<% if Signature.where(user_id: this_user.id).count >=1 %>true<%else%>false<%end%>
                tr-is-answered-<% if Answer.where(user_id: this_user.id).count >=1 %>true<% else %>false<% end %>
                tr-is-placed-<% if this_user.industry_id.present? %>true<% else %>false<% end %>
@@ -30,7 +30,7 @@
                tr-is-grouped-<% if this_user.student_group.present? %>true<% else %>false<% end %>
                tr-is-allocated-rs-<% if this_user.student_group.present? && this_user.student_group.research_scientists.count >= 1 %>true<% else %>false<% end %>">
       <td><a href="mailto:<%= this_user.addressable %>"><%= this_user.name %></a> [<%= link_to "Profile", "/usertools/#{this_user.id}" %>] <% if this_user.id == 93 || this_user.id == 99 %><%= icon :star, class: "text-danger", title: "Do not group these students." %><% end %></td>
-      <td class="bold-others is-<%= this_user.major.downcase %>"><%= this_user.major %></td>
+      <td class="bold-others is-<%= this_user.major.downcase.gsub(" ", "-") %>"><%= this_user.major %></td>
       <td class="bold-others is-<%= this_user.student_group_id %>"><%= this_user.student_group_id %></td>
       <td class="bold-others is-signed-<% if Signature.where(user_id: this_user.id).count >=1 %>true<%else%>false<%end%>"><% if Signature.where(user_id: this_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-answered-<% if Answer.where(user_id: this_user.id).count >=1 %>true<% else %>false<% end %>"><% if Answer.where(user_id: this_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
