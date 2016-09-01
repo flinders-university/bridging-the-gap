@@ -1,35 +1,94 @@
+<%= render 'layouts/head' %>
 <% title "Log in" %>
-<h2>Log in</h2>
-<p>Welcome back. For those that know their account details, please enter them below. If you are new to the system by invitation please enter the assigned login information from your welcome email. If you are new, and have not received an invitation please navigate to the sign up page.</p>
-<p><em>This research project has been approved by the Flinders University Social and Behavioural Research Ethics Committee (7391). For more information regarding ethical approval of the project the Executive Officer of the Committee can be contacted by telephone on <a href="tel:08 8201 3116">08 8201 3116</a>, by fax on 08 8201 2035 or by email <a href="mailto:human.researchethics@flinders.edu.au">human.researchethics@flinders.edu.au</a>.</em></p>
-<p>We take your privacy very seriously. All records are confidential, and your data is accessible only by Flinders University staff members.</p>
-<br>
 
-<div class="panel panel-primary center-block" style="padding: 12px; max-width: 800px;">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
+<div class="col-sm-8 hidden-xs jelly-bg">
 
-    <div class="field">
-      <br>
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <br>
-        <%= f.label :remember_me %>
-        <%= f.check_box :remember_me %>
+  <div class="panel-group move-bottom" id="accordion" role="tablist">
+    <div class="panel panel-info">
+      <div class="panel-heading" role="tab" id="headingOne">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Privacy &amp; Ethics &raquo;
+          </a>
       </div>
-    <% end -%>
-
-    <div class="actions">
-      <br>
-      <%= f.submit "Log in", class: "btn btn-primary" %><br><br>
-      <%= render "devise/shared/links" %>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <p><em>This research project has been approved by the Flinders University Social and Behavioural Research Ethics Committee (Project: #7391).</em></p>
+          <p><em>For more information regarding ethical approval of the project the Executive Officer of the Committee can be contacted by telephone on <a href="tel:08 8201 3116">08 8201 3116</a>, by fax on 08 8201 2035 or by email <a href="mailto:human.researchethics@flinders.edu.au">human.researchethics@flinders.edu.au</a>.</em></p>
+          <p>We take your privacy very seriously. All records are confidential, and your data is accessible only by Flinders University staff members.</p>          </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
+<div class="col-sm-4 ov-scrol">
+  <a href="<%= root_url %>"><%= image_tag("logo-on-white-with-letterhead-arb-print.png", class: "img-320 img-margin") %></a>
+
+  <br>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="<%= new_user_session_path %>">Log In</a></li>
+    <li role="presentation"><a href="<%= new_user_registration_path %>">Register</a></li>
+    <li role="presentation" class="hidden-sm"><a href="<%= new_user_password_path %>">Forgot Password</a></li>
+  </ul>
+
+  <br>
+  <% if notice.present? || alert.present? %>
+    <%= alert_box notice || alert, context: :alert, dismissible: true %>
+  <% end %>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field form-group">
+        <%= f.label :email, class: "control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email Address" %>
+      </div>
+
+      <div class="field form-group">
+        <br>
+        <%= f.label :password, class: "control-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <br>
+          <%= f.label :remember_me %>
+          <%= f.check_box :remember_me %> Remember me?
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <br>
+        <%= f.submit "Log in", class: "btn btn-block btn-lg btn-primary disable-border-radius" %><br><br>
+      </div>
+    <% end %>
+
+    <% if request.ssl? %>
+    <p class="text-center small text-muted"><%= icon :lock %> Secure Environment</p>
+    <% else %>
+    <p class="text-center small text-danger"><%= icon :remove %> Insecure Environment</p>
+    <% end %>
+</div>
+
+<script>
+$("#user_email").on('change', function() {
+  if (($("#user_email").val().indexOf("@") >= 1) && ($("#user_email").val().indexOf(".") >= 1)) {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
+  } else {
+    console.log("Email Format Error");
+    $(this).parent().addClass("has-error");
+    $(this).parent().removeClass("has-success");
+  }
+});
+
+$("#user_password").on('change', function() {
+  if ($("#user_password").val().length >= 6) {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
+  } else {
+    console.log("Password Length Error");
+    $(this).parent().addClass("has-error");
+    $(this).parent().removeClass("has-success");
+  }
+});
+</script>
+
+<%= render 'layouts/script_footer' %>

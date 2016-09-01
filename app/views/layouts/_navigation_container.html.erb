@@ -1,0 +1,96 @@
+  <% if !browser.modern? || browser.ie? %>
+  <div class="container-fluid browser-warning">
+    <p class="text-center lead"><a href="http://outdatedbrowser.com/en" target="_BLANK">Warning: Your web browser is not compatible with some important technologies used on this site.</a></p>
+  </div>
+  <% end %>
+  <nav class="navbar navbar-default" id="<% if controller_name == "getting_started" && action_name == "information" %>navbar-hp<% else %>navbar<% end %>">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#btgnv" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px;") %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="btgnv">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", root_url %></li>
+          <% if !current_user.present? %>
+          <!--<%= generate_menu_pages.html_safe %>
+          <li><%= link_to "Blog", blogs_path %></li> -->
+          <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><% if !current_user %>Project <%end%>Information <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% if current_user.present? %>
+              <%= generate_menu_pages.html_safe %>
+              <li><%= link_to "Blog", blogs_path %></li>
+              <% end %>
+              <li><a href="/pages/for-industry">For Partner Industries</a></li>
+              <li><a href="/pages/for-psts">For Pre-Service Teachers</a></li>
+              <!-- <li><a href="/pages/for-universities">For University Staff</a></li> -->
+          </ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="<%= if current_user.present?; current_user.addressable; else "Actions"; end %>"><%= if current_user.present?; current_user.firstname; else "Account"; end; %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% if !current_user %>
+              <li><%= link_to "Sign Up", new_user_registration_path %></a></li>
+              <li><%= link_to "Log In", new_user_session_path %></a></li>
+              <% else %>
+              <% if current_user.administrator? %>
+              <li class="dropdown-header">Adminstrator Tools</li>
+              <li><a href="/pages/">Pages</a></li>
+              <li><a href="/blogs/">Blogs</a></li>
+              <li><a href="/groups/">Groups</a></li>
+              <li><a href="/group_change_requests/">Group Changes</a></li>
+              <li><%= link_to "Student Groups", student_groups_path %></li>
+              <li><a href="/forms/">Forms</a></li>
+              <li><a href="/documents/">Documents</a></li>
+              <li><a href="/i_surveys/">Surveys</a></li>
+              <li><a href="/usertools/">Users</a></li>
+              <li><a href="/tasks/">Tasks</a></li>
+              <li><a href="/meetings/">Meeting Notes</a></li>
+              <li><a href="/industries/">Industries</a></li>
+              <li><a href="/research_scientists/">Research Scientists</a></li>
+              <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
+              <li><%= link_to "PST Readiness", tracking_students_path %></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Databases</li>
+              <li><a href="/contact_database/interface">Contact Database</a></li>
+              <li role="separator" class="divider"></li>
+              <% end %>
+              <% if current_user.group.level == 2 %>
+              <li><%= link_to "Placement Information", placement_dashboard_preservice_teacher_path %></li>
+              <% elsif current_user.group.level == 3 %>
+              <li><%= link_to "Placement Information", placement_dashboard_industry_path %></li>
+              <% end %>
+              <% if current_user.group.level >= 2 && current_user.group.level <= 3  %>
+              <li><%= link_to "Research Participation", illuminet_polymer_path %></li>
+              <% end %>
+              <% if current_user.group.level == 4 %>
+              <li><%= link_to "Management Group", meetings_path %></li>
+              <li><a href="/industries/">Industries</a></li>
+              <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
+              <% end %>
+              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <% if notice.present? || alert.present? %>
+  <div class="clearfix"></div><br>
+  <div class="container">
+    <%= alert_box notice || alert, context: :alert, dismissible: true %>
+  </div>
+  <% end %>

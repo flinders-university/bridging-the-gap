@@ -59,6 +59,13 @@ html, body {
 }
 
 /* Full width heroes */
+.jelly-bg {
+  background: image-url("jelly-lhs.jpg") 50% 50% no-repeat;
+  background-size:cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .jellies {
   background: image-url("jellies.jpeg") 50% 35% no-repeat;
   background-size: cover;
@@ -217,6 +224,18 @@ blockquote {
   padding-right: 45px;
 }
 
+.img-320 {
+  width: 100%;
+  max-width: 320px;
+  display:block;
+}
+
+.img-margin {
+  margin-top: 10px; margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hphref {
   text-decoration: underline;
 }
@@ -247,4 +266,21 @@ blockquote {
   //position: absolute;
   //bottom: 0;
   //left: 50%;
+}
+
+.ov-scrol {
+  display: block;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.disable-border-radius {
+  border-radius: 0px;
+}
+
+.move-bottom {
+  position: absolute;
+  bottom: 0;
+  max-width: 420px;
 }

@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     post "add_user"
   end
 
-  devise_for :users, :controllers => { registrations: 'registrations', confirmations: 'confirmations' }
+  devise_for :users, :controllers => { registrations: 'registrations', confirmations: 'confirmations', sessions: 'sessions' }
 
   get 'getting_started/information'
 
