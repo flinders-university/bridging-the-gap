@@ -93,7 +93,7 @@
                 <% if current_user.administrator? %>
                 <li class="dropdown-header">Adminstrator Tools</li>
                 <li><a href="/pages/">Pages</a></li>
-                <li><a href="/blog/">Blogs</a></li>
+                <li><a href="/blogs/">Blogs</a></li>
                 <li><a href="/groups/">Groups</a></li>
                 <li><a href="/group_change_requests/">Group Changes</a></li>
                 <li><%= link_to "Student Groups", student_groups_path %></li>
@@ -106,6 +106,7 @@
                 <li><a href="/industries/">Industries</a></li>
                 <li><a href="/research_scientists/">Research Scientists</a></li>
                 <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
+                <li><%= link_to "PST Readiness", tracking_students_path %></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Databases</li>
                 <li><a href="/contact_database/interface">Contact Database</a></li>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tracking/students'
+
   resources :research_scientists
   resources :student_groups
   resources :student_blogs
