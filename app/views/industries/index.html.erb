@@ -21,6 +21,8 @@
 <%= icon :bullhorn, title: "Contacted" %> Industry Contacted &nbsp;
 <%= icon :heart, title: "Engaged" %> Industry Engaged
 
+<p><strong>Total:</strong> <%= @industries.count %>. <strong>Total Flinders:</strong> <%= @industries.where(user_id: 1).count + @industries.where(user_id: 85).count %>. <strong>Total DSD:</strong> <%= @industries.where(user_id: 84).count + @industries.where(user_id: 80).count %>.</p>
+
 <script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
