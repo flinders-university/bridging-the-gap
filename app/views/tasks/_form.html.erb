@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :user_id, options_from_collection_for_select(User.where(group_id: 6), 'id', 'addressable', params[:user_id]), label: "Who" %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', params[:user_id]), label: "Who" %>
   </div>
 
   <div class="field">
