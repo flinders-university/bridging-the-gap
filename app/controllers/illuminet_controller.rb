@@ -4,6 +4,9 @@ class IlluminetController < ApplicationController
   before_action :set_group_membership
 
   def polymer
+    if params[:survey] == "ee"
+      flash[:notice] = "Thank you for attempting that survey. You can come back to any unanswered questions at any time below."
+    end
     @forms = Form.where(group_id: current_user.group.id)
     @isurveys = ISurvey.where(group_id: current_user.group.id).where(enabled: true)
     @at_least_one_signature = 0
@@ -21,6 +24,7 @@ class IlluminetController < ApplicationController
     @isurvey = ISurvey.where(group_id: current_user.group.id).where(id: params[:id])
     if @isurvey.count >= 1
       @isurvey = @isurvey.first
+      @iquestions = @isurvey.i_questions
     else
       redirect_to illuminet_polymer_path, alert: "Sorry, that survey isn't available yet."
     end

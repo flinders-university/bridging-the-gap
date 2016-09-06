@@ -11,7 +11,7 @@
     <% survey.i_questions.each do |i_question| %>
     <div class="list-group-item">
       <% if i_question.enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %>
-      <%= i_question.description %>
+      <%= i_question.order.to_s %>. <%= i_question.description %>
       <span class="pull-right">
         <%= link_to 'Details', i_question, class: "btn btn-xs btn-primary" %>
         <%= link_to 'Edit', edit_i_question_path(i_question), class: "btn btn-xs btn-info" %>

@@ -7,74 +7,120 @@
 <h1><%= @isurvey.title %></h1>
 <%= mdrender(@isurvey.description).html_safe %>
 <hr>
+
 <%= form_tag(illuminet_path, method: :post) do %>
   <%= hidden_field_tag(:name, @isurvey.title) %>
-  <% @isurvey.i_questions.each do |question|; if question.enabled %>
-  <p><%= question.description %></p>
-  <% case question.input_type %>
-  <% when 1 %>
-  <%= text_area_tag question.id, "", id: "mde" %>
-  <% when 2 %>
-  <%= text_field_tag question.id, "", class: "form-control" %>
-  <% when 3 %>
-  <div class="row text-center" id="<%= question.id %>">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-2">
-      <label>Strongly Disagree<br>
-        <%= radio_button_tag(question.id, 1) %></label>
+  <% @isurvey.i_questions.order(:order).each do |question|; if question.enabled; if !Answer.where(survey_id: @isurvey.id, question_id: question.id, user_id: current_user.id).present? %>
+  <div class="grouping-value-<%= question.grouping_value %> question-<%= question.order %> g-<%= question.grouping_value %>-q-<%= question.order %>">
+    <p><% if question.input_type == 6 %><strong><% end %><%= question.order %>. <%= question.description %><% if question.input_type == 6 %></strong><% end %></p>
+    <% case question.input_type %>
+    <% when 1 %>
+    <%= text_area_tag question.id, "", id: "mde" %>
+    <% when 2 %>
+    <%= text_field_tag question.id, "", class: "form-control" %>
+    <% when 3 %>
+    <div class="row text-center" id="<%= question.id %>">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-2">
+        <label>Strongly Disagree<br>
+          <%= radio_button_tag(question.id, 1) %></label>
+      </div>
+      <div class="col-xs-2">
+        <label>Disagree<br>
+          <%= radio_button_tag(question.id, 2) %></label>
+      </div>
+      <div class="col-xs-2">
+        <label>Uncertain<br>
+          <%= radio_button_tag(question.id, 3) %></label>
+      </div>
+      <div class="col-xs-2">
+        <label>Agree<br>
+          <%= radio_button_tag(question.id, 4) %></label>
+      </div>
+      <div class="col-xs-2">
+        <label>Strongly Agree<br>
+          <%= radio_button_tag(question.id, 5) %></label>
+      </div>
     </div>
-    <div class="col-xs-2">
-      <label>Disagree<br>
-        <%= radio_button_tag(question.id, 2) %></label>
-    </div>
-    <div class="col-xs-2">
-      <label>Uncertain<br>
-        <%= radio_button_tag(question.id, 3, "selected") %></label>
-    </div>
-    <div class="col-xs-2">
-      <label>Agree<br>
-        <%= radio_button_tag(question.id, 4) %></label>
-    </div>
-    <div class="col-xs-2">
-      <label>Strongly Agree<br>
-        <%= radio_button_tag(question.id, 5) %></label>
-    </div>
-  </div>
-  <% when 4 %>
-  <label><%= check_box_tag question.id %> Yes</label>
-  <% when 5 %>
-  <label><%= check_box_tag question.id, required: "required" %> I Agree</label> <span class="text-danger">You must accept this question to continue.</span>
-  <% end %>
-  <script>
-  // For each q.id run a script to eval click or change by user (and save it)
-  $("#<%= question.id %>").click(function(){
-      $(this).find('input:checked').each(function(){
-        // Only for the likert scales
+    <% when 4 %>
+    <label><%= check_box_tag question.id %> Yes</label>
+    <% when 5 %>
+    <label><%= check_box_tag question.id, required: "required" %> I Agree</label> <span class="text-danger">You must accept this question to continue.</span>
+    <% when 6 %>
+    <%= mdrender(question.comment).html_safe %>
+    <div class="clearfix"></div>
+    <% end %>
+    <script>
+    // For each q.id run a script to eval click or change by user (and save it)
+    $("#<%= question.id %>").click(function(){
+        $(this).find('input:checked').each(function(){
+          // Only for the likert scales
+          console.log("Q#" + $(this).attr('name') + " A: " + $(this).val());
+          save_input($(this).attr('name'), $(this).val());
+        });
+    });
+
+    $("#<%= question.id %>").change(function() {
+      // For other types, eval the q & a values...
+      if ($(this).attr('type') == "checkbox") {
+        console.log("Q#" + $(this).attr('name') + " A: " + $(this).is(':checked'));
+        save_input($(this).attr('name'), $(this).is(':checked'), true);
+      } else if ($(this).attr('type') == "text") {
         console.log("Q#" + $(this).attr('name') + " A: " + $(this).val());
         save_input($(this).attr('name'), $(this).val());
-      });
-  });
+      } else {
+        // Don't do anything, not handled yet.
+      }
+    });
+    </script>
+    <hr>
+  </div>
+  <% end; end; end %>
 
-  $("#<%= question.id %>").change(function() {
-    // For other types, eval the q & a values...
-    if ($(this).attr('type') == "checkbox") {
-      console.log("Q#" + $(this).attr('name') + " A: " + $(this).is(':checked'));
-      save_input($(this).attr('name'), $(this).is(':checked'), true);
-    } else if ($(this).attr('type') == "text") {
-      console.log("Q#" + $(this).attr('name') + " A: " + $(this).val());
-      save_input($(this).attr('name'), $(this).val());
-    } else {
-      // Don't do anything, not handled yet.
-    }
-  });
-
-  </script>
-  <hr>
-  <% end; end %>
-  <p class='text-center'><%= submit_tag("Finish Survey", class: "btn btn-lg btn-primary") %></p>
+  <nav class="text-center" aria-label="question_groups">
+    <p class="qhme" style="margin-bottom: -4px;" class="next">Choose a section to go to next:</p>
+    <p class="fsme" style="margin-bottom: -4px;">Choose a section to start:</p>
+    <ul class="pagination pagination-lg">
+    <% @iquestions.order(:grouping_value).group_by(&:grouping_value).each do |question| %>
+      <li>
+        <a class="group_toggle" id="qg-<%= question.first %>" href="#/show/question-group/<%= question.first %>">
+          <%= question.first %>
+        </a>
+      </li>
+    <% end %>
+      <li>
+        <%= link_to "Finish Survey »", "#{illuminet_polymer_path}?survey=ee" %> 
+      </li>
+    </ul>
+  </nav>
 <% end %>
 
 <script>
+
+function reset() {
+  <% @iquestions.group_by(&:grouping_value).each do |question| %>
+    $(".grouping-value-<%= question.second.first.grouping_value %>").hide();
+    $("#qg-<%= question.second.first.grouping_value %>").parent().removeClass("active");
+  <% end %>
+}
+
+$(document).ready( function() {
+  $(".qhme").hide();
+  <% @iquestions.group_by(&:grouping_value).each do |question| %>
+    $(".grouping-value-<%= question.second.first.grouping_value %>").hide();
+  <% end %>
+});
+
+<% @iquestions.group_by(&:grouping_value).each do |question| %>
+$("#qg-<%= question.second.first.grouping_value %>").click( function () {
+  reset();
+  $(".fsme").fadeOut(300);
+  $(".qhme").show();
+  $("#qg-<%= question.second.first.grouping_value %>").parent().addClass("active");
+  $(".grouping-value-<%= question.second.first.grouping_value %>").fadeIn(300);
+});
+<% end %>
+
 // Save the user input to the database!
 var save_input = function(question, answer, cbx) {
   // alert(question + " " + answer);

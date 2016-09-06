@@ -60,10 +60,10 @@
     <div class="list-group-item">
       [Enabled] Question <span class="pull-right">Actions</span>
     </div>
-    <% @i_survey.i_questions.each do |i_question| %>
+    <% @i_survey.i_questions.order(:order).each do |i_question| %>
     <div class="list-group-item">
       <% if i_question.enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= i_question.description %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= i_question.order %>. <%= i_question.description %>
       <span class="pull-right">
         <%= link_to 'Details', i_question, class: "btn btn-xs btn-primary" %>
         <%= link_to 'Edit', edit_i_question_path(i_question), class: "btn btn-xs btn-info" %>

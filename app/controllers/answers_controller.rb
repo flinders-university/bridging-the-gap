@@ -65,7 +65,7 @@ class AnswersController < ApplicationController
           if q.present?
             qdes = q.description
           else
-            qdes = "Missing question"
+            qdes = "Orphaned question"
           end
 
           s = ISurvey.find_by_id(params[:survey_id])
@@ -73,9 +73,9 @@ class AnswersController < ApplicationController
           if s.present?
             sdes = s.title
           else
-            sdes = "Missing survey"
+            sdes = "Orphaned survey"
           end
-          sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "[#{sdes}] #{qdes}:", params[:answer])
+          #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "[#{sdes}] #{qdes}:", params[:answer])
 
           render json:{"continue" => true}
         else
@@ -85,7 +85,7 @@ class AnswersController < ApplicationController
       if !@created && answer
         answer.answer = params[:answer]
         if answer.save
-          sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "Updated Answer: ", params[:answer])
+          #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "Updated Answer: ", params[:answer])
           render json:{"continue" => true}
         else
           render json:{"continue" => false}

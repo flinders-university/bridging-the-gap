@@ -19,12 +19,12 @@
   <div class="panel-heading">Readiness Check</div>
   <div class="list-group">
     <div class="list-group-item"><span class="text-success"><%= icon :ok %> you are a member of the <%= current_user.group.name %> group.</span></div>
-    <div class="list-group-item"><% if @at_least_one_signature >= 1 %><span class="text-success"><%= icon :ok %> you have signed <%= @at_least_one_signature.humanize %> consent form(s).<% else %><span class="text-danger"><%= icon :remove %> you have not signed any consent forms.</span><% end %></div>
+    <div class="list-group-item"><% if @at_least_one_signature >= 1 %><span class="text-success"><%= icon :ok %> you have signed <%= @at_least_one_signature.humanize %> focus group consent form(s).<% else %><span class="text-danger"><%= icon :remove %> you have not signed any focus group consent forms.</span><% end %></div>
     <div class="list-group-item"><% if @isurveys.count >= 1 %><span class="text-success"><%= icon :ok %> surveys are available.</span><% else %><span class="text-warning"><%= icon :link %> there are no new surveys at this time.</span><% end %></div>
   </div>
 </div>
 
-<% if @at_least_one_signature >= 1 %>
+<% if @at_least_one_signature >= 0 %>
 
   <% i = 1; @show_link = false; @isurveys.each do |survey| %>
   <div class="panel panel-tertiary">

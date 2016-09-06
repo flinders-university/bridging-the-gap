@@ -5,7 +5,7 @@ class IQuestionsController < ApplicationController
   # GET /i_questions
   # GET /i_questions.json
   def index
-    @i_questions = IQuestion.all
+    @i_questions = IQuestion.all.order(:order)
     @i_surveys = ISurvey.all
   end
 
@@ -30,7 +30,7 @@ class IQuestionsController < ApplicationController
 
     respond_to do |format|
       if @i_question.save
-        format.html { redirect_to @i_question, notice: 'Question was successfully created.' }
+        format.html { redirect_to new_i_question_path, notice: "Question ##{@i_question.order} was successfully created." }
         format.json { render :show, status: :created, location: @i_question }
       else
         format.html { render :new }
@@ -80,6 +80,6 @@ class IQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def i_question_params
-      params.require(:i_question).permit(:i_survey_id, :input_type, :description, :grouping_value, :enabled, :comment)
+      params.require(:i_question).permit(:i_survey_id, :input_type, :description, :grouping_value, :enabled, :comment, :order)
     end
 end

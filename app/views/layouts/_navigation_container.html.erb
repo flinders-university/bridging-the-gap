@@ -88,9 +88,15 @@
     </div>
   </nav>
 
-  <% if notice.present? || alert.present? %>
+  <% if notice.present? %>
   <div class="clearfix"></div><br>
   <div class="container">
-    <%= alert_box notice || alert, context: :alert, dismissible: true %>
+    <%= alert_box notice, context: :success, dismissible: true %>
+  </div>
+  <% end %>
+  <% if alert.present? %>
+  <div class="clearfix"></div><br>
+  <div class="container">
+    <%= alert_box alert, context: :alert, dismissible: true %>
   </div>
   <% end %>
