@@ -6,6 +6,8 @@ class IlluminetController < ApplicationController
   def polymer
     if params[:survey] == "ee"
       flash[:notice] = "Thank you for attempting that survey. You can come back to any unanswered questions at any time below."
+    else
+      flash[:notice] = nil
     end
     @forms = Form.where(group_id: current_user.group.id)
     @isurveys = ISurvey.where(group_id: current_user.group.id).where(enabled: true)

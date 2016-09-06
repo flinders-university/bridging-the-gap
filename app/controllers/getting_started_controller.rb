@@ -8,9 +8,8 @@ class GettingStartedController < ApplicationController
   end
 
   def welcome
-    if current_user.group.level == 4
-      @Tasks = Task.where(user_id: current_user.id, visible: true).order(:when)
-    end
+    @Tasks = Task.where(user_id: current_user.id, visible: true).order(:when)
+    flash[:notice] = nil
   end
 
   def mark_task_complete
