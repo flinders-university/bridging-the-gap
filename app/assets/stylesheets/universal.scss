@@ -284,3 +284,141 @@ blockquote {
   bottom: 0;
   max-width: 420px;
 }
+
+$secondary-color: #ffd049;
+
+.btn-secondary {
+  color: #ffffff;
+  background-color: $secondary-color;
+  border-color: darken($secondary-color, 5%);
+}
+.btn-secondary:focus,
+.btn-secondary.focus {
+  color: #ffffff;
+  background-color: darken($secondary-color, 10%);
+  border-color: darken($secondary-color, 15%);
+}
+.btn-secondary:hover {
+  color: #ffffff;
+  background-color: darken($secondary-color, 10%);
+  border-color: darken($secondary-color, 15%);
+}
+.btn-secondary:active,
+.btn-secondary.active,
+.open > .dropdown-toggle.btn-secondary {
+  color: #ffffff;
+  background-color: darken($secondary-color, 10%);
+  border-color: darken($secondary-color, 15%);
+}
+.btn-secondary:active:hover,
+.btn-secondary.active:hover,
+.open > .dropdown-toggle.btn-secondary:hover,
+.btn-secondary:active:focus,
+.btn-secondary.active:focus,
+.open > .dropdown-toggle.btn-secondary:focus,
+.btn-secondary:active.focus,
+.btn-secondary.active.focus,
+.open > .dropdown-toggle.btn-secondary.focus {
+  color: #ffffff;
+  background-color: $secondary-color;
+  border-color: darken($secondary-color, 5%);
+}
+.btn-secondary:active,
+.btn-secondary.active,
+.open > .dropdown-toggle.btn-secondary {
+  background-image: none;
+}
+.btn-secondary.disabled:hover,
+.btn-secondary[disabled]:hover,
+fieldset[disabled] .btn-secondary:hover,
+.btn-secondary.disabled:focus,
+.btn-secondary[disabled]:focus,
+fieldset[disabled] .btn-secondary:focus,
+.btn-secondary.disabled.focus,
+.btn-secondary[disabled].focus,
+fieldset[disabled] .btn-secondary.focus {
+  background-color: $secondary-color;
+  border-color: darken($secondary-color, 5%);
+}
+.btn-secondary .badge {
+  color: $secondary-color;
+  background-color: #ffffff;
+}
+
+$tertiary-color: #032f61;
+
+.btn-tertiary {
+  color: #ffffff;
+  background-color: $tertiary-color;
+  border-color: darken($tertiary-color, 5%);
+}
+.btn-tertiary:focus,
+.btn-tertiary.focus {
+  color: #ffffff;
+  background-color: darken($tertiary-color, 5%);
+  border-color: darken($tertiary-color, 10%);
+}
+.btn-tertiary:hover {
+  color: #ffffff;
+  background-color: darken($tertiary-color, 5%);
+  border-color: darken($tertiary-color, 10%);
+}
+.btn-tertiary:active,
+.btn-tertiary.active,
+.open > .dropdown-toggle.btn-tertiary {
+  color: #ffffff;
+  background-color: darken($tertiary-color, 5%);
+  border-color: darken($tertiary-color, 10%);
+}
+.btn-tertiary:active:hover,
+.btn-tertiary.active:hover,
+.open > .dropdown-toggle.btn-tertiary:hover,
+.btn-tertiary:active:focus,
+.btn-tertiary.active:focus,
+.open > .dropdown-toggle.btn-tertiary:focus,
+.btn-tertiary:active.focus,
+.btn-tertiary.active.focus,
+.open > .dropdown-toggle.btn-tertiary.focus {
+  color: #ffffff;
+  background-color: $tertiary-color;
+  border-color: darken($tertiary-color, 5%);
+}
+.btn-tertiary:active,
+.btn-tertiary.active,
+.open > .dropdown-toggle.btn-tertiary {
+  background-image: none;
+}
+.btn-tertiary.disabled:hover,
+.btn-tertiary[disabled]:hover,
+fieldset[disabled] .btn-tertiary:hover,
+.btn-tertiary.disabled:focus,
+.btn-tertiary[disabled]:focus,
+fieldset[disabled] .btn-tertiary:focus,
+.btn-tertiary.disabled.focus,
+.btn-tertiary[disabled].focus,
+fieldset[disabled] .btn-tertiary.focus {
+  background-color: $tertiary-color;
+  border-color: darken($tertiary-color, 5%);
+}
+.btn-tertiary .badge {
+  color: $tertiary-color;
+  background-color: #ffffff;
+}
+
+.text-danger>a:link {
+  color: #e46763;
+}
+
+  .text-danger>a:hover {
+    color: darken(#e46763, 30%) !important;
+  }
+
+.dropdown-header {
+  text-transform: none !important;
+}
+
+.table-block {
+  display: block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}

@@ -10,41 +10,15 @@
 <p>Welcome to your <%= t(:project) %> participation dashboard. Thank you for registering.</p>
 <% end %>
 <p>You can return to this page at any time by clicking the 'home' button in the main menu. You can also directly access many relevant tools by clicking your name in the main menu.</p>
-<% if current_user.group.level == 2 %>
-<hr>
-<table class="table table-striped table-rotated">
-  <thead>
-    <tr>
-      <th width="80%">Person</th>
-      <th width="20"><span>Research Consent</span></th>
-      <th width="20"><span>Surveys Complete</span></th>
-      <th width="20"><span>Placement Allocated</span></th>
-      <th width="20"><span>Placement Available</span></th>
-      <th width="20"><span>Placement Group Allocated</span></th>
-      <th width="20"><span>Research Scientist Allocated</span></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= current_user.name %></td>
-      <td><% if Signature.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if Answer.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if current_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+
 <% if @Tasks.present? %>
 <hr>
-<p><strong>Your pending actions:</strong></p>
+<p><strong>Requested actions:</strong></p>
 <div class="list-group">
   <% @Tasks.each do |task| %>
-  <div class="list-group-item<% if task.completed %> disabled" style="max-height: 41px;"<% else %>"<% end %>>
+  <div class="list-group-item<% if task.completed %> disabled" style="max-height: 41px;"<% else %> list-group-item-danger"<% end %>>
     <div class="col-md-6"><%= task.title %></div>
-    <div class="col-md-3"><% if !task.completed %>Please complete by: <% end %><%= task.when.strftime("%B %-d, %Y") %></div>
+    <div class="col-md-3"><% if !task.completed %>Please complete by: <br><% end %><%= task.when.strftime("%B %-d, %Y") %></div>
     <% if task.completed %>
     <div class="col-md-3"><p class="text-success">Task Completed (<%= task.updated_at.strftime("%B %-d, %Y") %>)</p></div>
     <div class="clearfix"></div>
@@ -57,9 +31,38 @@
   <% end %>
 </div>
 <hr>
-<% else %>
-<br>
 <% end %>
+<% if current_user.group.level == 2 %>
+<table class="table table-striped table-rotated table-block">
+  <thead>
+    <tr>
+      <th width="80%">Person</th>
+      <th width="20"><span>Research Consent</span></th>
+      <th width="20"><span>Focus Group Booked</span></th>
+      <th width="20"><span>Surveys Complete</span></th>
+      <th width="20"><span>Profile Up To Date</span></th>
+      <th width="20"><span>Placement Allocated</span></th>
+      <th width="20"><span>Placement Available</span></th>
+      <th width="20"><span>Placement Group Allocated</span></th>
+      <th width="20"><span>Research Scientist Allocated</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_user.name %></td>
+      <td><% if Signature.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if FgBooking.where(user_id: current_user.id).count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if Answer.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.gender.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).active %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+<br>
 <div class="row">
   <div class="col-xs-6">
     <% if current_user.group.level == 4 %>
@@ -105,6 +108,14 @@
     <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-info btn-block btn-lg" %>
   </div>
 </div>
+<br>
+<% if FgBooking.where(user_id: current_user.id).count < 1 %>
+  <%= link_to "Book Focus Group Time", new_fg_booking_path, class: "btn btn-block btn-lg btn-secondary" %>
+  <br>
+<% end %>
+<div class="clearfix"></div>
+<a href="/pages/pst-learning-resources" class="btn btn-block btn-lg btn-tertiary">Learning Resources</a>
+<div class="clearfix"></div>
 <% end %>
 <% if current_user.group.level == 4 %>
 <br>

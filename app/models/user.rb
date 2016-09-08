@@ -42,6 +42,11 @@ class User < ApplicationRecord
     '"' + self.name + '" <' + self.email + '>'
   end
 
+  def name_and_email
+    self.name + " " + self.email
+  end
+
+
   def new_user_job_runner
 	  NewUserPostTasksJob.perform_later(self)
   end

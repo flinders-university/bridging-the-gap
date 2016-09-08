@@ -3,7 +3,7 @@
   <br>
   <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
 </div>
-<h1>Your Groups Research Scientist Details</h1>
+<h1>Your Groups' Research Scientist Details</h1>
 <hr>
 
 <% if current_user_administrator? %>
@@ -19,13 +19,18 @@
 <% end %>
 
 <p>
+  <strong>Name:</strong>
+  <%= @research_scientist.user.name %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= link_to @research_scientist.public_email, "mailto:#{@research_scientist.public_email}" %>
 </p>
 
 <% if @research_scientist.public_phone.present? %>
 <p>
-  <strong>Public phone:</strong>
+  <strong>Phone:</strong>
   <%= link_to @research_scientist.public_phone, "tel:#{@research_scientist.public_phone}" %>
 </p>
 <% end %>

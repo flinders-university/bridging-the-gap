@@ -3,7 +3,13 @@ class GettingStartedController < ApplicationController
 
   def information
     if current_user.present?
-      redirect_to getting_started_welcome_path
+      if notice
+        redirect_to getting_started_welcome_path, notice: "#{notice}"
+      elsif alert
+        redirect_to getting_started_welcome_path, alert: "#{alert}"
+      else
+        redirect_to getting_started_welcome_path
+      end
     end
   end
 

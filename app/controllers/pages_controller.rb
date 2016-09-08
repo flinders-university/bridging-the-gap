@@ -16,6 +16,16 @@ class PagesController < ApplicationController
 
     else
       #Evaluate users group...
+      if @page.group_id == 0 || @page.group_id == nil
+      else
+        if !current_user
+          redirect_to new_user_session_path, notice: "Sorry, you need to log in to access that resource."
+        elsif current_user.group.level == 0
+          redirect_to edit_user_registration_path, notice: "Sorry, you're not in the correct group to access this resource."
+        else
+          # Okay!
+        end
+      end
     end
   end
 

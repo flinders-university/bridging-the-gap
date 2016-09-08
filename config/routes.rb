@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :fg_bookings
+  
   get 'tracking/students'
 
   resources :research_scientists

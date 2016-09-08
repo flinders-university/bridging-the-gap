@@ -1,0 +1,29 @@
+<% title "Focus Group Bookings" %>
+<h1>Focus Group Bookings</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Slot</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fg_bookings.each do |fg_booking| %>
+      <tr>
+        <td><%= fg_booking.user.name %></td>
+        <td><%= fg_booking.booking %></td>
+        <td><%= link_to 'Edit', edit_fg_booking_path(fg_booking) %></td>
+        <td><%= link_to 'Destroy', fg_booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--
+<br>
+
+<%= link_to 'New Fg Booking', new_fg_booking_path %>
+-->

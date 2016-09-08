@@ -1,0 +1,1 @@
+json.array! @fg_bookings, partial: 'fg_bookings/fg_booking', as: :fg_booking

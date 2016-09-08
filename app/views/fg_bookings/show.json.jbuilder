@@ -1,0 +1,1 @@
+json.partial! "fg_bookings/fg_booking", fg_booking: @fg_booking

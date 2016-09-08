@@ -58,29 +58,45 @@
               <li><a href="/meetings/">Meeting Notes</a></li>
               <li><a href="/industries/">Industries</a></li>
               <li><a href="/research_scientists/">Research Scientists</a></li>
+              <li><a href="/fg_bookings/">Focus Group Bookings</a></li>
               <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
               <li><%= link_to "PST Readiness", tracking_students_path %></li>
+              <li><%= link_to "Research Scientists", research_scientists_path %></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Databases</li>
               <li><a href="/contact_database/interface">Contact Database</a></li>
               <li role="separator" class="divider"></li>
               <% end %>
               <% if current_user.group.level == 2 %>
+              <li class="dropdown-header">Placement</li>
               <li><%= link_to "Placement Information", placement_dashboard_preservice_teacher_path %></li>
+              <% if current_user.student_group_id.present? %>
+              <li><%= link_to "Placement Group Members", student_group_path(current_user.student_group_id) %></li>
+              <% end %>
+              <% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %>
+              <li><%= link_to "Research Scientist Information", research_scientist_path(current_user.student_group.research_scientists.last.id) %></li>
+              <% end %>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Research</li>
+              <li><%= link_to "Surveys and Research", illuminet_polymer_path %></li>
+              <li><%= link_to "Focus Group Consent", new_signature_path %></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Learning</li>
+              <li><%= link_to "Reflective Blog", student_blogs_path %></li>
+              <li><%= link_to "Learning Resources", "/pages/pst-learning-resources" %></li>
               <% elsif current_user.group.level == 3 %>
               <li><%= link_to "Placement Information", placement_dashboard_industry_path %></li>
-              <% end %>
-              <% if current_user.group.level >= 2 && current_user.group.level <= 3  %>
-              <li><%= link_to "Research Participation", illuminet_polymer_path %></li>
+              <li><%= link_to "Surveys & Research", illuminet_polymer_path %></li>
               <% end %>
               <% if current_user.group.level == 4 %>
               <li><%= link_to "Management Group", meetings_path %></li>
               <li><a href="/industries/">Industries</a></li>
               <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
               <% end %>
-              <li><%= link_to "My Profile", edit_user_registration_path %></li>
               <li role="separator" class="divider"></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
+              <li class="dropdown-header">Profile</li>
+              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <li class="text-danger"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
               <% end %>
             </ul>
           </li>
@@ -89,13 +105,13 @@
     </div>
   </nav>
 
-  <% if notice.present? %>
+  <% if notice %>
   <div class="clearfix"></div><br>
   <div class="container">
-    <%= alert_box notice, context: :success, dismissible: true %>
+    <%= alert_box notice, context: :alert, dismissible: true %>
   </div>
   <% end %>
-  <% if alert.present? %>
+  <% if alert %>
   <div class="clearfix"></div><br>
   <div class="container">
     <%= alert_box alert, context: :alert, dismissible: true %>
