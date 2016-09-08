@@ -44,24 +44,35 @@
               <li><%= link_to "Log In", new_user_session_path %></a></li>
               <% else %>
               <% if current_user.administrator? %>
-              <li class="dropdown-header">Adminstrator Tools</li>
+              <li class="dropdown-header">Page Tools</li>
               <li><a href="/pages/">Pages</a></li>
               <li><a href="/blogs/">Blogs</a></li>
+              <li><a href="/documents/">Documents</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Group Tools</li>
               <li><a href="/groups/">Groups</a></li>
               <li><a href="/group_change_requests/">Group Changes</a></li>
               <li><%= link_to "Student Groups", student_groups_path %></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Research Tools</li>
               <li><a href="/forms/">Forms</a></li>
-              <li><a href="/documents/">Documents</a></li>
               <li><a href="/i_surveys/">Surveys</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">User Tools</li>
               <li><a href="/usertools/">Users</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Management Tools</li>
               <li><a href="/tasks/">Tasks</a></li>
               <li><a href="/meetings/">Meeting Notes</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Person Allocation</li>
               <li><a href="/industries/">Industries</a></li>
-              <li><a href="/research_scientists/">Research Scientists</a></li>
+              <li><%= link_to "Research Scientists", research_scientists_path %></li>
               <li><a href="/fg_bookings/">Focus Group Bookings</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">PST Assessment</li>
               <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
               <li><%= link_to "PST Readiness", tracking_students_path %></li>
-              <li><%= link_to "Research Scientists", research_scientists_path %></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Databases</li>
               <li><a href="/contact_database/interface">Contact Database</a></li>
@@ -89,6 +100,7 @@
               <li><%= link_to "Surveys & Research", illuminet_polymer_path %></li>
               <% end %>
               <% if current_user.group.level == 4 %>
+              <li class="dropdown-header">Tools</li>
               <li><%= link_to "Management Group", meetings_path %></li>
               <li><a href="/industries/">Industries</a></li>
               <li><%= link_to "PSTs Blogs", student_blogs_path %></li>
