@@ -15,10 +15,10 @@ Devise.setup do |config|
   config.mailer_sender = "Bridging the Gap <no-reply@bridgingthegap.edu.au>"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'CustomDeviseMailer'
 
   # Configure the parent class responsible to send e-mails.
-  config.parent_mailer = 'CustomDeviseMailer'
+  config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
