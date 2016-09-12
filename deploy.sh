@@ -1,3 +1,4 @@
+#/bin/bash
 cd /home/aidancornelius/projects/bridging-the-gap/
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
