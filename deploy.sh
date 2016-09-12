@@ -1,4 +1,5 @@
 #/bin/bash
+# Do not move this script! This deploys the Puma server on the remote host (git hook)
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
   source "$HOME/.rvm/scripts/rvm"
 elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
