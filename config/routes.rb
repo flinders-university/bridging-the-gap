@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :fg_bookings
-  
+
+  get 'navigation_map', to: 'navigation_map#index'
+
   get 'tracking/students'
 
   resources :research_scientists
