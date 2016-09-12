@@ -6,6 +6,8 @@ elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
 else
   printf "ERROR: An RVM installation was not found.\n"
 fi
+echo '* Loading Secrets'
+[[ -f ~/.environment_secrets ]] && . ~/.environment_secrets
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
 echo '* Restarting Ruby server - Puma'
