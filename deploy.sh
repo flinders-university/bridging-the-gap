@@ -1,5 +1,5 @@
 #/bin/bash
-cd /home/aidancornelius/projects/bridging-the-gap/
+rvm repair all
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
 echo '* Restarting Ruby server - Puma'
