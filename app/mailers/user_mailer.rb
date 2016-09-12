@@ -2,6 +2,8 @@ class UserMailer < ApplicationMailer
   default from: "Bridging the Gap <no-reply@bridgingthegap.edu.au>",
           reply_to: 'aidan.cornelius-bell@flinders.edu.au'
 
+  helper :application
+  
   # Send this with UserMailer.welcome_email(@user).deliver_later
   def welcome_email(user)
     @user = user
