@@ -49,6 +49,7 @@ class User < ApplicationRecord
 
   def new_user_job_runner
 	  NewUserPostTasksJob.perform_later(self)
+    UserMailer.welcome_email(self).deliver_now
   end
 
   private

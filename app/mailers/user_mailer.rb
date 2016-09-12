@@ -1,5 +1,6 @@
 class UserMailer < ApplicationMailer
-  default from: 'no-reply@bridgingthegap.edu.au'
+  default from: "Bridging the Gap <no-reply@bridgingthegap.edu.au>",
+          reply_to: 'aidan.cornelius-bell@flinders.edu.au'
 
   # Send this with UserMailer.welcome_email(@user).deliver_later
   def welcome_email(user)
@@ -12,5 +13,5 @@ class UserMailer < ApplicationMailer
     @focus_group = focus_group
     mail(to: @user.addressable, subject: "Focus Group Booking Confirmation")
   end
-  
+
 end
