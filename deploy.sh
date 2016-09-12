@@ -1,5 +1,6 @@
 #/bin/bash
-rvm repair all
+/usr/local/rvm/bin/rvm use 2.3.1
+/usr/local/rvm/bin/rvm repair all
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
 echo '* Restarting Ruby server - Puma'
@@ -13,5 +14,5 @@ for KILLPID in `ps ax | grep 'foreman' | awk ' { print $1;}'`; do
 done
 echo '** Restarting server...'
 /usr/local/rvm/gems/ruby-2.3.1/bin/foreman start -f /home/aidancornelius/projects/bridging-the-gap/Procfile &
-echo 
+echo
 echo '* Deploy Complete'
