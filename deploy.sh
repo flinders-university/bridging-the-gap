@@ -20,6 +20,6 @@ for KILLPID in `ps ax | grep 'foreman' | awk ' { print $1;}'`; do
   kill -9 $KILLPID > /dev/null;
 done
 echo '** Restarting server...'
-puma --dir /home/aidancornelius/projects/bridging-the-gap/ &
+puma --dir /home/aidancornelius/projects/bridging-the-gap/ -c /home/aidancornelius/projects/bridging-the-gap/config/puma.rb &
 echo
 echo '* Deploy Complete'
