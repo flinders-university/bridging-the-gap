@@ -5,6 +5,11 @@
   <%= link_to "Exit Survey", illuminet_polymer_path, class: "btn btn-primary" %>
 </div>
 <h1><%= @isurvey.title %></h1>
+<% if current_user.group.level == 2 %>
+  <% if !current_user.gender.present? %>
+  <p class="text-danger">Your profile is not complete, please <a href="<%= edit_user_profile_path %>">update all the entries in your profile</a> before submitting this survey.</p>
+  <% end %>
+<% end %>
 <%= mdrender(@isurvey.description).html_safe %>
 <hr>
 
@@ -89,7 +94,7 @@
       </li>
     <% end %>
       <li>
-        <%= link_to "Finish Survey »", "#{illuminet_polymer_path}?survey=ee" %> 
+        <%= link_to "Finish Survey »", "#{illuminet_polymer_path}?survey=ee" %>
       </li>
     </ul>
   </nav>
