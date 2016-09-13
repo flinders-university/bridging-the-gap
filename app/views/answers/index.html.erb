@@ -11,10 +11,10 @@
 <% @surveys.each do |survey| %>
 <div class="panel panel-tertiary">
   <div class="panel-heading">
-    <%= survey.title %>
+    <%= survey.title %> <span class="pull-right"><a href="#collapse-<%= survey.id %>" id="collapse-<%= survey.id %>" class="btn btn-default btn-xs">Toggle Answers</a></span>
   </div>
-  <div class="list-group">
-    <% survey.i_questions.each do |question| %>
+  <div class="list-group collapse-<%= survey.id %>">
+    <% survey.i_questions.order(:order).each do |question| %>
     <div class="list-group-item"><%= question.description %></div>
       <% @answers.where(:survey_id => survey.id, :question_id => question.id).each do |answer| %>
         <% @users[answer.user_id] ||= User.find_by_id(answer.user_id) %>
@@ -26,4 +26,13 @@
     <%= link_to "Export Data", "/answers/export/" + survey.id.to_s %>
   </div>
 </div>
+<script>
+$("#collapse-<%= survey.id %>").click(function() {
+  if( $(".collapse-<%= survey.id %>").is('visible')) {
+    $(".collapse-<%= survey.id %>").hide()
+  } else {
+    $(".collapse-<%= survey.id %>").show()
+  }
+})
+</script>
 <% end %>
