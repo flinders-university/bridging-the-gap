@@ -28,7 +28,7 @@
 </div>
 <script>
 $("#collapse-<%= survey.id %>").click(function() {
-  if( $(".collapse-<%= survey.id %>").is('visible')) {
+  if( $(".collapse-<%= survey.id %>").is(':visible')) {
     $(".collapse-<%= survey.id %>").hide()
   } else {
     $(".collapse-<%= survey.id %>").show()
