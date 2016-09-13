@@ -126,8 +126,8 @@ class AnswersController < ApplicationController
         group = answer.group
 
         if @answers_ud[user.id].present?
-          @answers_ud[user.id]["#{question.description}"] = answer.answer
-          @answers_noud[user.id]["#{question.description}"] = answer.answer
+          @answers_ud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
+          @answers_noud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
         else
           @answers_ud[user.id] = {
             "First Name" => user.firstname,
@@ -135,12 +135,12 @@ class AnswersController < ApplicationController
             "Group" => group.name,
             "Survey Name" => question.i_survey.title,
             "Survey ID" => question.i_survey.id,
-            "#{question.description}" => answer.answer
+            "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
           }
           @answers_noud[user.id] = {
             "Survey Name" => question.i_survey.title,
             "Survey ID" => question.i_survey.id,
-            "#{question.description}" => answer.answer
+            "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
           }
         end
 
