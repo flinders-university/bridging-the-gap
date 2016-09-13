@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.number_field :order, label: "Question Order", value: "#{if IQuestion.where.not(order: nil).last.present? then "#{IQuestion.where.not(order: nil).last.order.to_i + 1}" else "0" end}" %>
+    <%= f.number_field :order, label: "Question Order", value: "#{if i_question.order.present? then i_question.order elsif IQuestion.where.not(order: nil).last.present? then "#{IQuestion.where.not(order: nil).last.order.to_i + 1}" else "0" end}" %>
   </div>
 
   <div class="field">
@@ -20,7 +20,7 @@
   </div>
 
   <div class="field">
-    <%= f.select :input_type, options_for_select([["Text Area", 1], ["Text Field (smaller input)", 2], ["Scale (1-5)", 3], ["Check Box", 4], ["Agree Box ('required')", 5], ["Section Description Box - Use 'comment' below", 6]], i_question.input_type) %>
+    <%= f.select :input_type, options_for_select([["Scale (1-5)", 3], ["Text Area", 1], ["Text Field (smaller input)", 2], ["Check Box", 4], ["Agree Box ('required')", 5], ["Section Description Box - Use 'comment' below", 6]], i_question.input_type) %>
   </div>
 
   <div class="field">
