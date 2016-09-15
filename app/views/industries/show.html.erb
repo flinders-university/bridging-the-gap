@@ -50,8 +50,12 @@
 <div class="clearfix"></div>
 <p>
   <strong>Active:</strong>
-  <% if @industry.active %><%= icon :ok %> Students placed here can see their placement details.<% else %><%= icon :remove %> Students placed here can see that they are placed, but they can not see the industry details.<% end %>
+  <% if @industry.active %><%= icon :heart %><% else %><%= icon :remove %><% end %>
 </p>
+
+<p>
+  <strong>Info Shown to PSTs:</strong>
+  <% if @industry.show_info %>Students placed here can see their placement details.<% else %>Students placed here can't see their placement details.<% end %>
 <hr>
 
 <div class="panel panel-primary">
