@@ -5,7 +5,7 @@ class IndustriesController < ApplicationController
   # GET /industries
   # GET /industries.json
   def index
-    if params[:engaged] == true
+    if params[:engaged] == "true"
       @industries = Industry.where(active: true).order(:name)
     else
       @industries = Industry.all.order(:name)
