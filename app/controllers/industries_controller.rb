@@ -5,7 +5,11 @@ class IndustriesController < ApplicationController
   # GET /industries
   # GET /industries.json
   def index
-    @industries = Industry.all.order(:name)
+    if params[:engaged] == true
+      @industries = Industry.where(active: true).order(:name)
+    else
+      @industries = Industry.all.order(:name)
+    end
   end
 
   # GET /industries/1
@@ -64,9 +68,13 @@ class IndustriesController < ApplicationController
 
   private
     def admin_or_authorised
-      if current_user.group.level != 4
-        if !current_user_administrator?
-          redirect_to root_url, notice: "Sorry, your account doesn't have access to that feature."
+      if !current_user
+        redirect_to new_user_session_path, notice: "Please log in first..."
+      else
+        if current_user.group.level != 4
+          if !current_user_administrator?
+            redirect_to root_url, notice: "Sorry, your account doesn't have access to that feature."
+          end
         end
       end
     end
