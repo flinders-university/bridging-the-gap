@@ -7,14 +7,71 @@
 </div>
 <h1>Industries</h1>
 <hr>
+<p>Select an industry on the left, the details will be displayed on the right. To check industry contact status or place students, click the button below the information panel after selecting an industry.</p>
+<div class="row">
 
-<div class="panel panel-primary">
-  <div class="panel-heading">Industries</div>
-  <div class="list-group">
-  <% @industries.each do |industry| %>
-    <div class="list-group-item" data-toggle="tooltip" data-placement="top" title="Initiated by: <%= industry.user.name %>. <% if industry.blurb.length >= 3 %>Last Contacted: <%= industry.updated_at.strftime("%B %-d, %Y - %I:%M %p") %>.<% end %>"><%= industry.name %> <% if industry.users.count >= 1%>(Placed: <%= industry.users %>)<% end %>  <span class="pull-right"><% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %>  &nbsp; <%= link_to 'Show', industry, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span></div>
-  <% end %>
-</div>
+  <div class="col-md-4">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Industries</div>
+      <div class="list-group">
+      <% @industries.each do |industry| %>
+        <div class="list-group-item" data-toggle="tooltip" data-placement="top" title="Initiated by: <%= industry.user.name %>. <% if industry.blurb.length >= 3 %>Last Contacted: <%= industry.updated_at.strftime("%B %-d, %Y - %I:%M %p") %>.<% end %>">
+          <%= industry.name %>
+          <br>
+          <strong><% if industry.users.count >= 1%>Placed: <%= industry.users.count.humanize %> pre-service teacher<% end %></strong>
+          <br>
+          <div class="clearfix"></div>
+          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %>
+          <span class="pull-right"><%= link_to 'Show', "#show-#{industry.id}", id: "#{industry.id}", class: "showind btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-primary" id="data-panel">
+      <div class="panel-heading"><span class="industry-name"></span></div>
+      <div class="panel-body">
+        <p>
+          <strong>Address:</strong>
+          <span class="industry-address"></span>
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          <span class="industry-phone"></span>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <span class="industry-email"></span>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <span class="industry-website"></span>
+        </p>
+
+        <p>
+          <strong>Stem foci:</strong>
+          <span class="industry-foci"></span>
+        </p>
+
+        <p style="pointer-events: none;"><strong>Blurb &amp; notes</strong>
+          <input class="add-mde">
+        </p>
+
+        <br>
+
+        <p class="text-center"><a href="" id="show-ind-link" class="btn btn-block btn-primary btn-hp-lm">Check Contact Status &amp; Place Students</a></p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <p>Key:</p>
@@ -27,4 +84,27 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+$("#data-panel").hide();
+
+$(".showind").click(function () {
+  var url = "<%= request.protocol + request.host_with_port %>/industries/" + $(this).attr("id");
+  var urlBlank = "<%= request.protocol + request.host_with_port %>/industries/";
+  $.ajax({
+    dataType: "json",
+    url: url
+  }).always(function(data) {
+    console.log(data);
+    $("#data-panel").fadeIn();
+    $(".industry-name").html(data.name);
+    $(".industry-address").html(data.address);
+    $(".industry-phone").html(data.phone);
+    $(".industry-email").html(data.email);
+    $(".industry-website").html(data.website);
+    $(".industry-foci").html(data.stem_foci);
+    var mde = new SimpleMDE({ element: $(".add-mde")[0], toolbar: false });
+    mde.value(data.blurb);
+    $("#show-ind-link").attr('href', urlBlank + data.id);
+  });
+});
 </script>
