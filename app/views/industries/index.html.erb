@@ -27,7 +27,7 @@
           <strong><% if industry.users.count >= 1%>Placed: <%= industry.users.count.humanize %> pre-service teacher<% end %></strong>
           <br>
           <div class="clearfix"></div>
-          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %>
+          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %> <% if industry.show_info %><%= icon "info-sign" %><% end %>
           <span class="pull-right"><%= link_to 'Show', "#show-#{industry.id}", id: "#{industry.id}", class: "showind btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span>
           <div class="clearfix"></div>
         </div>

@@ -55,7 +55,7 @@
       <td><% if Answer.where(user_id: current_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.gender.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).active %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).show_info %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
     </tr>

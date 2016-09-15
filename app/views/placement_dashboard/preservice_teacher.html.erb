@@ -13,7 +13,7 @@
 
 <% if current_user.industry.present? %>
 <p class="lead text-center text-success">You have been allocated an industry placement!</p>
-<% if current_user.industry.active? %>
+<% if current_user.industry.show_info? %>
 <div class="panel panel-primary">
   <div class="panel-heading">Industry Information</div>
   <% if current_user.industry.description.present? %>

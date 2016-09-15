@@ -28,7 +28,7 @@
                tr-is-signed-<% if Signature.where(user_id: this_user.id).count >=1 %>true<%else%>false<%end%>
                tr-is-answered-<% if Answer.where(user_id: this_user.id).count >=1 %>true<% else %>false<% end %>
                tr-is-placed-<% if this_user.industry_id.present? %>true<% else %>false<% end %>
-               tr-is-avail-placed-<% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).enabled %>true<% else %>false<% end %>
+               tr-is-avail-placed-<% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).show_info %>true<% else %>false<% end %>
                tr-is-grouped-<% if this_user.student_group.present? %>true<% else %>false<% end %>
                tr-is-allocated-rs-<% if this_user.student_group.present? && this_user.student_group.research_scientists.count >= 1 %>true<% else %>false<% end %>
                tr-is-fg-booked-<% if FgBooking.where(user_id: this_user.id).count >= 1 %>true<%else%>false<%end%>
@@ -41,7 +41,7 @@
       <td class="bold-others is-signed-<% if Signature.where(user_id: this_user.id).count >=1 %>true<%else%>false<%end%>"><% if Signature.where(user_id: this_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-answered-<% if Answer.where(user_id: this_user.id).count >=1 %>true<% else %>false<% end %>"><% if Answer.where(user_id: this_user.id).count >=1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-placed-<% if this_user.industry_id.present? %>true<% else %>false<% end %>"><% if this_user.industry_id.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
-      <td class="bold-others is-avail-placed-<% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).active %>true<% else %>false<% end %>"><% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).active %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td class="bold-others is-avail-placed-<% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).show_info %>true<% else %>false<% end %>"><% if Industry.find_by_id(this_user.industry_id).present? && Industry.find_by_id(this_user.industry_id).show_info %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-grouped-<% if this_user.student_group.present? %>true<% else %>false<% end %>"><% if this_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-allocated-rs-<% if this_user.student_group.present? && this_user.student_group.research_scientists.count >= 1 %>true<% else %>false<% end %>"><% if this_user.student_group.present? && this_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
     </tr>
