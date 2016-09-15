@@ -94,15 +94,28 @@ var toggle = 0;
 
 $("#data-panel").hide();
 
-$(".showind").click(function () {
+$(document).ready(function () {
+    if(window.location.href.indexOf("show") > -1) {
+      var lastNumber = window.location.href.match(/\d+$/);
+      getData(lastNumber);
+    }
+});
+
+$(".showind").click( function() {
+  getData($(this).attr('id'));
+});
+
+
+function getData(identifier) {
   if (toggle == 0) {
     toggle = toggle + 1;
   } else {
     location.reload();
   }
 
-  var url = "<%= request.protocol + request.host_with_port %>/industries/" + $(this).attr("id");
+  var url = "<%= request.protocol + request.host_with_port %>/industries/" + identifier;
   var urlBlank = "<%= request.protocol + request.host_with_port %>/industries/";
+
   $.ajax({
     dataType: "json",
     url: url
@@ -119,5 +132,6 @@ $(".showind").click(function () {
     mde.value(data.blurb);
     $("#show-ind-link").attr('href', urlBlank + data.id);
   });
-});
+}
+
 </script>
