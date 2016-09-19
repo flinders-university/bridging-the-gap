@@ -22,6 +22,7 @@
   </div>
   <% end %>
   <div class="list-group">
+    <div class="list-group-item">Industry: <%= current_user.industry.name %></div>
     <!-- <div class="list-group-item">Contact Person: <%= current_user.industry.user.name %></div> -->
     <div class="list-group-item">Contact Person: Please wait for an email from Aidan for go ahead to contact this industry.</div>
     <a href="mailto: <%= current_user.industry.email %>" class="list-group-item">Contact Email: <%= current_user.industry.email %></a>
