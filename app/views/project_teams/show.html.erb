@@ -1,0 +1,34 @@
+
+
+<p>
+  <strong>User:</strong>
+  <%= @project_team.user_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project_team.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @project_team.slug %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project_team.description %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @project_team.team %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @project_team.enabled %>
+</p>
+
+<%= link_to 'Edit', edit_project_team_path(@project_team) %> |
+<%= link_to 'Back', project_teams_path %>

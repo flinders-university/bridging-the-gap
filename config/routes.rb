@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :project_teams
+  
   resources :fg_bookings
 
   get 'navigation_map', to: 'navigation_map#index'
