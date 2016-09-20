@@ -96,7 +96,7 @@ var toggle = 0;
 
 <% @industries.each do |industry| %>
 industry<%= industry.id %> = function() {
-  return "<ul class='list-group'> <% industry.users.each do |user| %><li class='list-group-item'><%= user.name %> <span class='badge pull-right'>Group: <% if user.student_group.present? %> <%= user.student_group.id %> <% else %> No allocation<% end %></span></li> <% end %></ul>";
+  return "<div class='list-group'> <% industry.users.each do |user| %><a href='<%= usertools_path(user) %>' class='list-group-item'><%= user.name %> <span class='badge pull-right'>Group: <% if user.student_group.present? %> <%= user.student_group.id %> <% else %> No allocation<% end %></span></a> <% end %></div>";
 }
 <% end %>
 
