@@ -70,6 +70,8 @@
           <input class="add-mde">
         </p>
 
+        <div id="pst_data"></div>
+
         <br>
 
         <p class="text-center"><a href="" id="show-ind-link" class="btn btn-block btn-primary btn-hp-lm">Check Contact Status &amp; Place Students</a></p>
@@ -91,6 +93,12 @@ $(function () {
 });
 
 var toggle = 0;
+
+<% @industries.each do |industry| %>
+industry<%= industry.id %> = function() {
+  return "<ul class='list-group'> <% industry.users.each do |user| %><li class='list-group-item'><%= user.name %> <span class='badge pull-right'>Group: <% if user.student_group.present? %> <%= user.student_group.id %> <% else %> No allocation<% end %></span></li> <% end %></ul>";
+}
+<% end %>
 
 $("#data-panel").hide();
 
@@ -115,6 +123,8 @@ function getData(identifier) {
 
   var url = "<%= request.protocol + request.host_with_port %>/industries/" + identifier;
   var urlBlank = "<%= request.protocol + request.host_with_port %>/industries/";
+
+  $("#pst_data").html(window["industry" + identifier]());
 
   $.ajax({
     dataType: "json",
