@@ -3,7 +3,7 @@
 <hr>
 
 <% @project_teams.where(team: 1).each do |project_team| %>
-<div class="project_team_member profile_view row">
+<div class="project_team_member profile_view row b-mtp">
   <div class="col-xs-2">
     <%= image_tag project_team.image.url(:large), class: "img-thumbnail img-responsive" %>
   </div>
