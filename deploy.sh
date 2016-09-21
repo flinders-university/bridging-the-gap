@@ -11,6 +11,8 @@ echo '* Loading Secrets'
 [[ -f ~/.environment_secrets ]] && . ~/.environment_secrets
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
+echo '* DB Migrations'
+/home/aidancornelius/projects/bridging-the-gap/bin/rake db:migrate
 echo '* Restarting Ruby server - Puma'
 echo '** Killing existing server...'
 for KILLPID in `ps ax | grep 'puma' | awk ' { print $1;}'`; do
