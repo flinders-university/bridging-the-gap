@@ -557,6 +557,16 @@ fieldset[disabled] .btn-tertiary.focus {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
+/* line 426, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
+.a-mtp {
+  padding: 15px;
+}
+
+/* line 430, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
+.a-mtp:hover {
+  border-top: 4px solid #E36960;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
