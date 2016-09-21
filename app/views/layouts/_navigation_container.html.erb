@@ -43,6 +43,8 @@
               <li><a href="/pages/for-psts">For Pre-Service Teachers</a></li>
               <li><a href="/pages/for-schools">For High Schools</a></li>
               <li><a href="/pages/for-government">For Government Organisations</a></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Project Team", project_teams_path %></li>
           </ul>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="<%= if current_user.present?; current_user.addressable; else "Actions"; end %>"><%= if current_user.present?; current_user.firstname; else "Account"; end; %> <span class="caret"></span></a>
