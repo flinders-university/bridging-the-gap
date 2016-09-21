@@ -95,3 +95,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+Rails.application.default_url_options[:host] = 'bridgingthegap.edu.au'
+
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+	:slack => {
+	:webhook_url => "https://hooks.slack.com/services/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", # your webhook URL
+	:channel => "#technology",
+	:additional_parameters => {
+		:mrkdwn => true
+	}
+}
