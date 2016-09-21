@@ -425,17 +425,9 @@ fieldset[disabled] .btn-tertiary.focus {
 
 .a-mtp {
   padding: 15px;
-  border-top: 4px;
+  border-top: 4px solid white;
 }
 
 .a-mtp:hover {
-  border-top: 4px solid #E36960;
-}
-
-.b-mtp {
-  border-top: 4px;
-}
-
-.b-mtp:hover {
   border-top: 4px solid #E36960;
 }
