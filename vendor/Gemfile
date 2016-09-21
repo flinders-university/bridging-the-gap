@@ -42,6 +42,7 @@ gem 'browser'
 
 # Slack
 gem 'slack-notifier'
+gem 'exception_notification'
 
 # Humanize
 gem 'humanize'
