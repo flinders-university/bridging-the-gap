@@ -1,6 +1,9 @@
 class ProjectTeamsController < ApplicationController
   before_action :set_project_team, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_administrator!, except: [:show, :index, :update, :edit]
+  before_action :authenticate_user!, except: [:show, :index]
+
   # GET /project_teams
   # GET /project_teams.json
   def index
