@@ -1,24 +1,29 @@
 <% title "Project Team" %>
 <h1>Project Team</h1>
+<hr>
 
 <% @project_teams.where(team: 1).each do |project_team| %>
 <div class="project_team_member profile_view row">
-  <div class="col-xs-3"></div>
-  <div class="col-xs-9">
-    <%= project_team.title %>
+  <div class="col-xs-2">
+    <%= image_tag project_team.image.url(:large), class: "img-thumbnail img-responsive" %>
+  </div>
+  <div class="col-xs-10">
+    <h3 style="margin-top: 0px"><%= project_team.title %></h3>
     <%= mdrender(project_team.description).html_safe %>
+    <%= link_to "Read more...", project_team %>
   </div>
 </div>
-<% end %>
 <hr>
+<% end %>
 
-<h1>Management Group</h1>
+
+<h1>Management Committee</h1>
 
 <% @project_teams.where(team: 2).each_slice(3) do |management_group_members| %>
 <div class="row">
-<% @management_group_members.each do |project_team| %>
+<% management_group_members.each do |project_team| %>
   <div class="col-md-4">
-    <%= project_team.title %>
+    <h3 style="margin-top: 0px"><%= project_team.title %></h3>
     <%= mdrender(project_team.description).html_safe %>
   </div>
 <% end %>

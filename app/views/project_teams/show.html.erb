@@ -1,34 +1,24 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <a href="<%= project_teams_path %>" class="btn btn-primary">Project Members</a>
+</div>
+<h1>Bridging the Gap <small><% if @project_team.team == 1 %>Project Team<% else %>Management Group<% end %></small></h1>
+<hr>
+<div class="row">
+  <div class="col-xs-10">
+    <h3 style="margin-top: 0px;"><%= @project_team.title %></h3>
+    <%= mdrender(@project_team.description).html_safe %>
 
+    <%= link_to "Contact #{@project_team.user.firstname}", "mailto:#{@project_team.user.email}" %>
+  </div>
+  <div class="col-xs-2">
+    <%= image_tag @project_team.image.url(:medium), class: "img-thumbnail img-responsive" %>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @project_team.user_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @project_team.title %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @project_team.slug %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project_team.description %>
-</p>
-
-<p>
-  <strong>Team:</strong>
-  <%= @project_team.team %>
-</p>
-
-<p>
-  <strong>Enabled:</strong>
-  <%= @project_team.enabled %>
-</p>
-
+<% if current_user_administrator? %>
+<br>
 <%= link_to 'Edit', edit_project_team_path(@project_team) %> |
 <%= link_to 'Back', project_teams_path %>
+<% end %>
