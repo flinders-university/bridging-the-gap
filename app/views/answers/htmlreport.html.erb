@@ -61,7 +61,6 @@
             <div class="response">
               <p><strong><%= @users[answer.user_id].name %> ~></strong> <span style="padding-right: 50px;"></span><%= answer.answer %> <br>
               <em>Answered: <%= answer.updated_at.strftime("%d/%m/%y %I:%M %p") %> Question: <%= answer.question_id %> Survey: <%= answer.survey_id %></em></p>
-              <br>
             </div>
           </div>
           <% end %>
