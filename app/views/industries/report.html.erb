@@ -31,6 +31,7 @@
   <body>
     <h1 style="margin-bottom: -6px; margin-top: 4px;">Student Industry Placement Report</h1>
     <p><em>Updated: <%= Date.today.strftime("#{Date.today.day.ordinalize} of %B %Y") %></em></p>
+    <p style="font-size: 12px;">Student information is <strong>strictly confidential</strong> and its use is governed by the University policy on Access to Student Information.</p>
 
     <hr>
     <% @industries.each do |industry| %>
@@ -65,7 +66,5 @@
     <% end %>
 
     <% end %>
-
-    <p style="font-size: 12px; text-align: center;">Student information is <strong>strictly confidential</strong> and its use is governed by the University policy on Access to Student Information.</p>
   </body>
 </html>
