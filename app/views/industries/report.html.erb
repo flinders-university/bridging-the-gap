@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Industry Report</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
+    <style>
+      body { font-family: 'Open Sans', sans-serif; font-size: 14px; }
+      hr {
+        -webkit-box-sizing: content-box;
+           -moz-box-sizing: content-box;
+                box-sizing: content-box;
+        height: 0;
+      }
+      hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eeeeee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: -6px; margin-top: 4px;">Student Industry Placement Report</h1>
+    <p><em>Updated: <%= Date.today.strftime("#{Date.today.day.ordinalize} of %B %Y") %></em></p>
+
+    <hr>
+    <% @industries.each do |industry| %>
+    <h3 style="margin-bottom: -6px; margin-top: 4px;">Industry: <%= industry.name %></h3>
+    <p><strong>Contact available:</strong><br>
+      <span style="padding-right:75px;"></span>address: <font color="green"><% if industry.address.present? %>yes<% else%>no<% end%></font>.<br>
+      <span style="padding-right:85px;"></span>phone: <font color="green"><% if industry.phone.present? %>yes<% else%>no<% end%></font>.<br>
+      <span style="padding-right:75px;"></span>website: <font color="green"><% if industry.website.present? %>yes<% else%>no<% end%></font>.<br>
+      <span style="padding-right:55px;"></span>description: <font color="green"><% if industry.description.present? %>yes<% else%>no<% end%></font>.
+    </p>
+    <p><strong>Focus:</strong> <%= industry.stem_foci %>. <strong>Info available to PSTs:</strong> <mark><%if industry.show_info %>yes<%else%>no<%end%></mark>.</p>
+    <h4 style="margin-bottom: -6px;">Placed Students:</h4>
+    <% industry.users.each do |user| %>
+    <p><span style="padding-right:45px;"></span><strong><%= user.name %></strong><br>
+      <span style="padding-right:82px;"></span>Program: <%= user.degree %> <br>
+      <span style="padding-right:101px;"></span>Major: <%= user.major %> <br>
+      <span style="padding-right:98px;"></span>Group: <%= user.student_group_id %></p>
+    <% end %>
+    <% end %>
+    <hr>
+  </body>
+</html>

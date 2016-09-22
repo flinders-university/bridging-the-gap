@@ -26,6 +26,12 @@ class IndustriesController < ApplicationController
   def edit
   end
 
+  # GET /industries/report/
+  def report
+    @industries = Industry.where(active: true).order(:name)
+    render layout: false
+  end
+
   # POST /industries
   # POST /industries.json
   def create

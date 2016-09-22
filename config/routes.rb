@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :project_teams
-  
+
   resources :fg_bookings
 
   get 'navigation_map', to: 'navigation_map#index'
@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   get 'errors/not_found'
 
-  resources :industries
+  resources :industries do
+    collection { get "report" }
+  end
 
   get 'placement_dashboard/preservice_teacher'
   get 'placement_dashboard/industry'
