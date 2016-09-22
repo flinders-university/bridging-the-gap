@@ -34,6 +34,7 @@
         background: url(<%= image_url("question.svg") %>) no-repeat top right;
         background-size: 90px;
         -webkit-print-color-adjust: exact;
+        page-break-before: always;
       }
     </style>
   </head>
@@ -45,13 +46,13 @@
     <hr>
     <% @surveys.each do |survey| %>
     <div class="survey">
-      <h2><%= survey.title %></h2>
-      <p><strong>Coding</strong></p>
+      <h2 style="margin-bottom: -12px;"><%= survey.title %></h2>
+      <p>for <%= survey.group.name %>.</p><p><strong>Coding:</strong></p>
       <%= mdrender(survey.coding_explanation).html_safe %>
 
       <% survey.i_questions.order(:order).each do |question| %>
         <div class="question question-<%= question.id %>">
-          <p>Q<%= question.order %>. <%= question.description %>
+          <p><em>Q<%= question.order %>.</em> <strong><%= question.description %></strong>:
           <br>Question id: <%= question.id %>&nbsp;&nbsp;&nbsp;&nbsp; Survey: <%= question.i_survey_id %>&nbsp;&nbsp;&nbsp;&nbsp; Group Code: <%= question.grouping_value %>&nbsp;&nbsp;&nbsp;&nbsp; Answers: <%= @answers.where(:survey_id => survey.id, :question_id => question.id).count %></p>
 
           <% @answers.where(:survey_id => survey.id, :question_id => question.id).each do |answer| %>
