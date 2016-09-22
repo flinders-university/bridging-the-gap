@@ -38,13 +38,17 @@
       </p>
       <p><strong>Focus:</strong> <%= industry.stem_foci %>. <strong>Info available to PSTs:</strong> <mark><%if industry.show_info %>yes<%else%>no<%end%></mark>.</p>
       <h4 style="margin-bottom: -6px;">Placed Students:</h4>
-      <% industry.users.each do |user| %>
-      <div class="user">
-        <p><span style="padding-right:45px;"></span><strong><%= user.name %></strong><br>
-          <span style="padding-right:82px;"></span>Program: <%= user.degree %> <br>
-          <span style="padding-right:101px;"></span>Major: <%= user.major %> <br>
-          <span style="padding-right:98px;"></span>Group: <%= user.student_group_id %></p>
-      </div>
+      <% if industry.users.count < 1 %>
+        <p><span style="padding-right:45px;"></span><mark>No students here</mark></p>
+      <% else %>
+        <% industry.users.each do |user| %>
+        <div class="user">
+          <p><span style="padding-right:45px;"></span><strong><%= user.name %></strong><br>
+            <span style="padding-right:82px;"></span>Program: <%= user.degree %> <br>
+            <span style="padding-right:101px;"></span>Major: <%= user.major %> <br>
+            <span style="padding-right:98px;"></span>Group: <%= user.student_group_id %></p>
+        </div>
+        <% end %>
       <% end %>
     </div>
     <br>
