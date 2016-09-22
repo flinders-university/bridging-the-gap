@@ -50,6 +50,11 @@
       <p>for <%= survey.group.name %>.</p><p><strong>Coding:</strong></p>
       <%= mdrender(survey.coding_explanation).html_safe %>
 
+      <p><strong>Participant Summary</strong></p>
+      <% @users.each do |user| %>
+      <p><%= "#{@users[user.first].name} #{@users[user.first].email} - Degree: #{@users[user.first].degree} Major: #{@users[user.first].major} Gender: #{@users[user.first].gender} Age: #{@users[user.first].age}" %></p>
+      <% end %>
+
       <% survey.i_questions.order(:order).each do |question| %>
         <div class="question question-<%= question.id %>">
           <p><em>Q<%= question.order %>.</em> <strong><%= question.description %></strong>:

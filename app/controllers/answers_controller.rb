@@ -24,6 +24,14 @@ class AnswersController < ApplicationController
     @surveys = ISurvey.where(id: params[:id])
     #Empty dict to fill with precache (to prevent mass queries)
     @users = {}
+
+    #populate the user information
+    @surveys.last.i_questions.order(:order).each do |question|
+      @answers.where(:survey_id => @surveys.last.id, :question_id => question.id).each do |answer|
+        @users[answer.user_id] ||= User.find_by_id(answer.user_id)
+      end
+    end
+
     render layout: false
   end
 
