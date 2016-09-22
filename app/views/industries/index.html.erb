@@ -3,7 +3,7 @@
 <div class="pull-right">
   <br>
   <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
-  <%= link_to "Printable Report", "./report/", class: "btn btn-tertiary", target: "_BLANK" %>
+  <%= link_to "Printable Report", "/industries/report/", class: "btn btn-tertiary", target: "_BLANK" %>
   <% if params[:engaged] == "true" %>
   <%= link_to "Filter Off", "?no-filter", class: "btn btn-secondary" %>
   <% else %>
