@@ -20,6 +20,9 @@
         border: 0;
         border-top: 1px solid #eeeeee;
       }
+      .page-break {
+        page-break-before: always;
+      }
     </style>
   </head>
   <body>
@@ -51,7 +54,13 @@
         <% end %>
       <% end %>
     </div>
+
+    <% if params[:break] %>
+    <div class="page-break"></div>
+    <% else %>
     <hr>
+    <% end %>
+
     <% end %>
 
     <p style="font-size: 12px; text-align: center;">Student information is <strong>strictly confidential</strong> and its use is governed by the University policy on Access to Student Information.</p>
