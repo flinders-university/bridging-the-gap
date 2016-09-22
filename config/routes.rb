@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'answers/export/:id', to: "answers#export"
   post 'answers/export/:id', to: "answers#export"
   get 'answers', to: "answers#index"
+  get 'answers/htmlreport/:id', to: "answers#htmlreport"
   get 'answers/index'
   post 'answers/update'
   get 'answers/check'

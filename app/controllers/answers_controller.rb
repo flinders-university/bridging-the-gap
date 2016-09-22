@@ -19,6 +19,14 @@ class AnswersController < ApplicationController
     @users = {}
   end
 
+  def htmlreport
+    @answers = Answer.all
+    @surveys = ISurvey.where(id: params[:id])
+    #Empty dict to fill with precache (to prevent mass queries)
+    @users = {}
+    render layout: false
+  end
+
   # GET /answers/export/1.csv
   # where [id] is Survey's ID
   def export

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Industry Report</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
+    <style>
+      body { font-family: 'Open Sans', sans-serif; font-size: 14px; }
+      hr {
+        -webkit-box-sizing: content-box;
+           -moz-box-sizing: content-box;
+                box-sizing: content-box;
+        height: 0;
+      }
+      hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eeeeee;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .page-break:last-child {
+        page-break-before: avoid;
+      }
+      .question {
+        border: 1px solid lightgrey;
+        border-radius: 2px;
+        padding: 5px;
+        margin-bottom: 10px;
+        background: url(<%= image_url("question.svg") %>) no-repeat top right;
+        background-size: 90px;
+        -webkit-print-color-adjust: exact;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: -6px; margin-top: 4px;">Survey Data Report</h1>
+    <p><em>Updated: <%= Date.today.strftime("#{Date.today.day.ordinalize} of %B %Y") %></em></p>
+    <p style="font-size: 12px;">Student information is <strong>strictly confidential</strong> and its use is governed by the University policy on Access to Student Information.</p>
+
+    <hr>
+    <% @surveys.each do |survey| %>
+    <div class="survey">
+      <h2><%= survey.title %></h2>
+      <p><strong>Coding</strong></p>
+      <%= mdrender(survey.coding_explanation).html_safe %>
+
+      <% survey.i_questions.order(:order).each do |question| %>
+        <div class="question question-<%= question.id %>">
+          <p>Q<%= question.order %>. <%= question.description %>
+          <br>Question id: <%= question.id %>&nbsp;&nbsp;&nbsp;&nbsp; Survey: <%= question.i_survey_id %>&nbsp;&nbsp;&nbsp;&nbsp; Group Code: <%= question.grouping_value %>&nbsp;&nbsp;&nbsp;&nbsp; Answers: <%= @answers.where(:survey_id => survey.id, :question_id => question.id).count %></p>
+
+          <% @answers.where(:survey_id => survey.id, :question_id => question.id).each do |answer| %>
+          <div class="answer">
+            <% @users[answer.user_id] ||= User.find_by_id(answer.user_id) %>
+            <div class="response">
+              <p><strong><%= @users[answer.user_id].name %> ~></strong> <span style="padding-right: 50px;"></span><%= answer.answer %> <br>
+              <em>Answered: <%= answer.updated_at.strftime("%d/%m/%y %I:%M %p") %> Question: <%= answer.question_id %> Survey: <%= answer.survey_id %></em></p>
+              <br>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </body>
+</html>
