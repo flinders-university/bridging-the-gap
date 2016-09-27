@@ -254,7 +254,7 @@ blockquote {
 }
 
 .project-info-reduce {
-  margin-top: -120px;
+  margin-top: -140px;
 }
 
 .table-rotated th>span {
@@ -430,4 +430,12 @@ fieldset[disabled] .btn-tertiary.focus {
 
 .a-mtp:hover {
   border-top: 4px solid #E36960;
+}
+
+.heading-inverse {
+  text-shadow:
+  -1px -1px 0 #fff,
+  1px -1px 0 #fff,
+  -1px 1px 0 #fff,
+  1px 1px 0 #fff;
 }
