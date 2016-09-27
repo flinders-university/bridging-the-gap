@@ -358,7 +358,7 @@ blockquote {
 
 /* line 256, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
 .project-info-reduce {
-  margin-top: -120px;
+  margin-top: -140px;
 }
 
 /* line 260, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
@@ -561,11 +561,17 @@ fieldset[disabled] .btn-tertiary.focus {
 /* line 426, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
 .a-mtp {
   padding: 15px;
+  border-top: 4px solid white;
 }
 
-/* line 430, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
+/* line 431, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
 .a-mtp:hover {
   border-top: 4px solid #E36960;
+}
+
+/* line 435, /Users/aidancornelius/Dropbox (Personal)/___Flinders University (STEM PST IE)/WebApp/btg/app/assets/stylesheets/universal.scss */
+.heading-inverse {
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
