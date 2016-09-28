@@ -40,7 +40,7 @@
       <p><strong>Contact available:</strong><br>
         <span style="padding-right:75px;"></span>address: <font color="green"><% if industry.address.present? %>yes<% else%>no<% end%></font>.<br>
         <span style="padding-right:85px;"></span>phone: <font color="green"><% if industry.phone.present? %>yes<% else%>no<% end%></font>.<br>
-        <span style="padding-right:75px;"></span>website: <font color="green"><% if industry.website.present? %>yes<% else%>no<% end%></font>.<br>
+        <span style="padding-right:75px;"></span>website: <font color="green"><% if industry.website.present? %>yes - <%= industry.website %><% else%>no<% end%></font>.<br>
         <span style="padding-right:55px;"></span>description: <font color="green"><% if industry.description.present? %>yes<% else%>no<% end%></font>.
       </p>
       <p><strong>Focus:</strong> <%= industry.stem_foci %>. <strong>Info available to PSTs:</strong> <mark><%if industry.show_info %>yes<%else%>no<%end%></mark>.</p>
