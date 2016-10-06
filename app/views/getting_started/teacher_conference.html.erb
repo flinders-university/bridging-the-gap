@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Bridging the Gap: Teacher Conference</title>
+
+    <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <style type="text/css">
+      body { background: #e7e9e8; margin: 15px 10px; }
+      .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
+      .col { padding: 6px 10px;}
+      .mb { margin: 15px 0px; }
+      .constrain-sm { max-width: 280px; }
+      .float-top-left { clear: both; float: left; position: fixed; }
+      .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 999;}
+    </style>
+  </head>
+  <body>
+    <div class="float-top-left">
+      <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
+        Bridging the Gap</a>
+    </div>
+    <div class="container">
+      <div class="mb text-xs-center">
+        <%= image_tag "teacher-conference.svg", class: "img-fluid" %>
+      </div>
+      <%= if notice.present? then alert_box notice, dismissible: true end %>
+      <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
+      <div class="row">
+        <div class="col col-sm-5 col-md-7">
+          <p><strong>Conference Program</strong></p>
+          <p>Pellentesque tincidunt porttitor dictum. Curabitur luctus vulputate tortor eu accumsan. Donec rhoncus dui elit. Fusce auctor mauris nec augue tincidunt blandit. Vivamus consequat ex id accumsan congue. Etiam orci metus, tristique in elementum rutrum, vulputate vel dolor. Integer imperdiet massa vel leo maximus, id maximus nunc facilisis. Aenean vehicula nisi vel libero finibus, sed blandit massa mattis. Duis pellentesque auctor sem non ullamcorper. Praesent laoreet neque vel tristique semper. Nulla feugiat iaculis lectus, vel dictum augue luctus in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec congue tempus urna ac bibendum. Donec sit amet laoreet libero, quis accumsan odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+          <p>Nunc diam dolor, aliquam nec tempor eu, porta vel leo. Sed eu orci consectetur, sodales tellus in, semper erat. Praesent efficitur nisi sit amet maximus bibendum. Nullam ultrices facilisis justo id fringilla. Nulla eu tellus id ex maximus cursus. Morbi auctor ligula semper, malesuada sem sed, egestas metus. Nam pulvinar a neque sed sollicitudin.</p>
+          <p><strong>Pre Registration</strong></p>
+          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+            <div class="form-group">
+              <label for="full_name">Full Name</label>
+              <%= text_field_tag(:full_name, nil, class: "form-control", placeholder: "Jane Doe") %>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <%= email_field_tag(:email, nil, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
+            </div>
+            <div class="form-group">
+              <label for="preferred_date">Preferred Date</label>
+              <%= select_tag(:preferred_date, options_for_select(@date_list), class: "form-control") %>
+            </div>
+            <%= submit_tag "Register Interest", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="col-sm-1 col-md-1"></div>
+        <div class="col col-md-4">
+          <p><strong>Venue &amp; Dates</strong></p>
+          <div class="embed-responsive embed-responsive-1by1">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13069.308234265423!2d138.5687609!3d-35.02354705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xeadbc99763bebb4f!2sEducation!5e0!3m2!1sen!2sau!4v1475709562947" class="embed-responsive-item"></iframe>
+          </div>
+          <br>
+          <p><strong>Flinders University - Education Building</strong></p>
+          <p>International Room - Level 5, Room 34 (5.34).</p>
+          <p><strong>Possible Dates</strong></p>
+          <% @date_list.each do |date|; if date.first != "Either Day" then %><p><%= date.first %></p><% end; end %>
+          <p>09:00 AM &mdash; 03:00 PM</p>
+          <br><br>
+          <div class="text-xs-center">
+            <%= image_tag "logo-on-white-with-letterhead-arb-print.png", class: "constrain-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-xs-center">
+      <br>
+      <%= image_tag "dsd-flin.png", class: "constrain-sm" %>
+      <br><br>
+      <p class="small text-muted">&copy; 2016 Flinders University, All Rights Reserved.</p>
+    </div>
+
+    <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+  </body>
+</html>

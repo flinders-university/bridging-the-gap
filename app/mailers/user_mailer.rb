@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
           reply_to: 'aidan.cornelius-bell@flinders.edu.au'
 
   helper :application
-  
+
   # Send this with UserMailer.welcome_email(@user).deliver_later
   def welcome_email(user)
     @user = user
@@ -14,6 +14,11 @@ class UserMailer < ApplicationMailer
     @user = user
     @focus_group = focus_group
     mail(to: @user.addressable, subject: "Focus Group Booking Confirmation")
+  end
+
+  def conference_registration(email, rsvp)
+    @rsvp = rsvp
+    mail(to: email, subject: "Bridging the Gap Conference Registration")
   end
 
 end

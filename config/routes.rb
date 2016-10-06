@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'getting_started/welcome'
   get 'getting_started/mark_task_complete'
+  get 'teacher_conference', to: "getting_started#teacher_conference"
+  post 'register_for_teacher_conference', to: "getting_started#tc_register"
 
   get 'contact_database/interface'
 
