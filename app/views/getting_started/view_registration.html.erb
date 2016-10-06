@@ -42,6 +42,15 @@
           <p>Date: <%= @rsvp.preferred_date.strftime("%A the #{@rsvp.preferred_date.day.ordinalize} of %B %Y") %> &mdash; 09:00 AM &mdash; 03:00 PM</p>
           <% end %>
           <p>Registered on: <%= @rsvp.created_at.strftime("%A the #{@rsvp.created_at.day.ordinalize} of %B %Y") %></p>
+          <hr>
+          <%= form_tag("/update_teacher_conference_registration", method: :patch) do %>
+          <div class="form-group">
+            <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
+            <label for="preferred_date"><strong>Change Preferred Date</strong></label>
+            <%= select_tag(:preferred_date, options_for_select(@date_list, @rsvp.preferred_date), class: "form-control") %>
+          </div>
+          <%= submit_tag("Update Timeslot", class: "btn btn-primary") %>
+          <% end %>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 class GettingStartedController < ApplicationController
-  before_action :authenticate_user!, except: [:information, :teacher_conference, :tc_register]
+  before_action :authenticate_user!, except: [:information, :teacher_conference, :tc_register, :view_registration, :update_registration]
 
   def information
     if current_user.present? && !params[:noredirect] == true
@@ -40,11 +40,30 @@ class GettingStartedController < ApplicationController
     render :layout => false
   end
 
+  def update_registration
+    rsvp = Rsvp.find_by_id(params[:rsvp_id])
+    if rsvp.present?
+      rsvp.preferred_date = params[:preferred_date]
+      if rsvp.save
+        redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your registration was updated successfully."
+      else
+        redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", alert: "Sorry, your registration could not be updated. Please try again."
+      end
+    else
+      redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
+    end
+  end
+
   def view_registration
     if params[:id].present? && params[:email].present?
       if rsvp = Rsvp.find_by_email(params[:email])
         if rsvp.id == params[:id].to_i
           @rsvp = rsvp
+
+          date_friday = Date.new(2016, 12, 2)
+          date_monday = Date.new(2016, 12, 5)
+          date_either = Date.new(2010, 10, 10)
+          @date_list = {date_friday.strftime("%A the #{date_friday.day.ordinalize} of %B %Y") => "#{date_friday}", date_monday.strftime("%A the #{date_monday.day.ordinalize} of %B %Y") => "#{date_monday}", "Either Day" => date_either}
 
           render :layout => false
         else
@@ -67,7 +86,7 @@ class GettingStartedController < ApplicationController
       # Tell the user they've done it
       UserMailer.conference_registration("#{params[:full_name]} <#{params[:email]}>", rsvp).deliver_now
       # And back we go
-      redirect_to "/teacher_conference", notice: "Your pre registration has been saved successfully."
+      redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your pre registration has been saved successfully."
     else
       # Oops...
       errors = "<br>"

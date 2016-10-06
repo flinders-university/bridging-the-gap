@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'teacher_conference', to: "getting_started#teacher_conference"
   post 'register_for_teacher_conference', to: "getting_started#tc_register"
   get 'teacher_conference/registration', to: "getting_started#view_registration"
+  patch 'update_teacher_conference_registration', to: "getting_started#update_registration"
 
   get 'contact_database/interface'
 
