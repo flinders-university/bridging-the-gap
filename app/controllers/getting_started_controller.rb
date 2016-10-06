@@ -85,6 +85,8 @@ class GettingStartedController < ApplicationController
     if rsvp.save
       # Tell the user they've done it
       UserMailer.conference_registration("#{params[:full_name]} <#{params[:email]}>", rsvp).deliver_now
+      notify_slack("Someone has registered for the Bridging the Gap Teacher Conference...", nil, rsvp.inspect, "A7B8C9")
+
       # And back we go
       redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your pre registration has been saved successfully."
     else
