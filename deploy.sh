@@ -11,6 +11,8 @@ echo '* Loading Secrets'
 [[ -f ~/.environment_secrets ]] && . ~/.environment_secrets
 echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
+echo '* Repairing all RVM links'
+rvm repair all
 echo '* DB Migrations '
 cd /home/aidancornelius/projects/bridging-the-gap && /home/aidancornelius/projects/bridging-the-gap/bin/rake db:migrate
 echo '* Restarting Ruby server - Puma'
