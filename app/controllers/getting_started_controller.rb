@@ -88,12 +88,16 @@ class GettingStartedController < ApplicationController
       # And back we go
       redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your pre registration has been saved successfully."
     else
-      # Oops...
-      errors = "<br>"
-      rsvp.errors.full_messages.each do |error|
-        errors = errors + "&bull; #{error}. "
+      if rsvp = Rsvp.find_by_email(params[:email]) && rsvp.present?
+        redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "You have already registered for the conference. Update your registration below."
+      else
+        # Oops...
+        errors = "<br>"
+        rsvp.errors.full_messages.each do |error|
+          errors = errors + "&bull; #{error}. "
+        end
+        redirect_to "/teacher_conference", alert: "Your pre registration could not be saved. Please try again. #{errors}"
       end
-      redirect_to "/teacher_conference", alert: "Your pre registration could not be saved. Please try again. #{errors}"
     end
   end
 
