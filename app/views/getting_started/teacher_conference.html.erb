@@ -40,11 +40,12 @@
           <%= form_tag("/register_for_teacher_conference", method: :post) do %>
             <div class="form-group">
               <label for="full_name">Full Name</label>
-              <%= text_field_tag(:full_name, nil, class: "form-control", placeholder: "Jane Doe") %>
+              <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
+              <%= text_field_tag(:full_name, name, class: "form-control", placeholder: "Jane Doe") %>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <%= email_field_tag(:email, nil, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
+              <%= email_field_tag(:email, email, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
             </div>
             <div class="form-group">
               <label for="preferred_date">Preferred Date</label>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'conference_management/index'
+  delete 'conference_management/destroy'
+
   resources :project_teams
 
   resources :fg_bookings
