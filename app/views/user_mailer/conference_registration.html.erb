@@ -23,8 +23,11 @@
 
       <hr>
 
+      <% if @rsvp.preferred_date == Date.new(2010, 10, 10) %>
+      <p>Either Friday the 2nd of December 2016 or Monday the 5th of December 2016. 09:00 AM &mdash; 03:00 PM.</p>
+      <% else %>
       <p><%= @rsvp.preferred_date.strftime("%A the #{@rsvp.preferred_date.day.ordinalize} of %B %Y") %>. 09:00 AM &mdash; 03:00 PM.</p>
-
+      <% end %>
       <hr>
 
       <p>If you are no longer able to attend on this date, please contact: <a href="mailto:aidan.cornelius-bell@flinders.edu.au">aidan.cornelius-bell@flinders.edu.au</a>.</p>
