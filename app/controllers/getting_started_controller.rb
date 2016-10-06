@@ -40,6 +40,24 @@ class GettingStartedController < ApplicationController
     render :layout => false
   end
 
+  def view_registration
+    if params[:id].present? && params[:email].present?
+      if rsvp = Rsvp.find_by_email(params[:email])
+        if rsvp.id == params[:id].to_i
+          @rsvp = rsvp
+
+          render :layout => false
+        else
+          redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
+        end
+      else
+        redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
+      end
+    else
+      redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
+    end
+  end
+
   def tc_register
     # do something with the Rsvp model
     permitted = params.permit(:full_name, :email, :preferred_date)

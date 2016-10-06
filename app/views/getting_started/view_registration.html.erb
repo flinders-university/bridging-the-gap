@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Registration Details | Bridging the Gap: Teacher Conference</title>
+
+    <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <style type="text/css">
+      body { background: #e7e9e8; margin: 15px 10px; }
+      .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
+      .col { padding: 6px 10px;}
+      .mb { margin: 15px 0px; }
+      .constrain-sm { max-width: 280px; }
+      .float-top-left { clear: both; float: left; position: fixed; }
+      .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 99999;}
+      .hzi { z-index: 9999999999; }
+      .btn-outline-primary { background: #f7f7f9; }
+    </style>
+  </head>
+  <body>
+    <div class="float-top-left hzi">
+      <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
+        Bridging the Gap</a>
+    </div>
+    <div class="container">
+      <div class="mb text-xs-center">
+        <%= image_tag "teacher-conference.svg", class: "img-fluid" %>
+      </div>
+      <%= if notice.present? then alert_box notice, dismissible: true end %>
+      <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
+      <div class="row">
+        <div class="col col-md-12">
+          <p><strong>Registration Details</strong></p>
+          <p>Name: <%= @rsvp.full_name %></p>
+          <p>Email: <%= @rsvp.email %></p>
+          <% if @rsvp.preferred_date == Date.new(2010, 10, 10) %>
+          <p>Date: Either Friday the 2nd of December 2016 or Monday the 5th of December 2016 &mdash; 09:00 AM &mdash; 03:00 PM</p>
+          <% else %>
+          <p>Date: <%= @rsvp.preferred_date.strftime("%A the #{@rsvp.preferred_date.day.ordinalize} of %B %Y") %> &mdash; 09:00 AM &mdash; 03:00 PM</p>
+          <% end %>
+          <p>Registered on: <%= @rsvp.created_at.strftime("%A the #{@rsvp.created_at.day.ordinalize} of %B %Y") %></p>
+        </div>
+    </div>
+
+    <div class="text-xs-center">
+      <br>
+      <%= image_tag "dsd-flin.png", class: "constrain-sm" %>
+      <br><br>
+      <p class="small text-muted">&copy; 2016 Flinders University, All Rights Reserved.</p>
+    </div>
+
+    <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+  </body>
+</html>
