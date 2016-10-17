@@ -1,0 +1,1 @@
+json.partial! "focus_groups/focus_group", focus_group: @focus_group

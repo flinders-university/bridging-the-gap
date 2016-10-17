@@ -1,0 +1,23 @@
+<% title @focus_group.name %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to 'Edit', edit_focus_group_path(@focus_group), class: "btn btn-secondary" %>
+  <%= link_to 'Back', focus_groups_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @focus_group.name %></h1>
+<hr>
+<p><strong>When:</strong> <%= @focus_group.start.strftime("The #{@focus_group.start.day.ordinalize} of %B %Y from %-l:%M %p") %></p>
+<p><strong>Slots left:</strong> <%= @focus_group.slots - @focus_group.users.count %> / <%= @focus_group.slots %></p>
+<p><strong>With:</strong> <%= @focus_group.user.name %></p>
+
+<br>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Students</div>
+  <div class="list-group">
+  <% @focus_group.users.each do |user| %>
+    <div class="list-group-item"><%= user.name_and_email %></div>
+  <% end %>
+  </div>
+</div>

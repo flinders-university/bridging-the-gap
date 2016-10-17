@@ -47,6 +47,8 @@ gem 'exception_notification'
 # Humanize
 gem 'humanize'
 
+gem 'bootstrap-sass'
+
 # Editing (Mdown)
 gem "github-markup"
 gem "github-markdown"

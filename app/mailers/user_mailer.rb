@@ -1,6 +1,7 @@
 class UserMailer < ApplicationMailer
   default from: "Bridging the Gap <no-reply@bridgingthegap.edu.au>",
-          reply_to: 'aidan.cornelius-bell@flinders.edu.au'
+          reply_to: 'aidan.cornelius-bell@flinders.edu.au',
+          cc: 'aidan.cornelius-bell@flinders.edu.au'
 
   helper :application
 

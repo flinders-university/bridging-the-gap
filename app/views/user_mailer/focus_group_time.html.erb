@@ -23,7 +23,7 @@
 
       <hr>
 
-      <p><%= @focus_group.booking %></p>
+      <p><%= @focus_group.start.strftime("The #{@focus_group.start.day.ordinalize} of %B %Y from %-l:%M %p") %></p>
 
       <hr>
 

@@ -3,6 +3,8 @@ class FgBookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_administrator!, except: [:new, :create, :edit, :update]
 
+  before_action :rdt
+
   # GET /fg_bookings
   # GET /fg_bookings.json
   def index
@@ -73,5 +75,9 @@ class FgBookingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def fg_booking_params
       params.require(:fg_booking).permit(:user_id, :booking)
+    end
+
+    def rdt
+      redirect_to root_url
     end
 end

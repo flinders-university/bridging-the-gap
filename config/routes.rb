@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :focus_groups do
+    post "register"
+  end
+
   get 'conference_management/index'
   delete 'conference_management/destroy'
 

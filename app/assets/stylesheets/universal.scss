@@ -1,3 +1,26 @@
+$brand-primary: darken(#428bca, 6.5%);
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+$navbar-height: 90px;
+$navbar-default-color: #777;
+$navbar-default-bg: #081D2A;
+$navbar-default-border: darken($navbar-default-bg, 6.5%);
+$navbar-default-link-color: #E36960;
+$navbar-default-link-hover-color: #FCC132;
+$navbar-defaut-link-hover-bg: #E36960;
+$navbar-default-link-active-color: #FFF;
+$navbar-default-link-active-bg: #E36960;
+
+$border-radius-base: 0px;
+$border-radius-small: 0px;
+$border-radius-large: 0px;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "scaffolds";
+
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700';
 
 html, body {
@@ -9,7 +32,7 @@ html, body {
   border-bottom: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
-  background: image_url("header_back.jpg");
+  // background: image_url("header_back.jpg");
   background-size: cover;
 }
 
@@ -18,7 +41,7 @@ html, body {
   border-top: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
-  background: image_url("header_back.jpg");
+  //background: image_url("header_back.jpg");
   background-size: cover;
 }
 
@@ -107,7 +130,7 @@ html, body {
 
 // Used primarily for footer...
 .container-dark {
-  background: #021C2B;
+  background: $navbar-default-bg; // rgb(247, 247, 249); // #021C2B;
   color: #fff;
   padding: 20px 0;
   border-bottom: 10px solid #E36960;

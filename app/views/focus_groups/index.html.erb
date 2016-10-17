@@ -1,0 +1,47 @@
+<% title "Focus Groups" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+  <% if current_user_administrator? %>
+  <%= link_to 'New Focus Group', new_focus_group_path, class: "btn btn-secondary" %>
+  <% end %>
+</div>
+<h1>Focus Groups</h1>
+<hr>
+
+<% @focus_groups.each_slice(3) do |focus_groups| %>
+<div class="row">
+  <% focus_groups.each do |focus_group| %>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <%= focus_group.name %>
+      </div>
+      <div class="panel-body">
+        <p><strong>When:</strong> <%= focus_group.start.strftime("The #{focus_group.start.day.ordinalize} of %B %Y from %-l:%M %p") %></p>
+        <p><strong>Slots left:</strong> <%= focus_group.slots - focus_group.users.count %></p>
+        <p><strong>With:</strong> <%= focus_group.user.name %></p>
+      </div>
+      <div class="panel-footer">
+        <% if focus_group.users.count >= focus_group.slots %>
+        <p class="text-danger">Focus group full</p>
+        <% elsif focus_group.users.exists?(:id => current_user.id) %>
+        <p class="text-success"><strong>You are registered</strong></p>
+        <% else %>
+        <p><%= link_to 'Register for this slot', focus_group_register_path(focus_group), method: :post, class: "text-success" %></p>
+        <% end %>
+      <% if current_user_administrator? %>
+        <%= link_to 'Show', focus_group %>
+        <%= link_to 'Edit', edit_focus_group_path(focus_group) %>
+        <%= link_to 'Destroy', focus_group, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+
+<br>
