@@ -34,7 +34,7 @@ class GettingStartedController < ApplicationController
 
   def teacher_conference
     date_monday = Date.new(2016, 12, 5)
-    @date_list = {date_friday.strftime( date_monday.strftime("%A the #{date_monday.day.ordinalize} of %B %Y") => "#{date_monday}" }
+    @date_list = { date_monday.strftime("%A the #{date_monday.day.ordinalize} of %B %Y") => "#{date_monday}" }
     render :layout => false
   end
 
