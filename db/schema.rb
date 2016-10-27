@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016233506) do
+ActiveRecord::Schema.define(version: 20161027015217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,23 @@ ActiveRecord::Schema.define(version: 20161016233506) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "show_info"
+  end
+
+  create_table "industry_presentations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "industry_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "presentation_file_name"
+    t.string   "presentation_content_type"
+    t.integer  "presentation_file_size"
+    t.datetime "presentation_updated_at"
+    t.string   "script_file_name"
+    t.string   "script_content_type"
+    t.integer  "script_file_size"
+    t.datetime "script_updated_at"
   end
 
   create_table "meetings", force: :cascade do |t|
