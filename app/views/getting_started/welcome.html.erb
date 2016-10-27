@@ -81,6 +81,7 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
       <th width="20"><span>Placement Available</span></th>
       <th width="20"><span>Placement Group Allocated</span></th>
       <th width="20"><span>Research Scientist Allocated</span></th>
+      <th width="20"><span>Presentation Uploaded</span></th>
     </tr>
   </thead>
   <tbody>
@@ -94,6 +95,7 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
       <td><% if Industry.find_by_id(current_user.industry_id).present? && Industry.find_by_id(current_user.industry_id).show_info %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.student_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td><% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
+      <td><% if IndustryPresentation.where(user_id: current_user.id).count <= 0 %><%= icon :remove %><% else %><%= icon :ok %><% end %></td>
     </tr>
   </tbody>
 </table>
@@ -104,16 +106,16 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
     <% if current_user.group.level == 4 %>
     <%= link_to "Industries", industries_path, class: "btn btn-primary btn-lg btn-block" %>
     <% else %>
-    <a href="<%= url_for illuminet_polymer_path %>" class="btn btn-primary btn-lg btn-block">Research Participation</a>
+    <a href="<%= url_for illuminet_polymer_path %>" class="btn btn-theta btn-lg btn-block">Complete Surveys</a>
     <% end %>
   </div>
   <div class="col-xs-6">
     <% if current_user.group.level == 2 %>
-    <%= link_to "Placement Information", placement_dashboard_preservice_teacher_path, class: "btn btn-info btn-lg btn-block" %>
+    <%= link_to "Placement Information", placement_dashboard_preservice_teacher_path, class: "btn btn-primary btn-lg btn-block" %>
     <% elsif current_user.group.level == 3 %>
     <%= link_to "Placement Information", placement_dashboard_industry_path, class: "btn btn-info btn-lg btn-block" %>
     <% elsif current_user.group.level == 4 %>
-    <%= link_to "Management Group", meetings_path, class: "btn btn-info btn-lg btn-block" %>
+    <%= link_to "Management Group", meetings_path, class: "btn btn-secondary btn-lg btn-block" %>
     <% end %>
   </div>
 </div>
@@ -121,13 +123,13 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
 <br>
 <div class="row">
   <div class="col-xs-6">
-    <%= link_to "Reflective Blog", student_blogs_path, class: "btn btn-info btn-block btn-lg" %>
+    <%= link_to "Reflective Blog", student_blogs_path, class: "btn btn-beta btn-block btn-lg" %>
   </div>
   <div class="col-xs-6">
     <% if current_user.student_group_id.present? %>
     <%= link_to "My Placement Group", student_group_path(current_user.student_group_id), class: "btn btn-primary btn-block btn-lg" %>
     <% else %>
-    <%= link_to "No Placement Group Allocated", "#", class: "btn btn-primary btn-block btn-lg disabled" %>
+    <%= link_to "No Placement Group Allocated", "#", class: "btn btn-beta btn-block btn-lg disabled" %>
     <% end %>
   </div>
 </div>
@@ -135,19 +137,23 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
 <div class="row">
   <div class="col-xs-6">
     <% if current_user.student_group.present? && current_user.student_group.research_scientists.count >= 1 %>
-    <%= link_to "My Groups Research Scientist", research_scientist_path(current_user.student_group.research_scientists.last.id), class: "btn btn-primary btn-block btn-lg" %>
+    <%= link_to "My Groups Research Scientist", research_scientist_path(current_user.student_group.research_scientists.last.id), class: "btn btn-tertiary btn-block btn-lg" %>
     <% else %>
-    <%= link_to "No Research Scientist Allocated", "#", class: "btn btn-primary btn-block btn-lg disabled" %>
+    <%= link_to "No Research Scientist Allocated", "#", class: "btn btn-tertiary btn-block btn-lg disabled" %>
     <% end %>
   </div>
   <div class="col-xs-6">
-    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-info btn-block btn-lg" %>
+    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-theta btn-block btn-lg" %>
   </div>
 </div>
 <br>
-<%= link_to "Book  or update focus group", focus_groups_path, class: "btn btn-block btn-lg btn-secondary" %> <br>
+<div class="row">
+  <div class="col-xs-6"><%= link_to "Book or update focus group", focus_groups_path, class: "btn btn-block btn-lg btn-beta" %></div>
+  <div class="col-xs-6"><%= link_to "Upload industry presentation", industry_presentations_path, class: "btn btn-block btn-lg btn-secondary" %></div>
+</div>
+<br>
 <div class="clearfix"></div>
-<a href="/pages/pst-learning-resources" class="btn btn-block btn-lg btn-tertiary">Learning Resources</a>
+<a href="/pages/pst-learning-resources" class="btn btn-block btn-lg btn-alpha">Learning Resources</a>
 <div class="clearfix"></div>
 
 <br>
@@ -170,7 +176,16 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
     <%= link_to "PSTs Blogs", student_blogs_path, class: "btn btn-info btn-block btn-lg" %>
   </div>
   <div class="col-xs-6">
-    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-primary btn-block btn-lg" %>
+    <%= link_to "My Profile", edit_user_registration_path, class: "btn btn-theta btn-block btn-lg" %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-6">
+    <%= link_to "Student Industry Presentations", industry_presentations_path, class: "btn btn-alpha btn-block btn-lg" %>
+  </div>
+  <div class="col-xs-6">
+    <%# link_to "My Profile", edit_user_registration_path, class: "btn btn-theta btn-block btn-lg" %>
   </div>
 </div>
 <% end %>

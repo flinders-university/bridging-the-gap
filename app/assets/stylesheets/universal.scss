@@ -308,7 +308,7 @@ blockquote {
   max-width: 420px;
 }
 
-$secondary-color: #ffd049;
+$secondary-color: #47569c;
 
 .btn-secondary {
   color: #ffffff;
@@ -427,6 +427,187 @@ fieldset[disabled] .btn-tertiary.focus {
   color: $tertiary-color;
   background-color: #ffffff;
 }
+
+$alpha-color: #4b307f;
+
+.btn-alpha {
+  color: #ffffff;
+  background-color: $alpha-color;
+  border-color: darken($alpha-color, 5%);
+}
+.btn-alpha:focus,
+.btn-alpha.focus {
+  color: #ffffff;
+  background-color: darken($alpha-color, 10%);
+  border-color: darken($alpha-color, 15%);
+}
+.btn-alpha:hover {
+  color: #ffffff;
+  background-color: darken($alpha-color, 10%);
+  border-color: darken($alpha-color, 15%);
+}
+.btn-alpha:active,
+.btn-alpha.active,
+.open > .dropdown-toggle.btn-alpha {
+  color: #ffffff;
+  background-color: darken($alpha-color, 10%);
+  border-color: darken($alpha-color, 15%);
+}
+.btn-alpha:active:hover,
+.btn-alpha.active:hover,
+.open > .dropdown-toggle.btn-alpha:hover,
+.btn-alpha:active:focus,
+.btn-alpha.active:focus,
+.open > .dropdown-toggle.btn-alpha:focus,
+.btn-alpha:active.focus,
+.btn-alpha.active.focus,
+.open > .dropdown-toggle.btn-alpha.focus {
+  color: #ffffff;
+  background-color: $alpha-color;
+  border-color: darken($alpha-color, 5%);
+}
+.btn-alpha:active,
+.btn-alpha.active,
+.open > .dropdown-toggle.btn-alpha {
+  background-image: none;
+}
+.btn-alpha.disabled:hover,
+.btn-alpha[disabled]:hover,
+fieldset[disabled] .btn-alpha:hover,
+.btn-alpha.disabled:focus,
+.btn-alpha[disabled]:focus,
+fieldset[disabled] .btn-alpha:focus,
+.btn-alpha.disabled.focus,
+.btn-alpha[disabled].focus,
+fieldset[disabled] .btn-alpha.focus {
+  background-color: $alpha-color;
+  border-color: darken($alpha-color, 5%);
+}
+.btn-alpha .badge {
+  color: $alpha-color;
+  background-color: #ffffff;
+}
+
+$beta-color: #4c75ab;
+
+.btn-beta {
+  color: #ffffff;
+  background-color: $beta-color;
+  border-color: darken($beta-color, 5%);
+}
+.btn-beta:focus,
+.btn-beta.focus {
+  color: #ffffff;
+  background-color: darken($beta-color, 10%);
+  border-color: darken($beta-color, 15%);
+}
+.btn-beta:hover {
+  color: #ffffff;
+  background-color: darken($beta-color, 10%);
+  border-color: darken($beta-color, 15%);
+}
+.btn-beta:active,
+.btn-beta.active,
+.open > .dropdown-toggle.btn-beta {
+  color: #ffffff;
+  background-color: darken($beta-color, 10%);
+  border-color: darken($beta-color, 15%);
+}
+.btn-beta:active:hover,
+.btn-beta.active:hover,
+.open > .dropdown-toggle.btn-beta:hover,
+.btn-beta:active:focus,
+.btn-beta.active:focus,
+.open > .dropdown-toggle.btn-beta:focus,
+.btn-beta:active.focus,
+.btn-beta.active.focus,
+.open > .dropdown-toggle.btn-beta.focus {
+  color: #ffffff;
+  background-color: $beta-color;
+  border-color: darken($beta-color, 5%);
+}
+.btn-beta:active,
+.btn-beta.active,
+.open > .dropdown-toggle.btn-beta {
+  background-image: none;
+}
+.btn-beta.disabled:hover,
+.btn-beta[disabled]:hover,
+fieldset[disabled] .btn-beta:hover,
+.btn-beta.disabled:focus,
+.btn-beta[disabled]:focus,
+fieldset[disabled] .btn-beta:focus,
+.btn-beta.disabled.focus,
+.btn-beta[disabled].focus,
+fieldset[disabled] .btn-beta.focus {
+  background-color: $beta-color;
+  border-color: darken($beta-color, 5%);
+}
+.btn-beta .badge {
+  color: $beta-color;
+  background-color: #ffffff;
+}
+
+$theta-color: #50a989;
+
+.btn-theta {
+  color: #ffffff;
+  background-color: $theta-color;
+  border-color: darken($theta-color, 5%);
+}
+.btn-theta:focus,
+.btn-theta.focus {
+  color: #ffffff;
+  background-color: darken($theta-color, 10%);
+  border-color: darken($theta-color, 15%);
+}
+.btn-theta:hover {
+  color: #ffffff;
+  background-color: darken($theta-color, 10%);
+  border-color: darken($theta-color, 15%);
+}
+.btn-theta:active,
+.btn-theta.active,
+.open > .dropdown-toggle.btn-theta {
+  color: #ffffff;
+  background-color: darken($theta-color, 10%);
+  border-color: darken($theta-color, 15%);
+}
+.btn-theta:active:hover,
+.btn-theta.active:hover,
+.open > .dropdown-toggle.btn-theta:hover,
+.btn-theta:active:focus,
+.btn-theta.active:focus,
+.open > .dropdown-toggle.btn-theta:focus,
+.btn-theta:active.focus,
+.btn-theta.active.focus,
+.open > .dropdown-toggle.btn-theta.focus {
+  color: #ffffff;
+  background-color: $theta-color;
+  border-color: darken($theta-color, 5%);
+}
+.btn-theta:active,
+.btn-theta.active,
+.open > .dropdown-toggle.btn-theta {
+  background-image: none;
+}
+.btn-theta.disabled:hover,
+.btn-theta[disabled]:hover,
+fieldset[disabled] .btn-theta:hover,
+.btn-theta.disabled:focus,
+.btn-theta[disabled]:focus,
+fieldset[disabled] .btn-theta:focus,
+.btn-theta.disabled.focus,
+.btn-theta[disabled].focus,
+fieldset[disabled] .btn-theta.focus {
+  background-color: $theta-color;
+  border-color: darken($theta-color, 5%);
+}
+.btn-theta .badge {
+  color: $theta-color;
+  background-color: #ffffff;
+}
+
 
 .text-danger>a:link {
   color: #e46763;
