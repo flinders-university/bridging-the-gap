@@ -108,6 +108,7 @@
               <li class="dropdown-header">Learning</li>
               <li><%= link_to "Reflective Blog", student_blogs_path %></li>
               <li><%= link_to "Learning Resources", "/pages/pst-learning-resources" %></li>
+              <li><%= link_to "Industry Presentation", industry_presentations_path %></li>
               <% elsif current_user.group.level == 3 %>
               <li><%= link_to "Placement Information", placement_dashboard_industry_path %></li>
               <li><%= link_to "Surveys & Research", illuminet_polymer_path %></li>
