@@ -29,7 +29,7 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
         if (distance < 0) {
 
             clearInterval(timer);
-            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+            document.getElementById('countdown').innerHTML = 'Thank you for participating in your focus group <%= current_user.firstname %>.';
 
             return;
         }
