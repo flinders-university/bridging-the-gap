@@ -13,6 +13,8 @@ echo '* Updating bundle'
 /home/aidancornelius/projects/bridging-the-gap/bin/bundle
 echo '* Repairing all RVM links'
 rvm repair all
+echo '* Repairing RVM in project folder'
+cd /home/aidancornelius/projects/bridging-the-gap/bin/ && rvm repair all
 echo '* DB Migrations '
 cd /home/aidancornelius/projects/bridging-the-gap && /home/aidancornelius/projects/bridging-the-gap/bin/rake db:migrate
 echo '* Restarting Ruby server - Puma'
