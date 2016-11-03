@@ -2,6 +2,7 @@
 <div class="pull-right">
   <br>
   <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
+  <% if current_user_administrator? %> <%= link_to 'Blog Report', report_student_blogs_path, class: "btn btn-secondary" %> <% end %>
   <%= link_to 'New Blog / Reflection', new_student_blog_path, class: "btn btn-primary" %>
 </div>
 <h1><% if current_user.group.level != 2 %>Pre-Service Teacher<% else %>My<% end %> Blogs</h1>

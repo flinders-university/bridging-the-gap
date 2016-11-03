@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :research_scientists
   resources :student_groups
-  resources :student_blogs
+  resources :student_blogs do
+    collection { get "report" }
+  end
   resources :tasks
 
   resources :meetings

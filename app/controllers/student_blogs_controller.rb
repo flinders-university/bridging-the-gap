@@ -29,6 +29,12 @@ class StudentBlogsController < ApplicationController
     end
   end
 
+  # GET /student_blogs/report
+  def report
+    @student_blogs = StudentBlog.all
+    render layout: false
+  end
+
   # GET /student_blogs/new
   def new
     @student_blog = StudentBlog.new
