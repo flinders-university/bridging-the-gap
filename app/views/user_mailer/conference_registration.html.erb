@@ -17,24 +17,32 @@
       <br>
       <p>Dear <%= @rsvp.full_name %>,</p>
 
-      <p>Thank you for taking the time to pre register for the <em>Bridging the Gap Teacher Conference</em>.</p>
+      <p>Thank you for taking the time to register for the <em>Bridging the Gap Teacher Conference</em>.</p>
 
-      <p>This email confirms that you have successfully registered your interest in the following date:</p>
+      <p>This email confirms that you have successfully registered with the following details:</p>
 
       <hr>
 
-      <% if @rsvp.preferred_date == Date.new(2010, 10, 10) %>
-      <p>Either Friday the 2nd of December 2016 or Monday the 5th of December 2016. 09:00 AM &mdash; 03:00 PM.</p>
-      <% else %>
-      <p><%= @rsvp.preferred_date.strftime("%A the #{@rsvp.preferred_date.day.ordinalize} of %B %Y") %>. 09:00 AM &mdash; 03:00 PM.</p>
+      <p><strong>Registration Details</strong></p>
+      <p>Name: <%= @rsvp.full_name %></p>
+      <p>Email: <%= @rsvp.email %></p>
+      <p>Role: <%= @rsvp.role %></p>
+      <p>School: <%= @rsvp.school %></p>
+      <p>Year Level: <%= @rsvp.year_level %></p>
+      <% if @rsvp.year_level == "School Leadership Only" && @rsvp.for_full_name != "" %>
+      <p>Registered for: <%= @rsvp.for_full_name %></p>
+      <p>Their email: <%= @rsvp.for_email %></p>
+      <p>I will attend too: <%= @rsvp.attending_too ? "Yes" : "No" %></p>
       <% end %>
+      <p>Registered on: <%= @rsvp.created_at.strftime("%A the #{@rsvp.created_at.day.ordinalize} of %B %Y") %></p>
+
       <hr>
 
       <p>You can <strong>view or update</strong> your registration online here: <a href="https://bridgingthegap.edu.au/teacher_conference/registration?id=<%= @rsvp.id %>&email=<%= @rsvp.email %>">Registration Details</a>.</p>
 
       <p>If you are no longer able to attend at all, please contact: <a href="mailto:aidan.cornelius-bell@flinders.edu.au">aidan.cornelius-bell@flinders.edu.au</a>.</p>
 
-      <p>Date confirmation and further details will be provided as soon as possible.</p>
+      <p>Further details will be provided as soon as possible.</p>
 
       <p>All the best,</p>
 

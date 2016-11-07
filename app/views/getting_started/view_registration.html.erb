@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Registration Details | Bridging the Gap: Teacher Conference</title>
+  <title>Registration Details | Bridging the Gap: Teacher Conference</title>
 
-    <!-- Analytics ... -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <!-- Analytics ... -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      <% if current_user %>
-      ga('create', 'UA-81809313-1', 'auto', {
-        userId: "<%= "GUQ-#{current_user.id}" %>"
-      });
-      <% else %>
-      ga('create', 'UA-81809313-1', 'auto');
-      <% end %>
-      ga('send', 'pageview');
+  <% if current_user %>
+  ga('create', 'UA-81809313-1', 'auto', {
+    userId: "<%= "GUQ-#{current_user.id}" %>"
+  });
+  <% else %>
+  ga('create', 'UA-81809313-1', 'auto');
+  <% end %>
+  ga('send', 'pageview');
 
-    </script>
+  </script>
+  <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+  <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+  <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
-    <style type="text/css">
-      body { background: #e7e9e8; margin: 15px 10px; }
-      .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
-      .col { padding: 6px 10px;}
-      .mb { margin: 15px 0px; }
-      .constrain-sm { max-width: 280px; }
-      .float-top-left { clear: both; float: left; position: fixed; }
-      .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 99999;}
-      .hzi { z-index: 9999999999; }
-      .btn-outline-primary { background: #f7f7f9; }
-    </style>
-  </head>
-  <body>
-    <div class="float-top-left hzi">
-      <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
-        Bridging the Gap</a>
+
+  <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <style type="text/css">
+  body { background: #e7e9e8; margin: 15px 10px; }
+  .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
+  .col { padding: 6px 10px;}
+  .mb { margin: 15px 0px; }
+  .constrain-sm { max-width: 280px; }
+  .float-top-left { clear: both; float: left; position: fixed; }
+  .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 99999;}
+  .hzi { z-index: 9999999999; }
+  .btn-outline-primary { background: #f7f7f9; }
+  </style>
+</head>
+<body>
+  <div class="float-top-left hzi">
+    <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
+      Bridging the Gap</a>
     </div>
     <div class="container">
       <div class="mb text-xs-center">
@@ -54,23 +58,76 @@
           <p><strong>Registration Details</strong></p>
           <p>Name: <%= @rsvp.full_name %></p>
           <p>Email: <%= @rsvp.email %></p>
-          <% if @rsvp.preferred_date == Date.new(2010, 10, 10) %>
-          <p>Date: Either Friday the 2nd of December 2016 or Monday the 5th of December 2016 &mdash; 09:00 AM &mdash; 03:00 PM</p>
-          <% else %>
-          <p>Date: <%= @rsvp.preferred_date.strftime("%A the #{@rsvp.preferred_date.day.ordinalize} of %B %Y") %> &mdash; 09:00 AM &mdash; 03:00 PM</p>
+          <p>Role: <%= @rsvp.role %></p>
+          <p>School: <%= @rsvp.school %></p>
+          <p>Year Level: <%= @rsvp.year_level %></p>
+          <% if @rsvp.year_level == "School Leadership Only" && @rsvp.for_full_name != "" %>
+          <p>Registered for: <%= @rsvp.for_full_name %></p>
+          <p>Their email: <%= @rsvp.for_email %></p>
+          <p>I will attend too: <%= @rsvp.attending_too ? "Yes" : "No" %></p>
           <% end %>
           <p>Registered on: <%= @rsvp.created_at.strftime("%A the #{@rsvp.created_at.day.ordinalize} of %B %Y") %></p>
           <hr>
           <%= form_tag("/update_teacher_conference_registration", method: :patch) do %>
+          <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
           <div class="form-group">
-            <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
-            <label for="preferred_date"><strong>Change Preferred Date</strong></label>
-            <%= select_tag(:preferred_date, options_for_select(@date_list, @rsvp.preferred_date), class: "form-control") %>
+            <label for="full_name">Full Name</label>
+            <%= text_field_tag(:full_name, @rsvp.full_name, class: "form-control", placeholder: "Jane Doe") %>
           </div>
-          <%= submit_tag("Update Timeslot", class: "btn btn-primary") %>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <%= email_field_tag(:email, @rsvp.email, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <%= text_field_tag(:role, @rsvp.role, class: "form-control", placeholder: "Science Teacher") %>
+          </div>
+          <div class="form-group">
+            <label for="school">School</label>
+            <%= text_field_tag(:school, @rsvp.school, class: "form-control", placeholder: "My High School") %>
+          </div>
+          <div class="form-group">
+            <label for="year">Most Appropriate Year Level</label>
+            <%= select_tag(:year_level, options_for_select([ "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
+          </div>
+          <div class="form-group rfor">
+            <label for="for_full_name">Registering For: Full Name</label>
+            <%= text_field_tag(:for_full_name, @rsvp.for_full_name, class: "form-control", placeholder: "Jane Doe") %>
+          </div>
+          <div class="form-group rfor">
+            <label for="for_email">Registering For: Email</label>
+            <%= email_field_tag(:for_email, @rsvp.for_email, class: "form-control", placeholder: "john.doe123@schools.sa.edu.au") %>
+          </div>
+          <div class="form-group rfor">
+            <label for="attending_too">Registering For: I wish to attend too</label> <br>
+            <%= hidden_field_tag :attending_too, 'false' %>
+            <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
+          </div>
+          <%= submit_tag("Update Registration", class: "btn btn-primary") %>
           <% end %>
         </div>
-    </div>
+      </div>
+
+      <!--
+      <%= @rsvp.inspect %>
+    -->
+    <script>
+    $(document).ready(function() {
+      if ($("#year_level").val() == "School Leadership Only") {
+        $(".rfor").show();
+      } else {
+        $(".rfor").hide();
+      }
+    });
+
+    $("#year_level").bind('change', function(e) {
+      if ($(this).val() == "School Leadership Only") {
+        $(".rfor").show();
+      } else {
+        $(".rfor").hide();
+      }
+    });
+    </script>
 
     <div class="text-xs-center">
       <br>
@@ -79,8 +136,5 @@
       <p class="small text-muted">&copy; 2016 Flinders University, All Rights Reserved.</p>
     </div>
 
-    <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-    <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
   </body>
-</html>
+  </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027015217) do
+ActiveRecord::Schema.define(version: 20161107223331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,9 +200,14 @@ ActiveRecord::Schema.define(version: 20161027015217) do
   create_table "rsvps", force: :cascade do |t|
     t.string   "full_name"
     t.string   "email"
-    t.date     "preferred_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "role"
+    t.string   "school"
+    t.string   "year_level"
+    t.string   "for_full_name"
+    t.string   "for_email"
+    t.boolean  "attending_too"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "signatures", force: :cascade do |t|

@@ -33,16 +33,16 @@ class GettingStartedController < ApplicationController
   end
 
   def teacher_conference
-    date_monday = Date.new(2016, 12, 5)
-    @date_list = { date_monday.strftime("%A the #{date_monday.day.ordinalize} of %B %Y") => "#{date_monday}" }
+    @rsvp = Rsvp.new
     render :layout => false
   end
 
   def update_registration
     rsvp = Rsvp.find_by_id(params[:rsvp_id])
+
     if rsvp.present?
-      rsvp.preferred_date = params[:preferred_date]
-      if rsvp.save
+      permitted = params.permit(:full_name, :email, :role, :school, :year_level, :for_full_name, :for_email, :attending_too)
+      if rsvp.update(permitted)
         redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your registration was updated successfully."
       else
         redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", alert: "Sorry, your registration could not be updated. Please try again."
@@ -58,11 +58,6 @@ class GettingStartedController < ApplicationController
         if rsvp.id == params[:id].to_i
           @rsvp = rsvp
 
-          date_friday = Date.new(2016, 12, 2)
-          date_monday = Date.new(2016, 12, 5)
-          date_either = Date.new(2010, 10, 10)
-          @date_list = {date_friday.strftime("%A the #{date_friday.day.ordinalize} of %B %Y") => "#{date_friday}", date_monday.strftime("%A the #{date_monday.day.ordinalize} of %B %Y") => "#{date_monday}", "Either Day" => date_either}
-
           render :layout => false
         else
           redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
@@ -77,7 +72,7 @@ class GettingStartedController < ApplicationController
 
   def tc_register
     # do something with the Rsvp model
-    permitted = params.permit(:full_name, :email, :preferred_date)
+    permitted = params.permit(:full_name, :email, :role, :school, :year_level, :for_full_name, :for_email, :attending_too)
     rsvp = Rsvp.new(permitted)
 
     if rsvp.save
@@ -86,7 +81,7 @@ class GettingStartedController < ApplicationController
       notify_slack("Someone has registered for the Bridging the Gap Teacher Conference...", nil, rsvp.inspect, "A7B8C9")
 
       # And back we go
-      redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your pre registration has been saved successfully."
+      redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your registration has been saved successfully."
     else
       if (frsvp = Rsvp.find_by_email(params[:email])) && (rsvp.present?)
         redirect_to "/teacher_conference/registration?id=#{frsvp.id}&email=#{frsvp.email}", notice: "You have already registered for the conference. Update your registration below."

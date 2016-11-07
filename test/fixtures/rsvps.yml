@@ -3,9 +3,19 @@
 one:
   full_name: MyString
   email: MyString
-  preferred_date: 2016-10-06
+  role: MyString
+  school: MyString
+  year_level: MyString
+  for_full_name: MyString
+  for_email: MyString
+  attending_too: false
 
 two:
   full_name: MyString
   email: MyString
-  preferred_date: 2016-10-06
+  role: MyString
+  school: MyString
+  year_level: MyString
+  for_full_name: MyString
+  for_email: MyString
+  attending_too: false
