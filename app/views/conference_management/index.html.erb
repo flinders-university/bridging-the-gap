@@ -12,7 +12,9 @@
 <div class="list-group">
   <% @rsvps.each do |rsvp| %>
   <div class="list-group-item">
-    <%= rsvp.full_name %> registered for <%# if rsvp.preferred_date == Date.new(2010, 10, 10) %>either date<%# else %><%# rsvp.preferred_date.strftime("%A the #{rsvp.preferred_date.day.ordinalize} of %B %Y") %><# end %> with contact <a href="mailto:<%= "\"#{rsvp.full_name}\" <#{rsvp.email}>" %>"><%= rsvp.email %></a>.
+    <%= rsvp.full_name %> with contact <a href="mailto:<%= "\"#{rsvp.full_name}\" <#{rsvp.email}>" %>"><%= rsvp.email %></a>
+    <br>
+    <pre><%= rsvp.inspect %></pre>
     <div class="pull-right">
       <%= form_tag("/conference_management/destroy", method: :delete) do %>
         <%= hidden_field_tag(:rsvp_id, rsvp.id) %>
