@@ -1,0 +1,31 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Unit Presentations", unit_presentations_path, class: "btn btn-secondary" %>
+  <% if current_user == @unit_presentation.user %>
+  <%= link_to 'Edit My Presentation', edit_unit_presentation_path(@unit_presentation), class: "btn btn-alpha" %>
+  <% end %>
+</div>
+<h1><%= @unit_presentation.title %></h1>
+<hr>
+<p>
+  <strong>Student:</strong>
+  <%= @unit_presentation.user.name %>
+</p>
+
+<hr>
+<% if @unit_presentation.presentation.present? %>
+<p>
+  <%= icon :paperclip %> Presentation: <%= number_to_human_size(@unit_presentation.presentation_file_size) %>
+  [<%= link_to @unit_presentation.presentation_file_name, @unit_presentation.presentation.expiring_url(10.minutes) %>]
+</p>
+<% end %>
+
+<% if @unit_presentation.notes.present? %>
+<p>
+  <%= icon :paperclip %> Notes: <%= number_to_human_size(@unit_presentation.notes_file_size) %>
+  [<%= link_to @unit_presentation.notes_file_name, @unit_presentation.notes.expiring_url(10.minutes) %>]
+</p>
+<% end %>
+
+<br>

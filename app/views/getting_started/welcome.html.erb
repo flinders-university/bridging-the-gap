@@ -153,7 +153,10 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
 </div>
 <br>
 <div class="clearfix"></div>
-<a href="/pages/pst-learning-resources" class="btn btn-block btn-lg btn-alpha">Learning Resources</a>
+<div class="row">
+  <div class="col-xs-6"><a href="/pages/pst-learning-resources" class="btn btn-block btn-lg btn-alpha">Learning Resources</a></div>
+  <div class="col-xs-6"><a href="/unit_presentations" class="btn btn-block btn-lg btn-beta">Unit Presentations</a></div>
+</div>
 <div class="clearfix"></div>
 
 <br>
@@ -185,7 +188,7 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
     <%= link_to "Student Industry Presentations", industry_presentations_path, class: "btn btn-alpha btn-block btn-lg" %>
   </div>
   <div class="col-xs-6">
-    <%# link_to "My Profile", edit_user_registration_path, class: "btn btn-theta btn-block btn-lg" %>
+    <a href="/unit_presentations" class="btn btn-block btn-lg btn-beta">Student Unit Presentations</a>
   </div>
 </div>
 <% end %>

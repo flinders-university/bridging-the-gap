@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :unit_presentations
   resources :industry_presentations
   resources :focus_groups do
     post "register"
