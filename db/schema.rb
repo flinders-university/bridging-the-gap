@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108231050) do
+ActiveRecord::Schema.define(version: 20161108234323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -249,8 +249,8 @@ ActiveRecord::Schema.define(version: 20161108231050) do
   create_table "unit_presentations", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "presentation_file_name"
     t.string   "presentation_content_type"
     t.integer  "presentation_file_size"
@@ -259,6 +259,10 @@ ActiveRecord::Schema.define(version: 20161108231050) do
     t.string   "notes_content_type"
     t.integer  "notes_file_size"
     t.datetime "notes_updated_at"
+    t.string   "unit_overview_file_name"
+    t.string   "unit_overview_content_type"
+    t.integer  "unit_overview_file_size"
+    t.datetime "unit_overview_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

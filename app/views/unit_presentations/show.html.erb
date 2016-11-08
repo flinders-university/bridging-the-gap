@@ -28,4 +28,11 @@
 </p>
 <% end %>
 
+<% if @unit_presentation.unit_overview.present? %>
+<p>
+  <%= icon :paperclip %> Unit Overview: <%= number_to_human_size(@unit_presentation.unit_overview_file_size) %>
+  [<%= link_to @unit_presentation.unit_overview_file_name, @unit_presentation.unit_overview.expiring_url(10.minutes) %>]
+</p>
+<% end %>
+
 <br>
