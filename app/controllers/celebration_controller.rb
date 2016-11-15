@@ -7,7 +7,7 @@ class CelebrationController < ApplicationController
   def save
     @stc2016 = Stc2016.new(stc_params)
     if @stc2016.save
-      UserMailer.pst_celebration_sixteen(@stc2016.email, @stc2016)
+      UserMailer.pst_celebration_sixteen(@stc2016.email, @stc2016).deliver_now
       render json: true
     else
       render json: false
