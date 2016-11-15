@@ -1,23 +1,23 @@
-<% title "Conference Registrations" %>
+<% title "Preservice Teacher Registrations" %>
 <div class="clearfix"></div>
 <div class="pull-right">
   <br>
   <a href="<%= root_url %>" class="btn btn-primary">Dashboard</a>
 </div>
-<h1>Conference Registrations</h1>
+<h1>Preservice Teacher Registrations</h1>
 <hr>
-<% if @rsvp_count < 1 %>
+<% if @stc_count < 1 %>
 <p class="text-center lead">There are no registrations at this time.</p>
 <% else %>
 <div class="list-group">
-  <% @rsvps.each do |rsvp| %>
+  <% @stcs.each do |stc| %>
   <div class="list-group-item">
-    <%= rsvp.full_name %> with contact <a href="mailto:<%= "\"#{rsvp.full_name}\" <#{rsvp.email}>" %>"><%= rsvp.email %></a>
+    <%= stc.name %> with contact <a href="mailto:<%= "\"#{stc.name}\" <#{stc.email}>" %>"><%= stc.email %></a>
     <br>
-    <pre><%= rsvp.inspect %></pre>
+    <pre><%= stc.inspect %></pre>
     <div class="pull-right">
-      <%= form_tag("/conference_management/destroy", method: :delete) do %>
-        <%= hidden_field_tag(:rsvp_id, rsvp.id) %>
+      <%= form_tag("/conference_management/destroy_pst", method: :delete) do %>
+        <%= hidden_field_tag(:stc_id, stc.id) %>
         <%= submit_tag("x", class: "btn btn-danger btn-xs") %>
       <% end %>
     </div>

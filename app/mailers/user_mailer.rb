@@ -22,4 +22,9 @@ class UserMailer < ApplicationMailer
     mail(to: email, subject: "Bridging the Gap Conference Registration")
   end
 
+  def pst_celebration_sixteen(email, stc)
+    @stc = stc
+    mail(to: email, subject: "Flinders University Science Preservice Teachers Celebration")
+  end
+
 end

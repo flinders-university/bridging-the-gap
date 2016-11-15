@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'celebration', to: "celebration#indexsixteen"
+  post 'celebration', to: "celebration#save"
+
   resources :unit_presentations
+
   resources :industry_presentations
+
   resources :focus_groups do
     post "register"
   end
 
   get 'conference_management/index'
+  get 'conference_management/pst'
   delete 'conference_management/destroy'
+  delete 'conference_management/destroy_pst'
 
   resources :project_teams
 

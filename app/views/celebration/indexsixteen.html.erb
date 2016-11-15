@@ -1,0 +1,75 @@
+<p class="lead">When: December 5th</p>
+<p class="lead">Time: 3.00pm to 5.00pm</p>
+<p class="lead">Where: Tonsley level 5 room 5.29</p>
+<p class="lead">What: Food, friends and conversation</p>
+<p class="lead">Meet:  Your mentor teacher in 2017 if possible</p>
+<p class="lead">Receive: Certificate and personal statement of participation in the bridging the gap project for your CV</p>
+<p class="lead">Bring: A friend if you want to</p>
+
+<hr>
+
+<div class="result " role="alert"></div>
+
+<%= form_tag(celebration_path, method: :post, id: "stc") do %>
+<p>Your Full Name
+<%= text_field_tag(:name, "#{if current_user.present? then current_user.name end}", placeholder: "Full Name", class: "form-control") %> </p>
+<p>Year in degree
+<%= select_tag(:degreeyear, options_for_select({"1st Year (M. Teach)"=> "1", "2nd Year (M. Teach)"=> "2", "3rd Year (B.Ed)" => "3", "4th Year (B.Ed)" => "4"}), placeholder: "Full Name", class: "form-control") %> </p>
+<p>Email Address
+<%= text_field_tag(:email, "#{if current_user.present? then current_user.email end}", placeholder: "Email Address", class: "form-control") %> </p>
+<p>Bringing a friend? <br>
+<%= check_box_tag(:plusone) %> </p>
+<p class="baf">Friend's Name
+<%= text_field_tag(:plusone_name, "", placeholder: "Plus One Full Name", class: "form-control") %></p>
+<%= submit_tag("RSVP", class: "btn btn-primary", id: "subme") %>
+<% end %>
+
+<script>
+$(".baf").hide();
+
+$("#plusone").change(function() {
+  if ($(".baf").is(":visible")) {
+    $(".baf").hide();
+  } else {
+    $(".baf").show();
+  }
+});
+
+$("#stc").on("submit", function( event ) {
+  event.preventDefault();
+  console.log($( this ).serialize());
+
+  if ( $("#name").val().length > 1 && $("#email").val().length > 1 ) {
+
+    $.ajax({ url: '/celebration',
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: $( this ).serialize(),
+      success: function(response) {
+        console.log(response);
+        if (response == true) {
+          $('.result').html("Thanks for RSVPing! See you on December 5th.");
+          $('.result').removeClass("alert alert-danger");
+          $('.result').addClass("alert alert-success");
+        } else {
+          $('.result').html("Hold up! Something didn't work there, check your RSVP below.");
+          $('.result').removeClass("alert alert-success");
+          $('.result').addClass("alert alert-danger");
+        }
+      },
+      error: function(response) {
+        console.log(response);
+        $('.result').html("Hold up! Something didn't work there, check your RSVP below.");
+        $('.result').removeClass("alert alert-success");
+        $('.result').addClass("alert alert-danger");
+      }
+    });
+
+  } else {
+    $('.result').removeClass("alert alert-success");
+    $('.result').addClass("alert alert-danger");
+    $('.result').html("Oops, make sure you fill out all fields.");
+  }
+
+});
+</script>
