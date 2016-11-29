@@ -21,8 +21,8 @@
       <li>Role: <%= rsvp.role %></li>
       <li>School: <%= rsvp.school %></li>
       <li>Year level: <%= rsvp.year_level %></li>
-      <li>For: <%= rsvp.for_full_name ? rsvp.for_full_name : "N/A" %></li>
-      <li>For Email: <%= rsvp.for_email ? rsvp.for_email : "N/A" %></li>
+      <li>For: <%= rsvp.for_full_name.present? ? rsvp.for_full_name : "N/A" %></li>
+      <li>For Email: <%= rsvp.for_email.present? ? rsvp.for_email : "N/A" %></li>
       <li>Attending in addition: <%= rsvp.attending_too ? rsvp.attending_too : "No" %></li>
     </ul>
     <pre class="hidden"><%= rsvp.inspect %></pre>
