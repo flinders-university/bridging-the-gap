@@ -118,9 +118,10 @@
   <% @stcs.each_slice(2) do |rsvps| %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
-    <div class="badge">
+    <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logo-ol-white.svg", class: "image-right") %>
       <h2><%= rsvp.name %></h2><br>
-      <h5><%= rsvp.degreeyear.ordinalize %> year <%= if rsvp.degreeyear == 1 || rsvp.degreeyear == 2 then "Masters" else "Bachelor" end %> student</h5>
+      <h5><%= rsvp.degreeyear.ordinalize %> year <%= if rsvp.degreeyear == 1 || rsvp.degreeyear == 2 then "Master of Teaching" else "Bachelor of Education" end %> student</h5>
+      <p class="watermark-span">Bridging the Gap Conference 2016</p>
     </div>
     <% end %>
   </div>
