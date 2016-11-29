@@ -109,6 +109,7 @@
   </style>
 </head>
 <body>
+  <% brk = 0 %>
   <% @rsvps.each_slice(2) do |rsvps| %>
   <% if brk <= 5 then brk += 1 else '<div class="page-break"></div>' end %>
   <div class="badge_group">
