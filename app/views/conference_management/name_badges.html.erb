@@ -111,10 +111,10 @@
 <body>
   <% brk = 0 %>
   <% @rsvps.each_slice(2) do |rsvps| %>
-  <% if brk <= 5 then brk += 1 else %>
-  <div class="page-break"></div>
-  <% end %>
   <div class="badge_group">
+    <% if brk <= 5 then brk += 1 else %>
+    <div class="page-break"></div>
+    <% end %>
     <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
       <h2><%= rsvp.full_name %></h2><br>
@@ -126,10 +126,10 @@
   <% end %>
 
   <% @stcs.each_slice(2) do |rsvps| %>
-  <% if brk <= 5 then brk += 1 else %>
-  <div class="page-break"></div>
-  <% end %>
   <div class="badge_group">
+    <% if brk <= 5 then brk += 1 else %>
+    <div class="page-break"></div>
+    <% end %>
     <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
       <h2><%= rsvp.name %></h2><br>
