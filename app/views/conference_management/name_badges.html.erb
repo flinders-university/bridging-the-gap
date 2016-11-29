@@ -74,9 +74,9 @@
     border: 1px solid grey;
     height: 120px;
   }
-  div.badge_group:nth-child(4n)
+  .page-break
   {
-    page-break-before: always;
+    display: block; page-break-before: always;
   }
   h1, h2, h3, h4, h5, h6
   {
@@ -110,6 +110,7 @@
 </head>
 <body>
   <% @rsvps.each_slice(2) do |rsvps| %>
+  <% if brk <= 5 then brk += 1 else '<div class="page-break"></div>' end %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
@@ -122,6 +123,7 @@
   <% end %>
 
   <% @stcs.each_slice(2) do |rsvps| %>
+  <% if brk <= 5 then brk += 1 else '<div class="page-break"></div>' end %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
