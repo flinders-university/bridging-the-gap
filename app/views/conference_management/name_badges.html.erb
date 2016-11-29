@@ -1,0 +1,13 @@
+<% @rsvps.each_slice(2) do |rsvps| %>
+<% rsvps.each do |rsvp| %>
+<h2><%= rsvp.full_name %></h2><br>
+<h5><%= rsvp.role %></h5>
+<% end %>
+<% end %>
+
+<% @stcs.each_slice(2) do |rsvps| %>
+<% rsvps.each do |rsvp| %>
+<h2><%= rsvp.name %></h2><br>
+<h5><%= rsvp.degreeyear %></h5>
+<% end %>
+<% end %>

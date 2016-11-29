@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'conference_management/index'
   get 'conference_management/pst'
+  get 'conference_management/name_badges'
   delete 'conference_management/destroy'
   delete 'conference_management/destroy_pst'
 

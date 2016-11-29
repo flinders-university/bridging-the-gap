@@ -1,6 +1,13 @@
 class ConferenceManagementController < ApplicationController
   before_action :require_administrator!
 
+  def name_badges
+    @rsvps = Rsvp.all
+    @stcs = Stc2016.all
+
+    render layout: false
+  end
+
   def index
     @rsvps = Rsvp.all
     @rsvp_count = @rsvps.count
