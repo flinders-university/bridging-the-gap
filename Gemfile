@@ -46,6 +46,7 @@ gem 'exception_notification'
 
 # Humanize
 gem 'humanize'
+gem 'ordinalize'
 
 gem 'bootstrap-sass'
 
