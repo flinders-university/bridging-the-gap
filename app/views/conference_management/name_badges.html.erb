@@ -76,7 +76,7 @@
   }
   .page-break
   {
-    display: block; page-break-before: always;
+    display: inline-block; page-break-before: always;
   }
   h1, h2, h3, h4, h5, h6
   {
@@ -112,7 +112,7 @@
   <% brk = 0 %>
   <% @rsvps.each_slice(2) do |rsvps| %>
   <div class="badge_group">
-    <% if brk <= 5 then brk += 1 else %>
+    <% if brk <= 5 then brk += 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
     <% rsvps.each do |rsvp| %>
@@ -127,7 +127,7 @@
 
   <% @stcs.each_slice(2) do |rsvps| %>
   <div class="badge_group">
-    <% if brk <= 5 then brk += 1 else %>
+    <% if brk <= 5 then brk += 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
     <% rsvps.each do |rsvp| %>
