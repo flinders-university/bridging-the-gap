@@ -124,7 +124,7 @@
   <% end %>
 
   <% @stcs.each_slice(2) do |rsvps| %>
-  <%= if brk <= 5 then brk += 1 else '<div class="page-break"></div>' end %>
+  <%= if brk <= 5 then ""; brk += 1 else '<div class="page-break"></div>'.html_safe end %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
