@@ -70,9 +70,9 @@
     margin-bottom: 5.5px;
     float: left;
     text-align: center;
-    padding-top: 55px;
+    padding-top: 65px;
     border: 1px solid grey;
-    height: 140px;
+    height: 145px;
   }
   .page-break
   {
@@ -83,7 +83,7 @@
     text-align: center;
     padding-top: 24px;
     border: 0;
-    height: 10px;
+    height: 70px;
   }
   h1, h2, h3, h4, h5, h6
   {
@@ -120,7 +120,7 @@
   <% @rsvps.each_slice(2) do |rsvps| %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
-    <% if brk < 9 then brk = brk + 1 else brk = 0; %>
+    <% if brk < 7 then brk = brk + 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
@@ -135,7 +135,7 @@
   <% @stcs.each_slice(2) do |rsvps| %>
   <div class="badge_group">
     <% rsvps.each do |rsvp| %>
-    <% if brk < 9 then brk = brk + 1 else brk = 0; %>
+    <% if brk < 7 then brk = brk + 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
