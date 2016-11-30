@@ -81,9 +81,9 @@
     margin-bottom: 2.5px;
     float: left;
     text-align: center;
-    padding-top: 55px;
+    padding-top: 24px;
     border: 0;
-    height: 20px;
+    height: 10px;
   }
   h1, h2, h3, h4, h5, h6
   {
@@ -116,13 +116,13 @@
   </style>
 </head>
 <body>
-  <% brk = 0 %>
+  <% brk = -1.to_f %>
   <% @rsvps.each_slice(2) do |rsvps| %>
   <div class="badge_group">
-    <% if brk <= 2 then brk += 1 else brk = 0; %>
+    <% rsvps.each do |rsvp| %>
+    <% if brk < 9 then brk = brk + 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
-    <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
       <h2><%= rsvp.full_name %></h2><br>
       <h5><%= rsvp.role %></h5>
@@ -134,10 +134,10 @@
 
   <% @stcs.each_slice(2) do |rsvps| %>
   <div class="badge_group">
-    <% if brk <= 2 then brk += 1 else brk = 0; %>
+    <% rsvps.each do |rsvp| %>
+    <% if brk < 9 then brk = brk + 1 else brk = 0; %>
     <div class="page-break"></div>
     <% end %>
-    <% rsvps.each do |rsvp| %>
     <div class="badge"> <%= image_tag("flinders.png", class: "image-left") %> <%= image_tag("logobg.svg", class: "image-right") %>
       <h2><%= rsvp.name %></h2><br>
       <h5><%= rsvp.degreeyear.ordinalize %> year <%= if rsvp.degreeyear == 1 || rsvp.degreeyear == 2 then "Master of Teaching" else "Bachelor of Education" end %> student</h5>
