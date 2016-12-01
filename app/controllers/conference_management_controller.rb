@@ -15,6 +15,17 @@ class ConferenceManagementController < ApplicationController
     render layout: false
   end
 
+  def export
+    @rsvps = Rsvp.all.order(:created_at)
+    @stcs = Stc2016.all
+
+    respond_to do |format|
+      format.html { render text: "No HTML export facility." }
+      format.json { render json: "No JSON export facility.".to_json }
+      format.csv { send_data @rsvps.to_csv, filename: "conference-rsvp-#{Date.today}.csv" }
+    end
+  end
+
   def index
     @rsvps = Rsvp.all
     @rsvp_count = @rsvps.count
