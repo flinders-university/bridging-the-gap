@@ -73,7 +73,8 @@
           <p>A certificate will be provided for each registered participant</p>
           <p class="text-xs-center"><a href="/documents/28" class="btn btn-primary">Conference Programme</a> <a href="/documents/27" class="btn btn-secondary">Conference Information</a> <a href="/calendar_anchor/2016/12/15/iCal-20161128-113901.ics" class="btn btn-secondary">Download Calendar Invite</a></p>
           <p><strong>Registration</strong></p>
-          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <p><em>Registration has now closed. Thank you for your interest in the Bridging the Gap project. We look forward to meeting you at the conference.</em></p>
+<!--          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
           <div class="form-group">
             <label for="full_name">Full Name</label>
             <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
@@ -108,7 +109,7 @@
             <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
           </div>
           <%= submit_tag "Register Interest", class: "btn btn-primary" %>
-          <% end %>
+          <% end %> -->
         </div>
         <div class="col-sm-1 col-md-1"></div>
         <div class="col col-md-4">
