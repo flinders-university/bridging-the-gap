@@ -98,10 +98,10 @@
     <tr>
       <td><%= rsvp.full_name.split.map(&:capitalize).join(' ') %></td>
       <td><%= rsvp.email %></td>
-      <td><%= rsvp.role.split.map(&:capitalize).join(' ') %></td>
+      <td><%= if rsvp.role.split then rsvp.role.split.map(&:capitalize).join(' ') else rsvp.role end  %></td>
       <td><%= rsvp.school %></td>
       <td><%= rsvp.year_level %></td>
-      <td><%= rsvp.for_full_name.split.map(&:capitalize).join(' ') %></td>
+      <td><%= if rsvp.for_full_name.present? then rsvp.for_full_name.split.map(&:capitalize).join(' ') end %></td>
       <td style="word-break: break-all; width: 7%;"><%= rsvp.for_email %></td>
       <td><% if rsvp.attending_too != true %>&#x2718;<% else %>&#x2714;<% end %></td>
       <td></td>
