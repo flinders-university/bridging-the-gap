@@ -58,7 +58,7 @@
           <p><strong>Bridging the Gap Conference Certificate</strong></p>
           <% if @rsvp.attended == true %>
           <p>Thank you for attending the Bridging the Gap Teacher Conference, and for your interest in the Bridging the Gap Project.</p>
-          <p><a href="/tc_certificate.pdf?params=<%= @rsvp.id %>" class="btn btn-primary">Download PD Certificate</a></p>
+          <p><a href="/certificates/conference.pdf?rsvp_id=<%= @rsvp.id %>" class="btn btn-primary">Download PD Certificate</a></p>
           <% else %>
           <p>Thank you for your interest in the Bridging the Gap Project. <br>We have not recorded your attendance at the conference. Please <a href="mailto:bridgingthegap@flinders.edu.au">contact us</a> if you believe this is incorrect.</p>
           <p><a href="#=<%= @rsvp.id %>" class="btn btn-primary disabled">Download PD Certificate</a></p>

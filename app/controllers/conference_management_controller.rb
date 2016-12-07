@@ -35,9 +35,9 @@ class ConferenceManagementController < ApplicationController
     rsvp = Rsvp.find_by_id(params[:rsvp_id])
     permitted = params.permit(:interested, :attended)
     if rsvp.update(permitted)
-      redirect_to "/conference_management/index", alert: "Registration updated."
+      redirect_to "/conference_management/index##{rsvp.id}", alert: "Registration updated."
     else
-      redirect_to "/conference_management/index", alert: "Registration could not be updated."
+      redirect_to "/conference_management/index##{rsvp.id}", alert: "Registration could not be updated."
     end
   end
 

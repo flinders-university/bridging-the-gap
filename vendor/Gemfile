@@ -67,6 +67,9 @@ gem 'aws-sdk', '>= 2.0.34'
 #gem 'aws-sdk-v1'
 gem 'paperclip'
 
+gem 'prawn'
+gem 'prawn-table'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

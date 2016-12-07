@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post "register"
   end
 
+  get 'certificates/conference' => "certificates#conference"
+
   get 'conference_management/index'
   patch 'conference_management/update'
   get 'conference_management/pst'
