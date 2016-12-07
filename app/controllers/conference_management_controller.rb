@@ -27,8 +27,18 @@ class ConferenceManagementController < ApplicationController
   end
 
   def index
-    @rsvps = Rsvp.all
+    @rsvps = Rsvp.all.order(:full_name)
     @rsvp_count = @rsvps.count
+  end
+
+  def update
+    rsvp = Rsvp.find_by_id(params[:rsvp_id])
+    permitted = params.permit(:interested, :attended)
+    if rsvp.update(permitted)
+      redirect_to "/conference_management/index", alert: "Registration updated."
+    else
+      redirect_to "/conference_management/index", alert: "Registration could not be updated."
+    end
   end
 
   def destroy

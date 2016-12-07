@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get 'conference_management/index'
+  patch 'conference_management/update'
   get 'conference_management/pst'
   get 'conference_management/name_badges'
   get 'conference_management/sign_in_sheet'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   get 'getting_started/mark_task_complete'
   get 'teacher_conference', to: "getting_started#teacher_conference"
   post 'register_for_teacher_conference', to: "getting_started#tc_register"
+  post 'teacher_conference/change_interest', to: "getting_started#mod_interest"
   get 'teacher_conference/registration', to: "getting_started#view_registration"
   patch 'update_teacher_conference_registration', to: "getting_started#update_registration"
 

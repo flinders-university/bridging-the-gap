@@ -5,13 +5,15 @@ $brand-warning: #f0ad4e;
 $brand-danger: #d9534f;
 $navbar-height: 90px;
 $navbar-default-color: #777;
-$navbar-default-bg: #081D2A;
+$navbar-default-bg: #222842; // #081D2A;
 $navbar-default-border: darken($navbar-default-bg, 6.5%);
-$navbar-default-link-color: #E36960;
-$navbar-default-link-hover-color: #FCC132;
-$navbar-defaut-link-hover-bg: #E36960;
+$navbar-default-link-color: lighten(#5f808f, 15%); // #E36960;
+$navbar-default-link-hover-color: lighten($navbar-default-link-color, 10%); // #FCC132;
+$navbar-defaut-link-hover-bg: $navbar-default-link-color;
 $navbar-default-link-active-color: #FFF;
-$navbar-default-link-active-bg: #E36960;
+$navbar-default-link-active-bg: $navbar-default-link-color;
+
+$bar-colour: $navbar-default-link-color;
 
 $border-radius-base: 0px;
 $border-radius-small: 0px;
@@ -28,7 +30,7 @@ html, body {
 }
 
 #navbar {
-  border-top: 10px solid #E36960;
+  border-top: 10px solid $bar-colour;// #E36960;
   border-bottom: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
@@ -37,7 +39,7 @@ html, body {
 }
 
 #navbar-hp {
-  border-bottom: 10px solid #E36960;
+  border-bottom: 10px solid $bar-colour;
   border-top: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
@@ -123,9 +125,10 @@ html, body {
 }
 
 .hp-adl {
-  background: image-url("adl55325163.jpg") 50% 99.5% no-repeat;
+  background: image-url("hpbg_stem.jpg") 50% 39.5% no-repeat;
   background-size: cover;
   min-height: 120px;
+  border-bottom: #fff 1px solid;
 }
 
 // Used primarily for footer...
@@ -133,18 +136,18 @@ html, body {
   background: $navbar-default-bg; // rgb(247, 247, 249); // #021C2B;
   color: #fff;
   padding: 20px 0;
-  border-bottom: 10px solid #E36960;
+  border-bottom: 10px solid $bar-colour;
   margin-top: 10px;
 }
 .container-dark-hp {
-  border-top: 10px solid #E36960;
+  border-top: 10px solid $bar-colour;
   border-bottom: 0px;
 }
   .container-dark a {
     color: #fff;
   }
   .container-dark a:hover {
-    color: #FCC132;
+    color: $navbar-default-link-color;
     text-decoration: none;
   }
 
@@ -165,8 +168,8 @@ blockquote {
 }
 
 .pages-controller-header {
-  background: #030A0E;
-  color: #E36960;
+  background: darken($navbar-default-link-color, 20%);
+  color: $navbar-default-link-color;
   padding-bottom: 15px;
   padding-top: 2px;
 }
@@ -642,4 +645,9 @@ fieldset[disabled] .btn-theta.focus {
   1px -1px 0 #fff,
   -1px 1px 0 #fff,
   1px 1px 0 #fff;
+}
+
+.square-hp {
+  max-width: 200px;
+  max-height: 200px;
 }

@@ -37,6 +37,20 @@ class GettingStartedController < ApplicationController
     render :layout => false
   end
 
+  def mod_interest
+    rsvp = Rsvp.find_by_id(params[:rsvp_id])
+    if rsvp.present?
+      permitted = params.permit(:interested)
+      if rsvp.update(permitted)
+        redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", notice: "Your details were updated successfully."
+      else
+        redirect_to "/teacher_conference/registration?id=#{rsvp.id}&email=#{rsvp.email}", alert: "Sorry, your details could not be updated. Please try again."
+      end
+    else
+      redirect_to "/teacher_conference", notice: "Could not find a record of that registration."
+    end
+  end
+
   def update_registration
     rsvp = Rsvp.find_by_id(params[:rsvp_id])
 

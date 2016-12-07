@@ -55,18 +55,22 @@
       <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
       <div class="row">
         <div class="col col-md-12">
-          <p><strong>Registration Details</strong></p>
-          <p>Name: <%= @rsvp.full_name %></p>
-          <p>Email: <%= @rsvp.email %></p>
-          <p>Role: <%= @rsvp.role %></p>
-          <p>School: <%= @rsvp.school %></p>
-          <p>Year Level: <%= @rsvp.year_level %></p>
-          <% if @rsvp.year_level == "School Leadership Only" && @rsvp.for_full_name != "" %>
-          <p>Registered for: <%= @rsvp.for_full_name %></p>
-          <p>Their email: <%= @rsvp.for_email %></p>
-          <p>I will attend too: <%= @rsvp.attending_too ? "Yes" : "No" %></p>
+          <p><strong>Bridging the Gap Conference Certificate</strong></p>
+          <% if @rsvp.attended == true %>
+          <p>Thank you for attending the Bridging the Gap Teacher Conference, and for your interest in the Bridging the Gap Project.</p>
+          <p><a href="/tc_certificate.pdf?params=<%= @rsvp.id %>" class="btn btn-primary">Download PD Certificate</a></p>
+          <% else %>
+          <p>Thank you for your interest in the Bridging the Gap Project. <br>We have not recorded your attendance at the conference. Please <a href="mailto:bridgingthegap@flinders.edu.au">contact us</a> if you believe this is incorrect.</p>
+          <p><a href="#=<%= @rsvp.id %>" class="btn btn-primary disabled">Download PD Certificate</a></p>
           <% end %>
-          <p>Registered on: <%= @rsvp.created_at.strftime("%A the #{@rsvp.created_at.day.ordinalize} of %B %Y") %></p>
+          <p><strong>Resources and presentations</strong></p>
+          <p><a href="/pages/for-schools" class="btn btn-warning">Get Conference Resources</a></p>
+          <p><strong>Register interest for hosting 2018 student teachers</strong></p>
+          <%= form_tag("/teacher_conference/change_interest", method: :post) do %>
+          <%= hidden_field_tag(:rsvp_id, @rsvp.id) %> <%= hidden_field_tag(:email, @rsvp.email) %>
+          <%= select_tag(:interested, options_for_select({"I am not interested" => false, "I am interested" => true}, @rsvp.interested), class: "form-control") %> <br>
+          <%= button_tag("Save Changes", class: "btn btn-primary") %>
+          <% end %>
           <hr>
           <%= form_tag("/update_teacher_conference_registration", method: :patch) do %>
           <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
@@ -79,31 +83,15 @@
             <%= email_field_tag(:email, @rsvp.email, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
           </div>
           <div class="form-group">
-            <label for="role">Role</label>
-            <%= text_field_tag(:role, @rsvp.role, class: "form-control", placeholder: "Science Teacher") %>
-          </div>
-          <div class="form-group">
             <label for="school">School</label>
             <%= text_field_tag(:school, @rsvp.school, class: "form-control", placeholder: "My High School") %>
           </div>
           <div class="form-group">
-            <label for="year">Most Appropriate Year Level</label>
+            <label for="year">Year Level Taught</label>
             <%= select_tag(:year_level, options_for_select([ "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
           </div>
-          <div class="form-group rfor">
-            <label for="for_full_name">Registering For: Full Name</label>
-            <%= text_field_tag(:for_full_name, @rsvp.for_full_name, class: "form-control", placeholder: "Jane Doe") %>
-          </div>
-          <div class="form-group rfor">
-            <label for="for_email">Registering For: Email</label>
-            <%= email_field_tag(:for_email, @rsvp.for_email, class: "form-control", placeholder: "john.doe123@schools.sa.edu.au") %>
-          </div>
-          <div class="form-group rfor">
-            <label for="attending_too">Registering For: I wish to attend too</label> <br>
-            <%= hidden_field_tag :attending_too, 'false' %>
-            <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
-          </div>
-          <%= submit_tag("Update Registration", class: "btn btn-primary") %>
+
+          <%= submit_tag("Update Details", class: "btn btn-primary") %>
           <% end %>
         </div>
       </div>
@@ -111,23 +99,6 @@
       <!--
       <%= @rsvp.inspect %>
     -->
-    <script>
-    $(document).ready(function() {
-      if ($("#year_level").val() == "School Leadership Only") {
-        $(".rfor").show();
-      } else {
-        $(".rfor").hide();
-      }
-    });
-
-    $("#year_level").bind('change', function(e) {
-      if ($(this).val() == "School Leadership Only") {
-        $(".rfor").show();
-      } else {
-        $(".rfor").hide();
-      }
-    });
-    </script>
 
     <div class="text-xs-center">
       <br>
