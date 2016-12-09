@@ -22,7 +22,7 @@
       <% else %>
       <p>Thank you for registering for the the <em>Bridging the Gap Teacher Conference</em>
       <% end %>
-      <% if @rsvp.interest == true %>and for your interest in the Bridging the Gap project<% end %>.</p>
+      <% if @rsvp.interested == true %>and for your interest in the Bridging the Gap project<% end %>.</p>
 
       <p>You can <strong>retrieve <% if @rsvp.attended == true %>your certificate and the <% end %>presentation materials</strong> online here: <a href="https://bridgingthegap.edu.au/teacher_conference/registration?id=<%= @rsvp.id %>&email=<%= @rsvp.email %>">My Registration</a>.</p>
 
