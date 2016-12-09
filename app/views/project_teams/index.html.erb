@@ -20,14 +20,31 @@
 <br>
 <% @project_teams.where(team: 2).each_slice(3) do |management_group_members| %>
 <div class="row text-center">
-<% management_group_members.each do |project_team| %>
+  <% management_group_members.each do |project_team| %>
   <div class="col-md-4 a-mtp">
     <h3 style="margin-top: 0px"><%= project_team.title %></h3>
     <%= mdrender(project_team.description).html_safe %>
   </div>
-<% end %>
+  <% end %>
 </div>
 <br>
+<% end %>
+
+<% if @alumni.count >= 1 %>
+<hr>
+<h1>Bridging the Gap Alumni</h1>
+<br>
+<% @alumni.each_slice(3) do |alumni_group| %>
+<div class="row text-center">
+  <% alumni_group.each do |alumni| %>
+  <div class="col-md-4 a-mtp">
+    <h3 style="margin-top: 0px"><%= alumni.name %></h3>
+    Graduate Student
+  </div>
+  <% end %>
+</div>
+<br>
+<% end %>
 <% end %>
 
 
@@ -44,14 +61,14 @@
 
   <tbody>
     <% @disabled_users.each do |project_team| %>
-      <tr>
-        <td><%= project_team.title %></td>
-        <td><%= project_team.slug %></td>
-        <td><%= project_team.team %></td>
-        <td><%= link_to 'Show', project_team %></td>
-        <td><%= link_to 'Edit', edit_project_team_path(project_team) %></td>
-        <td><%= link_to 'Destroy', project_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= project_team.title %></td>
+      <td><%= project_team.slug %></td>
+      <td><%= project_team.team %></td>
+      <td><%= link_to 'Show', project_team %></td>
+      <td><%= link_to 'Edit', edit_project_team_path(project_team) %></td>
+      <td><%= link_to 'Destroy', project_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

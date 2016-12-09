@@ -14,6 +14,8 @@ class ProjectTeamsController < ApplicationController
     if current_user_administrator?
       @disabled_users = ProjectTeam.where(enabled: false).order(:created_at)
     end
+
+    @alumni = User.where(group_id: 10)
   end
 
   # GET /project_teams/1
