@@ -128,12 +128,12 @@ class AnswersController < ApplicationController
     if params[:option].present?
       @survey = ISurvey.find_by_id( params[:id] )
 
-      @answers = Answer.where(survey_id: @survey.id)
+      @answers = Answer.where(survey_id: @survey.id).order(:user_id, :question_id)
 
       # Answers, without user data
       @answers_noud = {}
-      # Answers, with user data
-      @answers_ud = {}
+      # Answers, with user data -- SWITCH THIS TO ARRAY IF SORTED BY USER
+      @answers_ud = []
 
       # For each answer, build a row for return
       @answers.each do |answer|
@@ -141,24 +141,34 @@ class AnswersController < ApplicationController
         user = answer.user
         group = answer.group
 
-        if @answers_ud[user.id].present?
-          @answers_ud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
-          @answers_noud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
-        else
-          @answers_ud[user.id] = {
-            "First Name" => user.firstname,
-            "Last Name" => user.lastname,
-            "Group" => group.name,
-            "Survey Name" => question.i_survey.title,
-            "Survey ID" => question.i_survey.id,
-            "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
-          }
-          @answers_noud[user.id] = {
-            "Survey Name" => question.i_survey.title,
-            "Survey ID" => question.i_survey.id,
-            "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
-          }
-        end
+        # if @answers_ud[user.id].present?
+        #   @answers_ud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
+        #   @answers_noud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
+        # else
+        #   @answers_ud[user.id] = {
+        #     "First Name" => user.firstname,
+        #     "Last Name" => user.lastname,
+        #     "Group" => group.name,
+        #     "Survey Name" => question.i_survey.title,
+        #     "Survey ID" => question.i_survey.id,
+        #     "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
+        #   }
+        #   @answers_noud[user.id] = {
+        #     "Survey Name" => question.i_survey.title,
+        #     "Survey ID" => question.i_survey.id,
+        #     "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
+        #   }
+        # end
+
+        @answers_ud << [
+          "#{user.firstname}",
+          "#{user.lastname}",
+          "#{user.id}",
+          "#{question.grouping_value}",
+          "#{question.order}",
+          "#{question.description}",
+          "#{answer.answer}"
+        ]
 
       end
 
@@ -178,13 +188,15 @@ class AnswersController < ApplicationController
     CSV.generate do |csv|
       i = 0;
       input.each do |row|
-        i =+ 1
-        if i <= 1
-          csv << row[1].keys
-          csv << row[1].values
-        else
-          csv << row[1].values
-        end
+        # raise row
+        csv << row
+        # i =+ 1
+        # if i <= 1
+        #   csv << row[1].keys
+        #   csv << row[1].values
+        # else
+        #   csv << row[1].values
+        # end
       end
     end
   end
