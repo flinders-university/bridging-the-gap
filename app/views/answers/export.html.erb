@@ -4,38 +4,51 @@
   <br>
   <%= link_to "Answers", answers_path, class: "btn btn-primary" %>
 </div>
-<h1>Export Data <small>for <%= @survey.title %></small></h1>
-<hr>
-<div id="step-1">
-  <p>How would you like to export your data? Options will be provided when you choose a format....</p>
-  <div class="list-group">
-    <a id="json" class="list-group-item">JSON</a>
-    <a id="csv" class="list-group-item">CSV</a>
-    <a id="spss" class="list-group-item">IBM SPSS</a>
-    <a href="/answers/htmlreport/<%= @survey.id %>" class="list-group-item">HTML (Report)</a>
+<div id="ex_rp">
+  <h1>Export Data <small>for <%= @survey.title %></small></h1>
+  <hr>
+  <div id="step-1">
+    <p>How would you like to export your data? Options will be provided when you choose a format....</p>
+    <div class="list-group">
+      <a id="json" class="list-group-item">JSON</a>
+      <a id="csv" class="list-group-item">CSV</a>
+      <a id="spss" class="list-group-item">IBM SPSS</a>
+      <a href="/answers/htmlreport/<%= @survey.id %>" class="list-group-item">HTML (Report)</a>
+    </div>
   </div>
-</div>
 
-<div id="json_dialogue" class="hide-as">
-<a class="start-over btn btn-primary pull-right">Start Over</a>
-<p class="lead">JSON Export</p>
-<p>JSON is a standards-compliant language for the web. It is designed to handle large and complex data sets. It can be imported into many types of backend database software, however its use is less common for use in research analysis.</p>
-<p><strong>Options:</strong></p>
-<%= form_tag(method: :post, format: :json) do %>
-  <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
-  <p><%= submit_tag("Export as JSON", class: "btn btn-primary") %></p>
-<% end %>
-</div>
+  <div id="json_dialogue" class="hide-as">
+    <a class="start-over btn btn-primary pull-right">Start Over</a>
+    <p class="lead">JSON Export</p>
+    <p>JSON is a standards-compliant language for the web. It is designed to handle large and complex data sets. It can be imported into many types of backend database software, however its use is less common for use in research analysis.</p>
+    <p><strong>Options:</strong></p>
+    <%= form_tag(method: :post, format: :json) do %>
+    <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
+    <p><%= submit_tag("Export as JSON", class: "btn btn-primary", id: "sub") %></p>
+    <% end %>
+  </div>
 
-<div id="csv_dialogue" class="hide-as">
-<a class="start-over btn btn-primary pull-right">Start Over</a>
-<p class="lead">CSV Export</p>
-<p>CSV is a standards-compliant data format for exporting. It can be imported into many types of research tool (SPSS, NViVo, Excel, etc). It is not as robust as a SPSS sav, or as JSON and may 'strip' data that is incompatible with the format - like quotes and commas.</p>
-<p><strong>Options:</strong></p>
-<%= form_tag(method: :post, format: :csv) do %>
-  <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
-  <p><%= submit_tag("Export as CSV", class: "btn btn-primary") %></p>
-<% end %>
+  <div id="csv_dialogue" class="hide-as">
+    <a class="start-over btn btn-primary pull-right">Start Over</a>
+    <p class="lead">CSV Export</p>
+    <p>CSV is a standards-compliant data format for exporting. It can be imported into many types of research tool (SPSS, NViVo, Excel, etc). It is not as robust as a SPSS sav, or as JSON and may 'strip' data that is incompatible with the format - like quotes and commas.</p>
+    <p><strong>Options:</strong></p>
+    <%= form_tag(method: :post, format: :csv) do %>
+    <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"], ["Clean User Data", "nd"]]) %></p>
+    <p><%= submit_tag("Export as CSV", class: "btn btn-primary", id: "sub") %></p>
+    <% end %>
+  </div>
+
+  <div id="spss_dialogue" class="hide-as">
+    <a class="start-over btn btn-primary pull-right">Start Over</a>
+    <p class="lead">SPSS Zip Export</p>
+    <p>SPSS Zip is a IBM SPSS-compliant data format for exporting. This is the most robust way to export data from BTGWP for IBM SPSS use.</p>
+    <p><strong>Options:</strong></p>
+    <%= form_tag(method: :post, format: :zip) do %>
+    <p><%= select_tag "option", options_for_select([["Export With User Data", "ud"]]) %></p>
+    <p><%= submit_tag("Export as ZIP", class: "btn btn-primary", id: "sub") %></p>
+    <% end %>
+  </div>
 </div>
 
 <script>
@@ -52,7 +65,8 @@ $("#csv").click( function() {
 });
 
 $("#spss").click( function() {
-  alert("Sorry, SPSS exporting guildelines have not yet been established to enable export.");
+  $("#step-1").hide();
+  $("#spss_dialogue").fadeIn();
 });
 
 $(".start-over").click( function() {
@@ -66,8 +80,15 @@ $(".start-over").click( function() {
 
 $(".hide-as").hide();
 
+$.wait = function(ms) {
+    var defer = $.Deferred();
+    setTimeout(function() { defer.resolve(); }, ms);
+    return defer;
+};
+
 $("form").submit(function (e) {
   FormSub = true
+  setTimeout(function(){ $("#ex_rp").html('<br><div class="loader"></div><br><p class="text-center">Export In Progress <br><br><a href="/answers" class="btn btn-primary">Done?</a></p>') }, 100);
 });
 
 </script>

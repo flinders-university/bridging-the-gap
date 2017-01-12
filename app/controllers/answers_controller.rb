@@ -49,6 +49,25 @@ class AnswersController < ApplicationController
           result = prepareData(params)
           render text: to_csv(result)
         }
+        format.zip {
+          require 'zip'
+
+          compressed_filestream = Zip::OutputStream.write_buffer(::StringIO.new('')) do |zos|
+            zos.put_next_entry "data-set-#{params[:id]}.csv"
+            result = prepareData(params)
+            csv = to_csv(result)
+            zos.print csv
+
+            zos.put_next_entry "import_command.sps"
+            zos.print File.read(Rails.root.join("spss/import_command.sps"))
+
+            zos.put_next_entry "student_pre_format.tpf"
+            zos.print File.read(Rails.root.join("spss/student_pre_format.tpf"))
+          end
+
+          compressed_filestream.rewind
+          send_data compressed_filestream.read, filename: "SPSS-Archive-#{Time.now.strftime("%-d_%-m_%y-%P")}.zip"
+        }
         format.json {
           result = prepareData(params)
           render json: result
@@ -75,38 +94,38 @@ class AnswersController < ApplicationController
 
       @created = true
 
-        if answer.save
-          q = IQuestion.find_by_id(params[:question_id])
+      if answer.save
+        q = IQuestion.find_by_id(params[:question_id])
 
-          if q.present?
-            qdes = q.description
-          else
-            qdes = "Orphaned question"
-          end
-
-          s = ISurvey.find_by_id(params[:survey_id])
-
-          if s.present?
-            sdes = s.title
-          else
-            sdes = "Orphaned survey"
-          end
-          #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "[#{sdes}] #{qdes}:", params[:answer])
-
-          render json:{"continue" => true}
+        if q.present?
+          qdes = q.description
         else
-          render json:{"continue" => false}
+          qdes = "Orphaned question"
         end
-      end
-      if !@created && answer
-        answer.answer = params[:answer]
-        if answer.save
-          #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "Updated Answer: ", params[:answer])
-          render json:{"continue" => true}
+
+        s = ISurvey.find_by_id(params[:survey_id])
+
+        if s.present?
+          sdes = s.title
         else
-          render json:{"continue" => false}
+          sdes = "Orphaned survey"
         end
+        #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "[#{sdes}] #{qdes}:", params[:answer])
+
+        render json:{"continue" => true}
+      else
+        render json:{"continue" => false}
       end
+    end
+    if !@created && answer
+      answer.answer = params[:answer]
+      if answer.save
+        #sendCable("#{current_user.name} &lt;#{current_user.email}&gt;", "Updated Answer: ", params[:answer])
+        render json:{"continue" => true}
+      else
+        render json:{"continue" => false}
+      end
+    end
   end
 
   # GET /answers/check.json?question_id=x
