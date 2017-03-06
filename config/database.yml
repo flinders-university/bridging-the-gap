@@ -15,8 +15,4 @@ test:
 
 production:
   <<: *default
-  database: bridging-app
-  host: 138.68.39.185
-  port: 54532
-  username: <%= ENV['BTG_DATABASE_USERNAME'] %>
-  password: <%= ENV['BTG_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
