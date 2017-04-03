@@ -63,14 +63,16 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'bridgingthegap.edu.au' }
 
+  # ActionMailer Configuration on production
   config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
-    :address => "localhost",
-    :port => 25,
-    :domain => "bridgingthegap.edu.au",
-  }
-
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'assessmentninja.com',
+    user_name:            'aidan@teachersolutions.com.au',
+    password:             'n5wBg0mmVLVL3BQuZ5UCKw',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
