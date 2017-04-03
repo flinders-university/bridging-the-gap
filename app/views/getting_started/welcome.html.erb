@@ -123,6 +123,9 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
     <% end %>
   </div>
 </div>
+<% if current_user.group.level == 5 %>
+  <%= link_to "Start Student Survey", "/illuminet/9", class: "btn btn-secondary btn-lg btn-block" %>
+<% end %>
 <% if current_user.group.level == 2 %>
 <br>
 <div class="row">
