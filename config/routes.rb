@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'student', to: "student#index"
+  get 'student/take/:id', to: "student#survey"
+
   get 'celebration', to: "celebration#indexsixteen"
   post 'celebration', to: "celebration#save"
 

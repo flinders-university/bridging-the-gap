@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:update, :check]
 
   before_action :require_administrator!, except: [:update, :check]
 
