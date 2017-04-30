@@ -88,11 +88,11 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  #logger           = ActiveSupport::Logger.new(STDOUT)
+  logger           = ActiveSupport::Logger.new(STDOUT)
   #logger.formatter = config.log_formatter
   #config.logger = ActiveSupport::TaggedLogging.new(logger)
 
-  Rails.logger = Le.new('17f96f2f-b051-4db1-91c4-4b86b61e7d1f', :ssl => true, :debug => true, :local => 'log/app.log')
+  # Rails.logger = Le.new('17f96f2f-b051-4db1-91c4-4b86b61e7d1f', :ssl => true, :debug => true, :local => 'log/app.log')
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
