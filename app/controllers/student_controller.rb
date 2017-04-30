@@ -2,7 +2,9 @@ class StudentController < ApplicationController
   def index
   end
   def survey
-    redirect_to "/student", notice: "Surveys are not yet open."
+    if params[:safemode] != "y"
+      redirect_to "/student", notice: "Surveys are not yet open."
+    end
     @isurvey = ISurvey.where(id: params[:id])
     if @isurvey.count >= 1
       @isurvey = @isurvey.first
