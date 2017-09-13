@@ -3,6 +3,7 @@
 <div class="pull-right">
   <br>
   <%= link_to "User Tools", usertools_path, class: "btn btn-primary" %>
+  <%= link_to "Login As", masquerade_path(@user), class: "btn btn-warning" %>
 </div>
 <h1>Editing <%= @User.name %></h1>
 <hr>

@@ -52,3 +52,11 @@
   </head>
 
   <body>
+    <% if user_masquerade? %>
+      <div class="alert alert-warning" style="margin-bottom: 0px; border-radius: 0px;">
+        <a href="<%= back_masquerade_path(current_user) %>" class="close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+        You are currently masquerading as <b><%= current_user.name %></b>. Please take care.
+      </div>
+    <% end %>
