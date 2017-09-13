@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :masquerade_user!
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from ActionController::RoutingError, with: -> { render_404  }
