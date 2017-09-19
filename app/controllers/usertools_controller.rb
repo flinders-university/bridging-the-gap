@@ -129,6 +129,6 @@ class UsertoolsController < ApplicationController
 
   # GET /usertools/
   def manage
-    @Users = User.all.order(:created_at)
+    @Users = User.all.order(:group)
   end
 end
