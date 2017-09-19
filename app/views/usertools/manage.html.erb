@@ -25,7 +25,7 @@
   <div class="panel-heading">Users</div>
   <div class="list-group">
   <% @Users.each do |user| %>
-    <div class="row list-group-item">
+    <div class="list-group-item" style="min-height:40px;">
       <div class="col-xs-3">
         <a href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %></a>
       </div>
