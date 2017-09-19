@@ -30,7 +30,7 @@
         <a href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %></a>
       </div>
       <div class="col-3">
-        <%= if user.student_group.present? then user.student_group.id else "No student placement group." %>
+        <%= if user.student_group.present? then user.student_group.id else "No student placement group."  end %>
       </div>
       <div class="col-3">
         <%= if user.industry.present? then "Placed #{user.industry.name}" end %>
