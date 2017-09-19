@@ -26,16 +26,16 @@
   <div class="list-group">
   <% @Users.each do |user| %>
     <div class="row list-group-item">
-      <div class="col-3">
+      <div class="col-xs-3">
         <a href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %></a>
       </div>
-      <div class="col-3">
-        <%= if user.student_group.present? then user.student_group.id else "No student placement group."  end %>
+      <div class="col-xs-3">
+        <%= if user.student_group.present? then user.student_group.id else "No student placement group, yet."  end %>
       </div>
-      <div class="col-3">
-        <%= if user.industry.present? then "Placed #{user.industry.name}" end %>
+      <div class="col-xs-3">
+        <%= if user.industry.present? then "Placed #{user.industry.name}" else "No industry placement, yet." end %>
       </div>
-      <div class="col-3">
+      <div class="col-xs-3">
         <%= user.group.name %>
       </div>
     </div>
