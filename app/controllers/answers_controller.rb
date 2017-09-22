@@ -171,7 +171,7 @@ class AnswersController < ApplicationController
           the_answers = ""
           @answers.each do |ans|
             # Not cellable ... @question = IQuestion.find(i_survey_id: @survey.id, id: ans.i_question_id)
-            if ans.answer.is_number? then
+            if ans.answer.present? then
               if the_answers != "" then
                 the_answers = "#{the_answers}, #{ans.answer}"
               else
