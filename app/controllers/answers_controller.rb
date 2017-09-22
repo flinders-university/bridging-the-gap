@@ -161,7 +161,7 @@ class AnswersController < ApplicationController
         if ord != "" then
           ord = "#{ord}, #{qns.order}"
         else
-          ord = "'#{qns.order}'"
+          ord = "#{qns.order}"
         end
       end
 
@@ -171,7 +171,7 @@ class AnswersController < ApplicationController
           the_answers = ""
           @answers.each do |ans|
             # Not cellable ... @question = IQuestion.find(i_survey_id: @survey.id, id: ans.i_question_id)
-            if ans.answer.present? then
+            if ans.answer.is_number? then
               if the_answers != "" then
                 the_answers = "#{the_answers}, #{ans.answer}"
               else
@@ -191,7 +191,7 @@ class AnswersController < ApplicationController
 
       fnlset = ""
       @answer_set.each do |ask, asv|
-        if @user = User.find(ask) then @un = @user.name else @un = "Undefined user" end
+        if @user = User.find_by_id(ask) then @un = @user.name else @un = "Undefined user" end
         if fnlset != ""
           fnlset = "#{fnlset}\n'#{ask} #{@un}',#{asv}"
         else
