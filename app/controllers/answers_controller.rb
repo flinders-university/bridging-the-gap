@@ -144,72 +144,55 @@ class AnswersController < ApplicationController
   end
 
   def prepareData(params)
-    if params[:option].present?
 
-      @survey = ISurvey.find_by_id( params[:id] )
-      @answer_set = {}
+    # empty variables...
+    @resulting_set = ""
 
-      @users = User.all.each do |usr|
+    # get the survey from the params fed in to function
+    @survey = ISurvey.find_by_id( params[:id] )
 
-      @answers = Answer.where(survey_id: @survey.id, user_id: usr.id).order(:question_id)
+    @answers = Answer.where(survey_id: @survey.id).order(:user_id, :question_id)
 
-      @questions = IQuestion.where(i_survey_id: @survey.id).order(:order)
+    @last_user_id = 0
 
-      ord = ""
-      @questions.each do |qns|
-        if ord != "" then
-          ord = "#{ord}, #{qns.order}"
-        else
-          ord = "#{qns.order}"
-        end
+    @questions = IQuestion.where(i_survey_id: @survey.id).order(:order)
+
+    @qns_str = ""
+    @questions.each do |qns|
+      if @qns_str != ""
+        @qns_str = "#{@qns_str}, '#{qns.order} #{qns.description}'"
+      else
+        @qns_str = "'#{qns.order} #{qns.description}'"
       end
-
-      @qcount = @questions.count
-
-      @answer_set["questions"] = ord
-
-        if @answers.count >= 1 then
-          the_answers = ""
-          @answers.each do |ans|
-            @iqs = IQuestion.where(i_survey_id: @survey.id, id: ans.question_id)
-
-            if @iqs.count >= 1 then
-              if the_answers != "" then
-                the_answers = "#{the_answers}, #{ans.answer}"
-              else
-                the_answers = "#{ans.answer}"
-              end
-            else
-              if the_answers != "" then
-                the_answers = "#{the_answers}, 'MISSING'"
-              else
-                the_answers = "'MISSING'"
-              end
-            end
-          end
-          @answer_set[usr.id] = the_answers
-        end
-      end
-
-      fnlset = ""
-      @answer_set.each do |ask, asv|
-        if @user = User.find_by_id(ask) then @un = @user.name else @un = "Undefined user" end
-        if fnlset != ""
-          fnlset = "#{fnlset}\n'#{ask} #{@un}',#{asv}"
-        else
-          fnlset = "#{ask}, '#{@un}',#{asv}"
-        end
-      end
-
-      @answer_set = fnlset
-
-      #raise @answer_set
-
-      return @answer_set
-
-    else
-      false
     end
+    @resulting_set = @qns_str
+
+    @users_last_answer_questions_id = 0
+
+    @answers.each do |an|
+      @question = IQuestion.find(an.question_id)
+
+
+      if @last_user_id != an.user_id
+        @resulting_set = "#{@resulting_set}\n '#{User.find(an.user_id).name}'"
+      end
+      @last_user_id = an.user_id
+
+      if @resulting_set != ""
+        if (@users_last_answer_questions_id+1) == @question.order then
+          @resulting_set = "#{@resulting_set}, #{an.answer}"
+        else
+          @resulting_set = "#{@resulting_set}, '', #{@question.order} | #{an.answer}'"
+        end
+      else
+        @resulting_set = "#{@question.order | an.answer}"
+      end
+
+      @users_last_answer_questions_id = @question.order
+    end
+
+    raise @resulting_set
+
   end
 
   def to_csv(input)
