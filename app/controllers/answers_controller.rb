@@ -191,8 +191,8 @@ class AnswersController < ApplicationController
       @users_last_answer_questions_id = @question.order
     end
 
-    raise @resulting_set
-
+    #raise @resulting_set
+    return @resulting_set
   end
 
   def to_csv(input)
