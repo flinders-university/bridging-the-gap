@@ -47,7 +47,7 @@ class AnswersController < ApplicationController
         }
         format.csv {
           result = prepareData(params)
-          render text: to_csv(result)
+          render text: result
         }
         format.zip {
           require 'zip'
@@ -145,59 +145,66 @@ class AnswersController < ApplicationController
 
   def prepareData(params)
     if params[:option].present?
+
       @survey = ISurvey.find_by_id( params[:id] )
+      @answer_set = {}
 
-      @answers = Answer.where(survey_id: @survey.id).order(:user_id, :question_id)
+      @users = User.all.each do |usr|
 
-      # Answers, without user data
-      @answers_noud = {}
-      # Answers, with user data -- SWITCH THIS TO ARRAY IF SORTED BY USER
-      @answers_ud = []
+      @answers = Answer.where(survey_id: @survey.id, user_id: usr.id).order(:question_id)
 
-      # For each answer, build a row for return
-      @answers.each do |answer|
-        question = IQuestion.find_by_id(answer.question_id)
-        user = answer.user
-        group = answer.group
+      @questions = IQuestion.where(i_survey_id: @survey.id).order(:order)
 
-        # if @answers_ud[user.id].present?
-        #   @answers_ud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
-        #   @answers_noud[user.id]["[CODE: #{question.grouping_value}] #{question.order}. #{question.description}"] = answer.answer
-        # else
-        #   @answers_ud[user.id] = {
-        #     "First Name" => user.firstname,
-        #     "Last Name" => user.lastname,
-        #     "Group" => group.name,
-        #     "Survey Name" => question.i_survey.title,
-        #     "Survey ID" => question.i_survey.id,
-        #     "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
-        #   }
-        #   @answers_noud[user.id] = {
-        #     "Survey Name" => question.i_survey.title,
-        #     "Survey ID" => question.i_survey.id,
-        #     "[CODE: #{question.grouping_value}] #{question.order}. #{question.description}" => answer.answer
-        #   }
-        # end
+      ord = ""
+      @questions.each do |qns|
 
-        @answers_ud << [
-          "#{user.firstname}",
-          "#{user.lastname}",
-          "#{user.id}",
-          "#{question.grouping_value}",
-          "#{question.order}",
-          "#{question.description}",
-          "#{answer.answer}"
-        ]
-
+        if ord != "" then
+          ord = "#{ord}, #{qns.order}"
+        else
+          ord = "'#{qns.order}'"
+        end
       end
 
-      if params[:option] == "ud"
-        # Request for Rendered User Data
-        return @answers_ud
-      elsif params[:option] == "nd"
-        # Request for data without user information
-        return @answers_noud
+      @answer_set["questions"] = ord
+
+        if @answers.count >= 1 then
+          the_answers = ""
+          @answers.each do |ans|
+            # Not cellable ... @question = IQuestion.find(i_survey_id: @survey.id, id: ans.i_question_id)
+            if ans.answer.present? then
+              if the_answers != "" then
+                the_answers = "#{the_answers}, #{ans.answer}"
+              else
+                the_answers = "#{ans.answer}"
+              end
+            else
+              if the_answers != "" then
+                the_answers = "#{the_answers}, 'MISSING'"
+              else
+                the_answers = "'MISSING'"
+              end
+            end
+          end
+          @answer_set[usr.id] = the_answers
+        end
       end
+
+      fnlset = ""
+      @answer_set.each do |ask, asv|
+        if @user = User.find(ask) then @un = @user.name else @un = "Undefined user" end
+        if fnlset != ""
+          fnlset = "#{fnlset}\n'#{ask} #{@un}',#{asv}"
+        else
+          fnlset = "'#{ask} #{@un}',#{asv}"
+        end
+      end
+
+      @answer_set = fnlset
+
+      #raise @answer_set
+
+      return @answer_set
+
     else
       false
     end
@@ -205,17 +212,8 @@ class AnswersController < ApplicationController
 
   def to_csv(input)
     CSV.generate do |csv|
-      i = 0;
       input.each do |row|
-        # raise row
         csv << row
-        # i =+ 1
-        # if i <= 1
-        #   csv << row[1].keys
-        #   csv << row[1].values
-        # else
-        #   csv << row[1].values
-        # end
       end
     end
   end
