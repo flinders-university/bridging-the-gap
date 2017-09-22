@@ -157,7 +157,6 @@ class AnswersController < ApplicationController
 
       ord = ""
       @questions.each do |qns|
-
         if ord != "" then
           ord = "#{ord}, #{qns.order}"
         else
@@ -165,13 +164,16 @@ class AnswersController < ApplicationController
         end
       end
 
+      @qcount = @questions.count
+
       @answer_set["questions"] = ord
 
         if @answers.count >= 1 then
           the_answers = ""
           @answers.each do |ans|
-            # Not cellable ... @question = IQuestion.find(i_survey_id: @survey.id, id: ans.i_question_id)
-            if ans.answer.present? then
+            @iqs = IQuestion.where(i_survey_id: @survey.id, id: ans.question_id)
+
+            if @iqs.count >= 1 then
               if the_answers != "" then
                 the_answers = "#{the_answers}, #{ans.answer}"
               else
@@ -195,7 +197,7 @@ class AnswersController < ApplicationController
         if fnlset != ""
           fnlset = "#{fnlset}\n'#{ask} #{@un}',#{asv}"
         else
-          fnlset = "'#{ask} #{@un}',#{asv}"
+          fnlset = "#{ask}, '#{@un}',#{asv}"
         end
       end
 
