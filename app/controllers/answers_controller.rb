@@ -162,10 +162,10 @@ class AnswersController < ApplicationController
       if @qns_str != ""
         @qns_str = "#{@qns_str}, '#{qns.order} #{qns.description}'"
       else
-        @qns_str = "'#{qns.order} #{qns.description}'"
+        @qns_str = "#{qns.order} #{qns.description}"
       end
     end
-    @resulting_set = @qns_str
+    @resulting_set = "Name, blank, " + @qns_str
 
     @users_last_answer_questions_id = 0
 
@@ -174,15 +174,15 @@ class AnswersController < ApplicationController
 
 
       if @last_user_id != an.user_id
-        @resulting_set = "#{@resulting_set}\n '#{User.find(an.user_id).name}'"
+        @resulting_set = "#{@resulting_set}\n #{User.find(an.user_id).name}"
       end
       @last_user_id = an.user_id
 
       if @resulting_set != ""
         if (@users_last_answer_questions_id+1) == @question.order then
-          @resulting_set = "#{@resulting_set}, #{an.answer}"
+          @resulting_set = "#{@resulting_set}, (#{@question.order}) #{an.answer}"
         else
-          @resulting_set = "#{@resulting_set}, '', #{@question.order} | #{an.answer}'"
+          @resulting_set = "#{@resulting_set}, , (#{@question.order}) #{an.answer}"
         end
       else
         @resulting_set = "#{@question.order | an.answer}"
@@ -191,8 +191,8 @@ class AnswersController < ApplicationController
       @users_last_answer_questions_id = @question.order
     end
 
-    #raise @resulting_set
-    return @resulting_set
+    raise @resulting_set
+    #return @resulting_set
   end
 
   def to_csv(input)
