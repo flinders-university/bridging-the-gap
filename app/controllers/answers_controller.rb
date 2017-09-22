@@ -160,7 +160,7 @@ class AnswersController < ApplicationController
     @qns_str = ""
     @questions.each do |qns|
       if @qns_str != ""
-        @qns_str = "#{@qns_str}, '#{qns.order} #{qns.description}'"
+        @qns_str = "#{@qns_str}, #{qns.order} #{qns.description}"
       else
         @qns_str = "#{qns.order} #{qns.description}"
       end
