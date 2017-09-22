@@ -165,7 +165,7 @@ class AnswersController < ApplicationController
         @qns_str = "#{qns.order} #{qns.description}"
       end
     end
-    @resulting_set = "Name, blank, " + @qns_str
+    @resulting_set = "Name, " + @qns_str
 
     @users_last_answer_questions_id = 0
 
