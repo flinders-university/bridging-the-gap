@@ -8,8 +8,9 @@
 <table class="table table-striped table-rotated">
   <thead>
     <tr>
-      <th width="60%">Person</th>
+      <th width="40%">Person</th>
       <th width="20%">Major</th>
+      <th width="20%">Company</th>
       <th width="10%">Group</th>
       <th width="20"><span>Profile Up To Date</span></th>
       <th width="20"><span>Focus Group Booked</span></th>
@@ -26,6 +27,7 @@
     <% @Users.each do |this_user| %>
     <tr class="tr-is-<%= this_user.student_group_id %>
                tr-is-<%= if this_user.major.present? then this_user.major.downcase.gsub(" ", "-") end %>
+               tr-is-<%= if this_user.industry_id.present? then this_user.industry_id else "no-placement" end %>
                tr-is-signed-<% if Signature.where(user_id: this_user.id).count >=1 %>true<%else%>false<%end%>
                tr-is-answered-<% if Answer.where(user_id: this_user.id).count >=1 %>true<% else %>false<% end %>
                tr-is-placed-<% if this_user.industry_id.present? %>true<% else %>false<% end %>
@@ -37,6 +39,7 @@
                tr-is-nd-present-<% if IndustryPresentation.where(user_id: current_user.id).count <= 0 %>true<% else %>false<%end%>">
       <td><a href="mailto:<%= this_user.addressable %>"><%= this_user.name %></a> [<%= link_to "Profile", "/usertools/#{this_user.id}" %>] <% if this_user.id == 93 || this_user.id == 99 %><%= icon :star, class: "text-danger", title: "Do not group these students." %><% end %></td>
       <td class="bold-others is-<%= if this_user.major.present? then this_user.major.downcase.gsub(" ", "-") end %>"><%= this_user.major %></td>
+      <td class="bold-others is-<%= if this_user.industry_id.present? then this_user.industry_id else "no-placement" end %>"><%= if this_user.industry_id.present? then Industry.find_by_id(this_user.industry_id).name else "No placement" end %></td>
       <td class="bold-others is-<%= this_user.student_group_id %>"><%= this_user.student_group_id %></td>
       <td class="bold-others is-updated-<% if this_user.gender.present? %>true<% else %>false<% end %>"><% if this_user.gender.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
       <td class="bold-others is-fg-booked-<% if this_user.focus_group.present? %>true<%else%>false<%end%>"><% if this_user.focus_group.present? %><%= icon :ok %><% else %><%= icon :remove %><% end %></td>
