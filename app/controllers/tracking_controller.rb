@@ -3,6 +3,6 @@ class TrackingController < ApplicationController
 
   def students
     # Import PSTs
-    @Users = User.where(group_id: 4).order(:created_at)
+    @Users = User.where(group_id: 4).order(:industry_id, :created_at)
   end
 end
