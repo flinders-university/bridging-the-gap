@@ -22,7 +22,7 @@
     <% @student_blogs.each do |student_blog| %>
       <tr>
         <td><%= student_blog.title %></td>
-        <% if current_user_administrator? %><td><%= student_blog.user.name %> at <%= student_blog.created_at.strftime("%B %-d, %Y at %-l:%M%P")</td><% end %>
+        <% if current_user_administrator? %><td><%= student_blog.user.name %> at <%= student_blog.created_at.strftime("%B %-d, %Y at %-l:%M%P") %></td><% end %>
         <td><%= humanise_boolean(student_blog.finished) %></td>
         <td><%= link_to 'Show', student_blog, class: "btn btn-xs btn-primary" %></td>
         <td><%= link_to 'Edit', edit_student_blog_path(student_blog), class: "btn btn-xs btn-info" %></td>
