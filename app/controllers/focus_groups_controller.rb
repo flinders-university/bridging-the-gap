@@ -6,7 +6,7 @@ class FocusGroupsController < ApplicationController
   # GET /focus_groups
   # GET /focus_groups.json
   def index
-    @focus_groups = FocusGroup.all
+    @focus_groups = FocusGroup.all.order(:start)
   end
 
   # GET /focus_groups/1
