@@ -17,6 +17,11 @@ class UserMailer < ApplicationMailer
     mail(to: @user.addressable, subject: "Focus Group Booking Confirmation")
   end
 
+  def conference_registration(email, rsvp)
+    @rsvp = rsvp
+    mail(to: email, subject: "Bridging the Gap Conference Registration")
+  end
+
   def conference_notification(email, rsvp)
     @rsvp = rsvp
     mail(to: email, subject: "Bridging the Gap Conference Resources & Certificate")
