@@ -55,12 +55,13 @@
       <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
       <div class="row">
         <div class="col col-md-12">
-          <p><strong>Bridging the Gap Conference Certificate</strong></p>
+          <p><strong>Bridging the Gap Conference Registration</strong></p>
+          <!-- <p><strong>Bridging the Gap Conference Certificate</strong></p>
           <% if @rsvp.attended == true %>
           <p>Thank you for attending the Bridging the Gap Teacher Conference, and for your interest in the Bridging the Gap Project.</p>
           <p><a href="/certificates/conference.pdf?rsvp_id=<%= @rsvp.id %>" class="btn btn-primary">Download PD Certificate</a></p>
           <% else %>
-          <p>Thank you for your interest in the Bridging the Gap Project. <br>We have not recorded your attendance at the conference. Please <a href="mailto:bridgingthegap@flinders.edu.au">contact us</a> if you believe this is incorrect.</p>
+          <p>Thank you for your interest in the Bridging the Gap Project. <br>We have not recorded your attendance at the conference, yet. Please <a href="mailto:bridgingthegap@flinders.edu.au">contact us</a> if you believe this is incorrect.</p>
           <p><a href="#=<%= @rsvp.id %>" class="btn btn-primary disabled">Download PD Certificate</a></p>
           <% end %>
           <p><strong>Resources and presentations</strong></p>
@@ -70,7 +71,7 @@
           <%= hidden_field_tag(:rsvp_id, @rsvp.id) %> <%= hidden_field_tag(:email, @rsvp.email) %>
           <%= select_tag(:interested, options_for_select({"I am not interested" => false, "I am interested" => true}, @rsvp.interested), class: "form-control") %> <br>
           <%= button_tag("Save Changes", class: "btn btn-primary") %>
-          <% end %>
+          <% end %> -->
           <hr>
           <%= form_tag("/update_teacher_conference_registration", method: :patch) do %>
           <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
