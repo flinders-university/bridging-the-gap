@@ -55,26 +55,26 @@
       <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
       <div class="row">
         <div class="col col-sm-5 col-md-7">
-          <p>You are invited to a PD day for secondary science teachers interested in STEM opportunities and industry engagement. This free conference features high profile keynote speaker, SA Chief Scientist Dr Leanna Read.</p>
+          <p>You are invited to a PD day for secondary science teachers interested in STEM opportunities and industry engagement. <!-- This free conference features high profile keynote speaker, SA Chief Scientist Dr Leanna Read. --></p>
           <p><strong>Conference Details</strong></p>
           <p>Dr Carol Aldous, Project leader of the Bridging the Gap team will conduct a one-day conference for secondary school teachers and leaders interested in participating in the <a href="/">Bridging the Gap project</a>. Your attendance and possible willingness to mentor a student teacher would be very much appreciated.</p>
           <p>The conference will be of interest to those wanting to learn more about secondary education, industry engagement, and STEM.</p>
-          <p>The conference will run from 8:30AM until 3:00PM on Monday the 5th of December 2016. A free lunch will be provided. Please register your interest in the event below.</p>
+          <p>The conference will run on the 19th of March 2018 from 9:00 AM. A free lunch will be provided. Please register your interest in the event below.</p>
           <p><strong>Topics</strong></p>
           <p>Topics covered in the course of the day will include:</p>
           <ul>
             <li>Approaches to secondary science technology engineering and mathematics (STEM) education</li>
             <li>Secondary school and university STEM industry engagement</li>
             <li>Creative problem solving in science</li>
-            <li>A tour of the new Flinders University Tonsley precinct (3D Printing, New Innovation)</li>
+            <!-- <li>A tour of the new Flinders University Tonsley precinct (3D Printing, New Innovation)</li> -->
           </ul>
           <p><strong>Certification</strong></p>
           <p>6.5 hours of professional development - covering AITSL Standard 2, 3, 6 and 7.</p>
           <p>A certificate will be provided for each registered participant</p>
-          <p class="text-xs-center"><a href="/documents/28" class="btn btn-primary">Conference Programme</a> <a href="/documents/27" class="btn btn-secondary">Conference Information</a> <a href="/calendar_anchor/2016/12/15/iCal-20161128-113901.ics" class="btn btn-secondary">Download Calendar Invite</a></p>
-          <p><strong>Registration</strong></p>
-          <p><em>Registration has now closed. Thank you for your interest in the Bridging the Gap project. We look forward to meeting you at the conference.</em></p>
-<!--          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <!-- <p class="text-xs-center"><a href="/documents/28" class="btn btn-primary">Conference Programme</a> <a href="/documents/27" class="btn btn-secondary">Conference Information</a> <a href="/calendar_anchor/2016/12/15/iCal-20161128-113901.ics" class="btn btn-secondary">Download Calendar Invite</a></p> -->
+          <!-- <p><strong>Registration</strong></p>
+          <p><em>Registration has now closed. Thank you for your interest in the Bridging the Gap project. We look forward to meeting you at the conference.</em></p> -->
+         <%= form_tag("/register_for_teacher_conference", method: :post) do %>
           <div class="form-group">
             <label for="full_name">Full Name</label>
             <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
@@ -109,7 +109,7 @@
             <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
           </div>
           <%= submit_tag "Register Interest", class: "btn btn-primary" %>
-          <% end %> -->
+          <% end %>
         </div>
         <div class="col-sm-1 col-md-1"></div>
         <div class="col col-md-4">
@@ -119,11 +119,11 @@
           </div>
           <br>
           <p><strong>Flinders University at Tonsley MAB</strong></p>
-          <p>T1 Building, Lecture Theatre 2.</p>
+          <p>T1 Building, Room TBA. <!-- Lecture Theatre 2. --></p>
           <p>Parking in the area is free, alternatively the Tonsley line train 'Clovelly Park' station is the closest public transport.</p>
           <p><strong>Date</strong></p>
-          <p>Monday, 5 December 2016</p>
-          <p>08:30 AM &mdash; 03:00 PM</p>
+          <p>Monday, 19th of March 2018</p>
+          <p>09:00 AM</p>
           <br><br>
           <div class="text-xs-center">
             <%= image_tag "logo-on-white-with-letterhead-arb-print.png", class: "constrain-sm" %>
