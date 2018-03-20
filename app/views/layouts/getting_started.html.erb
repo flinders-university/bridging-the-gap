@@ -66,9 +66,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div class="container-fluid">
-    <%= render 'layouts/navigation_container' %>
-  </div>
+  <%= render 'layouts/navigation_container' %>
 
   <div class="alert alert-info text-center" role="alert"><a href="/teacher_conference">Register for the Bridging the Gap Teacher Conference...</a></div>
   <div class="alert alert-info text-center" role="alert"><a href="/student">Student? Start the pre survey here...</a></div>
@@ -76,6 +74,7 @@
   <div class="container crblk">
     <%= yield %>
   </div>
+
   <br>
   <div class="text-xs-center"><%= image_tag("flinders.png", class: "flinders-image") %><br><br>&copy; 2018 Flinders University. Bridging the Gap Project.</div>
 </body>
