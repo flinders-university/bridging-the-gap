@@ -50,6 +50,7 @@
   .crblk { background: #f7f7f9; margin: auto; margin-top: 58px; border-radius: 5px; padding: 15px; z-index: 995; }
   .drspc { margin-top: 120px; }
   .col { padding: 6px 10px;}
+  .caret { display: none; }
   .mb { margin: 15px 0px; }
   .constrain-sm { max-width: 280px; }
   .float-top-left { clear: both; float: left; position: fixed; margin-top: -52px; }
@@ -67,6 +68,14 @@
 </head>
 <body>
   <div style="margin: -15px -10px;">
+    <% if user_masquerade? %>
+      <div class="alert alert-warning" style="margin-bottom: 0px; border-radius: 0px;">
+        <a href="<%= back_masquerade_path(current_user) %>" class="close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+        You are currently masquerading as <b><%= current_user.name %></b>. Please take care.
+      </div>
+    <% end %>
     <%= render 'layouts/navigation_container' %>
   </div>
 
