@@ -70,10 +70,11 @@
     <%= render 'layouts/navigation_container' %>
   </div>
 
+  <% if !current_user? %>
   <br>
-
   <div class="alert alert-info text-center" role="alert"><a href="/teacher_conference">Register for the Bridging the Gap Teacher Conference...</a></div>
   <div class="alert alert-info text-center" role="alert"><a href="/student">Student? Start the pre survey here...</a></div>
+  <% end %>
 
   <div class="container crblk" style="padding:5px;">
     <%= yield %>
