@@ -67,9 +67,13 @@
 </head>
 <body>
   <div class="container crblk">
+    <%= render 'layouts/navigation_container' %>
+  </div>
+
+  <div class="container crblk">
     <%= yield %>
   </div>
   <br>
-  <div class="text-xs-center"><%= image_tag("flinders.png", class: "flinders-image") %><br>&copy; 2018 Flinders University. Bridging the Gap Project.</div>
+  <div class="text-xs-center"><%= image_tag("flinders.png", class: "flinders-image") %><br><br>&copy; 2018 Flinders University. Bridging the Gap Project.</div>
 </body>
 </html>
