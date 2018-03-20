@@ -1,3 +1,4 @@
+<div style="padding-left:10px">
 <h1>Welcome <%= current_user.firstname %>.</h1>
 <% if current_user.group.level == 3 %>
 <p>Welcome to your <%= t(:project) %> participation dashboard. Here you will find details about pre-service teacher(s), research scientist(s) placed in your industry and the contact details for the university. You will also find details about participating in pre-service teacher engagement research.</p>
@@ -205,6 +206,7 @@ var end = new Date('<%= current_user.focus_group.start.strftime("%m/%d/%Y %-l:%M
 </div>
 <% end %>
 <br>
+</div>
 
 <script>
 $(".text-info").click( function() {
