@@ -76,9 +76,9 @@
           <p>6.5 hours of professional development - covering AITSL Standard 2, 3, 6 and 7.</p>
           <p>A certificate will be provided for each registered participant</p>
           <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/35" class="btn btn-primary">Conference Programme</a><!-- <a href="/documents/27" class="btn btn-secondary">Conference Information</a> --> <a href="/calendar_anchor/2018/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p>
-          <!-- <p><strong>Registration</strong></p>
-          <p><em>Registration has now closed. Thank you for your interest in the Bridging the Gap project. We look forward to meeting you at the conference.</em></p> -->
-         <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <p><strong>Registration</strong></p>
+          <p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference in approximately <%= distance_of_time_in_words( DateTime.now , DateTime.new(2018,3,23,9,0,0,'+7') ) %>.</em></p>
+         <!-- <%= form_tag("/register_for_teacher_conference", method: :post) do %>
           <div class="form-group">
             <label for="full_name">Full Name</label>
             <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
@@ -112,9 +112,9 @@
             <label for="attending_too">Registering For: I wish to attend too</label> <br>
             <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
           </div>
-          <%= submit_tag "Register Interest", class: "btn btn-primary" %>
+          <%# submit_tag "Register Interest", class: "btn btn-primary" %>
           <% end %>
-        </div>
+        </div> -->
         <div class="col-sm-1 col-md-1"></div>
         <div class="col col-md-4">
           <p><strong>Venue &amp; Dates</strong></p>
@@ -126,7 +126,7 @@
           <br>
           <p><strong>Flinders University at Tonsley</strong></p>
           <p>Flinders @ Tonsley MAB<br>Level 5, Conference Room 5.29<br>1320 South Road, Clovelly Park SA 5042</p>
-          <p>A short walk from the Tonsley train line (Clovelly Park Stop) and the South Road bust stops.</p>
+          <p>A short walk from the Tonsley train line (Clovelly Park Stop) and the South Road bus stops.</p>
           <p><em>Free parking is also available on site.</em></p>
           <p><strong>Date</strong></p>
           <p>Friday, 23rd of March 2018</p>
