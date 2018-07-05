@@ -75,6 +75,8 @@ gem 'paperclip'
 gem 'prawn'
 gem 'prawn-table'
 
+gem "recaptcha"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
