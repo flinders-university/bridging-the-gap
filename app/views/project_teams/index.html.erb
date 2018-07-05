@@ -21,7 +21,7 @@
 <% @project_teams.where(team: 2).each_slice(3) do |management_group_members| %>
 <div class="row text-center">
   <% management_group_members.each do |project_team| %>
-  <div class="col-md-4 a-mtp">
+  <div class="col-md-4 a-mtp"> <span id="<%= project_team.slug %>" class="pt-<%= project_team.id %>"></span>
     <h3 style="margin-top: 0px"><%= project_team.title %></h3>
     <%= mdrender(project_team.description).html_safe %>
   </div>
