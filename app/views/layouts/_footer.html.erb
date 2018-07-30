@@ -32,6 +32,7 @@
     <p class="text-center help-description">Get help via email: <a href="mailto:bridgingthegap@flinders.edu.au?subject=Bridging%20The%20Gap%20Help&body=%0A--%0APlease%20write%20your%20message%20above%20this%20line.%0AAction%20controller:%20<%= URI.escape(controller_name) %>%23<%= URI.escape(action_name) %>.%20Directory%20and%20user:%20<%= if current_user.present?; URI.escape(current_user.group.name + "/" + current_user.email); end; %>.">bridgingthegap@flinders.edu.au</a>.</p>
     <div class="container text-center">
       <%= image_tag("flinders-bridging-aidown.svg", style: "max-height: 100px;") %>
+      <br>
       <p class="small text-muted">&copy; 2016 - 2018 Flinders University.</p>
     </div>
   </footer>
