@@ -1,41 +1,12 @@
-  <footer id="footer">
-    <div class="container-dark text-center <% if controller_name == "getting_started" && action_name == "information" %>container-dark-hp<% end %>">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <ul class="list-unstyled">
-              <%= generate_menu_pages.html_safe %>
-              <li><%= link_to "Blog", blogs_path %></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-unstyled">
-              <li><%= link_to "Home", root_url %></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-unstyled">
-              <li><%= link_to "My Account", edit_user_registration_path %></li>
-              <% if current_user_administrator? %>
-              <li><a href="/pages/">Pages</a></li>
-              <li><a href="/groups/">Groups</a></li>
-              <li><a href="/forms/">Forms</a></li>
-              <li><a href="/documents/">Documents</a></li>
-              <li><a href="/i_surveys/">Surveys</a></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
     <br>
+
+    <div class="text-xs-center"><%= image_tag("flinders-bridging-aidown.svg", style: "max-height: 100px;") %><br><br>&copy; 2018 Flinders University. Bridging the Gap Project.</div>
+    <p class="container text-xs-center">The Bridging the Gap project team acknowledges and pays respect to the Kaurna people as the traditional custodians of the Adelaide region. We also acknowledge the deep feelings of attachment and the relationship of the Kaurna people to their country. We pay our respects to the Kaurna peoples' ancestors and the living Kaurna people today.</p>
+
     <p class="text-center help-description">Get help via email: <a href="mailto:bridgingthegap@flinders.edu.au?subject=Bridging%20The%20Gap%20Help&body=%0A--%0APlease%20write%20your%20message%20above%20this%20line.%0AAction%20controller:%20<%= URI.escape(controller_name) %>%23<%= URI.escape(action_name) %>.%20Directory%20and%20user:%20<%= if current_user.present?; URI.escape(current_user.group.name + "/" + current_user.email); end; %>.">bridgingthegap@flinders.edu.au</a>.</p>
-    <div class="container text-center">
-      <%= image_tag("flinders-bridging-aidown.svg", style: "max-height: 100px;") %>
-      <br>
-      <p class="small text-muted">&copy; 2016 - 2018 Flinders University.</p>
-    </div>
-  </footer>
+
 
   <script src="/js/jquery-2.2.4.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
