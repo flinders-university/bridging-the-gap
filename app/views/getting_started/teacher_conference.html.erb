@@ -61,7 +61,7 @@
           <p><strong>Conference Details</strong></p>
           <p>Dr Carol Aldous, Project leader of the Bridging the Gap team will conduct a one-day conference for secondary school teachers and leaders interested in participating in the <a href="/">Bridging the Gap project</a>. Your attendance and possible willingness to mentor a student teacher would be very much appreciated.</p>
           <p>The conference will be of interest to those wanting to learn more about secondary education, industry engagement, and STEM.</p>
-          <p>The conference will run on the 23rd of March 2018 from 9:00 AM. A free lunch will be provided. Please register your interest in the event below.</p>
+          <p>The conference will run on the 22nd of March 2019 from 9:00 AM. A free lunch will be provided. Please register your interest in the event below.</p>
           <p><strong>Topics</strong></p>
           <p>Topics covered in the course of the day will include:</p>
           <ul>
@@ -75,10 +75,11 @@
           <p><strong>Certification</strong></p>
           <p>6.5 hours of professional development - covering AITSL Standard 2, 3, 6 and 7.</p>
           <p>A certificate will be provided for each registered participant</p>
-          <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/35" class="btn btn-primary">Conference Programme</a><!-- <a href="/documents/27" class="btn btn-secondary">Conference Information</a> --> <a href="/calendar_anchor/2018/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p>
+          <p class="text-xs-center"><em>A programme will be provided closer to the conference.</em></p>
+          <!-- <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/35" class="btn btn-primary">Conference Programme</a> <a href="/documents/27" class="btn btn-secondary">Conference Information</a>  <a href="/calendar_anchor/2018/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p> -->
           <p><strong>Registration</strong></p>
-          <p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference in <%= distance_of_time_in_words( DateTime.now , DateTime.new(2018,3,23,9,0,0,'+7') ) %>.</em></p>
-         <!-- <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <!--<p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference in <%= distance_of_time_in_words( DateTime.now , DateTime.new(2018,3,23,9,0,0,'+7') ) %>.</em></p>-->
+          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
           <div class="form-group">
             <label for="full_name">Full Name</label>
             <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
@@ -113,7 +114,7 @@
             <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
           </div>
           <%# submit_tag "Register Interest", class: "btn btn-primary" %>
-          <% end %>-->
+          <% end %>
         </div>
         <div class="col-sm-1 col-md-1"></div>
         <div class="col col-md-4">
@@ -129,7 +130,7 @@
           <p>A short walk from the Tonsley train line (Clovelly Park Stop) and the South Road bus stops.</p>
           <p><em>Free parking is also available on site.</em></p>
           <p><strong>Date</strong></p>
-          <p>Friday, 23rd of March 2018</p>
+          <p>Friday, 22nd of March 2019</p>
           <p>09:00 AM &mdash; 3:30 PM</p>
           <br><br>
           <div class="text-xs-center">
@@ -143,7 +144,7 @@
       <br>
       <%= image_tag "dsd-flin.png", class: "constrain-sm" %>
       <br><br>
-      <p class="small text-muted">&copy; 2016-2018 Flinders University, All Rights Reserved.</p>
+      <p class="small text-muted">&copy; 2016-2019 Flinders University, All Rights Reserved.</p>
     </div>
 
     <script>
