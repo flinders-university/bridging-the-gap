@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name_and_email') %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name_and_email', project_team.user_id) %>
   </div>
 
   <div class="field">
