@@ -100,7 +100,7 @@
           </div>
           <div class="form-group">
             <label for="year">Most Appropriate Year Level</label>
-            <%= select_tag(:year_level, options_for_select([ "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
+            <%= select_tag(:year_level, options_for_select([ "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only", "Industry Partner / Other" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
           </div>
           <div class="form-group rfor">
             <label for="for_full_name">Registering For: Full Name</label>
