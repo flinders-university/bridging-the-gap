@@ -79,8 +79,8 @@
           <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/38" class="btn btn-primary">Conference Programme</a> <!-- <a href="/documents/27" class="btn btn-secondary">Conference Information</a> -->  <a href="/calendar_anchor/2019/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p>
           <p class="text-xs-center"><em>Having trouble registering? Contact bridgingthegap@flinders.edu.au or aidan.cornelius-bell@flinders.edu.au</em></p>
           <p><strong>Registration</strong></p>
-          <!--<p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference in <%= distance_of_time_in_words( DateTime.now , DateTime.new(2018,3,23,9,0,0,'+7') ) %>.</em></p>-->
-          <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference.</em></p>
+          <!-- <%= form_tag("/register_for_teacher_conference", method: :post) do %>
           <div class="form-group">
             <label for="full_name">Full Name</label>
             <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
@@ -114,8 +114,8 @@
             <label for="attending_too">Registering For: I wish to attend too</label> <br>
             <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
           </div>
-          <%= submit_tag "Register Interest", class: "btn btn-primary" %>
-          <% end %>
+          <%# submit_tag "Register Interest", class: "btn btn-primary" %>
+          <% end %>  -->
         </div>
         <div class="col-sm-1 col-md-1"></div>
         <div class="col col-md-4">
