@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'publications/index'
+  get 'publications', to: "publications#index"
 
   get 'student', to: "student#index"
   get 'student/take/:id', to: "student#survey"
