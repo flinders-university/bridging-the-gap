@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Authentication
 gem 'devise'
 gem 'devise_masquerade'
+gem 'omniauth-microsoft_graph'
 
 # Boostrap Helper
 gem 'bh'

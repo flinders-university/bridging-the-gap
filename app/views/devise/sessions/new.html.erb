@@ -30,6 +30,8 @@
   </ul>
 
   <br>
+  <%= link_to "Sign in with your Flinders University account", user_microsoft_graph_omniauth_authorize_path %>
+  <hr>
   <% if notice.present? || alert.present? %>
     <%= alert_box notice || alert, context: :alert, dismissible: true %>
   <% end %>
