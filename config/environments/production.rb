@@ -103,12 +103,3 @@ Rails.application.default_url_options[:host] = 'bridgingthegap.edu.au'
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :microsoft_graph, ENV['AZURE_APPLICATION_CLIENT_ID'], ENV['AZURE_APPLICATION_CLIENT_SECRET']
 end
-
-Rails.application.config.middleware.use ExceptionNotification::Rack,
-	:slack => {
-	:webhook_url => "https://hooks.slack.com/services/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", # your webhook URL
-	:channel => "#technology",
-	:additional_parameters => {
-		:mrkdwn => true
-	}
-}
