@@ -13,9 +13,9 @@
   <p>Email Address: &nbsp; <%= @user['email'] %></p>
   <p>First Name: &nbsp; <%= @user['firstname'] %></p>
   <p>Last Name: &nbsp; <%= @user['lastname'] %></p>
-  <p>Provider Bridging the Gap Federated Data Set</p>
+  <p>Provider: &nbsp; Bridging the Gap Federated Data Set</p>
 
   <hr>
-  <%= link_to "Link Accounts", "/merge_account_with_oauth/save", flash: { data: @data, new_provider: @new_provider, new_uid: @new_uid, user: @user }, class: "btn btn-block btn-lg btn-tertiary disable-border-radius", method: :post %>
+  <%= link_to "Link Accounts", "/merge_account_with_oauth/save", data: @data, new_provider: @new_provider, new_uid: @new_uid, user: @user, class: "btn btn-block btn-lg btn-tertiary disable-border-radius", method: :post %>
   <br>
 </div>

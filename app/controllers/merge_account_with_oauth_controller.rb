@@ -12,9 +12,9 @@ class MergeAccountWithOauthController < ApplicationController
   end
 
   def save
-    usr = User.find(flash[:user]['email'])
-    usr.provider = flash[:new_provider]
-    usr.uid = flash[:new_uid]
+    usr = User.find(params[:user]['email'])
+    usr.provider = params[:new_provider]
+    usr.uid = params[:new_uid]
     if usr.save
       redirect_to "/users/sign_in", notice: "Account linked. Please log in."
     else
