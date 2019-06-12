@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def microsoft_graph
     auth = request.env["omniauth.auth"]
 
-    if @u = User.find_by_email(auth.info.email)
+    if @u = User.find_by_email(auth.info.email) && @u.provider == "" 
       #this catches accounts that already exist
       redirect_to "/merge_account_with_oauth/notice", flash: { data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u }
       false
