@@ -7,9 +7,9 @@
   <p>Email Address <%= @data[:email] %></p>
   <p>First Name <%= @data[:first_name] %></p>
   <p>Last Name <%= @data[:last_name] %></p>
-  <p>Provider <%= @new_provider %></p>
+  <p>Provider <span title="<%= @new_provider %>">Microsoft Azure Active Directory</span></p>
 
-  <h3>Existing details to be overwritten</h3>
+  <h3>Existing details to be overwritten <small>from FDS</small></h3>
   <p>Email Address <%= @user[:email] %></p>
   <p>First Name <%= @user[:firstname] %></p>
   <p>Last Name <%= @user[:lastname] %></p>
@@ -17,4 +17,5 @@
 
   <hr>
   <%= link_to "Link Accounts", user_microsoft_graph_omniauth_authorize_path, class: "btn btn-block btn-lg btn-tertiary disable-border-radius" %>
+  <br>
 </div>
