@@ -55,17 +55,25 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).find_or_initialize_by_email(auth.info.email) do |user|
-      Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.firstname = auth.info.first_name   # assuming the user model has a name
-      user.lastname = auth.info.last_name
-      # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      user.skip_confirmation!
-      user.save
+    if @u = User.find_by_email(auth.info.email)
+      if @u.provider == ""
+        false
+      else
+        @u
+      end
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0, 20]
+        user.firstname = auth.info.first_name   # assuming the user model has a name
+        user.lastname = auth.info.last_name
+        # user.image = auth.info.image # assuming the user model has an image
+        # If you are using confirmable and the provider(s) you use validate emails,
+        # uncomment the line below to skip the confirmation emails.
+        user.skip_confirmation!
+        user.save
+      end
     end
   end
 
