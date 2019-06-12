@@ -8,6 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "Microsoft Office") if is_navigational_format?
     else
       #session["devise.microsoft_graph"] = request.env["omniauth.auth"]
+      Rails.logger.debug("Request response from MS AD object: #{request.env["omniauth.auth"]}")
       redirect_to new_user_session_path, notice: "#{request.env["omniauth.auth.info"]}"
     end
   end
