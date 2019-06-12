@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'merge_account_with_oauth/notice'
+  post 'merge_account_with_oauth/save'
 
   get 'publications', to: "publications#index"
 
