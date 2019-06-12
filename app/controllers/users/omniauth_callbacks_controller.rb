@@ -8,9 +8,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         if @u.persisted?
           sign_in_and_redirect @u, event: :authentication #this will throw if @user is not activated
           set_flash_message(:notice, :success, kind: "Microsoft Office") if is_navigational_format?
-        else
-          #this catches accounts that already exist
-          redirect_to "/merge_account_with_oauth/notice", flash: { data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u }
+        end
+      else
+        #this catches accounts that already exist
+        redirect_to "/merge_account_with_oauth/notice", flash: { data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u }
       end
     else
       # new accounts
