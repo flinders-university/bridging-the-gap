@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @u = User.find_by_email(auth.info.email)
       #this catches accounts that already exist
-      redirect_to controller: 'merge_account_with_oauth', action: 'notice, data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u
+      redirect_to controller: 'merge_account_with_oauth', action: 'notice', data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u
       false
     else
       # new accounts
