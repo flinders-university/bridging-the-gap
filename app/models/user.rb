@@ -55,24 +55,18 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    if @u = User.find_by_email(auth.info.email)
-      # this catches when the user was created manually but they arte now authorising via oAuth – technically a security flaw, but we have keyed email addresses
-      redirect_to "/merge_account_with_oauth/notice", data: auth.info, new_provider: auth.provider, new_uid: auth.uid, user: @u
-      false  #@u
-    else
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
-        user.email = auth.info.email
-        user.password = Devise.friendly_token[0, 20]
-        user.firstname = auth.info.first_name   # assuming the user model has a name
-        user.lastname = auth.info.last_name
-        user.group_id = 3
-        # user.image = auth.info.image # assuming the user model has an image
-        # If you are using confirmable and the provider(s) you use validate emails,
-        # uncomment the line below to skip the confirmation emails.
-        user.skip_confirmation!
-        user.save
-      end
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.firstname = auth.info.first_name   # assuming the user model has a name
+      user.lastname = auth.info.last_name
+      user.group_id = 3
+      # user.image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      user.skip_confirmation!
+      user.save
     end
   end
 

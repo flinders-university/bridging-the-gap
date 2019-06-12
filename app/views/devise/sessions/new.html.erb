@@ -32,7 +32,7 @@
   <br>
   <br>
   <%= link_to "Sign in with Microsoft Office", user_microsoft_graph_omniauth_authorize_path, class: "btn btn-block btn-lg btn-tertiary disable-border-radius" %>
-  <p class="text-xs-center text-center text-muted text-small">This includes your Flinders University Okta acount.</p>
+  <br><p class="text-xs-center text-center text-muted text-small">This includes your Flinders University Okta acount.</p>
   <hr>
   <% if notice.present? || alert.present? %>
     <%= alert_box notice || alert, context: :alert, dismissible: true %>
