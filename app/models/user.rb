@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).find_or_initialize_by_email(auth.info.email) do |user|
       Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
