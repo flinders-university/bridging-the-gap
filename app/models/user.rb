@@ -56,11 +56,8 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     if @u = User.find_by_email(auth.info.email)
-      if @u.provider == ""
-        false
-      else
+      # this catches when the user was created manually but they arte now authorising via oAuth – technically a security flaw, but we have keyed email addresses
         @u
-      end
     else
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         Rails.logger.fatal("Request response from MS AD required info: SN: #{auth.info.first_name} FN: #{auth.info.last_name} EM: #{auth.info.email}")
