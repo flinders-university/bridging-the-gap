@@ -25,6 +25,12 @@
 <p>Email <br>
   <%= email_field_tag(:email, @User.email, class: "form-control") %></p>
 
+<p>Provider <br>
+  <%= text_field_tag(:email, @User.provider, class: "form-control disabled", disabled: "DISABLED") %></p>
+
+<p>uid <br>
+  <%= text_field_tag(:email, @User.uid, class: "form-control disabled", disabled: "DISABLED") %></p>
+
 <p>Users' Group <br>
   <%= select_tag(:group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level', @User.group_id), { class: "form-control" }) %></p>
 
