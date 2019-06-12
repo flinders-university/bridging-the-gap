@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'merge_account_with_oauth/notice'
+
   get 'publications', to: "publications#index"
 
   get 'student', to: "student#index"
