@@ -1,5 +1,6 @@
 class MergeAccountWithOauthController < ApplicationController
   def notice
+    Rails.logger.fatal("Reached merge account with: #{params}")
     if !params[:data]
       redirect_to "/users/sign_in", notice: "Data AWOL"
     else
