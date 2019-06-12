@@ -3,16 +3,16 @@
   <p>You are about to connect your existing Bridging the Gap account to a <em>Microsoft Azure Active Directory</em> account through your institition. Doing this will enable you to authenticate without a password. Please note, this action is not reversable and you may only connect one Active Directory to your Bridging the Gap account ever.</p>
 
   <h3>Details to transfer <small>from AD</small></h3>
-  <p>Data Name <%= data.userPrincipalName %></p>
-  <p>Email Address <%= data.email %></p>
-  <p>First Name <%= data.first_name %></p>
-  <p>Last Name <%= data.last_name %></p>
-  <p>Provider <%= new_provider %></p>
+  <p>Data Name <%= @data.userPrincipalName %></p>
+  <p>Email Address <%= @data.email %></p>
+  <p>First Name <%= @data.first_name %></p>
+  <p>Last Name <%= @data.last_name %></p>
+  <p>Provider <%= @new_provider %></p>
 
   <h3>Existing details to be overwritten</h3>
-  <p>Email Address <%= user.email %></p>
-  <p>First Name <%= user.firstname %></p>
-  <p>Last Name <%= user.lastname %></p>
+  <p>Email Address <%= @user.email %></p>
+  <p>First Name <%= @user.firstname %></p>
+  <p>Last Name <%= @user.lastname %></p>
   <p>Provider Bridging the Gap Federated Data Set</p>
 
   <hr>
