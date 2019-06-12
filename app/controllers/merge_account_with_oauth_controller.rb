@@ -12,7 +12,7 @@ class MergeAccountWithOauthController < ApplicationController
   end
 
   def save
-    usr = User.find(params[:user]['email'])
+    usr = User.find(params[:user])
     usr.provider = params[:new_provider]
     usr.uid = params[:new_uid]
     if usr.save
