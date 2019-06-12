@@ -16,6 +16,6 @@
   <p>Provider: &nbsp; Bridging the Gap Federated Data Set</p>
 
   <hr>
-  <%= link_to "Link Accounts", "/merge_account_with_oauth/save?data=#{@data}&new_provider=#{@new_provider}&new_uid=#{@new_uid}&user=#{@user.id}", class: "btn btn-block btn-lg btn-tertiary disable-border-radius", method: :post %>
+  <%= link_to "Link Accounts", "/merge_account_with_oauth/save?data=#{@data}&new_provider=#{@new_provider}&new_uid=#{@new_uid}&user=#{@user['id']}", class: "btn btn-block btn-lg btn-tertiary disable-border-radius", method: :post %>
   <br>
 </div>
