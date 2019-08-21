@@ -6038,16 +6038,16 @@ tbody.collapse.in {
 }
 /* line 397, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default {
-  background-color: #222842;
-  border-color: #171b2c;
+  background-color: #011c2c;
+  border-color: #ffd300;
 }
 /* line 401, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-brand {
-  color: #8aa5b1;
+  color: white;
 }
 /* line 403, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #6b8d9d;
+  color: #fff6cc;
   background-color: transparent;
 }
 /* line 410, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6056,17 +6056,17 @@ tbody.collapse.in {
 }
 /* line 415, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > li > a {
-  color: #8aa5b1;
+  color: white;
 }
 /* line 418, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #a8bcc5;
+  color: #ffd300;
   background-color: transparent;
 }
 /* line 425, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #FFF;
-  background-color: #8aa5b1;
+  background-color: white;
 }
 /* line 433, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
@@ -6088,27 +6088,27 @@ tbody.collapse.in {
 /* line 453, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #171b2c;
+  border-color: #ffd300;
 }
 /* line 462, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #8aa5b1;
+  background-color: white;
   color: #FFF;
 }
 @media (max-width: 767px) {
   /* line 473, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #8aa5b1;
+    color: white;
   }
   /* line 475, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #a8bcc5;
+    color: #ffd300;
     background-color: transparent;
   }
   /* line 482, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #FFF;
-    background-color: #8aa5b1;
+    background-color: white;
   }
   /* line 490, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -6118,19 +6118,19 @@ tbody.collapse.in {
 }
 /* line 506, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-link {
-  color: #8aa5b1;
+  color: white;
 }
 /* line 508, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-link:hover {
-  color: #a8bcc5;
+  color: #ffd300;
 }
 /* line 513, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .btn-link {
-  color: #8aa5b1;
+  color: white;
 }
 /* line 515, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-  color: #a8bcc5;
+  color: #ffd300;
 }
 /* line 521, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus, fieldset[disabled] .navbar-default .btn-link:hover, fieldset[disabled] .navbar-default .btn-link:focus {
@@ -8789,19 +8789,19 @@ button.close {
     display: none !important;
   }
 }
-/* line 1, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 1, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 #notice {
   color: green;
 }
 
-/* line 5, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 5, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 11, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 11, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -8810,7 +8810,7 @@ button.close {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 19, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 19, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -8821,53 +8821,53 @@ button.close {
   background-color: #c00;
   color: #fff;
 }
-/* line 30, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 30, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
 }
 
-/* line 36, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
+/* line 36, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/scaffolds.scss */
 label {
   display: block;
 }
 
-/* line 28, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 28, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 'Open Sans', sans-serif;
 }
 
-/* line 32, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 32, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 #navbar {
-  border-top: 10px solid #8aa5b1;
+  border-top: 10px solid #ffd300;
   border-bottom: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
   background-size: cover;
 }
 
-/* line 41, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 41, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 #navbar-hp {
-  border-bottom: 10px solid #8aa5b1;
+  border-bottom: 10px solid #ffd300;
   border-top: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
   background-size: cover;
 }
 
-/* line 50, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 50, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .browser-warning {
   background: #E36960;
   color: #fff;
   padding-top: 24px;
 }
 
-/* line 56, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 56, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .browser-warning a {
   color: #fff;
 }
 
-/* line 60, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 60, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .admin-bar {
   border-top: 10px solid #E36960;
   padding-right: 0px;
@@ -8875,31 +8875,31 @@ html, body {
   line-height: 2.5;
 }
 
-/* line 67, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 67, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .admin-bar a {
   color: black;
 }
 
-/* line 71, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 71, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .admin-bar a:hover {
   color: white;
   background: black;
   text-decoration: none;
 }
 
-/* line 77, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 77, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .col-pad {
   padding-left: 0px;
 }
 
-/* line 81, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 81, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .navbar-nav li {
   text-transform: uppercase;
   font-weight: 500;
 }
 
 /* Full width heroes */
-/* line 87, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 87, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .jelly-bg {
   background: url(/assets/jelly-lhs-46645a17a58d9f3a32ece5a71563881243de16486ad8f168f4c8bf74a8e0e3db.jpg) 50% 50% no-repeat;
   background-size: cover;
@@ -8907,14 +8907,14 @@ html, body {
   overflow: hidden;
 }
 
-/* line 94, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 94, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .jellies {
   background: url(/assets/jellies-fee2dbf5796ec86852d574b1666cd1402d35ccaa6708b0590da30c08f3155383.jpg) 50% 35% no-repeat;
   background-size: cover;
   min-height: 380px;
 }
 
-/* line 99, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 99, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .jellies > .row > .inwrap {
   color: #fff;
   margin-top: 120px;
@@ -8923,31 +8923,31 @@ html, body {
 }
 
 @media (max-width: 766px) {
-  /* line 107, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+  /* line 107, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
   .jellies {
     min-height: 300px;
   }
 
-  /* line 110, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+  /* line 110, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
   .jellies > .row > .inwrap {
     margin-top: 50px;
     font-size: 16px;
   }
 }
-/* line 116, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 116, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .fading-container {
   background: linear-gradient(360deg, #021C2B, #0E0F11);
   min-height: 40px;
 }
 
-/* line 121, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 121, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .brain {
   background: url(/assets/brain-6797f52c88afcfe037911719c66bb922cd6d3d386be0710ab5417d6e23952664.jpg) 80% 50% no-repeat;
   background-size: cover;
   min-height: 100%;
 }
 
-/* line 127, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 127, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .hp-adl {
   background: url(/assets/hpbg_stem-dcacdd7dbd3de40315f63346e73aa664a88833c55fd6cd19e0f633bbd8845471.jpg) 50% 39.5% no-repeat;
   background-size: cover;
@@ -8955,33 +8955,33 @@ html, body {
   border-bottom: #fff 1px solid;
 }
 
-/* line 135, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 135, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark {
-  background: #222842;
+  background: #011c2c;
   color: #fff;
   padding: 20px 0;
-  border-bottom: 10px solid #8aa5b1;
+  border-bottom: 10px solid #ffd300;
   margin-top: 10px;
 }
 
-/* line 142, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 142, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark-hp {
-  border-top: 10px solid #8aa5b1;
+  border-top: 10px solid #ffd300;
   border-bottom: 0px;
 }
 
-/* line 146, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 146, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark a {
   color: #fff;
 }
 
-/* line 149, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 149, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark a:hover {
-  color: #8aa5b1;
+  color: white;
   text-decoration: none;
 }
 
-/* line 154, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 154, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .col-dark {
   background: #021C2B;
   color: #fff;
@@ -8990,118 +8990,118 @@ html, body {
 }
 
 @media (max-width: 991px) {
-  /* line 162, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+  /* line 162, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
   .col-dark {
     padding-right: 90px;
   }
 }
-/* line 166, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 166, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 blockquote {
   border-left: 0;
 }
 
-/* line 170, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 170, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .pages-controller-header {
-  background: #557280;
-  color: #8aa5b1;
+  background: #ffed99;
+  color: white;
   padding-bottom: 15px;
   padding-top: 2px;
 }
 
-/* line 176, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 176, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .pages-controller-header > .container > .row > .ttl > h1 {
   font-weight: 600;
   margin-top: 22px;
 }
 
-/* line 181, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 181, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .pages-controller-header > .container > .row > .int {
   margin-top: 16px;
   text-align: right;
 }
 
-/* line 186, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 186, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .pages-controller-body {
   line-height: 2.0;
   margin-bottom: 20px;
 }
 
 /* Additional Panels */
-/* line 193, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 193, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-secondary {
   border-color: #A3AE4D;
 }
 
-/* line 196, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 196, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-secondary > .panel-heading {
   color: #ffffff;
   background-color: #A3AE4D;
   border-color: #A3AE4D;
 }
 
-/* line 201, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 201, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-secondary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #A3AE4D;
 }
 
-/* line 204, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 204, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-secondary > .panel-heading .badge {
   color: #A3AE4D;
   background-color: #ffffff;
 }
 
-/* line 208, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 208, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-secondary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #A3AE4D;
 }
 
-/* line 212, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 212, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-tertiary {
   border-color: #1B354E;
 }
 
-/* line 215, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 215, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-tertiary > .panel-heading {
   color: #ffffff;
   background-color: #1B354E;
   border-color: #1B354E;
 }
 
-/* line 220, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 220, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-tertiary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #1B354E;
 }
 
-/* line 223, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 223, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-tertiary > .panel-heading .badge {
   color: #1B354E;
   background-color: #ffffff;
 }
 
-/* line 227, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 227, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .panel-tertiary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #1B354E;
 }
 
-/* line 231, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 231, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .postback-has-success {
   background: rgba(0, 255, 0, 0.15);
   transition: background 0.5s linear;
   border-radius: 5px;
 }
 
-/* line 237, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 237, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .list-group > .subitem::before {
   content: "→ ";
 }
 
-/* line 241, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 241, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .list-group > .subitem {
   background: #FAFAFA;
   padding-left: 40px;
 }
 
-/* line 246, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 246, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-hp-lm {
   border-radius: 0px;
   padding: 15px;
@@ -9109,14 +9109,14 @@ blockquote {
   padding-right: 45px;
 }
 
-/* line 253, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 253, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .img-320 {
   width: 100%;
   max-width: 320px;
   display: block;
 }
 
-/* line 259, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 259, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .img-margin {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -9124,33 +9124,33 @@ blockquote {
   margin-right: auto;
 }
 
-/* line 265, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 265, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .hphref {
   text-decoration: underline;
 }
 
-/* line 269, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 269, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .hphref:hover {
   text-decoration: none;
 }
 
-/* line 273, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 273, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .clr-margin {
   border-top: #fed130 solid 10px;
 }
 
-/* line 277, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 277, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .help-description {
   font-size: 16px;
   font-weight: lighter;
 }
 
-/* line 282, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 282, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .project-info-reduce {
   margin-top: -140px;
 }
 
-/* line 286, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 286, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .table-rotated th > span {
   transform-origin: 0 50%;
   transform: rotate(-90deg);
@@ -9159,7 +9159,7 @@ blockquote {
   width: 50px;
 }
 
-/* line 297, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 297, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .ov-scrol {
   display: block;
   height: 100vh;
@@ -9167,26 +9167,26 @@ blockquote {
   overflow-y: scroll;
 }
 
-/* line 304, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 304, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .disable-border-radius {
   border-radius: 0px;
 }
 
-/* line 308, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 308, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .move-bottom {
   position: absolute;
   bottom: 0;
   max-width: 420px;
 }
 
-/* line 316, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 316, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary {
   color: #ffffff;
   background-color: #47569c;
   border-color: #3f4c8a;
 }
 
-/* line 321, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 321, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary:focus,
 .btn-secondary.focus {
   color: #ffffff;
@@ -9194,14 +9194,14 @@ blockquote {
   border-color: #2f3967;
 }
 
-/* line 327, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 327, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary:hover {
   color: #ffffff;
   background-color: #374379;
   border-color: #2f3967;
 }
 
-/* line 332, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 332, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary:active,
 .btn-secondary.active,
 .open > .dropdown-toggle.btn-secondary {
@@ -9210,7 +9210,7 @@ blockquote {
   border-color: #2f3967;
 }
 
-/* line 339, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 339, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary:active:hover,
 .btn-secondary.active:hover,
 .open > .dropdown-toggle.btn-secondary:hover,
@@ -9225,14 +9225,14 @@ blockquote {
   border-color: #3f4c8a;
 }
 
-/* line 352, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 352, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary:active,
 .btn-secondary.active,
 .open > .dropdown-toggle.btn-secondary {
   background-image: none;
 }
 
-/* line 357, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 357, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary.disabled:hover,
 .btn-secondary[disabled]:hover,
 fieldset[disabled] .btn-secondary:hover,
@@ -9246,20 +9246,20 @@ fieldset[disabled] .btn-secondary.focus {
   border-color: #3f4c8a;
 }
 
-/* line 369, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 369, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-secondary .badge {
   color: #47569c;
   background-color: #ffffff;
 }
 
-/* line 376, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 376, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary {
   color: #ffffff;
   background-color: #032f61;
   border-color: #022348;
 }
 
-/* line 381, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 381, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary:focus,
 .btn-tertiary.focus {
   color: #ffffff;
@@ -9267,14 +9267,14 @@ fieldset[disabled] .btn-secondary.focus {
   border-color: #011730;
 }
 
-/* line 387, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 387, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary:hover {
   color: #ffffff;
   background-color: #022348;
   border-color: #011730;
 }
 
-/* line 392, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 392, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary:active,
 .btn-tertiary.active,
 .open > .dropdown-toggle.btn-tertiary {
@@ -9283,7 +9283,7 @@ fieldset[disabled] .btn-secondary.focus {
   border-color: #011730;
 }
 
-/* line 399, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 399, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary:active:hover,
 .btn-tertiary.active:hover,
 .open > .dropdown-toggle.btn-tertiary:hover,
@@ -9298,14 +9298,14 @@ fieldset[disabled] .btn-secondary.focus {
   border-color: #022348;
 }
 
-/* line 412, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 412, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary:active,
 .btn-tertiary.active,
 .open > .dropdown-toggle.btn-tertiary {
   background-image: none;
 }
 
-/* line 417, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 417, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary.disabled:hover,
 .btn-tertiary[disabled]:hover,
 fieldset[disabled] .btn-tertiary:hover,
@@ -9319,20 +9319,20 @@ fieldset[disabled] .btn-tertiary.focus {
   border-color: #022348;
 }
 
-/* line 429, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 429, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-tertiary .badge {
   color: #032f61;
   background-color: #ffffff;
 }
 
-/* line 436, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 436, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha {
   color: #ffffff;
   background-color: #4b307f;
   border-color: #40296c;
 }
 
-/* line 441, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 441, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha:focus,
 .btn-alpha.focus {
   color: #ffffff;
@@ -9340,14 +9340,14 @@ fieldset[disabled] .btn-tertiary.focus {
   border-color: #2a1b47;
 }
 
-/* line 447, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 447, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha:hover {
   color: #ffffff;
   background-color: #35225a;
   border-color: #2a1b47;
 }
 
-/* line 452, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 452, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha:active,
 .btn-alpha.active,
 .open > .dropdown-toggle.btn-alpha {
@@ -9356,7 +9356,7 @@ fieldset[disabled] .btn-tertiary.focus {
   border-color: #2a1b47;
 }
 
-/* line 459, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 459, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha:active:hover,
 .btn-alpha.active:hover,
 .open > .dropdown-toggle.btn-alpha:hover,
@@ -9371,14 +9371,14 @@ fieldset[disabled] .btn-tertiary.focus {
   border-color: #40296c;
 }
 
-/* line 472, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 472, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha:active,
 .btn-alpha.active,
 .open > .dropdown-toggle.btn-alpha {
   background-image: none;
 }
 
-/* line 477, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 477, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha.disabled:hover,
 .btn-alpha[disabled]:hover,
 fieldset[disabled] .btn-alpha:hover,
@@ -9392,20 +9392,20 @@ fieldset[disabled] .btn-alpha.focus {
   border-color: #40296c;
 }
 
-/* line 489, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 489, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-alpha .badge {
   color: #4b307f;
   background-color: #ffffff;
 }
 
-/* line 496, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 496, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta {
   color: #ffffff;
   background-color: #4c75ab;
   border-color: #446999;
 }
 
-/* line 501, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 501, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta:focus,
 .btn-beta.focus {
   color: #ffffff;
@@ -9413,14 +9413,14 @@ fieldset[disabled] .btn-alpha.focus {
   border-color: #345176;
 }
 
-/* line 507, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 507, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta:hover {
   color: #ffffff;
   background-color: #3c5d88;
   border-color: #345176;
 }
 
-/* line 512, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 512, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta:active,
 .btn-beta.active,
 .open > .dropdown-toggle.btn-beta {
@@ -9429,7 +9429,7 @@ fieldset[disabled] .btn-alpha.focus {
   border-color: #345176;
 }
 
-/* line 519, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 519, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta:active:hover,
 .btn-beta.active:hover,
 .open > .dropdown-toggle.btn-beta:hover,
@@ -9444,14 +9444,14 @@ fieldset[disabled] .btn-alpha.focus {
   border-color: #446999;
 }
 
-/* line 532, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 532, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta:active,
 .btn-beta.active,
 .open > .dropdown-toggle.btn-beta {
   background-image: none;
 }
 
-/* line 537, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 537, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta.disabled:hover,
 .btn-beta[disabled]:hover,
 fieldset[disabled] .btn-beta:hover,
@@ -9465,20 +9465,20 @@ fieldset[disabled] .btn-beta.focus {
   border-color: #446999;
 }
 
-/* line 549, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 549, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-beta .badge {
   color: #4c75ab;
   background-color: #ffffff;
 }
 
-/* line 556, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 556, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta {
   color: #ffffff;
   background-color: #50a989;
   border-color: #48987b;
 }
 
-/* line 561, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 561, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta:focus,
 .btn-theta.focus {
   color: #ffffff;
@@ -9486,14 +9486,14 @@ fieldset[disabled] .btn-beta.focus {
   border-color: #37755f;
 }
 
-/* line 567, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 567, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta:hover {
   color: #ffffff;
   background-color: #40866d;
   border-color: #37755f;
 }
 
-/* line 572, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 572, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta:active,
 .btn-theta.active,
 .open > .dropdown-toggle.btn-theta {
@@ -9502,7 +9502,7 @@ fieldset[disabled] .btn-beta.focus {
   border-color: #37755f;
 }
 
-/* line 579, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 579, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta:active:hover,
 .btn-theta.active:hover,
 .open > .dropdown-toggle.btn-theta:hover,
@@ -9517,14 +9517,14 @@ fieldset[disabled] .btn-beta.focus {
   border-color: #48987b;
 }
 
-/* line 592, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 592, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta:active,
 .btn-theta.active,
 .open > .dropdown-toggle.btn-theta {
   background-image: none;
 }
 
-/* line 597, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 597, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta.disabled:hover,
 .btn-theta[disabled]:hover,
 fieldset[disabled] .btn-theta:hover,
@@ -9538,57 +9538,57 @@ fieldset[disabled] .btn-theta.focus {
   border-color: #48987b;
 }
 
-/* line 609, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 609, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .btn-theta .badge {
   color: #50a989;
   background-color: #ffffff;
 }
 
-/* line 615, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 615, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .text-danger > a:link {
   color: #e46763;
 }
 
-/* line 619, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 619, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .text-danger > a:hover {
   color: #941d1a !important;
 }
 
-/* line 623, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 623, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .dropdown-header {
   text-transform: none !important;
 }
 
-/* line 627, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 627, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .table-block {
   display: block;
   overflow-x: scroll;
   overflow-y: hidden;
 }
 
-/* line 633, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 633, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .a-mtp {
   padding: 15px;
   border-top: 4px solid white;
 }
 
-/* line 638, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 638, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .a-mtp:hover {
   border-top: 4px solid #E36960;
 }
 
-/* line 642, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 642, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .heading-inverse {
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
-/* line 650, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 650, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .square-hp {
   max-width: 200px;
   max-height: 200px;
 }
 
-/* line 655, /Users/aidancornelius/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+/* line 655, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .loader {
   border: 16px solid #f3f3f3;
   /* Light grey */

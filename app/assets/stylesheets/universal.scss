@@ -9,11 +9,11 @@ $navbar-default-bg: #011c2c; // #222842 #081D2A;
 $navbar-default-border: #ffd300; // darken($navbar-default-bg, 6.5%);
 $navbar-default-link-color: lighten(#ffd300, 50%);// lighten(#5f808f, 15%); // #E36960;
 $navbar-default-link-hover-color: #ffd300; // lighten($navbar-default-link-color, 10%); // #FCC132;
-$navbar-defaut-link-hover-bg: $navbar-default-link-color;
+$navbar-defaut-link-hover-bg: $navbar-default-bg;
 $navbar-default-link-active-color: #FFF;
 $navbar-default-link-active-bg: $navbar-default-link-color;
 
-$bar-colour: $navbar-default-link-color;
+$bar-colour: $navbar-default-border; // $navbar-default-link-color;
 
 $border-radius-base: 2px;
 $border-radius-small: 2px;
