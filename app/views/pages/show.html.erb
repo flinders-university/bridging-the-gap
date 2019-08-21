@@ -1,7 +1,7 @@
 <% title @page.title; @title =  @page.title; @author = @page.author; @date = @page.updated_at; %>
 <%= render("partials/colour_header") %>
 <br>
-<div style="background: white; border-radius: 2px; padding: 5px 10px;">
+<div style="background: white; border-radius: 2px; padding: 10px 10px;">
   <%= mdrender(@page.body).html_safe %>
 </div>
 
