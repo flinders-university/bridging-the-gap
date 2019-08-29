@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'data_controller/delete/:id', to: 'data_controller#delete'
+
   get 'merge_account_with_oauth/notice'
   post 'merge_account_with_oauth/save'
 
