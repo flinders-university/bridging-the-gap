@@ -129,6 +129,10 @@ class UsertoolsController < ApplicationController
 
   # GET /usertools/
   def manage
-    @Users = User.all.order(:group_id, :created_at)
+    if params[:filter].present
+      @Users = User.where(group_id: params[:filter])
+    else
+      @Users = User.all.order(:group_id, :created_at)
+    end
   end
 end
