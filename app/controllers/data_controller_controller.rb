@@ -2,7 +2,7 @@ class DataControllerController < ApplicationController
   before_action :require_administrator!
 
   def delete
-    u = User.find_by_email(params[:email])
+    u = User.find_by_id(params[:id])
     if u.present?
       u.industry_id = nil
       if u.save
