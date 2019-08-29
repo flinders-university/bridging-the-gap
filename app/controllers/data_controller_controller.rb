@@ -3,7 +3,7 @@ class DataControllerController < ApplicationController
 
   def delete
     u = User.find_by_email(params[:email])
-    if u.setplacement(params[:industry_id])
+    if u.present?
       u.industry_id = nil
       if u.save
         redirect_to "/usertools/#{u.id}", notice: "Deallocated placement"
