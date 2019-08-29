@@ -41,7 +41,7 @@
   <% if @User.administrator %>
   <%= check_box_tag :administrator, true, checked: true %> <% else %> <%= check_box_tag :administrator, false %> <% end %></p>
 
-<p>Placement (<%= link_to "Allocate", industries_path %> | <%= link_to "Deallocate", "data_controller/delete/#{@User.id}" %>)
+<p>Placement (<%= link_to "Allocate", industries_path %> | <%= link_to "Deallocate", "/data_controller/delete/#{@User.id}" %>)
   <input type="text" class="form-control" disabled value="<%= @User.industry ? @User.industry.name : "Not placed" %>"></p>
 
 <p>Acting as industry contact person for
