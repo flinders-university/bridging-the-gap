@@ -67,7 +67,9 @@
   </div>
   <div class="panel-body">
     <%= form_tag "/usertools/place/#{@industry.id}", method: :post, class: "form-inline" do %>
-    <%= text_field_tag(:email, "", {class: "form-control", placeholder: "Student to place - email address", style: "min-width: 300px;"}) %> <%= submit_tag("Add Student", class: "btn btn-primary") %>
+    <%# text_field_tag(:email, "", {class: "form-control", placeholder: "Student to place - email address", style: "min-width: 300px;"}) %>
+    <%= select_tag(:email, options_from_collection_for_select(User.where(group_id: 4), :email, :addressable)) %>
+    <%= submit_tag("Add Student", class: "btn btn-primary") %>
     <% end %>
   </div>
 </div>
