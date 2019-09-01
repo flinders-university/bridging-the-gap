@@ -48,6 +48,12 @@
 
 <%= mdrender(@industry.blurb).html_safe %>
 <div class="clearfix"></div>
+
+<p>
+  <strong>Negotiations:</strong>
+  <% if @industry.negotiations %><%= icon :ok %><% else %><%= icon :remove %><% end %>
+</p>
+
 <p>
   <strong>Active:</strong>
   <% if @industry.active %><%= icon :heart %><% else %><%= icon :remove %><% end %>
