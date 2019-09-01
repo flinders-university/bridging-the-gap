@@ -68,7 +68,9 @@
         </p>
 
         <p style="pointer-events: none;"><strong>Blurb &amp; notes</strong>
-          <input class="add-mde">
+          <span id="clearme">
+            <input class="add-mde">
+          </span>
         </p>
 
         <div id="pst_data"></div>
@@ -119,24 +121,7 @@ function getData(identifier) {
   if (toggle == 0) {
     toggle = toggle + 1;
   } else {
-    $(".add-mde")[1].hide();
-    $(".add-mde")[2].hide();
-    $(".add-mde")[3].hide();
-    $(".add-mde")[4].hide();
-    $(".add-mde")[5].hide();
-    $(".add-mde")[6].hide();
-    $(".add-mde")[7].hide();
-    $(".add-mde")[8].hide();
-    $(".add-mde")[9].hide();
-    $(".add-mde")[10].hide();
-    $(".add-mde")[11].hide();
-    $(".add-mde")[12].hide();
-    $(".add-mde")[13].hide();
-    $(".add-mde")[14].hide();
-    $(".add-mde")[15].hide();
-    $(".add-mde")[16].hide();
-    $(".add-mde")[17].hide();
-    $(".add-mde")[18].hide();
+    $("#clearme").html('<input class="add-mde">');
     // location.reload();
   }
 
