@@ -102,6 +102,6 @@ class IndustriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def industry_params
-      params.require(:industry).permit(:user_id, :name, :address, :phone, :email, :website, :stem_foci, :description, :blurb, :active, :show_info)
+      params.require(:industry).permit(:user_id, :name, :address, :phone, :email, :website, :stem_foci, :description, :blurb, :active, :show_info, :negotiations)
     end
 end
