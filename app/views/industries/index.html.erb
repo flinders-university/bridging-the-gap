@@ -28,7 +28,7 @@
           <strong><% if industry.users.count >= 1%><%= icon :education %> Placed: <%= industry.users.count.humanize %> pre-service teacher<% end %></strong>
           <br>
           <div class="clearfix"></div>
-          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% else %><%= icon :square_remove %><% end%> <% if industry.negotiations %><%= icon :exchange, title: "Negotiations underway" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %> <% if industry.show_info %><%= icon "info-sign" %><% end %>
+          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% else %><%= icon :square_remove %><% end%> <% if industry.negotiations %><%= icon :ok, title: "Negotiations underway" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %> <% if industry.show_info %><%= icon "info-sign" %><% end %>
           <span class="pull-right"><%= link_to 'Show', "#show-#{industry.id}", id: "#{industry.id}", class: "showind btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span>
           <div class="clearfix"></div>
         </div>
@@ -87,7 +87,7 @@
 <p>Key:</p>
 <%= icon :bullhorn, title: "Contacted" %> Industry contacted &nbsp;
 <%= icon :heart, title: "Engaged" %> Industry engaged &nbsp;<br>
-<%= icon :exchange, title: "Negotiations underway" %> Negotiations started &nbsp;
+<%= icon :ok, title: "Negotiations underway" %> Negotiations started &nbsp;
 <%= icon :info_sign %> PST info shown
 
 <p><strong>Total:</strong> <%= @industries.count %> <em>secured <%= @industries.where(active: true).count %></em>. <strong>Total Flinders:</strong> <%= @industries.where(user_id: 1).count + @industries.where(user_id: 85).count %>. <strong>Total DSD:</strong> <%= @industries.where(user_id: 84).count + @industries.where(user_id: 80).count %>.</p>
