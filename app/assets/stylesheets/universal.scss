@@ -671,9 +671,9 @@ fieldset[disabled] .btn-theta.focus {
   background-color: rgba(0,0,0,0.0) !important; // trs
 }
 
-@media (min-width:451px)  {
-    .mh_logo { max-width: 259px; }
-  }
+@media (min-width:800px)  {
+    .mhlogo { max-width: 259px; }
+}
 
   .apa,     .apa ul,     .apa ol,     .apa dl,
 .ref-apa, .ref-apa ul, .ref-apa ol, .ref-apa dl,
