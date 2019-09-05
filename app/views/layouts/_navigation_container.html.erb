@@ -16,7 +16,7 @@
         <% if current_user.present? %>
         <a href="/?noredirect=true"><%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px;") %></a>
         <% else %>
-        <%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px; overflow:hidden;") %>
+        <%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px; overflow:hidden;", class: "mh_logo") %>
         <% end %>
       </div>
 

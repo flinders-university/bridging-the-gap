@@ -670,3 +670,7 @@ fieldset[disabled] .btn-theta.focus {
 .dropdown-toggle {
   background-color: rgba(0,0,0,0.0) !important; // trs
 }
+
+@media (min-width:451px)  {
+    .mh_logo { max-width: 259px; }
+  }
