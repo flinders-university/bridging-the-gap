@@ -6043,11 +6043,11 @@ tbody.collapse.in {
 }
 /* line 401, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-brand {
-  color: black;
+  color: white;
 }
 /* line 403, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: black;
+  color: #fff6cc;
   background-color: transparent;
 }
 /* line 410, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6056,7 +6056,7 @@ tbody.collapse.in {
 }
 /* line 415, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > li > a {
-  color: black;
+  color: white;
 }
 /* line 418, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -6066,7 +6066,7 @@ tbody.collapse.in {
 /* line 425, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #FFF;
-  background-color: black;
+  background-color: white;
 }
 /* line 433, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
@@ -6092,13 +6092,13 @@ tbody.collapse.in {
 }
 /* line 462, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: black;
+  background-color: white;
   color: #FFF;
 }
 @media (max-width: 767px) {
   /* line 473, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: black;
+    color: white;
   }
   /* line 475, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -6108,7 +6108,7 @@ tbody.collapse.in {
   /* line 482, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #FFF;
-    background-color: black;
+    background-color: white;
   }
   /* line 490, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -6118,7 +6118,7 @@ tbody.collapse.in {
 }
 /* line 506, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-link {
-  color: black;
+  color: white;
 }
 /* line 508, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-link:hover {
@@ -6126,7 +6126,7 @@ tbody.collapse.in {
 }
 /* line 513, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .btn-link {
-  color: black;
+  color: white;
 }
 /* line 515, /Users/aidancornelius/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
@@ -8839,7 +8839,7 @@ html, body {
 
 /* line 32, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 #navbar {
-  border-top: 10px solid black;
+  border-top: 10px solid #ffd300;
   border-bottom: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
@@ -8848,7 +8848,7 @@ html, body {
 
 /* line 41, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 #navbar-hp {
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #ffd300;
   border-top: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
@@ -8960,13 +8960,13 @@ html, body {
   background: #011c2c;
   color: #fff;
   padding: 20px 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #ffd300;
   margin-top: 10px;
 }
 
 /* line 142, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark-hp {
-  border-top: 10px solid black;
+  border-top: 10px solid #ffd300;
   border-bottom: 0px;
 }
 
@@ -8977,7 +8977,7 @@ html, body {
 
 /* line 149, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .container-dark a:hover {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -9002,8 +9002,8 @@ blockquote {
 
 /* line 170, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
 .pages-controller-header {
-  background: black;
-  color: black;
+  background: #ffed99;
+  color: white;
   padding-bottom: 15px;
   padding-top: 2px;
 }
@@ -9607,5 +9607,16 @@ fieldset[disabled] .btn-theta.focus {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+/* line 670, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+.dropdown-toggle {
+  background-color: transparent !important;
+}
+
+@media (min-width: 451px) {
+  /* line 675, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+  .mh_logo {
+    max-width: 259px;
   }
 }
