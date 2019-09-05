@@ -14,7 +14,7 @@
           <span class="icon-bar"></span>
         </button>
         <% if current_user.present? %>
-        <a href="/?noredirect=true"><%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px;") %></a>
+        <a href="/?noredirect=true"><%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px; overflow:hidden;", class: "mhlogo") %></a>
         <% else %>
         <%= image_tag("logo.png", style: "max-height: 70px; margin-top: 10px; overflow:hidden;", class: "mhlogo") %>
         <% end %>
