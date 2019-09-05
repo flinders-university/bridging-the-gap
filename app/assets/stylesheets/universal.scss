@@ -671,7 +671,7 @@ fieldset[disabled] .btn-theta.focus {
   background-color: rgba(0,0,0,0.0) !important; // trs
 }
 
-@media (min-width:800px)  {
+@media (max-width:700px)  {
     .mhlogo { max-width: 259px; }
 }
 

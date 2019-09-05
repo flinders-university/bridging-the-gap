@@ -9613,3 +9613,47 @@ fieldset[disabled] .btn-theta.focus {
 .dropdown-toggle {
   background-color: transparent !important;
 }
+
+@media (max-width: 700px) {
+  /* line 675, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+  .mhlogo {
+    max-width: 259px;
+  }
+}
+/* line 678, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+.apa, .apa ul, .apa ol, .apa dl,
+.ref-apa, .ref-apa ul, .ref-apa ol, .ref-apa dl,
+.apa-ref, .apa-ref ul, .apa-ref ol, .apa-ref dl,
+.refapa, .refapa ul, .refapa ol, .refapa dl,
+.aparef, .aparef ul, .aparef ol, .aparef dl {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* line 685, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+.apa li,
+.ref-apa li,
+.refapa li,
+.apa-ref li,
+.aparef li {
+  list-style-type: none;
+}
+
+/* line 692, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+.apa p, .apa li, .apa dd,
+.ref-apa p, .ref-apa li, .ref-apa dd,
+.refapa p, .refapa li, .refapa dd,
+.apa-ref p, .apa-ref li, .apa-ref dd,
+.aparef p, .aparef li, .aparef dd {
+  margin-left: 2em;
+  text-indent: -2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 702, /Users/aidancornelius/Documents/code/dry-scrubland-39461/app/assets/stylesheets/universal.scss */
+.ref-apa dt {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: .83em 0;
+}
