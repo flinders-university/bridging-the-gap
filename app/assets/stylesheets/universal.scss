@@ -675,6 +675,10 @@ fieldset[disabled] .btn-theta.focus {
     .mhlogo { max-width: 259px; }
 }
 
+@media (max-width:800px)  {
+    .mhlogo { max-width: 359px; }
+}
+
   .apa,     .apa ul,     .apa ol,     .apa dl,
 .ref-apa, .ref-apa ul, .ref-apa ol, .ref-apa dl,
 .apa-ref, .apa-ref ul, .apa-ref ol, .apa-ref dl,
