@@ -6,9 +6,21 @@ Bridging the Gap is a STEM education research collaboration 'connecting science 
 
 This web platform supports the project team, industry contacts and schools to engage in industry placements (work integrated learning), research participation and a public facing CMS.  
 
+## Features
+
+* Content management system
+* Learning objects
+* User management
+* Industry database and engagement tracking
+* Contact management
+* Compliance reporting
+* Multi user blog interface
+* Research data collection (surveys)
+* Research data management (consent)
+
 ## Technical Details
 
-This platform is designed and tested to operate on Heroku.
+This platform is designed and tested to operate on Heroku using AWS as the 'static' storage in the Sydney region for research data storage, etc.
 
 ### Ruby version
 
