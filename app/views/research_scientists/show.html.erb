@@ -1,0 +1,53 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+</div>
+<h1>Your Groups' Research Scientist Details</h1>
+<hr>
+
+<% if current_user_administrator? %>
+<p>
+  <strong>Student group:</strong>
+  <%= @research_scientist.student_group_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @research_scientist.user.name %>
+</p>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @research_scientist.user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= link_to @research_scientist.public_email, "mailto:#{@research_scientist.public_email}" %>
+</p>
+
+<% if @research_scientist.public_phone.present? %>
+<p>
+  <strong>Phone:</strong>
+  <%= link_to @research_scientist.public_phone, "tel:#{@research_scientist.public_phone}" %>
+</p>
+<% end %>
+
+<% if @research_scientist.public_bio.present? %>
+<p>
+  <strong>Public bio:</strong>
+  <%= @research_scientist.public_bio %>
+</p>
+<% end %>
+
+<% if current_user_administrator? %>
+<p>
+  <strong>Enabled:</strong>
+  <%= @research_scientist.enabled %>
+</p>
+
+<%= link_to 'Edit', edit_research_scientist_path(@research_scientist) %> |
+<%= link_to 'Back', research_scientists_path %>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_for(document, layout: :basic) do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="field">
+    <%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'addressable'), label: "Owner / Publisher" %>
+  </div>
+
+  <div class="field">
+    <%= f.select :group_id, options_from_collection_for_select(@groups, 'id', 'name_and_level') %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :document, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

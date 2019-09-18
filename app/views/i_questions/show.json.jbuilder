@@ -1,0 +1,1 @@
+json.partial! "i_questions/i_question", i_question: @i_question

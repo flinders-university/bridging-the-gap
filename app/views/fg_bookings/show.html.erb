@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @fg_booking.user_id %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @fg_booking.booking %>
+</p>
+
+<%= link_to 'Edit', edit_fg_booking_path(@fg_booking) %> |
+<%= link_to 'Back', fg_bookings_path %>

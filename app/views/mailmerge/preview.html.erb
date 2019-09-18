@@ -1,0 +1,9 @@
+<%= render("user_mailer/message_wrap_head") %>
+<br>
+<p>Dear &lt;USER FIRST NAME&gt;,</p>
+<%= mdrender(params[:message]).html_safe %>
+<%= render("user_mailer/message_wrap_foot") %>
+
+<div>
+  <button onclick="window.close();" class="btn btn-primary" style="position: absolute; top: 0; right: 0; margin: 8px;">Close Window</button>
+</div>

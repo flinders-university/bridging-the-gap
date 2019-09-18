@@ -1,0 +1,49 @@
+<% title "Research Participation" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <% if current_user.group.level == 2 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_preservice_teacher_path, class: "btn btn-info" %>
+  <% elsif current_user.group.level == 3 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_industry_path, class: "btn btn-info" %>
+  <% end %>
+  <%= link_to "Research Participation", illuminet_polymer_path, class: "btn btn-primary" %>
+</div>
+<h1>Research Participation <small>Surveys</small></h1>
+
+<%= render("partials/research_navigation") %>
+<br>
+<p><em>This research project has been approved by the Flinders University Social and Behavioural Research Ethics Committee (7391). For more information regarding ethical approval of the project the Executive Officer of the Committee can be contacted by telephone on <a href="tel:08 8201 3116">08 8201 3116</a>, by fax on 08 8201 2035 or by email <a href="mailto:human.researchethics@flinders.edu.au">human.researchethics@flinders.edu.au</a>.</em></p>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Readiness Check</div>
+  <div class="list-group">
+    <div class="list-group-item"><span class="text-success"><%= icon :ok %> you are a member of the <%= current_user.group.name %> group.</span></div>
+    <div class="list-group-item"><% if @at_least_one_signature >= 1 %><span class="text-success"><%= icon :ok %> you have signed <%= @at_least_one_signature.humanize %> focus group consent form(s).<% else %><span class="text-danger"><%= icon :remove %> you have not signed any focus group consent forms.</span><% end %></div>
+    <div class="list-group-item"><% if @isurveys.count >= 1 %><span class="text-success"><%= icon :ok %> surveys are available.</span><% else %><span class="text-warning"><%= icon :link %> there are no new surveys at this time.</span><% end %></div>
+  </div>
+</div>
+
+<% if @at_least_one_signature >= 0 %>
+
+  <% i = 1; @show_link = false; @isurveys.each do |survey| %>
+  <div class="panel panel-tertiary">
+    <div class="panel-heading"><%= i %>. <%= survey.title %></div>
+    <div class="panel-body">
+      <%= mdrender(survey.description).html_safe %>
+      <% # If the user has answered all the questions, don't give them the button, else, do! %>
+      <% if @answers.where(survey_id: survey.id).count < survey.i_questions.count %>
+        <% @show_link = true %>
+      <% end %>
+
+      <% if @show_link %>
+        <%= link_to "Commence Survey", "/illuminet/" + survey.id.to_s, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "You have completed this survey", "#", class: "btn btn-primary disabled" %>
+      <% end %>
+    </div>
+  </div>
+  <% i = i + 1 %>
+  <% end %>
+
+<% end %>

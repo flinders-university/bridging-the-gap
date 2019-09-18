@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Industry Report</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
+    <style>
+      body { font-family: 'Open Sans', sans-serif; font-size: 14px; }
+      hr {
+        -webkit-box-sizing: content-box;
+           -moz-box-sizing: content-box;
+                box-sizing: content-box;
+        height: 0;
+      }
+      hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eeeeee;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .page-break:last-child {
+        page-break-before: avoid;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: -6px; margin-top: 4px;">Student Industry Placement Report</h1>
+    <p><em>Updated: <%= Date.today.strftime("#{Date.today.day.ordinalize} of %B %Y") %></em></p>
+    <p style="font-size: 12px;">Student information is <strong>strictly confidential</strong> and its use is governed by the University policy on Access to Student Information.</p>
+
+    <hr>
+    <% @industries.each do |industry| %>
+    <div class="industry">
+      <h3 style="margin-bottom: -6px; margin-top: 4px;">Industry: <%= industry.name %></h3>
+      <p><strong>Contact person:</strong> <%= industry.email %></p>
+      <p><strong>Contact available:</strong><br>
+        <span style="padding-right:75px;"></span>address: <font color="green"><% if industry.address.present? %>yes<% else%>no<% end%></font>.<br>
+        <span style="padding-right:85px;"></span>phone: <font color="green"><% if industry.phone.present? %>yes - <%= industry.phone %><% else%>no<% end%></font>.<br>
+        <span style="padding-right:75px;"></span>website: <font color="green"><% if industry.website.present? %>yes - <%= industry.website %><% else%>no<% end%></font>.<br>
+        <span style="padding-right:55px;"></span>description: <font color="green"><% if industry.description.present? %>yes<% else%>no<% end%></font>.
+      </p>
+      <p><strong>Focus:</strong> <%= industry.stem_foci %>. <strong>Info available to PSTs:</strong> <mark><%if industry.show_info %>yes<%else%>no<%end%></mark>.</p>
+      <h4 style="margin-bottom: -6px;">Placed Students:</h4>
+      <% if industry.users.count < 1 %>
+        <p><span style="padding-right:45px;"></span><mark>No students here</mark></p>
+      <% else %>
+        <% industry.users.each do |user| %>
+        <div class="user">
+          <p><span style="padding-right:45px;"></span><strong><%= user.name %></strong><br>
+            <span style="padding-right:82px;"></span>Program: <%= user.degree %> <br>
+            <span style="padding-right:101px;"></span>Major: <%= user.major %> <br>
+            <span style="padding-right:98px;"></span>Group: <%= user.student_group_id %></p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if params[:break] %>
+    <div class="page-break"></div>
+    <% else %>
+    <hr>
+    <% end %>
+
+    <% end %>
+  </body>
+</html>

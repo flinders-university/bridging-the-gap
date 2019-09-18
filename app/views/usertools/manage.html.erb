@@ -1,0 +1,46 @@
+<% title "Managing Users" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Students Only", "/usertools.html?filter=4", class: "btn btn-default" %>
+  <%= link_to "Groups", groups_path, class: "btn btn-primary" %>
+  <%= link_to "Import", usertools_import_path, class: "btn btn-info" %>
+  <%= link_to "New User", usertools_new_path, class: "btn btn-default" %>
+</div>
+<h1>User Management Tools</h1>
+<hr>
+
+<%= form_tag(usertools_search_path, method: :post) do %>
+  <p>Last Name
+    <%= text_field_tag(:lastname, "", class: "form-control") %></p>
+  <p>Email address
+    <%= email_field_tag(:email, "", class: "form-control") %></p>
+
+  <%= hidden_field_tag(:submit, "user") %>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>
+
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Users</div>
+  <div class="list-group">
+  <% @Users.each do |user| %>
+    <div class="list-group-item" style="min-height:40px;">
+      <div class="col-xs-3">
+        <a href="<%= usertools_path + "/#{user.id}" %>"><%= user.name %></a>
+      </div>
+      <div class="col-xs-3">
+        <%= if user.student_group.present? then user.student_group.id else "No student placement group, yet."  end %>
+      </div>
+      <div class="col-xs-3">
+        <%= if user.industry.present? then "Placed #{user.industry.name}" else "No industry placement, yet." end %>
+      </div>
+      <div class="col-xs-3">
+        <%= user.group.name %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  <% end %>
+  </div>
+</div>

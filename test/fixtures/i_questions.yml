@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  survey_id: 1
+  type: 1
+  description: MyString
+  grouping_value: 1
+  enabled: false
+  comment: MyString
+
+two:
+  survey_id: 1
+  type: 1
+  description: MyString
+  grouping_value: 1
+  enabled: false
+  comment: MyString

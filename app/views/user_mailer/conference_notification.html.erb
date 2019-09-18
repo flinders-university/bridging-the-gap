@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style> html, body { font-family: 'Open Sans', Helvetica, Arial, sans-serif; } </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <p>Dear <%= @rsvp.full_name.split(" ").first %>,</p>
+
+      <% if @rsvp.attended == true %>
+      <p>Thank you for attending the <em>Bridging the Gap Teacher Conference</em>
+      <% else %>
+      <p>Thank you for registering for the the <em>Bridging the Gap Teacher Conference</em>
+      <% end %>
+      <% if @rsvp.interested == true %>and for your interest in the Bridging the Gap project<% end %>.</p>
+
+      <p>You can <strong>retrieve <% if @rsvp.attended == true %>your certificate and the <% end %>presentation materials</strong> online here: <a href="https://bridgingthegap.edu.au/teacher_conference/registration?id=<%= @rsvp.id %>&email=<%= @rsvp.email %>">My Registration</a>.</p>
+
+      <p>If you are interested in <strong>future communication about the project</strong>, please register on the Bridging the Gap website here: <a href="https://bridgingthegap.edu.au/users/sign_up">Sign Up</a>.</p>
+
+      <p>All the best,</p>
+
+      <p>The Bridging the Gap Project Team.</p>
+      <br>
+      <p><img src="http://www.flinders.edu.au/MACO_files/images/email_signature_logo.gif" style="max-width: 100px;"></p>
+      <p>CRICOS Provider Number: 00114A</p>
+      <p><em>This email and any attachments may be confidential. If you are not the intended recipient, please inform the sender by reply email and delete all copies of this message.</em></p>
+    </div>
+  </body>
+</html>

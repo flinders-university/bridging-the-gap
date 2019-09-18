@@ -1,0 +1,155 @@
+<% title "Edit Registration" %>
+<h1>Research Participation <small>My Profile</small></h1>
+<%= render("partials/research_navigation") %>
+<br>
+<% if current_user.created_at.to_i == current_user.updated_at.to_i %>
+  <div class="alert alert-danger">
+    It appears that you are still using your default password, please update your password below.
+  </div>
+<% end %>
+<br>
+<div id="expose">
+  <div class="panel panel-tertiary">
+    <div class='panel-heading'>
+      Group Information
+    </div>
+    <div class="panel-body">
+      You are a member of the <strong><%= current_user.group.name %></strong> group. To request a change your group <a href="#_atmos_group" id="group-request">please click here</a>.
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Edit Registration
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :firstname %>
+            <%= f.text_field :firstname, class: "form-control" %>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.label :lastname %>
+            <%= f.text_field :lastname, class: "form-control" %>
+          </div>
+        </div>
+        <br>
+
+        <div class="field">
+          <div class="pull-right"><%= if devise_mapping.confirmable? && resource.confirmed? then icon :ok end %></div>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <% if current_user.group.level == 2 %>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :degree %>
+            <%= f.text_field :degree, autocomplete: "off", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :major %>
+            <%= f.text_field :major, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :age %>
+            <%= f.number_field :age, autocomplete: "off", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :gender %>
+            <%= f.select :gender, options_for_select([["Female", "female"], ["Male", "male"], ["Other", "other"]], current_user.gender), class: "form-control" %>
+          </div>
+        </div>
+        <% end %>
+        <% if Swot::is_academic? current_user.email %>
+        <div class="field">
+          <br>
+          <label for="university">University</label>
+            <input id="university" type="text" class="form-control" value="<%= Swot::school_name current_user.email %> <% if current_user.email.split("@").first.include?(".") %>- Staff<% else %>- Student<% end %>" title="Detected from your email address." disabled>
+        </div>
+        <% end %>
+
+        <div class="field">
+          <br>
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <br>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <br>
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <br>
+          <%= f.submit "Update registration", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item">Your last sign in was on <%= if current_user.last_sign_in_at.present? then current_user.last_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") end %> from <%= current_user.last_sign_in_ip %></div>
+      <div class="list-group-item">Your current sign in was on <%= if current_user.current_sign_in_at.present? then current_user.current_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") end %> from <%= current_user.current_sign_in_ip %></div>
+    </div>
+    <% if current_user.group.level <= 1 %>
+    <div class="panel-footer">
+      <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal-dialog" id="group-change-form">
+  <div class="modal-content">
+      <div class="modal-header">
+        Request a group change
+      </div>
+      <div class="modal-body">
+        <%= form_tag(group_change_requests_path, method: :post) do %>
+          <%= select_tag :group_id, options_from_collection_for_select(Group.all, 'id', 'name'), class: "form-control" %>
+          <%= hidden_field_tag :user_id, current_user.id %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="close-atmos-modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <% end %>
+      </div>
+    </div>
+</div>
+<br>
+
+<script>
+$("#group-change-form").hide();
+
+$("#group-request").click( function () {
+  $("#expose").fadeOut();
+  $("#group-change-form").fadeIn();
+});
+
+$("#close-atmos-modal").click( function () {
+  $("#group-change-form").fadeOut();
+  $("#expose").fadeIn();
+});
+
+$("#user_gender").addClass("form-control");
+</script>

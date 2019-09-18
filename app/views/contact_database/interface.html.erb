@@ -1,0 +1,12 @@
+<iframe src="https://flinders:contacts@btg-contacts.herokuapp.com/?embed=true" frameborder="0" width="100%" id="btg-cef-frame" scrolling="no" style="overflow: hidden;"></iframe>
+
+<script>
+
+$('iframe').ready(function() {
+  window.addEventListener('message', function(event) {
+      if (~event.origin.indexOf('https://btg-contacts.herokuapp.com')) {
+          $('iframe').height(event.data + 30);
+      }
+  });
+});
+</script>

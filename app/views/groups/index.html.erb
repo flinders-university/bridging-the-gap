@@ -1,0 +1,37 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Group Requests (" + GroupChangeRequest.all.count.to_s + " pending)", group_change_requests_path, class: "btn btn-primary" %>
+</div>
+
+<h1>Groups</h1>
+<hr>
+
+<% @groups.each do |group| %>
+<div class="panel panel-primary">
+  <div class="panel-heading">[Level: <%= group.level %>] <%= group.name %> <span class="badge pull-right">Members: <%= group.users.count %></span></div>
+  <div class="panel-body"><%= group.description %></div>
+  <div class="panel-footer"><%= link_to "View & manage members", group_path(group.level) %> <%= link_to "Destroy group", group_path(group.level), method: :delete, class: "text-danger" %></div>
+</div>
+<% end %>
+
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#newGroup" aria-expanded="false" aria-controls="newGroup">
+  Create a group
+</a>
+
+<div class="collapse" id="newGroup">
+  <br>
+  <div class="well">
+    <%= form_tag(groups_path, method: :post) do %>
+    <p>Alias for access level (unique number):
+      <%= number_field_tag("level", "", class: "form-control", placeholder: "0") %></p>
+    <p>Name for group (visible to members):
+      <%= text_field_tag("name", "", class: "form-control", placeholder: "Name") %></p>
+    <p>Contact Person (email format, visible to members):
+      <%= text_field_tag("contact", "", class: "form-control", placeholder: "\"First Last\" <email@flinders.edu.au>") %></p>
+    <p>Group description (visible to members):
+      <%= text_field_tag("description", "", class: "form-control", placeholder: "This group is for...") %></p>
+    <%= submit_tag("Add Group", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>

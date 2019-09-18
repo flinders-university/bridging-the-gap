@@ -1,0 +1,29 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Back", industry_presentations_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @industry_presentation.title %></h1>
+By <%= if @industry_presentation.user.present? then @industry_presentation.user.name end %> for <%= if  @industry_presentation.industry.present? then @industry_presentation.industry.name end %>
+<hr>
+
+<%= mdrender(@industry_presentation.description).html_safe %>
+
+<hr>
+<% if @industry_presentation.presentation.present? %>
+<p>
+  <%= icon :paperclip %> Presentation: <%= number_to_human_size(@industry_presentation.presentation_file_size) %>
+  [<%= link_to @industry_presentation.presentation_file_name, @industry_presentation.presentation.expiring_url(10.minutes) %>]
+</p>
+<% end %>
+
+<% if @industry_presentation.script.present? %>
+<p>
+  <%= icon :paperclip %> Script: <%= number_to_human_size(@industry_presentation.script_file_size) %>
+  [<%= link_to @industry_presentation.script_file_name, @industry_presentation.script.expiring_url(10.minutes) %>]
+</p>
+<% end %>
+
+<% if current_user.id == @industry_presentation.user_id %>
+<%= link_to 'Edit', edit_industry_presentation_path(@industry_presentation) %>
+<% end %>

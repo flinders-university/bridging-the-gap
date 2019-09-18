@@ -1,0 +1,17 @@
+<h1>Documents</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Documents</div>
+  <div class="list-group">
+      <% @documents.each do |document| %>
+      <div class="list-group-item">
+        <%= glyphicon :file %> <% if document.public %><%= glyphicon :user %><% end %> <strong><%= document.title %></strong> by <%= document.user.addressable %> for <%= document.group.name %> Group <span class="pull-right"><%= link_to 'Show', document, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_document_path(document), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Document', new_document_path %>

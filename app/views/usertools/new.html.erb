@@ -1,0 +1,40 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "User Tools", usertools_path, class: "btn btn-primary" %>
+</div>
+<h1>Create User</h1>
+<hr>
+
+<%= form_tag(usertools_create_path, method: :post) do %>
+<p><strong>Email Address</strong> <span class="text-danger">*</span> <br>
+  <%= email_field_tag( :email, "", { class: "form-control", placeholder: "Email Address"} ) %></p>
+
+<p><strong>Password</strong> <span class="text-danger">*</span> <br>
+  <%= text_field_tag( :password, "", { class: "form-control", placeholder: "Password"} ) %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <p><strong>First Name</strong> <span class="text-danger">*</span> <br>
+      <%= text_field_tag( :firstname, "", { class: "form-control", placeholder: "First Name"} ) %></p>
+  </div>
+  <div class="col-md-6">
+    <p><strong>Last Name</strong> <span class="text-danger">*</span> <br>
+      <%= text_field_tag( :lastname, "", { class: "form-control", placeholder: "Last Name"} ) %></p>
+  </div>
+</div>
+
+<p><strong>Administrative User</strong> <br>
+  <%= check_box_tag :administrator %></p>
+
+<p><strong>Users' Group</strong> <br>
+  <%= select_tag(:group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level'), { class: "form-control" }) %></p>
+
+<p><strong>Place User</strong> Important: To set this, the user MUST be in the Pre-Service Teacher group. <br>
+  <%= select_tag(:industry_id, options_from_collection_for_select(Industry.all, 'id', 'name'), {  include_blank: "No Placement", class: "form-control" }) %></p>
+
+<br>
+<%= submit_tag("Create User", class: "btn btn-primary") %>
+<% end %>
+<br>
+<span class="text-danger">*</span> required field.

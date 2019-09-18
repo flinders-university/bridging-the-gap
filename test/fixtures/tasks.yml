@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  description: MyString
+  when: 2016-08-22
+  visible: false
+  completed: false
+
+two:
+  user_id: 1
+  title: MyString
+  description: MyString
+  when: 2016-08-22
+  visible: false
+  completed: false

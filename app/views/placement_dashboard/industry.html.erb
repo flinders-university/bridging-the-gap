@@ -1,0 +1,56 @@
+<% title "Research Participation" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <% if current_user.group.level == 2 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_preservice_teacher_path, class: "btn btn-info" %>
+  <% elsif current_user.group.level == 3 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_industry_path, class: "btn btn-info" %>
+  <% end %>
+  <%= link_to "Research Participation", illuminet_polymer_path, class: "btn btn-primary" %>
+</div>
+<h1>Placement Dashboard</h1>
+<hr>
+
+<% if @industry.present? %>
+<p class="lead text-center text-success">You have been allocated an industry to administer!</p>
+<% if @industry.active? %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Industry Information</div>
+  <% if @industry.description.present? %>
+  <div class="panel-body">
+    <%= @industry.description %>
+  </div>
+  <% end %>
+  <div class="list-group">
+    <div class="list-group-item">Contact Person: <%= @industry.user.name %></div>
+    <a href="mailto: <%= @industry.email %>" class="list-group-item">Contact Email: <%= @industry.email %></a>
+    <% if @industry.address.present? %>
+    <a href="https://www.google.com.au/maps/place/<%= URI.escape(@industry.address) %>" class="list-group-item" target="_BLANK" title="Find this on Google Maps">Location: <%= @industry.address %></a>
+    <% end %>
+    <% if @industry.website.present? %>
+    <a href="<%= @industry.website %>" class="list-group-item">Industry Website: <%= @industry.website %></a>
+    <% end %>
+    <% if @industry.stem_foci.present? %>
+    <div class="list-group-item">STEM Foci: <%= @industry.stem_foci %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-tertiary">
+  <div class="panel-heading">Students Placed - click to email</div>
+  <div class="list-group">
+    <% @industry.users.each do |user| %>
+    <a class="list-group-item" a href="mailto:<%= user.addressable %>"><%= user.name %> <% if user.age.present? %>- <%= user.age %><% end %> <% if user.major.present? %>- <%= user.major.capitalize %> Major<% end %> <% if user.gender.present? %>- <%= user.gender.capitalize %><% end %></a>
+    <% end %>
+  </div>
+</div>
+
+<% else %>
+<p>Details about your industry will be released to you shortly. You will receive an email when your industry details become available.</p>
+<% end %>
+<% else %>
+<p class="lead text-center text-danger">You have not been allocated an industry, yet.</p>
+<p>Our administrators will ensure that you are allocated to your industry as soon as possible so you can see the students allocated to be placed with you. You will receive an email when this information is available.</p>
+<% end %>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Bridging the Gap: Teacher Conference</title>
+
+  <!-- Analytics ... -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  <% if current_user %>
+  ga('create', 'UA-81809313-1', 'auto', {
+    userId: "<%= "GUQ-#{current_user.id}" %>"
+  });
+  <% else %>
+  ga('create', 'UA-81809313-1', 'auto');
+  <% end %>
+  ga('send', 'pageview');
+
+  </script>
+
+  <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <style type="text/css">
+  body { background: #e7e9e8; margin: 15px 10px; }
+  .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
+  .col { padding: 6px 10px;}
+  .mb { margin: 15px 0px; }
+  .constrain-sm { max-width: 280px; }
+  .float-top-left { clear: both; float: left; position: fixed; }
+  .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 99999;}
+  .hzi { z-index: 9999999999; }
+  .btn-outline-primary { background: #f7f7f9; }
+  .btn { margin-bottom: 5px;}
+  </style>
+  <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+  <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+  <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="float-top-left hzi">
+    <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
+      Bridging the Gap</a>
+    </div>
+    <div class="container">
+      <div class="alert alert-info text-xs-center" role="alert">Join the conversation live: <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23FlindersSTEMChat&src=typd">#FlindersSTEMChat</a> on Twitter.</div>
+
+      <div class="mb text-xs-center">
+        <%= image_tag "teacher-conference.svg", class: "img-fluid" %>
+      </div>
+      <%= if notice.present? then alert_box notice, dismissible: true end %>
+      <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
+      <div class="row">
+        <div class="col col-sm-5 col-md-7">
+          <p>You are invited to a PD day for secondary science teachers interested in STEM opportunities and industry engagement.</p>
+          <p><strong>Conference Details</strong></p>
+          <p>Dr Carol Aldous, Project leader of the Bridging the Gap team will conduct a one-day conference for secondary school teachers and leaders interested in participating in the <a href="/">Bridging the Gap project</a>. Your attendance and possible willingness to mentor a student teacher would be very much appreciated.</p>
+          <p>The conference will be of interest to those wanting to learn more about secondary education, industry engagement, and STEM.</p>
+          <p>The conference will run on the 22nd of March 2019 from 9:00 AM. A free lunch will be provided. Please register your interest in the event below.</p>
+          <p><strong>Topics</strong></p>
+          <p>Topics covered in the course of the day will include:</p>
+          <ul>
+            <li>Approaches to secondary science technology engineering and mathematics (STEM) education</li>
+            <li>Work Integrated Learning: The challenges for the sciences</li>
+            <li>STEM units and activities for the classroom</li>
+            <li>Secondary school and university STEM industry engagement</li>
+            <li>Creative problem solving in science</li>
+            <li>A tour of the Flinders University Tonsley precinct (3D Printing, New Innovation)</li>
+          </ul>
+          <p><strong>Certification</strong></p>
+          <p>6.5 hours of professional development - covering AITSL Standard 2, 3, 6 and 7.</p>
+          <p>A certificate will be provided for each registered participant</p>
+          <!-- <p class="text-xs-center"><em>A programme will be provided closer to the conference.</em></p> -->
+          <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/38" class="btn btn-primary">Conference Programme</a> <!-- <a href="/documents/27" class="btn btn-secondary">Conference Information</a> -->  <a href="/calendar_anchor/2019/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p>
+          <p class="text-xs-center"><em>Having trouble registering? Contact bridgingthegap@flinders.edu.au or aidan.cornelius-bell@flinders.edu.au</em></p>
+          <p><strong>Registration</strong></p>
+          <p><em>Registration has now closed. Thank you for your interest in the <a href="/">Bridging the Gap project</a>. We look forward to meeting you at the conference.</em></p>
+          <!-- <%= form_tag("/register_for_teacher_conference", method: :post) do %>
+          <div class="form-group">
+            <label for="full_name">Full Name</label>
+            <% if current_user.present?; name = current_user.name; email = current_user.email; else name = nil; email = nil; end %>
+            <%= text_field_tag(:full_name, name, class: "form-control", placeholder: "Jane Doe") %>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <%= email_field_tag(:email, email, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <%= text_field_tag(:role, @rsvp.role, class: "form-control", placeholder: "Science Teacher") %>
+          </div>
+          <div class="form-group">
+            <label for="school">School</label>
+            <%= text_field_tag(:school, @rsvp.school, class: "form-control", placeholder: "My High School") %>
+          </div>
+          <div class="form-group">
+            <label for="year">Most Appropriate Year Level</label>
+            <%= select_tag(:year_level, options_for_select([ "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only", "Industry Partner / Other" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
+          </div>
+          <div class="form-group rfor">
+            <label for="for_full_name">Registering For: Full Name</label>
+            <%= text_field_tag(:for_full_name, @rsvp.for_full_name, class: "form-control", placeholder: "Jane Doe") %>
+          </div>
+          <div class="form-group rfor">
+            <label for="for_email">Registering For: Email</label>
+            <%= email_field_tag(:for_email, @rsvp.for_email, class: "form-control", placeholder: "john.doe123@schools.sa.edu.au") %>
+          </div>
+          <div class="form-group rfor">
+            <label for="attending_too">Registering For: I wish to attend too</label> <br>
+            <%= check_box_tag(:attending_too, @rsvp.attending_too) %>
+          </div>
+          <%# submit_tag "Register Interest", class: "btn btn-primary" %>
+          <% end %>  -->
+        </div>
+        <div class="col-sm-1 col-md-1"></div>
+        <div class="col col-md-4">
+          <p><strong>Venue &amp; Dates</strong></p>
+          <div class="embed-responsive embed-responsive-1by1">
+            <iframe scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=138.56729507446292%2C-35.01135178342994%2C138.57630729675296%2C-35.00466435301785&amp;layer=transportmap&amp;marker=-35.00800813656184%2C138.5718011856079" class="embed-responsive-item"></iframe>
+          </div>
+          <br>
+          <div class="text-xs-center showtheway"><a href="https://showtheway.io/to/-35.009234,138.571179?name=Flinders%20University%20at%20Tonsley" target="_blank" title="Show the Way to Flinders University at Tonsley with your favorite navigation application">Show the Way</a></div><script src="https://showtheway.io/w.js" async="async" type="text/javascript"></script>
+          <br>
+          <p><strong>Flinders University at Tonsley</strong></p>
+          <p>Flinders @ Tonsley MAB<br>Level 5, Conference Room 5.29<br>1320 South Road, Clovelly Park SA 5042</p>
+          <p>A short walk from the Tonsley train line (Clovelly Park Stop) and the South Road bus stops.</p>
+          <p><em>Day-Permit parking is also available on site.</em></p>
+          <p><strong>Date</strong></p>
+          <p>Friday, 22nd of March 2019</p>
+          <p>09:00 AM &mdash; 3:30 PM</p>
+          <br><br>
+          <div class="text-xs-center">
+            <%= image_tag "logo-on-white-with-letterhead-arb-print.png", class: "constrain-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-xs-center">
+      <br>
+      <%= image_tag "dsd-flin.png", class: "constrain-sm" %>
+      <br><br>
+      <p class="small text-muted">&copy; 2016-2019 Flinders University, All Rights Reserved.</p>
+    </div>
+
+    <script>
+    $(".rfor").hide();
+
+    $("#year_level").bind('change', function(e) {
+      if ($(this).val() == "School Leadership Only") {
+        $(".rfor").show();
+      } else {
+        $(".rfor").hide();
+      }
+    });
+    </script>
+
+  </body>
+  </html>

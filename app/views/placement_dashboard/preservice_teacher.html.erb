@@ -1,0 +1,54 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <% if current_user.group.level == 2 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_preservice_teacher_path, class: "btn btn-info" %>
+  <% elsif current_user.group.level == 3 %>
+  <%= link_to "Placement Dashboard", placement_dashboard_industry_industry_path, class: "btn btn-info" %>
+  <% end %>
+  <%= link_to "Research Participation", illuminet_polymer_path, class: "btn btn-primary" %>
+</div>
+<h1>Placement Dashboard</h1>
+<hr>
+
+<% if current_user.industry.present? %>
+<p class="lead text-center text-success">You have been allocated an industry placement!</p>
+<p>Your first placement, unless otherwise negotiated, will commence at 9:00 AM on <em>Wendesday October 9th 2019</em>. Please make sure you arrive with plenty of time to locate the appropriate people at the industry site.</p>
+<p>If you haven't yet completed your <%= link_to "pre-placement survey", illuminet_polymer_path %>, please commence that now - the research will work best if we can compare your opinions before and after your placement.</p>
+<p>Remember if you have any questions, please get in touch with us - <a href="mailto:aidan.cornelius-bell@flinders.edu.au">aidan.cornelius-bell@flinders.edu.au</a> is your primary contact if you have any problems or need any clarification.</p>
+
+<% if current_user.student_group_id.present? %>
+  <p><%= link_to "View My Placement Group", student_group_path(current_user.student_group_id), class: "btn btn-primary btn-block btn-lg" %></p>
+<% end %>
+
+<% if current_user.industry.show_info? %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Industry Information</div>
+  <% if current_user.industry.description.present? %>
+  <div class="panel-body">
+    <%= current_user.industry.description %>
+  </div>
+  <% end %>
+  <div class="list-group">
+    <div class="list-group-item">Industry: <%= current_user.industry.name %></div>
+    <!-- <div class="list-group-item">Contact Person: <%= current_user.industry.user.name %></div> -->
+    <a href="mailto: <%= current_user.industry.email %>" class="list-group-item">Contact Email: <%= current_user.industry.email %></a>
+    <% if current_user.industry.address.present? %>
+    <a href="https://www.google.com.au/maps/place/<%= URI.escape(current_user.industry.address) %>" class="list-group-item" target="_BLANK" title="Find this on Google Maps">Location: <%= current_user.industry.address %></a>
+    <% end %>
+    <% if current_user.industry.website.present? %>
+    <a href="<%= current_user.industry.website %>" class="list-group-item">Industry Website: <%= current_user.industry.website %></a>
+    <% end %>
+    <% if current_user.industry.stem_foci.present? %>
+    <div class="list-group-item">STEM Foci: <%= current_user.industry.stem_foci %></div>
+    <% end %>
+  </div>
+</div>
+<% else %>
+<p>Details about your placement will be released to you shortly. You will receive an email when your placement becomes available.</p>
+<% end %>
+<% else %>
+<p class="lead text-center text-danger">You have not been allocated an industry placement, yet.</p>
+<p>Sorry, you haven't received an inudstry placement allocation at this time.</p>
+<p>Note you will receive an email when your placement becomes available.</p>
+<% end %>

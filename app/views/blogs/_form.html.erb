@@ -1,0 +1,45 @@
+<%= form_for(blog, layout: :basic) do |f| %>
+  <% if blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :slug %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :summary %>
+  </div>
+
+  <div class="field">
+    <span class="pull-right"><button id="addmedia" class="btn btn-xs btn-info" type="button">Embed Video</button> <button id="addbutton" class="btn btn-xs btn-info" type="button">Add Button</button></span>
+    <%= f.text_area :body, id: "mde" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= render("partials/embed_scripts") %>

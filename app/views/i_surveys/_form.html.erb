@@ -1,0 +1,43 @@
+<%= form_for(i_survey, layout: :basic) do |f| %>
+  <% if i_survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(i_survey.errors.count, "error") %> prohibited this i_survey from being saved:</h2>
+
+      <ul>
+      <% i_survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :description, id: "mde" %>
+  </div>
+
+  <div class="field">
+    <p><em>N.B. group and form group <strong>must match</strong> for survey to display. Participants must have signed the appropriate form for the survey to display.</em></p>
+    <%= f.select :group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level', i_survey.group_id ) %>
+  </div>
+
+  <div class="field">
+    <%= f.select :form_id, options_from_collection_for_select(Form.all, 'id', 'group_title_and_date_required', i_survey.form_id ) %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :coding_explanation, id: "mdetwo" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enabled %>
+    <%= f.check_box :enabled %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

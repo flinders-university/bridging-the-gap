@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+  <%= link_to 'Upload Unit Presentation', new_unit_presentation_path, class: "btn btn-alpha" %>
+</div>
+<h1>Unit Presentations</h1>
+<hr>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th width="50%">Title</th>
+      <th>User</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unit_presentations.each do |unit_presentation| %>
+      <tr>
+        <td><%= unit_presentation.title %></td>
+        <td><%= unit_presentation.user.name %></td>
+        <td><%= link_to 'View', unit_presentation, class: "btn btn-sm btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

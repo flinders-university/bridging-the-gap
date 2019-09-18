@@ -1,0 +1,46 @@
+<%= form_for(project_team, layout: :basic) do |f| %>
+  <% if project_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project_team.errors.count, "error") %> prohibited this project_team from being saved:</h2>
+
+      <ul>
+      <% project_team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name_and_email', project_team.user_id) %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :slug %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :description, id: "mde" %>
+  </div>
+
+  <div class="field">
+    <%= f.select :team, options_for_select([["Project Team", "1"], ["Management Group", "2"]], :team) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enabled %>
+    <%= f.check_box :enabled %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

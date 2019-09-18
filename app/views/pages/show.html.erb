@@ -1,0 +1,11 @@
+<% title @page.title; @title =  @page.title; @author = @page.author; @date = @page.updated_at; %>
+<%= render("partials/colour_header") %>
+<br>
+<div style="background: white; border-radius: 3px; padding: 10px 15px;">
+  <%= mdrender(@page.body).html_safe %>
+</div>
+
+<% if current_user_administrator? %>
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
+<% end %>

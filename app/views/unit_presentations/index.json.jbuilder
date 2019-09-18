@@ -1,0 +1,1 @@
+json.array! @unit_presentations, partial: 'unit_presentations/unit_presentation', as: :unit_presentation

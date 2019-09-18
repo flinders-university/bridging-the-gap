@@ -1,0 +1,74 @@
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+VERSION:2.0
+X-WR-CALNAME:Room 5.29 | 22-03-19 | Aidan Cornelius-Bell | Bridging the 
+ Gap Teacher Conference | Setup | 
+METHOD:PUBLISH
+PRODID:-//Apple Inc.//Mac OS X 10.14.3//EN
+BEGIN:VTIMEZONE
+TZID:Australia/Adelaide
+BEGIN:STANDARD
+TZOFFSETFROM:+1030
+RRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=1SU
+DTSTART:20080406T030000
+TZNAME:ACST
+TZOFFSETTO:+0930
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0930
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=1SU
+DTSTART:20081005T020000
+TZNAME:ACDT
+TZOFFSETTO:+1030
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=Australia/Adelaide:20190322T180000
+X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC
+ORGANIZER;CN="Tonsley Events":mailto:tonsley.events@flinders.edu.au
+UID:6FCE9193-54AB-4F33-AB76-93BE3BE2C7B7
+DTSTAMP:20190121T042804Z
+LOCATION:Room - TON_T1_5.29_ConferenceSpace_(60)
+DESCRIPTION:\n\n\n\n\n\n[https://cdn.jotfor.ms/assets/img/builder/email_
+ logo_small.png]\n\n\n\nTonsley room booking form\n\n\n\n\n\n\n\n\n\nFirs
+ t name\n\n\n\nAidan\n\n\n\nLast name\n\n\n\nCornelius-Bell\n\n\n\nDepart
+ ment or organisation name\n\n\n\nCollege of Education\, Psychology and S
+ ocial Work\n\n\n\nEmail\n\n\n\naidan.cornelius-bell@flinders.edu.au<mail
+ to:aidan.cornelius-bell@flinders.edu.au>\n\n\n\nPhone number\n\n\n\n0882
+ 013480\n\n\n\nOnsite contact person mobile number\n\n\n\n0418250640\n\n\
+ n\nEvent name\n\n\n\nBridging the Gap Teacher Conference\n\n\n\nEvent de
+ scription\n\n\n\nA meeting of high school teachers with Flinders researc
+ hers. Induction into an education-based research program.\n\n\n\nEvent s
+ tart date and time\n\n\n\n22-03-2019 9:00 AM\n\n\n\nEvent finish date an
+ d time\n\n\n\n22-03-2019 5:30 PM\n\n\n\nRoom booking finish time (includ
+ ing pack-up time)\n\n\n\n6:00 PM\n\n\n\nRoom booking start time (includi
+ ng set-up time)\n\n\n\n8:00 AM\n\n\n\nExpected attendance numbers\n\n\n\
+ n50\n\n\n\nList any other dates and times\n\n\n\nAlso Monday 25th March 
+ - same times\n\n\n\nLevel 5\n\n\n\nConference space – 5.29 (capacity 60)
+ \n\n\n\nWill you be providing catering?\n\n\n\nYes\n\n\n\nPlease provide
+  the caterer's name and service time/s:\n\n\n\nLittle Pods - TBA\n\n\n\n
+ Will you be serving alcohol?*\n\n\n\nNo\n\n\n\nDo you require signage (H
+ -Frame)?\n\n\n\nYes\n\n\n\nDo you require trestles?\n\n\n\nNo\n\n\n\nRoo
+ m set-up\n\n\n\nWorkshop (groups of tables)\n\n\n\nAfterhours access req
+ uired?\n\n\n\nNo\n\n\n\nAfterhours air-conditioning required?\n\n\n\nNo\
+ n\n\n\nI accept the terms and conditions\n\n\n\nYes\n\n\n\n\n\n\n\n\n\n\
+ n\n
+SEQUENCE:1
+SUMMARY:Room 5.29 | 22-03-19 | Aidan Cornelius-Bell | Bridging the Gap T
+ eacher Conference | Setup | 
+LAST-MODIFIED:20190111T061639Z
+DTSTART;TZID=Australia/Adelaide:20190322T080000
+CREATED:20190111T061639Z
+ATTENDEE;CN="Aidan Cornelius-Bell";CUTYPE=INDIVIDUAL;EMAIL="aidan.cornel
+ ius-bell@flinders.edu.au";PARTSTAT=ACCEPTED;ROLE=REQ-PARTICIPANT:mailto:
+ aidan.cornelius-bell@flinders.edu.au
+BEGIN:VALARM
+X-WR-ALARMUID:9D5CB847-E8A5-48CA-9F9A-BF8CDD9BC802
+UID:9D5CB847-E8A5-48CA-9F9A-BF8CDD9BC802
+TRIGGER:-PT15M
+DESCRIPTION:Event reminder
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <style type="text/css">
+  /* http://meyerweb.com/eric/tools/css/reset/
+  v2.0 | 20110126
+  License: none (public domain)
+  */
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700');
+
+  body, h1, h2, h3, h4, h5, h6, p
+  {
+    font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+    font-size: 14px;
+  }
+
+  tr {
+    line-height: 40px;
+  }
+
+  table { page-break-inside: avoid; }
+
+  @media print {
+                  .page-break  { page-break-before: always; }
+               }
+  </style>
+</head>
+<body>
+    <% tcount = 0 %>
+  <table class="table table-striped table-hover">
+    <% @rsvps.each do |rsvp| %>
+    <% if tcount == 0 %>
+  </table>
+
+  <div class="page-break"></div>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th width="15%">Name</th>
+      <th width="15%">Email</th>
+      <th width="15%">Role</th>
+      <th width="15%">School</th>
+      <th width="2%">Year Level</th>
+      <th width="8%">For</th>
+      <th width="7%">For Email</th>
+      <th width="4%">For +1</th>
+      <th width="85%">Signature of Attendance</th>
+    </tr>
+    <% end %>
+    <tr>
+      <td><%= rsvp.full_name.split.map(&:capitalize).join(' ') %></td>
+      <td><%= rsvp.email %></td>
+      <td><%= if rsvp.role.split then rsvp.role.split.map(&:capitalize).join(' ') else rsvp.role end  %></td>
+      <td><%= rsvp.school %></td>
+      <td><%= rsvp.year_level %></td>
+      <td><%= if rsvp.for_full_name.present? then rsvp.for_full_name.split.map(&:capitalize).join(' ') end %></td>
+      <td style="word-break: break-all; width: 7%;"><%= rsvp.for_email %></td>
+      <td><% if rsvp.attending_too != true %>&#x2718;<% else %>&#x2714;<% end %></td>
+      <td></td>
+    </tr>
+    <% tcount = tcount + 1 %>
+    <% if tcount > 7 then tcount = 0 end %>
+    <% end %>
+  </table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+</body>
+</html>

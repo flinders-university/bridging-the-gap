@@ -1,0 +1,75 @@
+<% title "Editing User" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "User Tools", usertools_path, class: "btn btn-primary" %>
+  <%= link_to "Login As", masquerade_path(@User), class: "btn btn-warning" %>
+</div>
+<h1>Editing <%= @User.name %></h1>
+<hr>
+
+<%= form_tag(usertools_update_path, method: :post) do %>
+<%= hidden_field_tag(:id, @User.id) %>
+
+<div class="row">
+  <div class="col-md-6">
+  <p>First Name <br>
+    <%= text_field_tag(:firstname, @User.firstname, class: "form-control") %></p>
+  </div>
+  <div class="col-md-6">
+  <p>Last Name <br>
+    <%= text_field_tag(:lastname, @User.lastname, class: "form-control") %></p>
+  </div>
+</div>
+
+<p>Email <br>
+  <%= email_field_tag(:email, @User.email, class: "form-control") %></p>
+
+<p>Provider <br>
+  <%= text_field_tag(:email, @User.provider, class: "form-control disabled", disabled: "DISABLED") %></p>
+
+<p>uid <br>
+  <%= text_field_tag(:email, @User.uid, class: "form-control disabled", disabled: "DISABLED") %></p>
+
+<p>Users' Group <br>
+  <%= select_tag(:group_id, options_from_collection_for_select(Group.all, 'id', 'name_and_level', @User.group_id), { class: "form-control" }) %></p>
+
+<p>Student Group (PSTs Only - <%= link_to "New Student Grouping", student_groups_path %>) <br>
+  <%= select_tag(:student_group_id, options_from_collection_for_select(StudentGroup.all, 'id', 'id_and_count', @User.student_group_id), { class: "form-control", include_blank: "No Group" }) %></p>
+
+<p>Administrative User <br>
+  <% if @User.administrator %>
+  <%= check_box_tag :administrator, true, checked: true %> <% else %> <%= check_box_tag :administrator, false %> <% end %></p>
+
+<p>Placement (<%= link_to "Allocate", industries_path %> | <%= link_to "Deallocate", "/data_controller/delete/#{@User.id}" %>)
+  <input type="text" class="form-control" disabled value="<%= @User.industry ? @User.industry.name : "Not placed" %>"></p>
+
+<p>Acting as industry contact person for
+  <input type="text" class="form-control" disabled value="<%= Industry.where(user_id: @User.id).first ? Industry.where(user_id: @User.id).first.name : "Not specified" %>"></p>
+
+<p>Gender
+  <input type="text" class="form-control" disabled value="<%= @User.gender ? @User.gender : "Not specified" %>"></p>
+
+<p>Degree
+  <input type="text" class="form-control" disabled value="<%= @User.degree ? @User.degree : "Not specified" %>"></p>
+
+<p>Major
+  <input type="text" class="form-control" disabled value="<%= @User.major ? @User.major : "Not specified" %>"></p>
+
+<p>Age
+  <input type="text" class="form-control" disabled value="<%= @User.age ? @User.age : "Not specified" %>"></p>
+
+
+
+<%= submit_tag("Save Changes", class: "btn btn-primary") %>
+
+<% end %><br>
+
+<%= link_to "Delete This User", "/usertools/#{@User.id}", method: :delete, class: "btn btn-danger", data: { confirm: 'DANGER: Deleting a user will DESTROY all of their associated SURVEY PARTICIPATION, SURVEY ANSWERS, INDUSTRIES AND ASSOCIATED PLACEMENTS, GROUP DETAILS, and all reference to them in our system.               Are you REALLY sure you want to proceed? Push [esc] now to cancel any action.' }, id: "userdump" %>
+
+<script>
+$("#userdump").click( function() {
+  console.log('%c User triggered for deletion... ', 'background: #222; color: #bada55; font-size: 16pt;');
+  console.log('<%= @User.to_json.html_safe %>');
+});
+</script>

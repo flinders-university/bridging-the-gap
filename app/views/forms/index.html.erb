@@ -1,0 +1,24 @@
+<% title "Forms" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Surveys", i_surveys_path, class: "btn btn-primary" %>
+</div>
+<h1>Forms</h1>
+<hr>
+
+
+ <% @groups.each do |group| %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Forms for <%= group.name %></div>
+  <div class="list-group">
+    <% group.forms.each do |form| %>
+    <div class="list-group-item"><a href="<%= url_for form %>"><%= form.title %></a> <span class="pull-right"><%= link_to 'Edit', edit_form_path(form), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span></div>
+    <% end %>
+  </div>
+</div>
+ <% end %>
+
+<br>
+
+<%= link_to 'New Form', new_form_path, class: "btn btn-primary" %>

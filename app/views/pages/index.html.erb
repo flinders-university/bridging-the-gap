@@ -1,0 +1,33 @@
+<% title "Pages" %>
+<h1>Pages</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Author</th>
+      <th>Public</th>
+      <th>Group</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.title %></td>
+        <td><%= page.slug %></td>
+        <td><%= page.author %></td>
+        <td><%= page.public %></td>
+        <td><%= page.group_id %></td>
+        <td><%= link_to 'Show', page, class: "btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_page_path(page), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user_administrator? %>
+<%= link_to 'New Page', new_page_path, class: "btn btn-primary" %>
+<% end %>

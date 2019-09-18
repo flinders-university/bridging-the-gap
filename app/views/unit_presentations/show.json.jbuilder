@@ -1,0 +1,1 @@
+json.partial! "unit_presentations/unit_presentation", unit_presentation: @unit_presentation

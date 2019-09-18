@@ -1,0 +1,37 @@
+<%= form_for(unit_presentation, layout: :basic) do |f| %>
+  <% if unit_presentation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(unit_presentation.errors.count, "error") %> prohibited this unit_presentation from being saved:</h2>
+
+      <ul>
+      <% unit_presentation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.select :user_id, options_for_select("#{current_user.name}" => "#{current_user.id}") %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :presentation, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :notes, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :unit_overview, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

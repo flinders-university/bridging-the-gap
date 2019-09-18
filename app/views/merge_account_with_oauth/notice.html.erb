@@ -1,0 +1,21 @@
+<div class="container" style="background: #fff; border-radius: 3px;">
+  <h1>Merge Account</h1>
+  <p>You are about to connect your existing Bridging the Gap account to a <em>Microsoft Azure Active Directory</em> account through your institition. Doing this will enable you to authenticate without a password. Please note, this action is not reversable and you may only connect one Active Directory to your Bridging the Gap account ever.</p>
+
+  <h3>Details to transfer <small>from AD</small></h3>
+  <p>Data Name: &nbsp; <%= @data['nickname'] %></p>
+  <p>Email Address: &nbsp; <%= @data['email'] %></p>
+  <p>First Name: &nbsp; <%= @data['first_name'] %></p>
+  <p>Last Name: &nbsp; <%= @data['last_name'] %></p>
+  <p>Provider: &nbsp; <span title="<%= @new_provider %>">Microsoft Azure Active Directory</span></p>
+
+  <h3>Existing details to be overwritten <small>from FDS</small></h3>
+  <p>Email Address: &nbsp; <%= @user['email'] %></p>
+  <p>First Name: &nbsp; <%= @user['firstname'] %></p>
+  <p>Last Name: &nbsp; <%= @user['lastname'] %></p>
+  <p>Provider: &nbsp; Bridging the Gap Federated Data Set</p>
+
+  <hr>
+  <%= link_to "Link Accounts", "/merge_account_with_oauth/save?data=#{@data}&new_provider=#{@new_provider}&new_uid=#{@new_uid}&user=#{@user['id']}", class: "btn btn-block btn-lg btn-tertiary disable-border-radius", method: :post %>
+  <br>
+</div>

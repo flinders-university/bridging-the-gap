@@ -1,0 +1,72 @@
+<%= form_for(industry, layout: :basic) do |f| %>
+  <% if industry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(industry.errors.count, "error") %> prohibited this industry from being saved:</h2>
+
+      <ul>
+      <% industry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if @industry.user_id.present? %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', @industry.user_id) %>
+    <% else %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', current_user.id) %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :stem_foci %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :blurb, id: "mde" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active %> Has the company agreed to be involved THIS year?
+    <%= f.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= f.label :negotiations %> Are negotiations with the industry underway?
+    <%= f.check_box :negotiations %>
+  </div>
+
+  <div class="field">
+    <%= f.label :show_info %> This toggles the display of the above information to PSTs (When allocated)
+    <%= f.check_box :show_info %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module IndustryPresentationsHelper
+end

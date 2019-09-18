@@ -1,0 +1,41 @@
+<% title @task.title %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Tasks", tasks_path, class: "btn btn-primary" %>
+</div>
+<h1>Task Details</h1>
+<hr>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user.addressable %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @task.when %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @task.visible %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @task.completed %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

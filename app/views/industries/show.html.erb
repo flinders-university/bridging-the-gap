@@ -1,0 +1,85 @@
+<% title @industry.name %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Industries", industries_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @industry.name %></h1>
+<hr>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to @industry.user.name, "mailto:" + @industry.user.addressable %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @industry.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= link_to @industry.phone, "tel:" + @industry.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= link_to @industry.email, "mailto:" + @industry.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= link_to @industry.website, @industry.website %>
+</p>
+
+<p>
+  <strong>Stem foci:</strong>
+  <%= @industry.stem_foci %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <pre><%= @industry.description %></pre>
+</p>
+
+<p>
+  <strong>Blurb:</strong>
+</p>
+
+<%= mdrender(@industry.blurb).html_safe %>
+<div class="clearfix"></div>
+
+<p>
+  <strong>Negotiations:</strong>
+  <% if @industry.negotiations %><%= icon :ok %><% else %><%= icon :bell_off %><% end %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <% if @industry.active %><%= icon :heart %><% else %><%= icon :remove %><% end %>
+</p>
+
+<p>
+  <strong>Info Shown to PSTs:</strong>
+  <% if @industry.show_info %>Students placed here can see their placement details.<% else %>Students placed here can't see their placement details.<% end %>
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Students Placed Here</div>
+  <div class="list-group">
+    <% @industry.users.each do |user| %>
+    <a class="list-group-item" href="/usertools/<%= user.id %>"><%= user.name %></a>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <%= form_tag "/usertools/place/#{@industry.id}", method: :post, class: "form-inline" do %>
+    <%# text_field_tag(:email, "", {class: "form-control", placeholder: "Student to place - email address", style: "min-width: 300px;"}) %>
+    <%= select_tag(:email, options_from_collection_for_select(User.where(group_id: 4), :email, :addressable)) %>
+    <%= submit_tag("Add Student", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<%= link_to 'Edit', edit_industry_path(@industry) %> |
+<%= link_to 'Back', industries_path %>

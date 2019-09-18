@@ -1,0 +1,31 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+</div>
+<h1>Placement Group Members</h1>
+<hr>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= humanise_boolean(@student_group.confirmed) %>
+  <strong>Finalised:</strong>
+  <%= humanise_boolean(@student_group.finalised) %>
+</p>
+
+<div class="list-group">
+  <% @student_group.users.each do |user| %>
+  <% if current_user_administrator? %>
+  <a href="/usertools/<%= user.id %>" class="list-group-item"><%= user.addressable %></a>
+  <% else %>
+  <a href="mailto:<%= user.addressable %>" class="list-group-item"><%= user.addressable %></a>
+  <% end %>
+  <% end %>
+</div>
+
+<a href="mailto:<% @student_group.users.each do |user| %><%= user.addressable %>; <% end %>" class="btn btn-primary">Email All Group Members</a>
+
+<% if current_user_administrator? %>
+<%= link_to 'Edit', edit_student_group_path(@student_group) %> |
+<%= link_to 'Back', student_groups_path %>
+<% end %>

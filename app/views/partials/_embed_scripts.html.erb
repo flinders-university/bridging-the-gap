@@ -1,0 +1,36 @@
+<script>
+
+$("#addmedia").click( function() {
+    var url = prompt("Please enter the embed tag for the video:");
+    if (url != null && url != "") {
+
+      var builder = '<div class="embed-responsive embed-responsive-16by9"> <iframe class="embed-responsive-item" src="';
+      builder = builder + url.match(/(?:"[^"]*"|^[^"]*$)/)[0].replace(/"/g, "");
+      builder = builder + '"></iframe> </div>';
+
+      simplemde.value( simplemde.value() + "\n" + builder)
+    } else {
+      alert("Cant add media without a URL.")
+    }
+});
+
+$("#addbutton").click( function() {
+  var url = prompt("Please enter the URL to link the button to:");
+  var title = prompt("Please enter the label for the button:");
+  if (url != null && url != "" && title != null && title != "") {
+    var builder = '<a href="';
+    builder = builder + url;
+    builder = builder + '" class="btn btn-primary">' + title + '</a>';
+    simplemde.value( simplemde.value() + "\n" + builder)
+  } else {
+    alert("Cant add button without a URL and title.")
+  }
+});
+
+</script>
+<!--
+Depends...
+
+<span class="pull-right"><button id="addmedia" class="btn btn-xs btn-info" type="button">Embed Video</button> <button id="addbutton" class="btn btn-xs btn-info" type="button">Add Button</button></span>
+
+-->

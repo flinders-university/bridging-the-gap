@@ -1,0 +1,39 @@
+<%= form_for(form, layout: :basic) do |f| %>
+  <% if form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(form.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+      <% form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.select :group_id, options_from_collection_for_select(@groups, 'id', 'name_and_level') %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :body, id: "mde" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_required %>
+    <%= f.date_select :date_required %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

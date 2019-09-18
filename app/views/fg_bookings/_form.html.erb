@@ -1,0 +1,31 @@
+<% title "Focus Group Bookings" %>
+<%= form_for(fg_booking, layout: :basic) do |f| %>
+  <% if fg_booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fg_booking.errors.count, "error") %> prohibited this fg_booking from being saved:</h2>
+
+      <ul>
+      <% fg_booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if !current_user_administrator? %>
+    <%= f.select :user_id, options_for_select([[current_user.name, current_user.id]]) %>
+    <% else %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name_and_email') %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.select :booking, options_for_select([["Wednesday Afternoon (28 September 2016)", "28 September - Afternoon"], ["Thursday Morning (29 September 2016)", "29 September - Morning"], ["Thursday Afternoon (29 September 2016)", "29 September - Afternoon"], ["Friday Morning (30 September 2016)", "30 September - Morning"]]) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit(value: "Book", class: "btn btn-primary") %>
+  </div>
+  <br>
+<% end %>

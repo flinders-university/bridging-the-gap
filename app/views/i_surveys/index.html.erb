@@ -1,0 +1,25 @@
+<%= title "Surveys" %>
+<div clas="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Answers", answers_path, class: "btn btn-primary" %>
+  <%= link_to "Forms & Consent", forms_path, class: "btn btn-default" %>
+  <%= link_to "Realtime Answers", realtime_answers_path, class: "btn btn-info" %>
+</div>
+<h1>Surveys</h1>
+<hr>
+
+<% @groups.each do |group| %>
+<div class="panel panel-primary">
+ <div class="panel-heading">Surveys for <%= group.name %></div>
+ <div class="list-group">
+   <% group.i_surveys.each do |i_survey| %>
+   <div class="list-group-item"><a href="<%= url_for i_survey %>"><%= i_survey.title %></a> <span class="pull-right"><%= link_to 'Edit', edit_i_survey_path(i_survey), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', i_survey, method: :delete, data: { confirm: 'Warning: Destroying a survey will orphan any answers from participants. It is recommended that you simply disable inactive surveys. Are you sure want to delete this survey?' }, class: "btn btn-xs btn-danger" %></span></div>
+   <% end %>
+ </div>
+</div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Survey', new_i_survey_path, class: "btn btn-primary" %>

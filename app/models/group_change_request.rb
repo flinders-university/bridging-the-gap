@@ -1,0 +1,2 @@
+class GroupChangeRequest < ApplicationRecord
+end

@@ -1,0 +1,24 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to 'Upload Presentation', new_industry_presentation_path, class: "btn btn-primary" %>
+</div>
+<h1>Industry Presentations</h1>
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Presentations shared with me</div>
+  <div class="list-group">
+    <% if @industry_presentations.count <= 0 %><div class="list-group-item">There's nothing here, yet...</div><% end %>
+    <% @industry_presentations.each do |industry_presentation| %>
+      <div class="list-group-item">
+        <p><strong><%= if industry_presentation.industry.present? then industry_presentation.industry.name end %></strong></p>
+        <p><%= industry_presentation.title %></p>
+        <p><%= link_to 'Read More', industry_presentation, class: "btn btn-primary" %>
+          <% if current_user.id == industry_presentation.user_id %>
+          <%= link_to 'Edit', edit_industry_presentation_path(industry_presentation), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', industry_presentation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> <% end %></p>
+        </div>
+      <% end %>
+  </div>
+</div>

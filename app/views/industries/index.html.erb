@@ -1,0 +1,153 @@
+<% title "Industries" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-info" %>
+  <%= link_to "Printable Report", "/industries/report/", class: "btn btn-tertiary", target: "_BLANK" %>
+  <% if params[:engaged] == "true" %>
+  <%= link_to "Filter Off", "?no-filter", class: "btn btn-secondary" %>
+  <% else %>
+  <%= link_to "Filter By Engaged", "?engaged=true", class: "btn btn-secondary" %>
+  <% end %>
+  <%= link_to 'New Industry', new_industry_path, class: "btn btn-primary" %>
+</div>
+<h1><% if params[:engaged] == "true" %>Engaged <% end %>Industries</h1>
+<hr>
+<p>Select an industry on the left, the details will be displayed on the right. To check industry contact status or place students, click the button below the information panel after selecting an industry.</p>
+<div class="row">
+
+  <div class="col-md-4">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Industries</div>
+      <div class="list-group">
+      <% @industries.each do |industry| %>
+        <div class="list-group-item" data-toggle="tooltip" data-placement="top" title="Initiated by: <%= industry.user.name %>. <% if industry.blurb.length >= 3 %>Last Contacted: <%= industry.updated_at.strftime("%B %-d, %Y - %I:%M %p") %>.<% end %>">
+          <%= industry.name %>
+          <br>
+          <strong><% if industry.users.count >= 1%><%= icon :education %> Placed: <%= industry.users.count.humanize %> pre-service teacher<% end %></strong>
+          <br>
+          <div class="clearfix"></div>
+          <% if industry.blurb.length >= 3 %><%= icon :bullhorn, title: "Contacted" %><% else %><%= icon :square_remove %><% end%> <% if industry.negotiations %><%= icon :ok, title: "Negotiations underway" %><% end %> <% if industry.active %><%= icon :heart, title: "Engaged" %><% end %> <% if industry.users.count >= 1 %><%= icon :user %><% end %> <% if industry.show_info %><%= icon "info-sign" %><% end %>
+          <span class="pull-right"><%= link_to 'Show', "#show-#{industry.id}", id: "#{industry.id}", class: "showind btn btn-xs btn-primary" %> <%= link_to 'Edit', edit_industry_path(industry), class: "btn btn-xs btn-info" %> <%= link_to 'Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></span>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-primary" id="data-panel">
+      <div class="panel-heading"><span class="industry-name"></span></div>
+      <div class="panel-body">
+        <p>
+          <strong>Address:</strong>
+          <span class="industry-address"></span>
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          <span class="industry-phone"></span>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <span class="industry-email"></span>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <span class="industry-website"></span>
+        </p>
+
+        <p>
+          <strong>Stem foci:</strong>
+          <span class="industry-foci"></span>
+        </p>
+
+        <p style="pointer-events: none;"><strong>Blurb &amp; notes</strong>
+          <span id="clearme">
+            <input class="add-mde">
+          </span>
+        </p>
+
+        <div id="pst_data"></div>
+
+        <br>
+
+        <p class="text-center"><a href="" id="show-ind-link" class="btn btn-block btn-primary btn-hp-lm">Check Contact Status &amp; Place Students</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p>Key:</p>
+<%= icon :bullhorn, title: "Contacted" %> Industry contacted &nbsp;
+<%= icon :heart, title: "Engaged" %> Industry engaged &nbsp;<br>
+<%= icon :ok, title: "Negotiations underway" %> Negotiations started &nbsp;
+<%= icon :info_sign %> PST info shown
+
+<p><strong>Total:</strong> <%= @industries.count %> <em>secured <%= @industries.where(active: true).count %></em>. <strong>Total Flinders:</strong> <%= @industries.where(user_id: 1).count + @industries.where(user_id: 85).count %>. <strong>Total DSD:</strong> <%= @industries.where(user_id: 84).count + @industries.where(user_id: 80).count %>.</p>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
+
+var toggle = 0;
+
+<% @industries.each do |industry| %>
+industry<%= industry.id %> = function() {
+  return "<div class='list-group'> <% industry.users.each do |user| %><a href='<%= usertools_path + "/" + user.id.to_s %>' class='list-group-item'><%= user.name %> <span class='badge pull-right'>Group: <% if user.student_group.present? %> <%= user.student_group.id %> <% else %> No allocation<% end %></span></a> <% end %></div>";
+}
+<% end %>
+
+$("#data-panel").hide();
+
+$(document).ready(function () {
+    if(window.location.href.indexOf("show") > -1) {
+      var lastNumber = window.location.href.match(/\d+$/);
+      getData(lastNumber);
+    }
+});
+
+$(".showind").click( function() {
+  getData($(this).attr('id'));
+});
+
+
+function getData(identifier) {
+  if (toggle == 0) {
+    toggle = toggle + 1;
+  } else {
+    $("#clearme").html('<input class="add-mde">');
+    // location.reload();
+  }
+
+  var url = "<%= request.protocol + request.host_with_port %>/industries/" + identifier;
+  var urlBlank = "<%= request.protocol + request.host_with_port %>/industries/";
+
+  $("#pst_data").html(window["industry" + identifier]());
+
+  $.ajax({
+    dataType: "json",
+    url: url
+  }).always(function(data) {
+    console.log(data);
+    $("#data-panel").fadeIn();
+    $(".industry-name").html(data.name);
+    $(".industry-address").html(data.address);
+    $(".industry-phone").html(data.phone);
+    $(".industry-email").html(data.email);
+    $(".industry-website").html(data.website);
+    $(".industry-foci").html(data.stem_foci);
+    var mde = new SimpleMDE({ element: $(".add-mde")[0], toolbar: false });
+    mde.value(data.blurb);
+    $("#show-ind-link").attr('href', urlBlank + data.id);
+  });
+}
+
+</script>

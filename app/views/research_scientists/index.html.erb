@@ -1,0 +1,35 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to 'New Research Scientist', new_research_scientist_path, class: "btn btn-primary" %>
+</div>
+<h1>Research Scientists</h1>
+<hr>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student group</th>
+      <th>User</th>
+      <th>Public email</th>
+      <th>Public phone</th>
+      <th>Enabled</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @research_scientists.each do |research_scientist| %>
+      <tr>
+        <td><%= research_scientist.student_group_id %></td>
+        <td><%= research_scientist.user.addressable %></td>
+        <td><%= research_scientist.public_email %></td>
+        <td><%= research_scientist.public_phone %></td>
+        <td><%= research_scientist.enabled %></td>
+        <td><%= link_to 'Show', research_scientist %></td>
+        <td><%= link_to 'Edit', edit_research_scientist_path(research_scientist) %></td>
+        <td><%= link_to 'Destroy', research_scientist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

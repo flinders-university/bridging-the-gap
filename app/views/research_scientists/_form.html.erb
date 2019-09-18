@@ -1,0 +1,42 @@
+<%= form_for(research_scientist, layout: :basic) do |f| %>
+  <% if research_scientist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(research_scientist.errors.count, "error") %> prohibited this research_scientist from being saved:</h2>
+
+      <ul>
+      <% research_scientist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.select :student_group_id, options_from_collection_for_select(StudentGroup.all, 'id', 'id_and_count', params[:student_group_id]) %>
+  </div>
+
+  <div class="field">
+    <%= f.select :user_id, options_from_collection_for_select(User.all, 'id', 'addressable', params[:user_id]) %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :public_email %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :public_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :public_bio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enabled %>
+    <%= f.check_box :enabled %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

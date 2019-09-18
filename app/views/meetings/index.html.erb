@@ -1,0 +1,36 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Dashboard", root_url, class: "btn btn-primary" %>
+</div>
+<h1>Management Group Meetings</h1>
+<hr>
+
+<% @meetings.each_slice(3) do |meetings| %>
+<div class="row">
+<% meetings.each do |meeting| %>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= meeting.name %></div>
+      <div class="panel-body">
+        Meeting from: <%= meeting.date.strftime("%B %-d, %Y") %> <br>Please see minutes and attached files inside.
+      </div>
+      <div class="panel-footer">
+        <% if meeting.final %>
+          <%= link_to 'Show Minutes', meeting %>
+        <% end %>
+        <% if current_user_administrator? %>
+          <%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+          <%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+<% end %>
+
+<% if current_user_administrator? %>
+<br>
+<%= link_to 'New Meeting', new_meeting_path, class: "btn btn-primary" %>
+<% end %>

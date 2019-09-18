@@ -1,0 +1,67 @@
+<% title "Conference Registrations" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <a href="/conference_management/name_badges" class="btn btn-tertiary" target="_blank">Name Badges</a>
+  <a href="/conference_management/export.csv" class="btn btn-tertiary" target="_blank">CSV</a>
+  <a href="<%= root_url %>" class="btn btn-primary">Dashboard</a>
+</div>
+<h1>Conference Registrations</h1>
+<hr>
+<p class="lead text-center"><%= @rsvps.count %> attendees.</p>
+<hr>
+<% if @rsvp_count < 1 %>
+<p class="text-center lead">There are no registrations at this time.</p>
+<% else %>
+</div>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Name ^</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>School</th>
+    <th>Year Taught</th>
+    <th>Attended</th>
+    <th>Interested</th>
+    <th>Actions</th>
+  </tr>
+  <% @rsvps.each do |rsvp| %>
+  <tr id="<%= rsvp.id %>">
+      <td><%= rsvp.full_name %></td>
+      <td><%= rsvp.email %></td>
+      <td><%= rsvp.role %></td>
+      <td><%= rsvp.school %></td>
+      <td><%= rsvp.year_level %></td>
+      <td><%= if rsvp.attended.present? then rsvp.attended else "No Entry" end %></td>
+      <td><%= if rsvp.interested.present? then rsvp.interested else "No Entry" end  %></td>
+      <td>
+      <%= form_tag("/conference_management/destroy", method: :delete) do %>
+        <%= hidden_field_tag(:rsvp_id, rsvp.id) %>
+        <%= submit_tag("Destroy", class: "btn btn-danger btn-xs") %>
+      <% end %>
+      <%= form_tag("/conference_management/update", method: :patch) do %>
+        <%= hidden_field_tag(:rsvp_id, rsvp.id) %><br>
+        <% if rsvp.interested != true %>
+        <%= hidden_field_tag(:interested, true) %>
+        <% else %>
+        <%= hidden_field_tag(:interested, false) %>
+        <% end %>
+        <%= submit_tag("Toggle Interest", class: "btn btn-success btn-xs") %>
+      <% end %>
+      <%= form_tag("/conference_management/update", method: :patch) do %>
+        <%= hidden_field_tag(:rsvp_id, rsvp.id) %><br>
+        <% if rsvp.attended != true %>
+        <%= hidden_field_tag(:attended, true) %>
+        <% else %>
+        <%= hidden_field_tag(:attended, false) %>
+        <% end %>
+        <%= submit_tag("Toggle Attendance", class: "btn btn-success btn-xs") %>
+      <% end %>
+    </td>
+    </ul>
+    <pre class="hidden"><%= rsvp.inspect %></pre>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+<div>

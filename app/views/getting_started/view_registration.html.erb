@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Registration Details | Bridging the Gap: Teacher Conference</title>
+
+  <!-- Analytics ... -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  <% if current_user %>
+  ga('create', 'UA-81809313-1', 'auto', {
+    userId: "<%= "GUQ-#{current_user.id}" %>"
+  });
+  <% else %>
+  ga('create', 'UA-81809313-1', 'auto');
+  <% end %>
+  ga('send', 'pageview');
+
+  </script>
+  <script src="/v4_js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+  <script src="/v4_js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+  <script src="/v4_js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="/v4_css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <style type="text/css">
+  body { background: #e7e9e8; margin: 15px 10px; }
+  .row { background: #f7f7f9; margin: 1px; border-radius: 5px; padding: 10px; z-index: 995; }
+  .col { padding: 6px 10px;}
+  .mb { margin: 15px 0px; }
+  .constrain-sm { max-width: 280px; }
+  .float-top-left { clear: both; float: left; position: fixed; }
+  .shrink { max-width: 150px; word-break: break-all; word-wrap: break-word; z-index: 99999;}
+  .hzi { z-index: 9999999999; }
+  .btn-outline-primary { background: #f7f7f9; }
+  </style>
+</head>
+<body>
+  <div class="float-top-left hzi">
+    <a href="/" class="btn btn-outline-primary btn-sm text-xs-center shrink">Back to<br>
+      Bridging the Gap</a>
+    </div>
+    <div class="container">
+      <div class="mb text-xs-center">
+        <%= image_tag "teacher-conference.svg", class: "img-fluid" %>
+      </div>
+      <%= if notice.present? then alert_box notice, dismissible: true end %>
+      <%= if alert.present? then alert_box alert, dismissible: true, context: :alert end %>
+      <div class="row">
+        <div class="col col-md-12">
+          <p><strong>Bridging the Gap Conference Registration</strong></p>
+          <p>Thank you for your registration, you will receive a confirmation email shortly. Please download the programme and add the conference to your calendar. We look forward to meeting with you on the day.</p>
+          <p class="text-xs-center"><a href="https://bridgingthegap.edu.au/documents/38" class="btn btn-primary">Conference Programme</a> <a href="/calendar_anchor/2019/03/calendar.ics" class="btn btn-secondary">Add to your calendar</a></p>
+          <!--
+          <% if @rsvp.attended == true %>
+          <p>Thank you for attending the Bridging the Gap Teacher Conference, and for your interest in the Bridging the Gap Project.</p>
+          <p><a href="/certificates/conference.pdf?rsvp_id=<%= @rsvp.id %>" class="btn btn-primary">Download PD Certificate</a></p>
+          <% else %>
+          <p>Thank you for your interest in the Bridging the Gap Project. <br>We have not recorded your attendance at the conference, yet. Please <a href="mailto:bridgingthegap@flinders.edu.au">contact us</a> if you believe this is incorrect.</p>
+          <p><a href="#=<%= @rsvp.id %>" class="btn btn-primary disabled">Download PD Certificate</a></p>
+          <% end %>
+          <p><strong>Resources and presentations</strong></p>
+          <p><a href="/pages/for-schools" class="btn btn-warning">Get Conference Resources</a></p>
+          <p><strong>Register interest for hosting 2019 student teachers</strong></p>
+          <%= form_tag("/teacher_conference/change_interest", method: :post) do %>
+          <%= hidden_field_tag(:rsvp_id, @rsvp.id) %> <%= hidden_field_tag(:email, @rsvp.email) %>
+          <%= select_tag(:interested, options_for_select({"I am not interested" => false, "I am interested" => true}, @rsvp.interested), class: "form-control") %> <br>
+          <%= button_tag("Save Changes", class: "btn btn-primary") %>
+          <% end %> -->
+          <hr>
+          <%= form_tag("/update_teacher_conference_registration", method: :patch) do %>
+          <%= hidden_field_tag(:rsvp_id, @rsvp.id) %>
+          <div class="form-group">
+            <label for="full_name">Full Name</label>
+            <%= text_field_tag(:full_name, @rsvp.full_name, class: "form-control", placeholder: "Jane Doe") %>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <%= email_field_tag(:email, @rsvp.email, class: "form-control", placeholder: "jane.doe123@schools.sa.edu.au") %>
+          </div>
+          <div class="form-group">
+            <label for="school">School</label>
+            <%= text_field_tag(:school, @rsvp.school, class: "form-control", placeholder: "My High School") %>
+          </div>
+          <div class="form-group">
+            <label for="year">Year Level Taught</label>
+            <%= select_tag(:year_level, options_for_select([ "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12", "School Leadership Only", "Industry Partner / Other" ], @rsvp.year_level), { selected: @rsvp.year_level, class: "form-control" } ) %>
+          </div>
+
+          <%= submit_tag("Update Details", class: "btn btn-primary") %>
+          <% end %>
+        </div>
+      </div>
+
+      <!--
+      <%= @rsvp.inspect %>
+    -->
+
+    <div class="text-xs-center">
+      <br>
+      <%= image_tag "dsd-flin.png", class: "constrain-sm" %>
+      <br><br>
+      <p class="small text-muted">&copy; 2016-2019 Flinders University, All Rights Reserved.</p>
+    </div>
+
+  </body>
+  </html>

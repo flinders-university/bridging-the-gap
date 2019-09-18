@@ -1,0 +1,17 @@
+<div id="parameters"></div>
+
+<script>
+var parameters = "<%= params.inspect %>"
+
+console.log('%c Error detected... ', "color: #C00; background: #000; font-size: 15pt; padding: 5px;");
+console.log('%c Write to html with write_parameters() ', "color: #fff; background: #ccc; padding: 5px;");
+console.log('%c ' + $("<div/>").html(parameters).text() + ' ', "color: #fff; background: #000; padding: 5px;");
+
+function write_parameters() {
+  if ( $("#parameters").html( parameters ) ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>

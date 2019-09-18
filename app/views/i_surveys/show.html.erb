@@ -1,0 +1,84 @@
+<%= title @i_survey.title %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "Surveys", i_surveys_path, class: "btn btn-primary" %>
+</div>
+<h1><%= @i_survey.title %></h1>
+<hr>
+
+<p>
+  <strong>Group to survey:</strong>
+  <%= @i_survey.group.name %>
+</p>
+
+<p>
+  <strong>Form(s) required:</strong>
+  <%= @i_survey.form.group_title_and_date_required %>
+</p>
+
+<p>
+  <strong>Group Match:</strong>
+  <% if @i_survey.form.group == @i_survey.group %>
+  <span class="text-success"><%= icon :ok %> this survey will be displayed to members who have signed the appropriate authority form.</span>
+  <% else %>
+  <span class="text-danger"><%= icon :remove %> this survey can not be displayed because the users in this group can not sign the relevant form. Please match the group and form group correctly.</span>
+  <% end %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <% if @i_survey.enabled %>
+  <span class="text-success"><%= icon :ok %></span>
+  <% else %>
+  <%= icon :remove %> survey disabled.
+  <% end %>
+</p>
+
+<p>
+  <strong>Questions:</strong>
+  <%= @i_survey.i_questions.where(enabled: true).count.humanize.capitalize %> enabled / <em><%= @i_survey.i_questions.count.humanize.capitalize %> possible</em>
+</p>
+
+<hr>
+
+<p>
+  <strong>Description:</strong>
+  <%= mdrender(@i_survey.description).html_safe %>
+</p>
+
+<p>
+  <strong>Coding explanation:</strong>
+  <%= mdrender(@i_survey.coding_explanation).html_safe %>
+</p>
+
+<hr>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Questions for this survey</div>
+  <div class="list-group">
+    <div class="list-group-item">
+      [Enabled] Question <span class="pull-right">Actions</span>
+    </div>
+    <% @i_survey.i_questions.order(:order).each do |i_question| %>
+    <div class="list-group-item">
+      <% if i_question.enabled %><%= icon :ok %><% else %><%= icon :remove %><% end %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= i_question.order %>. <%= i_question.description %>
+      <span class="pull-right">
+        <%= link_to 'Details', i_question, class: "btn btn-xs btn-primary" %>
+        <%= link_to 'Edit', edit_i_question_path(i_question), class: "btn btn-xs btn-info" %>
+        <%= link_to 'Destroy', i_question, method: :delete, data: { confirm: 'Warning: Destroying a question will orphan any answers. It is recommended to simply disable inactive questions or surveys. Are you sure you want to delete?' }, class: "btn btn-xs btn-danger" %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "Destroy all of these questions", i_question_destroy_for_path(@i_survey), class: "text-danger", method: :delete, data: { confirm: 'Warning: Destroying questions will orphan any answers. It is recommended to simply disable inactive questions or surveys. Are you sure you want to delete?' } %>
+  </div>
+</div>
+
+<hr>
+
+<%= link_to 'New Question', new_i_question_path, class: "btn btn-primary" %>
+
+<%= link_to "View Answers", "/answers/" + @i_survey.id.to_s, class: "btn btn-info" %> <%= link_to "View Realtime Answers", realtime_answers_path, class: "btn btn-info" %> <%= link_to 'Edit', edit_i_survey_path(@i_survey), class: "btn btn-info" %> <%= link_to 'Back', i_surveys_path, class: "btn btn-warning" %>

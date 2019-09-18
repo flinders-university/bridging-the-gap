@@ -1,0 +1,2 @@
+module IQuestionsHelper
+end

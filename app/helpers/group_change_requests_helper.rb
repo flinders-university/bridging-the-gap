@@ -1,0 +1,2 @@
+module GroupChangeRequestsHelper
+end

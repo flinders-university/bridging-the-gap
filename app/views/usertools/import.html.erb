@@ -1,0 +1,27 @@
+<div class="clearfix"></div>
+<div class="pull-right">
+  <br>
+  <%= link_to "User Tools", usertools_path, class: "btn btn-primary" %>
+</div>
+<h1>Import Users</h1>
+<hr>
+
+<%= form_tag(usertools_importer_path, method: :post, multipart: true) do %>
+<p>Select a JSON file...
+  <%= file_field_tag(:import, class: "form-control") %></p>
+<%= submit_tag("Import Users", class: "btn btn-primary") %>
+<% end %>
+
+<br>
+<div class="well">
+<p><strong>Regarding passwords:</strong></p>
+
+<p>Users that are imported as students will have their initial password set to their Student ID number.</p>
+
+<p>Users that are imported as industry contacts will have their initial password set to <code>industrycontact123</code>.</p>
+
+<p>Users that can't be detected as either will have their initial password set to <code>generalcontact123</code>.</p>
+
+<p>It is <strong>highly</strong> recommended that users change their initial passwords.</p>
+
+</div>
