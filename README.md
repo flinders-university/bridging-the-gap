@@ -18,6 +18,12 @@ This web platform supports the project team, industry contacts and schools to en
 * Research data collection (surveys)
 * Research data management (consent)
 
+## Project team
+
+Primary research officer & programming lead: [Aidan Cornelius-Bell](https://flinders.edu.au/people/aidan.cornelius-bell)
+
+Other project team members: [Dr Carol Aldous](https://flinders.edu.au/people/carol.aldous), [Abby Witts](https://flinders.edu.au/people/abby.witts), [David Jeffries](https://flinders.edu.au/people/david.jeffries), [Narmon Tulsi](https://flinders.edu.au/people/narmon.tulsi)
+
 ## Technical Details
 
 This platform is designed and tested to operate on Heroku using AWS as the 'static' storage in the Sydney region for research data storage, etc.
