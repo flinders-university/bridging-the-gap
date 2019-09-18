@@ -1,3 +1,5 @@
+![Bridging the Gap](https://github.com/flinders-university/bridging-the-gap/raw/master/public/gh_image.png)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
