@@ -109,7 +109,7 @@
     </div>
     <div class="list-group">
       <div class="list-group-item">Your last sign in was on <%= if current_user.last_sign_in_at.present? then current_user.last_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") end %> from <%= current_user.last_sign_in_ip %></div>
-      <div class="list-group-item">Your current sign in was on <%= current_user.current_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") %> from <%= current_user.current_sign_in_ip %></div>
+      <div class="list-group-item">Your current sign in was on <%= if current_user.current_sign_in_at.present? then current_user.current_sign_in_at.strftime("%d %B %Y, at %-l:%M %p") end %> from <%= current_user.current_sign_in_ip %></div>
     </div>
     <% if current_user.group.level <= 1 %>
     <div class="panel-footer">
