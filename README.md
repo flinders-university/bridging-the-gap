@@ -30,7 +30,7 @@ This platform is designed and tested to operate on Heroku using AWS as the 'stat
 
 ### Ruby version
 
-This project uses the, now quite old, 2.3.0.
+This project uses, the now quite old, Ruby 2.3.0.
 
 ### System dependencies
 
