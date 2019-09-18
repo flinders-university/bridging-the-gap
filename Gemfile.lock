@@ -95,7 +95,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.14)
+    ffi (1.11.1)
     github-markdown (0.6.9)
     github-markup (1.4.0)
     globalid (0.3.7)
